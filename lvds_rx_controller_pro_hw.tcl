@@ -11,12 +11,13 @@ package require qsys
 # loc: $::env(QUARTUS_ROOTDIR)/../ip/altera/common/hw_tcl_packages/altera_terp.tcl
 package require -exact altera_terp 1.0
 
+# 25.1.0630 - stable release 
 
 ################################################
 # module lvds_rx_controller_pro
 ################################################ 
 set_module_property NAME lvds_rx_controller_pro
-set_module_property VERSION 25.0.0324
+set_module_property VERSION 25.1.0630
 set_module_property INTERNAL false
 set_module_property OPAQUE_ADDRESS_MAP true
 set_module_property GROUP "Mu3e Data Plane/Modules"
