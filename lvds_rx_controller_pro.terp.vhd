@@ -173,6 +173,7 @@ architecture rtl of ${output_name} is
     signal cdc_fifo_cq              : std_logic_vector(39 downto 0);
     signal cdc_fifo_dq              : std_logic_vector(39 downto 0);
     signal clane_error              : std_logic_vector(N_LANE-1 downto 0);
+    signal ccoe_ctrl_dpalock        : std_logic_vector(N_LANE-1 downto 0);
     
     component cdc_fifo
 	port (
@@ -538,6 +539,10 @@ begin
         cdc_fifo_ddata(${i}+1)                          <= aso_decoded_error(${i}*3+2);
             @@ }
         @@ }
+        cdc_fifo_ddata(2*N_LANE downto N_LANE+1)        <= coe_ctrl_dpalock;
+        ccoe_ctrl_dpalock                               <= cdc_fifo_cq(2*N_LANE downto N_LANE+1);
+        
+        
         clane_error                                     <= cdc_fifo_cq(N_LANE downto 1);
         -- TODO...
     end process;
@@ -634,14 +639,14 @@ begin
                         -- confirm dpa circuitry has locked to the optimal 45° phase to the incoming data
                         when DPA_LOCKING => 
                             coe_ctrl_dparst(i)      <= '0';
-                            if (coe_ctrl_dpalock(i) = '1') then 
+                            if (ccoe_ctrl_dpalock(i) = '1') then 
                                 locking_monitor_next(i)     <= DPA_DETECTOR_LOCKING;
                                 coe_ctrl_lockrst(i)         <= '1';
                             end if; 
                         -- re-confirm by reset the lock circuitry to re-examine the lock status
                         when DPA_DETECTOR_LOCKING => -- you may enable dpll_hold at end of this stage
                             coe_ctrl_lockrst(i)     <= '0'; -- confirm it is really locked, you must assert this from time to time to re-confirm the locking status
-                            if (coe_ctrl_dpalock(i) = '1') then 
+                            if (ccoe_ctrl_dpalock(i) = '1') then 
                                 locking_monitor_next(i)      <= FIFO_RESET;
                                 coe_ctrl_fiforst(i)          <= '1';
                             end if;
@@ -680,7 +685,7 @@ begin
                             case locking_monitor_dpa_recheck(i) is 
                                 when CHECKING => 
                                     if (dpafail_counter(i)  < locking_monitor_dpa_fail_cycles) then 
-                                        if (coe_ctrl_dpalock(i) = '1') then 
+                                        if (ccoe_ctrl_dpalock(i) = '1') then 
                                             locking_monitor_dpa_recheck(i)      <= OK;
                                         end if;
                                     else 
