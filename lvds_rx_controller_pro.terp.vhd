@@ -636,7 +636,7 @@ begin
                                 locking_monitor_next(i)     <= DPA_LOCKING;
                                 coe_ctrl_dparst(i)          <= '1';
                             end if;
-                        -- confirm dpa circuitry has locked to the optimal 45° phase to the incoming data
+                        -- confirm dpa circuitry has locked to the optimal 45?? phase to the incoming data
                         when DPA_LOCKING => 
                             coe_ctrl_dparst(i)      <= '0';
                             if (ccoe_ctrl_dpalock(i) = '1') then 
