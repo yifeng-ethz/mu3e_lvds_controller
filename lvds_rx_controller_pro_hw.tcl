@@ -132,6 +132,7 @@ add_interface_port ctrl coe_ctrl_rollover 		rollover	Input "N_LANE"
 add_interface csr avalon end
 set_interface_property csr associatedClock "control_clock"
 set_interface_property csr associatedReset "control_reset"
+set_interface_property csr readLatency 1
 add_interface_port csr avs_csr_read 			read 		Input 1
 add_interface_port csr avs_csr_readdata 		readdata 	Output 32
 add_interface_port csr avs_csr_writedata 		writedata 	Input 32
@@ -272,6 +273,5 @@ proc my_elaborate {} {
     return -code ok 
 	
 }
-
 
 
