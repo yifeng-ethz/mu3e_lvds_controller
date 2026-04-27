@@ -159,21 +159,32 @@ architecture rtl of ${output_name} is
         lane_selection      : std_logic_vector(DECODED_CHANNEL_WIDTH-1 downto 0);
         rollover_errors     : rollover_errors_t;
     end record;
-    signal csr              : csr_t;
-    signal dcsr             : csr_t;
+    constant CSR_INIT       : csr_t := (
+        sync_pattern        => SYNC_PATTERN,
+        mode_mask           => (others => '1'),
+        soft_reset_req      => (others => '0'),
+        dpa_hold            => (others => '0'),
+        lane_go             => (others => '1'),
+        symbol_errors       => (others => (others => '0')),
+        dpa_unlocks         => (others => (others => '0')),
+        lane_selection      => (others => '0'),
+        rollover_errors     => (others => (others => '0'))
+    );
+    signal csr              : csr_t := CSR_INIT;
+    signal dcsr             : csr_t := CSR_INIT;
     
     -- //////////////////////////////////////////////////
     -- cdc_fifo
     -- //////////////////////////////////////////////////
-    signal locking_monitor_ok               : std_logic_vector(N_LANE-1 downto 0); -- translate locking_monitor.OK -> binary; 1=ok, 0=bad
-    signal dlocking_monitor_ok              : std_logic_vector(N_LANE-1 downto 0);
+    signal locking_monitor_ok               : std_logic_vector(N_LANE-1 downto 0) := (others => '0'); -- translate locking_monitor.OK -> binary; 1=ok, 0=bad
+    signal dlocking_monitor_ok              : std_logic_vector(N_LANE-1 downto 0) := (others => '0');
     constant CDC_C2D_WIDTH          : natural := csr.sync_pattern'length + csr.mode_mask'length + csr.soft_reset_req'length + locking_monitor_ok'length + 1; -- pipe=1
-    signal cdc_fifo_cdata           : std_logic_vector(39 downto 0);
-    signal cdc_fifo_ddata           : std_logic_vector(39 downto 0);   
-    signal cdc_fifo_cq              : std_logic_vector(39 downto 0);
-    signal cdc_fifo_dq              : std_logic_vector(39 downto 0);
-    signal clane_error              : std_logic_vector(N_LANE-1 downto 0);
-    signal ccoe_ctrl_dpalock        : std_logic_vector(N_LANE-1 downto 0);
+    signal cdc_fifo_cdata           : std_logic_vector(39 downto 0) := (others => '0');
+    signal cdc_fifo_ddata           : std_logic_vector(39 downto 0) := (others => '0');
+    signal cdc_fifo_cq              : std_logic_vector(39 downto 0) := (others => '0');
+    signal cdc_fifo_dq              : std_logic_vector(39 downto 0) := (others => '0');
+    signal clane_error              : std_logic_vector(N_LANE-1 downto 0) := (others => '0');
+    signal ccoe_ctrl_dpalock        : std_logic_vector(N_LANE-1 downto 0) := (others => '0');
     
     component cdc_fifo
 	port (
@@ -196,24 +207,24 @@ architecture rtl of ${output_name} is
     
     type locking_monitor_states_t is (IDLE, PLL_LOCKING, DPA_LOCKING, DPA_DETECTOR_LOCKING, FIFO_RESET, OK, HARD_RESET);
     type locking_monitors_states_t is array (0 to N_LANE-1) of locking_monitor_states_t;
-    signal locking_monitor          : locking_monitors_states_t;
-    signal locking_monitor_next     : locking_monitors_states_t;
+    signal locking_monitor          : locking_monitors_states_t := (others => HARD_RESET);
+    signal locking_monitor_next     : locking_monitors_states_t := (others => HARD_RESET);
     
     type locking_monitor_dpa_recheck_states_t is (CHECKING, OK, FAIL, IDLE);
     type locking_monitor_dpa_rechecks_states_t is array (0 to N_LANE-1) of locking_monitor_dpa_recheck_states_t;
-    signal locking_monitor_dpa_recheck  : locking_monitor_dpa_rechecks_states_t;
+    signal locking_monitor_dpa_recheck  : locking_monitor_dpa_rechecks_states_t := (others => IDLE);
     
     type grace_counters_t is array (0 to N_LANE-1) of unsigned(7 downto 0);
-    signal grace_counter            : grace_counters_t;
+    signal grace_counter            : grace_counters_t := (others => (others => '0'));
     
     type dparsh_counters_t is array (0 to N_LANE-1) of unsigned(31 downto 0);
-    signal dparsh_counter           : dparsh_counters_t;
+    signal dparsh_counter           : dparsh_counters_t := (others => (others => '0'));
     
     type dpafail_counters_t is array (0 to N_LANE-1) of unsigned(15 downto 0);
-    signal dpafail_counter          : dpafail_counters_t;
+    signal dpafail_counter          : dpafail_counters_t := (others => (others => '0'));
     
     type locking_monitor_dpa_unlock_cnts_t is array (0 to N_LANE-1) of unsigned(31 downto 0);
-    signal locking_monitor_dpa_unlock_cnt   : locking_monitor_dpa_unlock_cnts_t;
+    signal locking_monitor_dpa_unlock_cnt   : locking_monitor_dpa_unlock_cnts_t := (others => (others => '0'));
     
     -- //////////////////////////////////////////////////
     -- line_code_decoder_8b10b 
@@ -250,33 +261,33 @@ architecture rtl of ${output_name} is
     -- bit_sliper 
     type bit_sliper_t is (SLIP, MONITOR, OK, FAIL, IDLE);
     type bit_slipers_t is array (0 to N_LANE-1) of bit_sliper_t;
-    signal bit_sliper                   : bit_slipers_t;
-    signal bit_sliper_counter_en        : std_logic_vector(N_LANE-1 downto 0);
+    signal bit_sliper                   : bit_slipers_t := (others => IDLE);
+    signal bit_sliper_counter_en        : std_logic_vector(N_LANE-1 downto 0) := (others => '0');
     
     type bit_sliper_counter_t is array (0 to N_LANE-1) of unsigned(15 downto 0);
-    signal bit_sliper_counter           : bit_sliper_counter_t;
+    signal bit_sliper_counter           : bit_sliper_counter_t := (others => (others => '0'));
     
     type bit_sliper_sync_cnt_t is array (0 to N_LANE-1) of unsigned(15 downto 0);
-    signal bit_sliper_sync_cnt          : bit_sliper_sync_cnt_t;
+    signal bit_sliper_sync_cnt          : bit_sliper_sync_cnt_t := (others => (others => '0'));
     
-    signal bit_sliper_valid             : std_logic_vector(N_LANE-1 downto 0);
+    signal bit_sliper_valid             : std_logic_vector(N_LANE-1 downto 0) := (others => '0');
     
-    signal bit_sliper_trained           : std_logic_vector(N_LANE-1 downto 0);
+    signal bit_sliper_trained           : std_logic_vector(N_LANE-1 downto 0) := (others => '0');
     
     -- adaptive_aligner 
     type adaptive_aligner_t is (IDLE,DECIDING,LOCKING,LOCKED,RESET);
     type adaptive_aligners_t is array (0 to N_LANE-1) of adaptive_aligner_t;
-    signal adaptive_aligner             : adaptive_aligners_t;
+    signal adaptive_aligner             : adaptive_aligners_t := (others => RESET);
     
     type adaptive_aligner_priority_t is array (0 to N_LANE-1) of std_logic_vector(9 downto 0);
-    signal adaptive_aligner_priority    : adaptive_aligner_priority_t;
+    signal adaptive_aligner_priority    : adaptive_aligner_priority_t := (others => (0 => '1', others => '0'));
     
-    signal adaptive_aligner_chosen       : adaptive_aligner_priority_t;
-    signal word_aligner_next_grant_comb : adaptive_aligner_priority_t;
-    signal adative_aligner_good_lanes_map   : adaptive_aligner_priority_t;
+    signal adaptive_aligner_chosen       : adaptive_aligner_priority_t := (others => (others => '0'));
+    signal word_aligner_next_grant_comb : adaptive_aligner_priority_t := (others => (others => '0'));
+    signal adative_aligner_good_lanes_map   : adaptive_aligner_priority_t := (others => (others => '0'));
     
     type adaptive_aligner_score_t is array (0 to N_LANE-1) of unsigned(7 downto 0);
-    signal adaptive_aligner_score        : adaptive_aligner_score_t; 
+    signal adaptive_aligner_score        : adaptive_aligner_score_t := (others => (others => '0')); 
 
     
     
@@ -302,7 +313,7 @@ architecture rtl of ${output_name} is
     -- assembler
     -- //////////////////////////////////////////////////
     type assembler_symbol_errors_t is array (0 to N_LANE-1) of unsigned(31 downto 0);
-    signal assembler_symbol_errors             : assembler_symbol_errors_t;
+    signal assembler_symbol_errors             : assembler_symbol_errors_t := (others => (others => '0'));
     
     
     -- //////////////////////////////////////////////////
@@ -584,6 +595,11 @@ begin
             if (rsi_control_reset = '1') then 
                 locking_monitor         <= (others => HARD_RESET);
                 locking_monitor_next    <= (others => HARD_RESET);
+                coe_ctrl_pllrst         <= '0';
+                coe_ctrl_dparst         <= (others => '0');
+                coe_ctrl_lockrst        <= (others => '0');
+                coe_ctrl_dpahold        <= (others => '0');
+                coe_ctrl_fiforst        <= (others => '0');
             else 
                 for i in 0 to N_LANE-1 loop
                     
@@ -710,7 +726,7 @@ begin
                         when HARD_RESET => -- triggers a reset also in the datapath
                             locking_monitor_dpa_recheck(i)      <= IDLE;
                             locking_monitor_dpa_unlock_cnt(i)   <= (others => '0'); -- reset the counter here
-                            coe_ctrl_pllrst                     <= '1';
+                            coe_ctrl_pllrst                     <= '0'; -- keep the LVDS PLL clock running through controller reset
                             locking_monitor_next(i)             <= IDLE;
                             coe_ctrl_dparst(i)                  <= '1';
                             coe_ctrl_lockrst(i)                 <= '1';
@@ -777,6 +793,7 @@ begin
             if (rsi_data_reset = '1') then 
                 bit_sliper          <= (others => IDLE);
                 adaptive_aligner    <= (others => RESET);
+                coe_ctrl_bitslip    <= (others => '0');
             else 
                 -- ---------------------------
                 -- word aliger main logic
@@ -1164,4 +1181,3 @@ begin
    
 
 end architecture rtl;
-

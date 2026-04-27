@@ -1,5 +1,5 @@
 ################################################
-# lvds_rx_controller_pro "LVDS RX Controller Pro" v25.0.0324
+# lvds_rx_controller_pro "LVDS RX Controller Pro" v25.1.0631
 # Yifeng Wang 2025.01.24
 ################################################
 
@@ -11,18 +11,19 @@ package require qsys
 # loc: $::env(QUARTUS_ROOTDIR)/../ip/altera/common/hw_tcl_packages/altera_terp.tcl
 package require -exact altera_terp 1.0
 
-# 25.1.0630 - stable release 
+# 25.1.0630 - stable release
+# 25.1.0631 - keep LVDS PLL reset deasserted during controller hard reset
 
 ################################################
 # module lvds_rx_controller_pro
 ################################################ 
 set_module_property NAME lvds_rx_controller_pro
-set_module_property VERSION 25.1.0630
+set_module_property VERSION 25.1.0631
 set_module_property INTERNAL false
 set_module_property OPAQUE_ADDRESS_MAP true
 set_module_property GROUP "Mu3e Data Plane/Modules"
 set_module_property AUTHOR "Yifeng Wang"
-set_module_property ICON_PATH ../quartus_system/logo/mu3e_logo.png
+set_module_property ICON_PATH ../quartus_system/misc/logo/mu3e_logo.png
 set_module_property DISPLAY_NAME "LVDS RX Controller Pro"
 set_module_property INSTANTIATE_IN_SYSTEM_MODULE true
 set_module_property EDITABLE false
@@ -273,5 +274,4 @@ proc my_elaborate {} {
     return -code ok 
 	
 }
-
 
