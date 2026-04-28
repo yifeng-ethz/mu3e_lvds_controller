@@ -4,8 +4,8 @@
   <vendorID>MU3E</vendorID>
   <name>MU3E_LVDS_RX_CONTROLLER_PRO</name>
   <series>MU3E_FPGA_IP</series>
-  <version>26.0.402</version>
-  <description>CMSIS-SVD description of the lvds_rx_controller_pro CSR window. This conservative first-pass contract exposes the 16-word relative CSR aperture as read-only WORD registers until the IP author refines individual control/status fields.</description>
+  <version>25.1.0631</version>
+  <description>CMSIS-SVD description of the lvds_rx_controller_pro CSR window for N_LANE=9 and AVMM_ADDR_W=4. It names the RTL-backed words that are addressable through this package configuration. RTL also decodes word N_LANE+7 (16) for lane_word_aligner_chosen, but that word is not addressable with AVMM_ADDR_W=4; live tools must not read it until the package/system address width is widened.</description>
   <addressUnitBits>8</addressUnitBits>
   <width>32</width>
   <size>32</size>
@@ -15,7 +15,7 @@
   <peripherals>
     <peripheral>
       <name>LVDS_RX_CONTROLLER_PRO_CSR</name>
-      <description>Relative 16-word CSR aperture for the LVDS receive controller.</description>
+      <description>Relative CSR aperture for the LVDS receive controller.</description>
       <groupName>MU3E_DATA_PATH</groupName>
       <baseAddress>0x0</baseAddress>
       <addressBlock>
@@ -25,89 +25,338 @@
       </addressBlock>
       <registers>
         <register>
-          <name>WORD000</name>
-          <description>LVDS RX controller CSR word 0.</description>
-          <addressOffset>0x0</addressOffset>
-          <access>read-only</access>
+          <name>capability</name>
+          <description>Capability and sync-pattern register. RTL word 0: sync_pattern[25:16], N_LANE[7:0].</description>
+          <addressOffset>0x00</addressOffset>
+          <access>read-write</access>
+          <resetValue>0x00FA0009</resetValue>
+          <resetMask>0x03FF00FF</resetMask>
           <fields>
             <field>
-              <name>value</name>
-              <description>Raw LVDS RX controller CSR word 0.</description>
+              <name>N_LANE</name>
+              <description>Configured number of LVDS receive lanes.</description>
               <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
+              <bitWidth>8</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>reserved0</name>
+              <description>Reserved, read as zero.</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>8</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>sync_pattern</name>
+              <description>10-bit 8b/10b sync pattern used by the byte-boundary alignment logic.</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>10</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>reserved1</name>
+              <description>Reserved, read as zero.</description>
+              <bitOffset>26</bitOffset>
+              <bitWidth>6</bitWidth>
               <access>read-only</access>
             </field>
           </fields>
         </register>
         <register>
-          <name>WORD001</name>
-          <description>LVDS RX controller CSR word 1.</description>
-          <addressOffset>0x4</addressOffset>
-          <access>read-only</access>
+          <name>mode_mask</name>
+          <description>Per-lane byte-boundary alignment mode. 0 selects bit-slip mode; 1 selects adaptive selection.</description>
+          <addressOffset>0x04</addressOffset>
+          <access>read-write</access>
+          <resetValue>0x000001FF</resetValue>
           <fields>
             <field>
-              <name>value</name>
-              <description>Raw LVDS RX controller CSR word 1.</description>
+              <name>mode_masks_lane0</name>
+              <description>Alignment mode for lane 0: 0=bit-slip, 1=adaptive selection.</description>
               <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-              <access>read-only</access>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>mode_masks_lane1</name>
+              <description>Alignment mode for lane 1: 0=bit-slip, 1=adaptive selection.</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>mode_masks_lane2</name>
+              <description>Alignment mode for lane 2: 0=bit-slip, 1=adaptive selection.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>mode_masks_lane3</name>
+              <description>Alignment mode for lane 3: 0=bit-slip, 1=adaptive selection.</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>mode_masks_lane4</name>
+              <description>Alignment mode for lane 4: 0=bit-slip, 1=adaptive selection.</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>mode_masks_lane5</name>
+              <description>Alignment mode for lane 5: 0=bit-slip, 1=adaptive selection.</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>mode_masks_lane6</name>
+              <description>Alignment mode for lane 6: 0=bit-slip, 1=adaptive selection.</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>mode_masks_lane7</name>
+              <description>Alignment mode for lane 7: 0=bit-slip, 1=adaptive selection.</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>mode_masks_lane8</name>
+              <description>Alignment mode for lane 8: 0=bit-slip, 1=adaptive selection.</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
           </fields>
         </register>
         <register>
-          <name>WORD002</name>
-          <description>LVDS RX controller CSR word 2.</description>
-          <addressOffset>0x8</addressOffset>
-          <access>read-only</access>
+          <name>soft_reset_req</name>
+          <description>Per-lane soft-reset request. Write 1 to request a lane reset; RTL clears the bit after the lane reaches IDLE.</description>
+          <addressOffset>0x08</addressOffset>
+          <access>read-write</access>
           <fields>
             <field>
-              <name>value</name>
-              <description>Raw LVDS RX controller CSR word 2.</description>
+              <name>soft_reset_req0</name>
+              <description>Soft-reset request for lane 0.</description>
               <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-              <access>read-only</access>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>soft_reset_req1</name>
+              <description>Soft-reset request for lane 1.</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>soft_reset_req2</name>
+              <description>Soft-reset request for lane 2.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>soft_reset_req3</name>
+              <description>Soft-reset request for lane 3.</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>soft_reset_req4</name>
+              <description>Soft-reset request for lane 4.</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>soft_reset_req5</name>
+              <description>Soft-reset request for lane 5.</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>soft_reset_req6</name>
+              <description>Soft-reset request for lane 6.</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>soft_reset_req7</name>
+              <description>Soft-reset request for lane 7.</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>soft_reset_req8</name>
+              <description>Soft-reset request for lane 8.</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
           </fields>
         </register>
         <register>
-          <name>WORD003</name>
-          <description>LVDS RX controller CSR word 3.</description>
-          <addressOffset>0xC</addressOffset>
-          <access>read-only</access>
+          <name>dpa_hold</name>
+          <description>Per-lane DPA hold control.</description>
+          <addressOffset>0x0C</addressOffset>
+          <access>read-write</access>
           <fields>
             <field>
-              <name>value</name>
-              <description>Raw LVDS RX controller CSR word 3.</description>
+              <name>dpa_hold0</name>
+              <description>Hold DPA training for lane 0 when set.</description>
               <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-              <access>read-only</access>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>dpa_hold1</name>
+              <description>Hold DPA training for lane 1 when set.</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>dpa_hold2</name>
+              <description>Hold DPA training for lane 2 when set.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>dpa_hold3</name>
+              <description>Hold DPA training for lane 3 when set.</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>dpa_hold4</name>
+              <description>Hold DPA training for lane 4 when set.</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>dpa_hold5</name>
+              <description>Hold DPA training for lane 5 when set.</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>dpa_hold6</name>
+              <description>Hold DPA training for lane 6 when set.</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>dpa_hold7</name>
+              <description>Hold DPA training for lane 7 when set.</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>dpa_hold8</name>
+              <description>Hold DPA training for lane 8 when set.</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
           </fields>
         </register>
         <register>
-          <name>WORD004</name>
-          <description>LVDS RX controller CSR word 4.</description>
+          <name>lane_go</name>
+          <description>Per-lane enable for DPA training and decoded data output.</description>
           <addressOffset>0x10</addressOffset>
-          <access>read-only</access>
+          <access>read-write</access>
+          <resetValue>0x000001FF</resetValue>
           <fields>
             <field>
-              <name>value</name>
-              <description>Raw LVDS RX controller CSR word 4.</description>
+              <name>lane_go0</name>
+              <description>Enable lane 0 training and output when set.</description>
               <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-              <access>read-only</access>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>lane_go1</name>
+              <description>Enable lane 1 training and output when set.</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>lane_go2</name>
+              <description>Enable lane 2 training and output when set.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>lane_go3</name>
+              <description>Enable lane 3 training and output when set.</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>lane_go4</name>
+              <description>Enable lane 4 training and output when set.</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>lane_go5</name>
+              <description>Enable lane 5 training and output when set.</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>lane_go6</name>
+              <description>Enable lane 6 training and output when set.</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>lane_go7</name>
+              <description>Enable lane 7 training and output when set.</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>lane_go8</name>
+              <description>Enable lane 8 training and output when set.</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
           </fields>
         </register>
         <register>
-          <name>WORD005</name>
-          <description>LVDS RX controller CSR word 5.</description>
+          <name>error_counter_lane0</name>
+          <description>Symbol error counter for lane 0. RTL returns 0xFFFFFFFF while the lane has a fatal training error.</description>
           <addressOffset>0x14</addressOffset>
           <access>read-only</access>
           <fields>
             <field>
-              <name>value</name>
-              <description>Raw LVDS RX controller CSR word 5.</description>
+              <name>error_counts</name>
+              <description>Decode plus parity error count for lane 0.</description>
               <bitOffset>0</bitOffset>
               <bitWidth>32</bitWidth>
               <access>read-only</access>
@@ -115,14 +364,14 @@
           </fields>
         </register>
         <register>
-          <name>WORD006</name>
-          <description>LVDS RX controller CSR word 6.</description>
+          <name>error_counter_lane1</name>
+          <description>Symbol error counter for lane 1. RTL returns 0xFFFFFFFF while the lane has a fatal training error.</description>
           <addressOffset>0x18</addressOffset>
           <access>read-only</access>
           <fields>
             <field>
-              <name>value</name>
-              <description>Raw LVDS RX controller CSR word 6.</description>
+              <name>error_counts</name>
+              <description>Decode plus parity error count for lane 1.</description>
               <bitOffset>0</bitOffset>
               <bitWidth>32</bitWidth>
               <access>read-only</access>
@@ -130,14 +379,14 @@
           </fields>
         </register>
         <register>
-          <name>WORD007</name>
-          <description>LVDS RX controller CSR word 7.</description>
+          <name>error_counter_lane2</name>
+          <description>Symbol error counter for lane 2. RTL returns 0xFFFFFFFF while the lane has a fatal training error.</description>
           <addressOffset>0x1C</addressOffset>
           <access>read-only</access>
           <fields>
             <field>
-              <name>value</name>
-              <description>Raw LVDS RX controller CSR word 7.</description>
+              <name>error_counts</name>
+              <description>Decode plus parity error count for lane 2.</description>
               <bitOffset>0</bitOffset>
               <bitWidth>32</bitWidth>
               <access>read-only</access>
@@ -145,14 +394,14 @@
           </fields>
         </register>
         <register>
-          <name>WORD008</name>
-          <description>LVDS RX controller CSR word 8.</description>
+          <name>error_counter_lane3</name>
+          <description>Symbol error counter for lane 3. RTL returns 0xFFFFFFFF while the lane has a fatal training error.</description>
           <addressOffset>0x20</addressOffset>
           <access>read-only</access>
           <fields>
             <field>
-              <name>value</name>
-              <description>Raw LVDS RX controller CSR word 8.</description>
+              <name>error_counts</name>
+              <description>Decode plus parity error count for lane 3.</description>
               <bitOffset>0</bitOffset>
               <bitWidth>32</bitWidth>
               <access>read-only</access>
@@ -160,14 +409,14 @@
           </fields>
         </register>
         <register>
-          <name>WORD009</name>
-          <description>LVDS RX controller CSR word 9.</description>
+          <name>error_counter_lane4</name>
+          <description>Symbol error counter for lane 4. RTL returns 0xFFFFFFFF while the lane has a fatal training error.</description>
           <addressOffset>0x24</addressOffset>
           <access>read-only</access>
           <fields>
             <field>
-              <name>value</name>
-              <description>Raw LVDS RX controller CSR word 9.</description>
+              <name>error_counts</name>
+              <description>Decode plus parity error count for lane 4.</description>
               <bitOffset>0</bitOffset>
               <bitWidth>32</bitWidth>
               <access>read-only</access>
@@ -175,14 +424,14 @@
           </fields>
         </register>
         <register>
-          <name>WORD010</name>
-          <description>LVDS RX controller CSR word 10.</description>
+          <name>error_counter_lane5</name>
+          <description>Symbol error counter for lane 5. RTL returns 0xFFFFFFFF while the lane has a fatal training error.</description>
           <addressOffset>0x28</addressOffset>
           <access>read-only</access>
           <fields>
             <field>
-              <name>value</name>
-              <description>Raw LVDS RX controller CSR word 10.</description>
+              <name>error_counts</name>
+              <description>Decode plus parity error count for lane 5.</description>
               <bitOffset>0</bitOffset>
               <bitWidth>32</bitWidth>
               <access>read-only</access>
@@ -190,14 +439,14 @@
           </fields>
         </register>
         <register>
-          <name>WORD011</name>
-          <description>LVDS RX controller CSR word 11.</description>
+          <name>error_counter_lane6</name>
+          <description>Symbol error counter for lane 6. RTL returns 0xFFFFFFFF while the lane has a fatal training error.</description>
           <addressOffset>0x2C</addressOffset>
           <access>read-only</access>
           <fields>
             <field>
-              <name>value</name>
-              <description>Raw LVDS RX controller CSR word 11.</description>
+              <name>error_counts</name>
+              <description>Decode plus parity error count for lane 6.</description>
               <bitOffset>0</bitOffset>
               <bitWidth>32</bitWidth>
               <access>read-only</access>
@@ -205,14 +454,14 @@
           </fields>
         </register>
         <register>
-          <name>WORD012</name>
-          <description>LVDS RX controller CSR word 12.</description>
+          <name>error_counter_lane7</name>
+          <description>Symbol error counter for lane 7. RTL returns 0xFFFFFFFF while the lane has a fatal training error.</description>
           <addressOffset>0x30</addressOffset>
           <access>read-only</access>
           <fields>
             <field>
-              <name>value</name>
-              <description>Raw LVDS RX controller CSR word 12.</description>
+              <name>error_counts</name>
+              <description>Decode plus parity error count for lane 7.</description>
               <bitOffset>0</bitOffset>
               <bitWidth>32</bitWidth>
               <access>read-only</access>
@@ -220,14 +469,14 @@
           </fields>
         </register>
         <register>
-          <name>WORD013</name>
-          <description>LVDS RX controller CSR word 13.</description>
+          <name>error_counter_lane8</name>
+          <description>Symbol error counter for lane 8. RTL returns 0xFFFFFFFF while the lane has a fatal training error.</description>
           <addressOffset>0x34</addressOffset>
           <access>read-only</access>
           <fields>
             <field>
-              <name>value</name>
-              <description>Raw LVDS RX controller CSR word 13.</description>
+              <name>error_counts</name>
+              <description>Decode plus parity error count for lane 8.</description>
               <bitOffset>0</bitOffset>
               <bitWidth>32</bitWidth>
               <access>read-only</access>
@@ -235,29 +484,29 @@
           </fields>
         </register>
         <register>
-          <name>WORD014</name>
-          <description>LVDS RX controller CSR word 14.</description>
+          <name>lane_selection</name>
+          <description>Lane selector for the port-mapped debug registers that follow.</description>
           <addressOffset>0x38</addressOffset>
-          <access>read-only</access>
+          <access>read-write</access>
           <fields>
             <field>
-              <name>value</name>
-              <description>Raw LVDS RX controller CSR word 14.</description>
+              <name>lane_selection</name>
+              <description>Selected lane index for lane_dpa_unlocks and, when addressable, lane_word_aligner_chosen.</description>
               <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-              <access>read-only</access>
+              <bitWidth>4</bitWidth>
+              <access>read-write</access>
             </field>
           </fields>
         </register>
         <register>
-          <name>WORD015</name>
-          <description>LVDS RX controller CSR word 15.</description>
+          <name>lane_dpa_unlocks</name>
+          <description>DPA unlock counter for the lane selected by lane_selection.</description>
           <addressOffset>0x3C</addressOffset>
           <access>read-only</access>
           <fields>
             <field>
-              <name>value</name>
-              <description>Raw LVDS RX controller CSR word 15.</description>
+              <name>dpa_unlocks</name>
+              <description>DPA unlock count for the selected lane.</description>
               <bitOffset>0</bitOffset>
               <bitWidth>32</bitWidth>
               <access>read-only</access>
