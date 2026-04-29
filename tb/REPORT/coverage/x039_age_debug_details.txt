@@ -1,0 +1,2264 @@
+QuestaSim-64 vcover 2026.1_1 Coverage Utility 2026.03 Mar  2 2026
+Start time: 12:32:19 on Apr 29,2026
+vcover report -details -du=work.mu3e_lvds_controller -codeAll tb/uvm/cov/max32/isolated/X039.ucdb 
+Coverage Report by DU with details
+
+=================================================================================
+=== Design Unit: work.mu3e_lvds_controller
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                       145        48        97    33.10%
+
+================================Branch Details================================
+
+Branch Coverage for Design Unit work.mu3e_lvds_controller
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File /home/yifeng/packages/mu3e_ip_dev/worktrees/mu3e_lvds_controller_sv_rebuild_20260429/tb/uvm/../../rtl/mu3e_lvds_controller.sv
+------------------------------------IF Branch------------------------------------
+    260                                  ***0***     Count coming in to IF
+    260             1                    ***0***     
+                                         ***0***     All False Count
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    263                                  ***0***     Count coming in to IF
+    263             1                    ***0***     
+                                         ***0***     All False Count
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    270                                  ***0***     Count coming in to IF
+    270             1                    ***0***     
+                                         ***0***     All False Count
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    283                                     4672     Count coming in to IF
+    283             1                    ***0***     
+                                            4672     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    290                                  ***0***     Count coming in to IF
+    290             1                    ***0***     
+                                         ***0***     All False Count
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    297                                  ***0***     Count coming in to IF
+    297             1                    ***0***     
+                                         ***0***     All False Count
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------CASE Branch------------------------------------
+    320                                     5216     Count coming in to CASE
+    321             1                       5216     
+    322             1                    ***0***     
+    324             1                    ***0***     
+    325             1                    ***0***     
+    327             1                    ***0***     
+    328             1                    ***0***     
+    335             1                    ***0***     
+Branch totals: 1 hit of 7 branches = 14.28%
+
+------------------------------------IF Branch------------------------------------
+    330                                  ***0***     Count coming in to IF
+    330             1                    ***0***     
+                                         ***0***     All False Count
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    342                                     5216     Count coming in to IF
+    342             1                    ***0***     
+                                            5216     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    345                                     5216     Count coming in to IF
+    345             1                    ***0***     
+                                            5216     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------CASE Branch------------------------------------
+    397                                      154     Count coming in to CASE
+    398             1                          4     
+    399             1                    ***0***     
+    400             1                    ***0***     
+    401             1                    ***0***     
+    402             1                    ***0***     
+    403             1                    ***0***     
+    404             1                    ***0***     
+    405             1                    ***0***     
+    406             1                    ***0***     
+    407             1                    ***0***     
+    408             1                          3     
+    409             1                    ***0***     
+    417             1                        147     
+Branch totals: 3 hits of 13 branches = 23.07%
+
+------------------------------------CASE Branch------------------------------------
+    410                                  ***0***     Count coming in to CASE
+    411             1                    ***0***     
+    412             1                    ***0***     
+    413             1                    ***0***     
+    414             1                    ***0***     
+Branch totals: 0 hits of 4 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    418                                      147     Count coming in to IF
+    418             1                        146     
+                                               1     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    428                                        9     Count coming in to IF
+    428             1                          3     
+    442             1                          6     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    444                                      192     Count coming in to IF
+    444             1                    ***0***     
+    451             1                        192     
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    445                                  ***0***     Count coming in to IF
+    445             1                    ***0***     
+    448             1                    ***0***     
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    456                                        6     Count coming in to IF
+    456             1                          1     
+                                               5     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------CASE Branch------------------------------------
+    457                                        1     Count coming in to CASE
+    458             1                    ***0***     
+    463             1                    ***0***     
+    468             1                    ***0***     
+    471             1                    ***0***     
+    474             1                    ***0***     
+    482             1                    ***0***     
+    485             1                    ***0***     
+    489             1                    ***0***     
+    492             1                          1     
+    499             1                    ***0***     
+Branch totals: 1 hit of 10 branches = 10.00%
+
+------------------------------------IF Branch------------------------------------
+    459                                  ***0***     Count coming in to IF
+    459             1                    ***0***     
+                                         ***0***     All False Count
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    464                                  ***0***     Count coming in to IF
+    464             1                    ***0***     
+                                         ***0***     All False Count
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    477                                  ***0***     Count coming in to IF
+    477             1                    ***0***     
+                                         ***0***     All False Count
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    493                                        1     Count coming in to IF
+    493             1                    ***0***     
+    495             1                          1     
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    504                                        6     Count coming in to IF
+    504             1                          1     
+                                               5     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    525                                      167     Count coming in to IF
+    525             1                          4     
+    593             1                        163     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    610                                      163     Count coming in to IF
+    610             1                         16     
+    613             1                        147     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    616                                      163     Count coming in to IF
+    616             1                    ***0***     
+                                             163     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    643                                     5216     Count coming in to IF
+    643             1                    ***0***     
+                                            5216     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    646                                     5216     Count coming in to IF
+    646             1                    ***0***     
+                                            5216     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    670                                     5216     Count coming in to IF
+    670             1                    ***0***     
+    678             1                    ***0***     
+    686             1                    ***0***     
+    699             1                    ***0***     
+    707             1                    ***0***     
+    715             1                    ***0***     
+    727             1                       5216     
+Branch totals: 1 hit of 7 branches = 14.28%
+
+------------------------------------IF Branch------------------------------------
+    722                                  ***0***     Count coming in to IF
+    722             1                    ***0***     
+                                         ***0***     All False Count
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    733                                     5216     Count coming in to IF
+    733             1                        512     
+    737             1                       4704     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    742                                     5216     Count coming in to IF
+    742             1                       5216     
+                                         ***0***     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    743                                     5216     Count coming in to IF
+    743             1                    ***0***     
+                                            5216     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    747                                     5216     Count coming in to IF
+    747             1                    ***0***     
+                                            5216     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    751                                     5216     Count coming in to IF
+    751             1                    ***0***     
+                                            5216     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    755                                     5216     Count coming in to IF
+    755             1                       4672     
+                                             544     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    761                                     5216     Count coming in to IF
+    761             1                    ***0***     
+                                            5216     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    765                                     5216     Count coming in to IF
+    765             1                    ***0***     
+                                            5216     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    770                                     5216     Count coming in to IF
+    770             1                    ***0***     
+                                            5216     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    772                                  ***0***     Count coming in to IF
+    772             1                    ***0***     
+    788             1                    ***0***     
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    775                                  ***0***     Count coming in to IF
+    775             1                    ***0***     
+                                         ***0***     All False Count
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    790                                  ***0***     Count coming in to IF
+    790             1                    ***0***     
+    792             1                    ***0***     
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    802                                     5216     Count coming in to IF
+    802             1                    ***0***     
+    809             1                    ***0***     
+                                            5216     All False Count
+Branch totals: 1 hit of 3 branches = 33.33%
+
+------------------------------------IF Branch------------------------------------
+    819                                  ***0***     Count coming in to IF
+    819             1                    ***0***     
+    822             1                    ***0***     
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    827                                  ***0***     Count coming in to IF
+    827             1                    ***0***     
+                                         ***0***     All False Count
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    833                                  ***0***     Count coming in to IF
+    833             1                    ***0***     
+                                         ***0***     All False Count
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    845                                  ***0***     Count coming in to IF
+    845             1                    ***0***     
+                                         ***0***     All False Count
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    852                                  ***0***     Count coming in to IF
+    852             1                    ***0***     
+                                         ***0***     All False Count
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    860                                      163     Count coming in to IF
+    860             1                        163     
+                                         ***0***     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    861                                      163     Count coming in to IF
+    861             1                        163     
+                                         ***0***     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    867                                     5216     Count coming in to IF
+    867             1                    ***0***     
+    872             1                       5216     
+                                         ***0***     All False Count
+Branch totals: 1 hit of 3 branches = 33.33%
+
+------------------------------------IF Branch------------------------------------
+    873                                     5216     Count coming in to IF
+    873             1                    ***0***     
+    878             1                       5216     
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    888                                      163     Count coming in to IF
+    888             1                    ***0***     
+                                             163     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    893                                      163     Count coming in to IF
+    893             1                    ***0***     
+                                             163     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    901                                      163     Count coming in to IF
+    901             1                          1     
+                                             162     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    906                                      163     Count coming in to IF
+    906             1                         64     
+                                              99     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                      73         8        65    10.95%
+
+================================Condition Details================================
+
+Condition Coverage for Design Unit work.mu3e_lvds_controller --
+
+  File /home/yifeng/packages/mu3e_ip_dev/worktrees/mu3e_lvds_controller_sv_rebuild_20260429/tb/uvm/../../rtl/mu3e_lvds_controller.sv
+----------------Focused Condition View-------------------
+Line       260 Item    1  (value == 0)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+    Input Term   Covered  Reason for no coverage   Hint
+   -----------  --------  -----------------------  --------------
+  (value == 0)         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:    ***0***  (value == 0)_0        -                             
+  Row   2:    ***0***  (value == 0)_1        -                             
+
+----------------Focused Condition View-------------------
+Line       263 Item    1  (value > 1023)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+      Input Term   Covered  Reason for no coverage   Hint
+     -----------  --------  -----------------------  --------------
+  (value > 1023)         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:    ***0***  (value > 1023)_0      -                             
+  Row   2:    ***0***  (value > 1023)_1      -                             
+
+----------------Focused Condition View-------------------
+Line       270 Item    1  (value >= accept)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+         Input Term   Covered  Reason for no coverage   Hint
+        -----------  --------  -----------------------  --------------
+  (value >= accept)         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:    ***0***  (value >= accept)_0   -                             
+  Row   2:    ***0***  (value >= accept)_1   -                             
+
+----------------Focused Condition View-------------------
+Line       283 Item    1  (value == -1)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+     Input Term   Covered  Reason for no coverage   Hint
+    -----------  --------  -----------------------  --------------
+  (value == -1)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (value == -1)_0       -                             
+  Row   2:    ***0***  (value == -1)_1       -                             
+
+----------------Focused Condition View-------------------
+Line       290 Item    1  (value >= 1023)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+       Input Term   Covered  Reason for no coverage   Hint
+      -----------  --------  -----------------------  --------------
+  (value >= 1023)         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:    ***0***  (value >= 1023)_0     -                             
+  Row   2:    ***0***  (value >= 1023)_1     -                             
+
+----------------Focused Condition View-------------------
+Line       297 Item    1  (value == 0)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+    Input Term   Covered  Reason for no coverage   Hint
+   -----------  --------  -----------------------  --------------
+  (value == 0)         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:    ***0***  (value == 0)_0        -                             
+  Row   2:    ***0***  (value == 0)_1        -                             
+
+----------------Focused Condition View-------------------
+Line       330 Item    1  ((sync_pattern != 936) && (sync_pattern != 87))
+Condition totals: 0 of 2 input terms covered = 0.00%
+
+             Input Term   Covered  Reason for no coverage   Hint
+            -----------  --------  -----------------------  --------------
+  (sync_pattern != 936)         N  No hits                  Hit '_0' and '_1'
+   (sync_pattern != 87)         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target               Non-masking condition(s)      
+ ---------  ---------  --------------------     -------------------------     
+  Row   1:    ***0***  (sync_pattern != 936)_0  -                             
+  Row   2:    ***0***  (sync_pattern != 936)_1  (sync_pattern != 87)          
+  Row   3:    ***0***  (sync_pattern != 87)_0   (sync_pattern != 936)         
+  Row   4:    ***0***  (sync_pattern != 87)_1   (sync_pattern != 936)         
+
+----------------Focused Condition View-------------------
+Line       342 Item    1  (symbol != sync_pattern)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                Input Term   Covered  Reason for no coverage   Hint
+               -----------  --------  -----------------------  --------------
+  (symbol != sync_pattern)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                  Non-masking condition(s)      
+ ---------  ---------  --------------------        -------------------------     
+  Row   1:          1  (symbol != sync_pattern)_0  -                             
+  Row   2:    ***0***  (symbol != sync_pattern)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       345 Item    1  (symbol == 1023)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+        Input Term   Covered  Reason for no coverage   Hint
+       -----------  --------  -----------------------  --------------
+  (symbol == 1023)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (symbol == 1023)_0    -                             
+  Row   2:    ***0***  (symbol == 1023)_1    -                             
+
+----------------Focused Condition View-------------------
+Line       418 Item    1  ((avs_csr_address >= 17) && (avs_csr_address <= 26))
+Condition totals: 0 of 2 input terms covered = 0.00%
+
+               Input Term   Covered  Reason for no coverage   Hint
+              -----------  --------  -----------------------  --------------
+  (avs_csr_address >= 17)         N  '_0' not hit             Hit '_0'
+  (avs_csr_address <= 26)         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target                 Non-masking condition(s)      
+ ---------  ---------  --------------------       -------------------------     
+  Row   1:    ***0***  (avs_csr_address >= 17)_0  -                             
+  Row   2:          1  (avs_csr_address >= 17)_1  (avs_csr_address <= 26)       
+  Row   3:    ***0***  (avs_csr_address <= 26)_0  (avs_csr_address >= 17)       
+  Row   4:          1  (avs_csr_address <= 26)_1  (avs_csr_address >= 17)       
+
+----------------Focused Condition View-------------------
+Line       445 Item    1  (soft_reset_hold_count[lane_idx] >= 8)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                              Input Term   Covered  Reason for no coverage   Hint
+                             -----------  --------  -----------------------  --------------
+  (soft_reset_hold_count[lane_idx] >= 8)         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target                                Non-masking condition(s)      
+ ---------  ---------  --------------------                      -------------------------     
+  Row   1:    ***0***  (soft_reset_hold_count[lane_idx] >= 8)_0  -                             
+  Row   2:    ***0***  (soft_reset_hold_count[lane_idx] >= 8)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       459 Item    1  (avs_csr_writedata <= 3)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                Input Term   Covered  Reason for no coverage   Hint
+               -----------  --------  -----------------------  --------------
+  (avs_csr_writedata <= 3)         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target                  Non-masking condition(s)      
+ ---------  ---------  --------------------        -------------------------     
+  Row   1:    ***0***  (avs_csr_writedata <= 3)_0  -                             
+  Row   2:    ***0***  (avs_csr_writedata <= 3)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       493 Item    1  (avs_csr_writedata >= 32)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                 Input Term   Covered  Reason for no coverage   Hint
+                -----------  --------  -----------------------  --------------
+  (avs_csr_writedata >= 32)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                   Non-masking condition(s)      
+ ---------  ---------  --------------------         -------------------------     
+  Row   1:          1  (avs_csr_writedata >= 32)_0  -                             
+  Row   2:    ***0***  (avs_csr_writedata >= 32)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       610 Item    1  (pll_reset_count != 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       616 Item    1  (plllock_d1 && ~coe_ctrl_plllock)
+Condition totals: 0 of 2 input terms covered = 0.00%
+
+        Input Term   Covered  Reason for no coverage   Hint
+       -----------  --------  -----------------------  --------------
+        plllock_d1         N  '_1' not hit             Hit '_1'
+  coe_ctrl_plllock         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  plllock_d1_0          -                             
+  Row   2:    ***0***  plllock_d1_1          ~coe_ctrl_plllock             
+  Row   3:    ***0***  coe_ctrl_plllock_0    plllock_d1                    
+  Row   4:          1  coe_ctrl_plllock_1    plllock_d1                    
+
+----------------Focused Condition View-------------------
+Line       643 Item    1  ((data_v_mode != 0) && data_v_error_event)
+Condition totals: 0 of 2 input terms covered = 0.00%
+
+          Input Term   Covered  Reason for no coverage   Hint
+         -----------  --------  -----------------------  --------------
+  (data_v_mode != 0)         N  '_1' not hit             Hit '_1'
+  data_v_error_event         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (data_v_mode != 0)_0  -                             
+  Row   2:    ***0***  (data_v_mode != 0)_1  data_v_error_event            
+  Row   3:    ***0***  data_v_error_event_0  (data_v_mode != 0)            
+  Row   4:    ***0***  data_v_error_event_1  (data_v_mode != 0)            
+
+----------------Focused Condition View-------------------
+Line       646 Item    1  (((((lane_engine_seen[lane_idx] ~| data_v_decode.error[2]) && ((data_v_mode == 1) || (data_v_mode == 2))) && data_v_lane_live) && coe_ctrl_dpalock[lane_idx]) && (lane_good_count[lane_idx] >= score_accept_data_d2[7:0]))
+Condition totals: 0 of 7 input terms covered = 0.00%
+
+                                                Input Term   Covered  Reason for no coverage   Hint
+                                               -----------  --------  -----------------------  --------------
+                                lane_engine_seen[lane_idx]         N  No hits                  Hit '_0' and '_1'
+                                    data_v_decode.error[2]         N  No hits                  Hit '_0' and '_1'
+                                        (data_v_mode == 1)         N  '_1' not hit             Hit '_1'
+                                        (data_v_mode == 2)         N  '_1' not hit             Hit '_1'
+                                          data_v_lane_live         N  No hits                  Hit '_0' and '_1'
+                                coe_ctrl_dpalock[lane_idx]         N  No hits                  Hit '_0' and '_1'
+  (lane_good_count[lane_idx] >= score_accept_data_d2[7:0])         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target                                                  Non-masking condition(s)      
+ ---------  ---------  --------------------                                        -------------------------     
+  Row   1:    ***0***  lane_engine_seen[lane_idx]_0                                ((lane_good_count[lane_idx] >= score_accept_data_d2[7:0]) && coe_ctrl_dpalock[lane_idx] && data_v_lane_live && ((data_v_mode == 1) || (data_v_mode == 2)) && ~data_v_decode.error[2])
+  Row   2:    ***0***  lane_engine_seen[lane_idx]_1                                ~data_v_decode.error[2]       
+  Row   3:    ***0***  data_v_decode.error[2]_0                                    ((lane_good_count[lane_idx] >= score_accept_data_d2[7:0]) && coe_ctrl_dpalock[lane_idx] && data_v_lane_live && ((data_v_mode == 1) || (data_v_mode == 2)) && ~lane_engine_seen[lane_idx])
+  Row   4:    ***0***  data_v_decode.error[2]_1                                    ~lane_engine_seen[lane_idx]   
+  Row   5:          1  (data_v_mode == 1)_0                                        ((lane_engine_seen[lane_idx] ~| data_v_decode.error[2]) && ~(data_v_mode == 2))
+  Row   6:    ***0***  (data_v_mode == 1)_1                                        ((lane_good_count[lane_idx] >= score_accept_data_d2[7:0]) && coe_ctrl_dpalock[lane_idx] && data_v_lane_live && (lane_engine_seen[lane_idx] ~| data_v_decode.error[2]))
+  Row   7:          1  (data_v_mode == 2)_0                                        ((lane_engine_seen[lane_idx] ~| data_v_decode.error[2]) && ~(data_v_mode == 1))
+  Row   8:    ***0***  (data_v_mode == 2)_1                                        ((lane_good_count[lane_idx] >= score_accept_data_d2[7:0]) && coe_ctrl_dpalock[lane_idx] && data_v_lane_live && (lane_engine_seen[lane_idx] ~| data_v_decode.error[2]) && ~(data_v_mode == 1))
+  Row   9:    ***0***  data_v_lane_live_0                                          ((lane_engine_seen[lane_idx] ~| data_v_decode.error[2]) && ((data_v_mode == 1) || (data_v_mode == 2)))
+ Row   10:    ***0***  data_v_lane_live_1                                          ((lane_good_count[lane_idx] >= score_accept_data_d2[7:0]) && coe_ctrl_dpalock[lane_idx] && ((lane_engine_seen[lane_idx] ~| data_v_decode.error[2]) && ((data_v_mode == 1) || (data_v_mode == 2))))
+ Row   11:    ***0***  coe_ctrl_dpalock[lane_idx]_0                                (((lane_engine_seen[lane_idx] ~| data_v_decode.error[2]) && ((data_v_mode == 1) || (data_v_mode == 2))) && data_v_lane_live)
+ Row   12:    ***0***  coe_ctrl_dpalock[lane_idx]_1                                ((lane_good_count[lane_idx] >= score_accept_data_d2[7:0]) && (((lane_engine_seen[lane_idx] ~| data_v_decode.error[2]) && ((data_v_mode == 1) || (data_v_mode == 2))) && data_v_lane_live))
+ Row   13:    ***0***  (lane_good_count[lane_idx] >= score_accept_data_d2[7:0])_0  ((((lane_engine_seen[lane_idx] ~| data_v_decode.error[2]) && ((data_v_mode == 1) || (data_v_mode == 2))) && data_v_lane_live) && coe_ctrl_dpalock[lane_idx])
+ Row   14:    ***0***  (lane_good_count[lane_idx] >= score_accept_data_d2[7:0])_1  ((((lane_engine_seen[lane_idx] ~| data_v_decode.error[2]) && ((data_v_mode == 1) || (data_v_mode == 2))) && data_v_lane_live) && coe_ctrl_dpalock[lane_idx])
+
+----------------Focused Condition View-------------------
+Line       670 Item    1  (lane_idx >= 32)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+        Input Term   Covered  Reason for no coverage   Hint
+       -----------  --------  -----------------------  --------------
+  (lane_idx >= 32)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (lane_idx >= 32)_0    -                             
+  Row   2:    ***0***  (lane_idx >= 32)_1    -                             
+
+----------------Focused Condition View-------------------
+Line       699 Item    1  (coe_ctrl_plllock ~& coe_redriver_losn[lane_idx])
+Condition totals: 0 of 2 input terms covered = 0.00%
+
+                   Input Term   Covered  Reason for no coverage   Hint
+                  -----------  --------  -----------------------  --------------
+             coe_ctrl_plllock         N  '_0' not hit             Hit '_0'
+  coe_redriver_losn[lane_idx]         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target                     Non-masking condition(s)      
+ ---------  ---------  --------------------           -------------------------     
+  Row   1:    ***0***  coe_ctrl_plllock_0             coe_redriver_losn[lane_idx]   
+  Row   2:          1  coe_ctrl_plllock_1             coe_redriver_losn[lane_idx]   
+  Row   3:    ***0***  coe_redriver_losn[lane_idx]_0  coe_ctrl_plllock              
+  Row   4:          1  coe_redriver_losn[lane_idx]_1  coe_ctrl_plllock              
+
+----------------Focused Condition View-------------------
+Line       733 Item    1  (~dpa_hold_data_d2[lane_idx] && (lane_good_count[lane_idx] < score_accept_data_d2[7:0]))
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+                                               Input Term   Covered  Reason for no coverage   Hint
+                                              -----------  --------  -----------------------  --------------
+                               dpa_hold_data_d2[lane_idx]         N  '_1' not hit             Hit '_1'
+  (lane_good_count[lane_idx] < score_accept_data_d2[7:0])         Y
+
+     Rows:       Hits  FEC Target                                                 Non-masking condition(s)      
+ ---------  ---------  --------------------                                       -------------------------     
+  Row   1:          1  dpa_hold_data_d2[lane_idx]_0                               (lane_good_count[lane_idx] < score_accept_data_d2[7:0])
+  Row   2:    ***0***  dpa_hold_data_d2[lane_idx]_1                               -                             
+  Row   3:          1  (lane_good_count[lane_idx] < score_accept_data_d2[7:0])_0  ~dpa_hold_data_d2[lane_idx]   
+  Row   4:          1  (lane_good_count[lane_idx] < score_accept_data_d2[7:0])_1  ~dpa_hold_data_d2[lane_idx]   
+
+----------------Focused Condition View-------------------
+Line       742 Item    1  (data_v_lane_live && coe_ctrl_dpalock[lane_idx])
+Condition totals: 0 of 2 input terms covered = 0.00%
+
+                  Input Term   Covered  Reason for no coverage   Hint
+                 -----------  --------  -----------------------  --------------
+            data_v_lane_live         N  '_0' not hit             Hit '_0'
+  coe_ctrl_dpalock[lane_idx]         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target                    Non-masking condition(s)      
+ ---------  ---------  --------------------          -------------------------     
+  Row   1:    ***0***  data_v_lane_live_0            -                             
+  Row   2:          1  data_v_lane_live_1            coe_ctrl_dpalock[lane_idx]    
+  Row   3:    ***0***  coe_ctrl_dpalock[lane_idx]_0  data_v_lane_live              
+  Row   4:          1  coe_ctrl_dpalock[lane_idx]_1  data_v_lane_live              
+
+----------------Focused Condition View-------------------
+Line       751 Item    1  (~loss_sync_d1[lane_idx] && data_v_decode.error[2])
+Condition totals: 0 of 2 input terms covered = 0.00%
+
+              Input Term   Covered  Reason for no coverage   Hint
+             -----------  --------  -----------------------  --------------
+  loss_sync_d1[lane_idx]         N  No hits                  Hit '_0' and '_1'
+  data_v_decode.error[2]         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                Non-masking condition(s)      
+ ---------  ---------  --------------------      -------------------------     
+  Row   1:    ***0***  loss_sync_d1[lane_idx]_0  data_v_decode.error[2]        
+  Row   2:    ***0***  loss_sync_d1[lane_idx]_1  -                             
+  Row   3:          1  data_v_decode.error[2]_0  ~loss_sync_d1[lane_idx]       
+  Row   4:    ***0***  data_v_decode.error[2]_1  ~loss_sync_d1[lane_idx]       
+
+----------------Focused Condition View-------------------
+Line       755 Item    1  ((train_state[lane_idx] == TRAIN_HOLDING_LOCK) && ~data_v_decode.error[2])
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+                                     Input Term   Covered  Reason for no coverage   Hint
+                                    -----------  --------  -----------------------  --------------
+  (train_state[lane_idx] == TRAIN_HOLDING_LOCK)         Y
+                         data_v_decode.error[2]         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                                       Non-masking condition(s)      
+ ---------  ---------  --------------------                             -------------------------     
+  Row   1:          1  (train_state[lane_idx] == TRAIN_HOLDING_LOCK)_0  -                             
+  Row   2:          1  (train_state[lane_idx] == TRAIN_HOLDING_LOCK)_1  ~data_v_decode.error[2]       
+  Row   3:          1  data_v_decode.error[2]_0                         (train_state[lane_idx] == TRAIN_HOLDING_LOCK)
+  Row   4:    ***0***  data_v_decode.error[2]_1                         (train_state[lane_idx] == TRAIN_HOLDING_LOCK)
+
+----------------Focused Condition View-------------------
+Line       761 Item    1  (dpalock_d1[lane_idx] && ~coe_ctrl_dpalock[lane_idx])
+Condition totals: 0 of 2 input terms covered = 0.00%
+
+                  Input Term   Covered  Reason for no coverage   Hint
+                 -----------  --------  -----------------------  --------------
+        dpalock_d1[lane_idx]         N  '_1' not hit             Hit '_1'
+  coe_ctrl_dpalock[lane_idx]         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target                    Non-masking condition(s)      
+ ---------  ---------  --------------------          -------------------------     
+  Row   1:          1  dpalock_d1[lane_idx]_0        -                             
+  Row   2:    ***0***  dpalock_d1[lane_idx]_1        ~coe_ctrl_dpalock[lane_idx]   
+  Row   3:    ***0***  coe_ctrl_dpalock[lane_idx]_0  dpalock_d1[lane_idx]          
+  Row   4:          1  coe_ctrl_dpalock[lane_idx]_1  dpalock_d1[lane_idx]          
+
+----------------Focused Condition View-------------------
+Line       765 Item    1  (~rollover_d1[lane_idx] && coe_ctrl_rollover[lane_idx])
+Condition totals: 0 of 2 input terms covered = 0.00%
+
+                   Input Term   Covered  Reason for no coverage   Hint
+                  -----------  --------  -----------------------  --------------
+        rollover_d1[lane_idx]         N  No hits                  Hit '_0' and '_1'
+  coe_ctrl_rollover[lane_idx]         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                     Non-masking condition(s)      
+ ---------  ---------  --------------------           -------------------------     
+  Row   1:    ***0***  rollover_d1[lane_idx]_0        coe_ctrl_rollover[lane_idx]   
+  Row   2:    ***0***  rollover_d1[lane_idx]_1        -                             
+  Row   3:          1  coe_ctrl_rollover[lane_idx]_0  ~rollover_d1[lane_idx]        
+  Row   4:    ***0***  coe_ctrl_rollover[lane_idx]_1  ~rollover_d1[lane_idx]        
+
+----------------Focused Condition View-------------------
+Line       772 Item    1  ((~data_v_engine_taken[data_v_engine] || data_v_error_event) || (engine_attach_lane[data_v_engine] == lane_idx[5:0]))
+Condition totals: 0 of 3 input terms covered = 0.00%
+
+                                            Input Term   Covered  Reason for no coverage   Hint
+                                           -----------  --------  -----------------------  --------------
+                    data_v_engine_taken[data_v_engine]         N  No hits                  Hit '_0' and '_1'
+                                    data_v_error_event         N  No hits                  Hit '_0' and '_1'
+  (engine_attach_lane[data_v_engine] == lane_idx[5:0])         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target                                              Non-masking condition(s)      
+ ---------  ---------  --------------------                                    -------------------------     
+  Row   1:    ***0***  data_v_engine_taken[data_v_engine]_0                    -                             
+  Row   2:    ***0***  data_v_engine_taken[data_v_engine]_1                    (~(engine_attach_lane[data_v_engine] == lane_idx[5:0]) && ~data_v_error_event)
+  Row   3:    ***0***  data_v_error_event_0                                    (~(engine_attach_lane[data_v_engine] == lane_idx[5:0]) && data_v_engine_taken[data_v_engine])
+  Row   4:    ***0***  data_v_error_event_1                                    data_v_engine_taken[data_v_engine]
+  Row   5:    ***0***  (engine_attach_lane[data_v_engine] == lane_idx[5:0])_0  ~(~data_v_engine_taken[data_v_engine] || data_v_error_event)
+  Row   6:    ***0***  (engine_attach_lane[data_v_engine] == lane_idx[5:0])_1  ~(~data_v_engine_taken[data_v_engine] || data_v_error_event)
+
+----------------Focused Condition View-------------------
+Line       775 Item    1  (~engine_busy[data_v_engine] || data_v_error_event)
+Condition totals: 0 of 2 input terms covered = 0.00%
+
+                  Input Term   Covered  Reason for no coverage   Hint
+                 -----------  --------  -----------------------  --------------
+  engine_busy[data_v_engine]         N  No hits                  Hit '_0' and '_1'
+          data_v_error_event         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target                    Non-masking condition(s)      
+ ---------  ---------  --------------------          -------------------------     
+  Row   1:    ***0***  engine_busy[data_v_engine]_0  -                             
+  Row   2:    ***0***  engine_busy[data_v_engine]_1  ~data_v_error_event           
+  Row   3:    ***0***  data_v_error_event_0          engine_busy[data_v_engine]    
+  Row   4:    ***0***  data_v_error_event_1          engine_busy[data_v_engine]    
+
+----------------Focused Condition View-------------------
+Line       790 Item    1  (steer_queue_count < 4)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+               Input Term   Covered  Reason for no coverage   Hint
+              -----------  --------  -----------------------  --------------
+  (steer_queue_count < 4)         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target                 Non-masking condition(s)      
+ ---------  ---------  --------------------       -------------------------     
+  Row   1:    ***0***  (steer_queue_count < 4)_0  -                             
+  Row   2:    ***0***  (steer_queue_count < 4)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       802 Item    1  (engine_idx >= 32)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+          Input Term   Covered  Reason for no coverage   Hint
+         -----------  --------  -----------------------  --------------
+  (engine_idx >= 32)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (engine_idx >= 32)_0  -                             
+  Row   2:    ***0***  (engine_idx >= 32)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       819 Item    1  (data_v_phase_decode.error[0] ~| data_v_phase_decode.error[2])
+Condition totals: 0 of 2 input terms covered = 0.00%
+
+                    Input Term   Covered  Reason for no coverage   Hint
+                   -----------  --------  -----------------------  --------------
+  data_v_phase_decode.error[0]         N  No hits                  Hit '_0' and '_1'
+  data_v_phase_decode.error[2]         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target                      Non-masking condition(s)      
+ ---------  ---------  --------------------            -------------------------     
+  Row   1:    ***0***  data_v_phase_decode.error[0]_0  ~data_v_phase_decode.error[2] 
+  Row   2:    ***0***  data_v_phase_decode.error[0]_1  ~data_v_phase_decode.error[2] 
+  Row   3:    ***0***  data_v_phase_decode.error[2]_0  ~data_v_phase_decode.error[0] 
+  Row   4:    ***0***  data_v_phase_decode.error[2]_1  ~data_v_phase_decode.error[0] 
+
+----------------Focused Condition View-------------------
+Line       827 Item    1  (engine_score[engine_idx][phase_idx] > data_v_best_score)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                                                 Input Term   Covered  Reason for no coverage   Hint
+                                                -----------  --------  -----------------------  --------------
+  (engine_score[engine_idx][phase_idx] > data_v_best_score)         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target                                                   Non-masking condition(s)      
+ ---------  ---------  --------------------                                         -------------------------     
+  Row   1:    ***0***  (engine_score[engine_idx][phase_idx] > data_v_best_score)_0  -                             
+  Row   2:    ***0***  (engine_score[engine_idx][phase_idx] > data_v_best_score)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       833 Item    1  (engine_best_phase[engine_idx] != data_v_best_phase)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                                            Input Term   Covered  Reason for no coverage   Hint
+                                           -----------  --------  -----------------------  --------------
+  (engine_best_phase[engine_idx] != data_v_best_phase)         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target                                              Non-masking condition(s)      
+ ---------  ---------  --------------------                                    -------------------------     
+  Row   1:    ***0***  (engine_best_phase[engine_idx] != data_v_best_phase)_0  -                             
+  Row   2:    ***0***  (engine_best_phase[engine_idx] != data_v_best_phase)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       845 Item    1  (((~lane_go_data_d2[data_v_attached_lane] || soft_reset_req_data_d2[data_v_attached_lane]) || (engine_age[engine_idx] >= {0,score_accept_data_d2[14:0]})) || (data_v_best_score >= score_accept_data_d2))
+Condition totals: 0 of 4 input terms covered = 0.00%
+
+                                                  Input Term   Covered  Reason for no coverage   Hint
+                                                 -----------  --------  -----------------------  --------------
+                       lane_go_data_d2[data_v_attached_lane]         N  No hits                  Hit '_0' and '_1'
+                soft_reset_req_data_d2[data_v_attached_lane]         N  No hits                  Hit '_0' and '_1'
+  (engine_age[engine_idx] >= {0,score_accept_data_d2[14:0]})         N  No hits                  Hit '_0' and '_1'
+                 (data_v_best_score >= score_accept_data_d2)         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target                                                    Non-masking condition(s)      
+ ---------  ---------  --------------------                                          -------------------------     
+  Row   1:    ***0***  lane_go_data_d2[data_v_attached_lane]_0                       -                             
+  Row   2:    ***0***  lane_go_data_d2[data_v_attached_lane]_1                       (~(data_v_best_score >= score_accept_data_d2) && ~(engine_age[engine_idx] >= {0,score_accept_data_d2[14:0]}) && ~soft_reset_req_data_d2[data_v_attached_lane])
+  Row   3:    ***0***  soft_reset_req_data_d2[data_v_attached_lane]_0                (~(data_v_best_score >= score_accept_data_d2) && ~(engine_age[engine_idx] >= {0,score_accept_data_d2[14:0]}) && lane_go_data_d2[data_v_attached_lane])
+  Row   4:    ***0***  soft_reset_req_data_d2[data_v_attached_lane]_1                lane_go_data_d2[data_v_attached_lane]
+  Row   5:    ***0***  (engine_age[engine_idx] >= {0,score_accept_data_d2[14:0]})_0  (~(data_v_best_score >= score_accept_data_d2) && ~(~lane_go_data_d2[data_v_attached_lane] || soft_reset_req_data_d2[data_v_attached_lane]))
+  Row   6:    ***0***  (engine_age[engine_idx] >= {0,score_accept_data_d2[14:0]})_1  ~(~lane_go_data_d2[data_v_attached_lane] || soft_reset_req_data_d2[data_v_attached_lane])
+  Row   7:    ***0***  (data_v_best_score >= score_accept_data_d2)_0                 ~((~lane_go_data_d2[data_v_attached_lane] || soft_reset_req_data_d2[data_v_attached_lane]) || (engine_age[engine_idx] >= {0,score_accept_data_d2[14:0]}))
+  Row   8:    ***0***  (data_v_best_score >= score_accept_data_d2)_1                 ~((~lane_go_data_d2[data_v_attached_lane] || soft_reset_req_data_d2[data_v_attached_lane]) || (engine_age[engine_idx] >= {0,score_accept_data_d2[14:0]}))
+
+----------------Focused Condition View-------------------
+Line       852 Item    1  (steer_queue_count != 0)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                Input Term   Covered  Reason for no coverage   Hint
+               -----------  --------  -----------------------  --------------
+  (steer_queue_count != 0)         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target                  Non-masking condition(s)      
+ ---------  ---------  --------------------        -------------------------     
+  Row   1:    ***0***  (steer_queue_count != 0)_0  -                             
+  Row   2:    ***0***  (steer_queue_count != 0)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       861 Item    1  (steer_queue_count == 0)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                Input Term   Covered  Reason for no coverage   Hint
+               -----------  --------  -----------------------  --------------
+  (steer_queue_count == 0)         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target                  Non-masking condition(s)      
+ ---------  ---------  --------------------        -------------------------     
+  Row   1:    ***0***  (steer_queue_count == 0)_0  -                             
+  Row   2:          1  (steer_queue_count == 0)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       867 Item    1  (lane_idx >= 32)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+        Input Term   Covered  Reason for no coverage   Hint
+       -----------  --------  -----------------------  --------------
+  (lane_idx >= 32)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (lane_idx >= 32)_0    -                             
+  Row   2:    ***0***  (lane_idx >= 32)_1    -                             
+
+----------------Focused Condition View-------------------
+Line       872 Item    1  (~aso_decoded_valid[lane_idx] || aso_decoded_ready[lane_idx])
+Condition totals: 0 of 2 input terms covered = 0.00%
+
+                   Input Term   Covered  Reason for no coverage   Hint
+                  -----------  --------  -----------------------  --------------
+  aso_decoded_valid[lane_idx]         N  '_1' not hit             Hit '_1'
+  aso_decoded_ready[lane_idx]         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target                     Non-masking condition(s)      
+ ---------  ---------  --------------------           -------------------------     
+  Row   1:          1  aso_decoded_valid[lane_idx]_0  -                             
+  Row   2:    ***0***  aso_decoded_valid[lane_idx]_1  ~aso_decoded_ready[lane_idx]  
+  Row   3:    ***0***  aso_decoded_ready[lane_idx]_0  aso_decoded_valid[lane_idx]   
+  Row   4:          1  aso_decoded_ready[lane_idx]_1  aso_decoded_valid[lane_idx]   
+
+----------------Focused Condition View-------------------
+Line       888 Item    1  ((dv_debug_counter_we && (dv_debug_counter_lane < 32)) && (dv_debug_counter_idx < 10))
+Condition totals: 0 of 3 input terms covered = 0.00%
+
+                    Input Term   Covered  Reason for no coverage   Hint
+                   -----------  --------  -----------------------  --------------
+           dv_debug_counter_we         N  '_1' not hit             Hit '_1'
+  (dv_debug_counter_lane < 32)         N  No hits                  Hit '_0' and '_1'
+   (dv_debug_counter_idx < 10)         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target                      Non-masking condition(s)      
+ ---------  ---------  --------------------            -------------------------     
+  Row   1:          1  dv_debug_counter_we_0           -                             
+  Row   2:    ***0***  dv_debug_counter_we_1           ((dv_debug_counter_idx < 10) && (dv_debug_counter_lane < 32))
+  Row   3:    ***0***  (dv_debug_counter_lane < 32)_0  dv_debug_counter_we           
+  Row   4:    ***0***  (dv_debug_counter_lane < 32)_1  ((dv_debug_counter_idx < 10) && dv_debug_counter_we)
+  Row   5:    ***0***  (dv_debug_counter_idx < 10)_0   (dv_debug_counter_we && (dv_debug_counter_lane < 32))
+  Row   6:    ***0***  (dv_debug_counter_idx < 10)_1   (dv_debug_counter_we && (dv_debug_counter_lane < 32))
+
+----------------Focused Condition View-------------------
+Line       893 Item    1  ((dv_debug_engine_attach_we && (dv_debug_engine_idx < 32)) && (dv_debug_engine_lane < 32))
+Condition totals: 0 of 3 input terms covered = 0.00%
+
+                   Input Term   Covered  Reason for no coverage   Hint
+                  -----------  --------  -----------------------  --------------
+    dv_debug_engine_attach_we         N  '_1' not hit             Hit '_1'
+   (dv_debug_engine_idx < 32)         N  '_1' not hit             Hit '_1'
+  (dv_debug_engine_lane < 32)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                     Non-masking condition(s)      
+ ---------  ---------  --------------------           -------------------------     
+  Row   1:          1  dv_debug_engine_attach_we_0    -                             
+  Row   2:    ***0***  dv_debug_engine_attach_we_1    ((dv_debug_engine_lane < 32) && (dv_debug_engine_idx < 32))
+  Row   3:          1  (dv_debug_engine_idx < 32)_0   dv_debug_engine_attach_we     
+  Row   4:    ***0***  (dv_debug_engine_idx < 32)_1   ((dv_debug_engine_lane < 32) && dv_debug_engine_attach_we)
+  Row   5:          1  (dv_debug_engine_lane < 32)_0  (dv_debug_engine_attach_we && (dv_debug_engine_idx < 32))
+  Row   6:    ***0***  (dv_debug_engine_lane < 32)_1  (dv_debug_engine_attach_we && (dv_debug_engine_idx < 32))
+
+----------------Focused Condition View-------------------
+Line       901 Item    1  ((dv_debug_engine_score_we && (dv_debug_engine_score_idx < 32)) && (dv_debug_engine_score_phase < 10))
+Condition totals: 3 of 3 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       906 Item    1  (dv_debug_engine_age_we && (dv_debug_engine_age_idx < 32))
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+
+Expression Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Expressions                     10         1         9    10.00%
+
+================================Expression Details================================
+
+Expression Coverage for Design Unit work.mu3e_lvds_controller --
+
+  File /home/yifeng/packages/mu3e_ip_dev/worktrees/mu3e_lvds_controller_sv_rebuild_20260429/tb/uvm/../../rtl/mu3e_lvds_controller.sv
+----------------Focused Expression View-----------------
+Line       635 Item    1  (lane_is_live(lane_idx,lane_go_data_d2) && coe_ctrl_plllock && coe_redriver_losn[lane_idx])
+Expression totals: 0 of 3 input terms covered = 0.00%
+
+                              Input Term   Covered  Reason for no coverage   Hint
+                             -----------  --------  -----------------------  --------------
+  lane_is_live(lane_idx,lane_go_data_d2)         N  '_0' not hit             Hit '_0'
+                        coe_ctrl_plllock         N  '_0' not hit             Hit '_0'
+             coe_redriver_losn[lane_idx]         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target                                Non-masking condition(s)      
+ ---------  ---------  --------------------                      -------------------------     
+  Row   1:    ***0***  lane_is_live(lane_idx,lane_go_data_d2)_0  -                             
+  Row   2:          1  lane_is_live(lane_idx,lane_go_data_d2)_1  (coe_ctrl_plllock && coe_redriver_losn[lane_idx])
+  Row   3:    ***0***  coe_ctrl_plllock_0                        lane_is_live(lane_idx,lane_go_data_d2)
+  Row   4:          1  coe_ctrl_plllock_1                        (lane_is_live(lane_idx,lane_go_data_d2) && coe_redriver_losn[lane_idx])
+  Row   5:    ***0***  coe_redriver_losn[lane_idx]_0             (lane_is_live(lane_idx,lane_go_data_d2) && coe_ctrl_plllock)
+  Row   6:          1  coe_redriver_losn[lane_idx]_1             (lane_is_live(lane_idx,lane_go_data_d2) && coe_ctrl_plllock)
+
+----------------Focused Expression View-----------------
+Line       638 Item    1  ((data_v_lane_live && coe_ctrl_dpalock[lane_idx]) && (data_v_decode.error != 0))
+Expression totals: 0 of 3 input terms covered = 0.00%
+
+                  Input Term   Covered  Reason for no coverage   Hint
+                 -----------  --------  -----------------------  --------------
+            data_v_lane_live         N  No hits                  Hit '_0' and '_1'
+  coe_ctrl_dpalock[lane_idx]         N  No hits                  Hit '_0' and '_1'
+  (data_v_decode.error != 0)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                    Non-masking condition(s)      
+ ---------  ---------  --------------------          -------------------------     
+  Row   1:    ***0***  data_v_lane_live_0            -                             
+  Row   2:    ***0***  data_v_lane_live_1            ((data_v_decode.error != 0) && coe_ctrl_dpalock[lane_idx])
+  Row   3:    ***0***  coe_ctrl_dpalock[lane_idx]_0  data_v_lane_live              
+  Row   4:    ***0***  coe_ctrl_dpalock[lane_idx]_1  ((data_v_decode.error != 0) && data_v_lane_live)
+  Row   5:          1  (data_v_decode.error != 0)_0  (data_v_lane_live && coe_ctrl_dpalock[lane_idx])
+  Row   6:    ***0***  (data_v_decode.error != 0)_1  (data_v_lane_live && coe_ctrl_dpalock[lane_idx])
+
+----------------Focused Expression View-----------------
+Line       655 Item    1  (data_v_lane_live && coe_ctrl_dpalock[lane_idx])
+Expression totals: 0 of 2 input terms covered = 0.00%
+
+                  Input Term   Covered  Reason for no coverage   Hint
+                 -----------  --------  -----------------------  --------------
+            data_v_lane_live         N  '_0' not hit             Hit '_0'
+  coe_ctrl_dpalock[lane_idx]         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target                    Non-masking condition(s)      
+ ---------  ---------  --------------------          -------------------------     
+  Row   1:    ***0***  data_v_lane_live_0            -                             
+  Row   2:          1  data_v_lane_live_1            coe_ctrl_dpalock[lane_idx]    
+  Row   3:    ***0***  coe_ctrl_dpalock[lane_idx]_0  data_v_lane_live              
+  Row   4:          1  coe_ctrl_dpalock[lane_idx]_1  data_v_lane_live              
+
+----------------Focused Expression View-----------------
+Line       731 Item    1  (~dpalock_d1[lane_idx] && coe_ctrl_dpalock[lane_idx])
+Expression totals: 1 of 2 input terms covered = 50.00%
+
+                  Input Term   Covered  Reason for no coverage   Hint
+                 -----------  --------  -----------------------  --------------
+        dpalock_d1[lane_idx]         Y
+  coe_ctrl_dpalock[lane_idx]         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target                    Non-masking condition(s)      
+ ---------  ---------  --------------------          -------------------------     
+  Row   1:          1  dpalock_d1[lane_idx]_0        coe_ctrl_dpalock[lane_idx]    
+  Row   2:          1  dpalock_d1[lane_idx]_1        -                             
+  Row   3:    ***0***  coe_ctrl_dpalock[lane_idx]_0  ~dpalock_d1[lane_idx]         
+  Row   4:          1  coe_ctrl_dpalock[lane_idx]_1  ~dpalock_d1[lane_idx]         
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                     332       166       166    50.00%
+
+================================Statement Details================================
+
+Statement Coverage for Design Unit work.mu3e_lvds_controller --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File /home/yifeng/packages/mu3e_ip_dev/worktrees/mu3e_lvds_controller_sv_rebuild_20260429/tb/uvm/../../rtl/mu3e_lvds_controller.sv
+    245             1                          2     
+    248             1                    ***0***     
+    252             1                    ***0***     
+    256             1                    ***0***     
+    261             1                    ***0***     
+    264             1                    ***0***     
+    266             1                    ***0***     
+    271             1                    ***0***     
+    273             1                    ***0***     
+    277             1                    ***0***     
+    284             1                    ***0***     
+    286             1                       4672     
+    291             1                    ***0***     
+    293             1                    ***0***     
+    298             1                    ***0***     
+    300             1                    ***0***     
+    305             1                    ***0***     
+    306             1                    ***0***     
+    316             1                       5216     
+    317             1                       5216     
+    318             1                       5216     
+    322             1                       5216     
+    325             1                    ***0***     
+    329             1                    ***0***     
+    331             1                    ***0***     
+    336             1                    ***0***     
+    337             1                    ***0***     
+    338             1                    ***0***     
+    343             1                    ***0***     
+    346             1                    ***0***     
+    349             1                       5216     
+    353             1                       5216     
+    362             1                    ***0***     
+    367             1                    ***0***     
+    373             1                       5216     
+    391             1                        154     
+    394             1                        154     
+    395             1                        154     
+    398             1                          4     
+    399             1                    ***0***     
+    400             1                    ***0***     
+    401             1                    ***0***     
+    402             1                    ***0***     
+    403             1                    ***0***     
+    404             1                    ***0***     
+    405             1                    ***0***     
+    406             1                    ***0***     
+    407             1                    ***0***     
+    408             1                          3     
+    411             1                    ***0***     
+    412             1                    ***0***     
+    413             1                    ***0***     
+    414             1                    ***0***     
+    420             1                        146     
+    421             1                        146     
+    427             1                          9     
+    429             1                          3     
+    430             1                          3     
+    431             1                          3     
+    432             1                          3     
+    433             1                          3     
+    434             1                          3     
+    435             1                          3     
+    436             1                          3     
+    437             1                          3     
+    438             1                          3     
+    439             1                          3     
+    439             2                         96     
+    440             1                         96     
+    443             1                          6     
+    443             2                        192     
+    446             1                    ***0***     
+    447             1                    ***0***     
+    449             1                    ***0***     
+    452             1                        192     
+    460             1                    ***0***     
+    465             1                    ***0***     
+    469             1                    ***0***     
+    472             1                    ***0***     
+    475             1                    ***0***     
+    476             1                    ***0***     
+    476             2                    ***0***     
+    478             1                    ***0***     
+    483             1                    ***0***     
+    486             1                    ***0***     
+    487             1                    ***0***     
+    490             1                    ***0***     
+    494             1                    ***0***     
+    496             1                          1     
+    505             1                          1     
+    510             1                        167     
+    526             1                          4     
+    527             1                          4     
+    528             1                          4     
+    529             1                          4     
+    530             1                          4     
+    531             1                          4     
+    532             1                          4     
+    533             1                          4     
+    534             1                          4     
+    535             1                          4     
+    537             1                          4     
+    538             1                          4     
+    539             1                          4     
+    540             1                          4     
+    541             1                          4     
+    542             1                          4     
+    543             1                          4     
+    544             1                          4     
+    545             1                          4     
+    546             1                          4     
+    547             1                          4     
+    548             1                          4     
+    549             1                          4     
+    550             1                          4     
+    551             1                          4     
+    553             1                          4     
+    554             1                          4     
+    555             1                          4     
+    556             1                          4     
+    557             1                          4     
+    558             1                          4     
+    559             1                          4     
+    560             1                          4     
+    561             1                          4     
+    562             1                          4     
+    563             1                          4     
+    564             1                          4     
+    565             1                          4     
+    566             1                          4     
+    567             1                          4     
+    568             1                          4     
+    570             1                          4     
+    571             1                          4     
+    572             1                          4     
+    573             1                          4     
+    574             1                          4     
+    575             1                          4     
+    576             1                          4     
+    577             1                          4     
+    578             1                          4     
+    579             1                          4     
+    581             1                          4     
+    582             1                          4     
+    583             1                          4     
+    584             1                          4     
+    585             1                          4     
+    586             1                          4     
+    587             1                          4     
+    588             1                          4     
+    590             1                          4     
+    590             2                        128     
+    591             1                        128     
+    594             1                        163     
+    595             1                        163     
+    596             1                        163     
+    597             1                        163     
+    598             1                        163     
+    599             1                        163     
+    600             1                        163     
+    601             1                        163     
+    602             1                        163     
+    603             1                        163     
+    604             1                        163     
+    605             1                        163     
+    606             1                        163     
+    607             1                        163     
+    608             1                        163     
+    611             1                         16     
+    612             1                         16     
+    614             1                        147     
+    617             1                    ***0***     
+    618             1                    ***0***     
+    620             1                        163     
+    621             1                        163     
+    622             1                        163     
+    623             1                        163     
+    624             1                        163     
+    625             1                        163     
+    627             1                        163     
+    628             1                        163     
+    629             1                        163     
+    630             1                        163     
+    632             1                        163     
+    632             2                       5216     
+    633             1                       5216     
+    634             1                       5216     
+    635             1                       5216     
+    638             1                       5216     
+    641             1                       5216     
+    642             1                       5216     
+    644             1                    ***0***     
+    652             1                    ***0***     
+    655             1                       5216     
+    656             1                       5216     
+    657             1                       5216     
+    658             1                       5216     
+    660             1                       5216     
+    661             1                       5216     
+    662             1                       5216     
+    663             1                       5216     
+    665             1                       5216     
+    666             1                       5216     
+    667             1                       5216     
+    668             1                       5216     
+    671             1                    ***0***     
+    672             1                    ***0***     
+    673             1                    ***0***     
+    674             1                    ***0***     
+    675             1                    ***0***     
+    676             1                    ***0***     
+    677             1                    ***0***     
+    679             1                    ***0***     
+    680             1                    ***0***     
+    681             1                    ***0***     
+    682             1                    ***0***     
+    683             1                    ***0***     
+    684             1                    ***0***     
+    685             1                    ***0***     
+    687             1                    ***0***     
+    688             1                    ***0***     
+    689             1                    ***0***     
+    690             1                    ***0***     
+    691             1                    ***0***     
+    692             1                    ***0***     
+    693             1                    ***0***     
+    695             1                    ***0***     
+    697             1                    ***0***     
+    700             1                    ***0***     
+    701             1                    ***0***     
+    702             1                    ***0***     
+    703             1                    ***0***     
+    704             1                    ***0***     
+    705             1                    ***0***     
+    706             1                    ***0***     
+    708             1                    ***0***     
+    709             1                    ***0***     
+    710             1                    ***0***     
+    711             1                    ***0***     
+    712             1                    ***0***     
+    713             1                    ***0***     
+    714             1                    ***0***     
+    716             1                    ***0***     
+    717             1                    ***0***     
+    718             1                    ***0***     
+    719             1                    ***0***     
+    720             1                    ***0***     
+    721             1                    ***0***     
+    723             1                    ***0***     
+    724             1                    ***0***     
+    728             1                       5216     
+    729             1                       5216     
+    730             1                       5216     
+    731             1                       5216     
+    735             1                        512     
+    736             1                        512     
+    738             1                       4704     
+    744             1                    ***0***     
+    748             1                    ***0***     
+    752             1                    ***0***     
+    756             1                       4672     
+    762             1                    ***0***     
+    766             1                    ***0***     
+    771             1                    ***0***     
+    777             1                    ***0***     
+    778             1                    ***0***     
+    779             1                    ***0***     
+    780             1                    ***0***     
+    781             1                    ***0***     
+    782             1                    ***0***     
+    783             1                    ***0***     
+    784             1                    ***0***     
+    786             1                    ***0***     
+    789             1                    ***0***     
+    791             1                    ***0***     
+    793             1                    ***0***     
+    798             1                       5216     
+    801             1                        163     
+    801             2                       5216     
+    803             1                    ***0***     
+    804             1                    ***0***     
+    805             1                    ***0***     
+    806             1                    ***0***     
+    807             1                    ***0***     
+    808             1                    ***0***     
+    810             1                    ***0***     
+    811             1                    ***0***     
+    812             1                    ***0***     
+    813             1                    ***0***     
+    814             1                    ***0***     
+    816             1                    ***0***     
+    816             2                    ***0***     
+    817             1                    ***0***     
+    818             1                    ***0***     
+    820             1                    ***0***     
+    823             1                    ***0***     
+    828             1                    ***0***     
+    829             1                    ***0***     
+    834             1                    ***0***     
+    835             1                    ***0***     
+    839             1                    ***0***     
+    840             1                    ***0***     
+    841             1                    ***0***     
+    842             1                    ***0***     
+    843             1                    ***0***     
+    849             1                    ***0***     
+    850             1                    ***0***     
+    851             1                    ***0***     
+    853             1                    ***0***     
+    855             1                    ***0***     
+    862             1                        163     
+    866             1                        163     
+    866             2                       5216     
+    868             1                    ***0***     
+    869             1                    ***0***     
+    870             1                    ***0***     
+    871             1                    ***0***     
+    874             1                    ***0***     
+    875             1                    ***0***     
+    876             1                    ***0***     
+    877             1                    ***0***     
+    879             1                       5216     
+    880             1                       5216     
+    881             1                       5216     
+    882             1                       5216     
+    891             1                    ***0***     
+    896             1                    ***0***     
+    897             1                    ***0***     
+    898             1                    ***0***     
+    899             1                    ***0***     
+    904             1                          1     
+    908             1                         64     
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                      10538      3463      7075    32.86%
+
+================================Toggle Details================================
+
+Toggle Coverage for Design Unit work.mu3e_lvds_controller
+
+                                              Node      1H->0L      0L->1H                          "Coverage"
+                                              ---------------------------------------------------------------
+                       aso_decoded_channel[0][0-5]           0           0                                0.00 
+                       aso_decoded_channel[1][1-5]           0           0                                0.00 
+                         aso_decoded_channel[2][0]           0           0                                0.00 
+                       aso_decoded_channel[2][2-5]           0           0                                0.00 
+                       aso_decoded_channel[3][2-5]           0           0                                0.00 
+                       aso_decoded_channel[4][0-1]           0           0                                0.00 
+                       aso_decoded_channel[4][3-5]           0           0                                0.00 
+                         aso_decoded_channel[5][1]           0           0                                0.00 
+                       aso_decoded_channel[5][3-5]           0           0                                0.00 
+                         aso_decoded_channel[6][0]           0           0                                0.00 
+                       aso_decoded_channel[6][3-5]           0           0                                0.00 
+                       aso_decoded_channel[7][3-5]           0           0                                0.00 
+                       aso_decoded_channel[8][0-2]           0           0                                0.00 
+                       aso_decoded_channel[8][4-5]           0           0                                0.00 
+                       aso_decoded_channel[9][1-2]           0           0                                0.00 
+                       aso_decoded_channel[9][4-5]           0           0                                0.00 
+                        aso_decoded_channel[10][0]           0           0                                0.00 
+                        aso_decoded_channel[10][2]           0           0                                0.00 
+                      aso_decoded_channel[10][4-5]           0           0                                0.00 
+                        aso_decoded_channel[11][2]           0           0                                0.00 
+                      aso_decoded_channel[11][4-5]           0           0                                0.00 
+                      aso_decoded_channel[12][0-1]           0           0                                0.00 
+                      aso_decoded_channel[12][4-5]           0           0                                0.00 
+                        aso_decoded_channel[13][1]           0           0                                0.00 
+                      aso_decoded_channel[13][4-5]           0           0                                0.00 
+                        aso_decoded_channel[14][0]           0           0                                0.00 
+                      aso_decoded_channel[14][4-5]           0           0                                0.00 
+                      aso_decoded_channel[15][4-5]           0           0                                0.00 
+                      aso_decoded_channel[16][0-3]           0           0                                0.00 
+                        aso_decoded_channel[16][5]           0           0                                0.00 
+                      aso_decoded_channel[17][1-3]           0           0                                0.00 
+                        aso_decoded_channel[17][5]           0           0                                0.00 
+                        aso_decoded_channel[18][0]           0           0                                0.00 
+                      aso_decoded_channel[18][2-3]           0           0                                0.00 
+                        aso_decoded_channel[18][5]           0           0                                0.00 
+                      aso_decoded_channel[19][2-3]           0           0                                0.00 
+                        aso_decoded_channel[19][5]           0           0                                0.00 
+                      aso_decoded_channel[20][0-1]           0           0                                0.00 
+                        aso_decoded_channel[20][3]           0           0                                0.00 
+                        aso_decoded_channel[20][5]           0           0                                0.00 
+                        aso_decoded_channel[21][1]           0           0                                0.00 
+                        aso_decoded_channel[21][3]           0           0                                0.00 
+                        aso_decoded_channel[21][5]           0           0                                0.00 
+                        aso_decoded_channel[22][0]           0           0                                0.00 
+                        aso_decoded_channel[22][3]           0           0                                0.00 
+                        aso_decoded_channel[22][5]           0           0                                0.00 
+                        aso_decoded_channel[23][3]           0           0                                0.00 
+                        aso_decoded_channel[23][5]           0           0                                0.00 
+                      aso_decoded_channel[24][0-2]           0           0                                0.00 
+                        aso_decoded_channel[24][5]           0           0                                0.00 
+                      aso_decoded_channel[25][1-2]           0           0                                0.00 
+                        aso_decoded_channel[25][5]           0           0                                0.00 
+                        aso_decoded_channel[26][0]           0           0                                0.00 
+                        aso_decoded_channel[26][2]           0           0                                0.00 
+                        aso_decoded_channel[26][5]           0           0                                0.00 
+                        aso_decoded_channel[27][2]           0           0                                0.00 
+                        aso_decoded_channel[27][5]           0           0                                0.00 
+                      aso_decoded_channel[28][0-1]           0           0                                0.00 
+                        aso_decoded_channel[28][5]           0           0                                0.00 
+                        aso_decoded_channel[29][1]           0           0                                0.00 
+                        aso_decoded_channel[29][5]           0           0                                0.00 
+                        aso_decoded_channel[30][0]           0           0                                0.00 
+                        aso_decoded_channel[30][5]           0           0                                0.00 
+                        aso_decoded_channel[31][5]           0           0                                0.00 
+                          aso_decoded_data[0][0-1]           0           0                                0.00 
+                            aso_decoded_data[0][6]           0           0                                0.00 
+                          aso_decoded_data[1][0-1]           0           0                                0.00 
+                            aso_decoded_data[1][6]           0           0                                0.00 
+                          aso_decoded_data[2][0-1]           0           0                                0.00 
+                            aso_decoded_data[2][6]           0           0                                0.00 
+                          aso_decoded_data[3][0-1]           0           0                                0.00 
+                            aso_decoded_data[3][6]           0           0                                0.00 
+                          aso_decoded_data[4][0-1]           0           0                                0.00 
+                            aso_decoded_data[4][6]           0           0                                0.00 
+                          aso_decoded_data[5][0-1]           0           0                                0.00 
+                            aso_decoded_data[5][6]           0           0                                0.00 
+                          aso_decoded_data[6][0-1]           0           0                                0.00 
+                            aso_decoded_data[6][6]           0           0                                0.00 
+                          aso_decoded_data[7][0-1]           0           0                                0.00 
+                            aso_decoded_data[7][6]           0           0                                0.00 
+                          aso_decoded_data[8][0-1]           0           0                                0.00 
+                            aso_decoded_data[8][6]           0           0                                0.00 
+                          aso_decoded_data[9][0-1]           0           0                                0.00 
+                            aso_decoded_data[9][6]           0           0                                0.00 
+                         aso_decoded_data[10][0-1]           0           0                                0.00 
+                           aso_decoded_data[10][6]           0           0                                0.00 
+                         aso_decoded_data[11][0-1]           0           0                                0.00 
+                           aso_decoded_data[11][6]           0           0                                0.00 
+                         aso_decoded_data[12][0-1]           0           0                                0.00 
+                           aso_decoded_data[12][6]           0           0                                0.00 
+                         aso_decoded_data[13][0-1]           0           0                                0.00 
+                           aso_decoded_data[13][6]           0           0                                0.00 
+                         aso_decoded_data[14][0-1]           0           0                                0.00 
+                           aso_decoded_data[14][6]           0           0                                0.00 
+                         aso_decoded_data[15][0-1]           0           0                                0.00 
+                           aso_decoded_data[15][6]           0           0                                0.00 
+                         aso_decoded_data[16][0-1]           0           0                                0.00 
+                           aso_decoded_data[16][6]           0           0                                0.00 
+                         aso_decoded_data[17][0-1]           0           0                                0.00 
+                           aso_decoded_data[17][6]           0           0                                0.00 
+                         aso_decoded_data[18][0-1]           0           0                                0.00 
+                           aso_decoded_data[18][6]           0           0                                0.00 
+                         aso_decoded_data[19][0-1]           0           0                                0.00 
+                           aso_decoded_data[19][6]           0           0                                0.00 
+                         aso_decoded_data[20][0-1]           0           0                                0.00 
+                           aso_decoded_data[20][6]           0           0                                0.00 
+                         aso_decoded_data[21][0-1]           0           0                                0.00 
+                           aso_decoded_data[21][6]           0           0                                0.00 
+                         aso_decoded_data[22][0-1]           0           0                                0.00 
+                           aso_decoded_data[22][6]           0           0                                0.00 
+                         aso_decoded_data[23][0-1]           0           0                                0.00 
+                           aso_decoded_data[23][6]           0           0                                0.00 
+                         aso_decoded_data[24][0-1]           0           0                                0.00 
+                           aso_decoded_data[24][6]           0           0                                0.00 
+                         aso_decoded_data[25][0-1]           0           0                                0.00 
+                           aso_decoded_data[25][6]           0           0                                0.00 
+                         aso_decoded_data[26][0-1]           0           0                                0.00 
+                           aso_decoded_data[26][6]           0           0                                0.00 
+                         aso_decoded_data[27][0-1]           0           0                                0.00 
+                           aso_decoded_data[27][6]           0           0                                0.00 
+                         aso_decoded_data[28][0-1]           0           0                                0.00 
+                           aso_decoded_data[28][6]           0           0                                0.00 
+                         aso_decoded_data[29][0-1]           0           0                                0.00 
+                           aso_decoded_data[29][6]           0           0                                0.00 
+                         aso_decoded_data[30][0-1]           0           0                                0.00 
+                           aso_decoded_data[30][6]           0           0                                0.00 
+                         aso_decoded_data[31][0-1]           0           0                                0.00 
+                           aso_decoded_data[31][6]           0           0                                0.00 
+                         aso_decoded_error[0][0-2]           0           0                                0.00 
+                         aso_decoded_error[1][0-2]           0           0                                0.00 
+                         aso_decoded_error[2][0-2]           0           0                                0.00 
+                         aso_decoded_error[3][0-2]           0           0                                0.00 
+                         aso_decoded_error[4][0-2]           0           0                                0.00 
+                         aso_decoded_error[5][0-2]           0           0                                0.00 
+                         aso_decoded_error[6][0-2]           0           0                                0.00 
+                         aso_decoded_error[7][0-2]           0           0                                0.00 
+                         aso_decoded_error[8][0-2]           0           0                                0.00 
+                         aso_decoded_error[9][0-2]           0           0                                0.00 
+                        aso_decoded_error[10][0-2]           0           0                                0.00 
+                        aso_decoded_error[11][0-2]           0           0                                0.00 
+                        aso_decoded_error[12][0-2]           0           0                                0.00 
+                        aso_decoded_error[13][0-2]           0           0                                0.00 
+                        aso_decoded_error[14][0-2]           0           0                                0.00 
+                        aso_decoded_error[15][0-2]           0           0                                0.00 
+                        aso_decoded_error[16][0-2]           0           0                                0.00 
+                        aso_decoded_error[17][0-2]           0           0                                0.00 
+                        aso_decoded_error[18][0-2]           0           0                                0.00 
+                        aso_decoded_error[19][0-2]           0           0                                0.00 
+                        aso_decoded_error[20][0-2]           0           0                                0.00 
+                        aso_decoded_error[21][0-2]           0           0                                0.00 
+                        aso_decoded_error[22][0-2]           0           0                                0.00 
+                        aso_decoded_error[23][0-2]           0           0                                0.00 
+                        aso_decoded_error[24][0-2]           0           0                                0.00 
+                        aso_decoded_error[25][0-2]           0           0                                0.00 
+                        aso_decoded_error[26][0-2]           0           0                                0.00 
+                        aso_decoded_error[27][0-2]           0           0                                0.00 
+                        aso_decoded_error[28][0-2]           0           0                                0.00 
+                        aso_decoded_error[29][0-2]           0           0                                0.00 
+                        aso_decoded_error[30][0-2]           0           0                                0.00 
+                        aso_decoded_error[31][0-2]           0           0                                0.00 
+                            avs_csr_readdata[0-31]           0           0                                0.00 
+                               avs_csr_waitrequest           0           0                                0.00 
+                            coe_ctrl_bitslip[0-31]           0           0                                0.00 
+                                csr.dpa_hold[0-31]           0           0                                0.00 
+                                 csr.lane_go[0-31]           0           0                                0.00 
+                              csr.lane_select[0-5]           0           0                                0.00 
+                                csr.meta_page[0-1]           0           0                                0.00 
+                               csr.mode_mask[0-31]           0           0                                0.00 
+                            csr.score_accept[0-15]           0           0                                0.00 
+                            csr.score_reject[0-15]           0           0                                0.00 
+                          csr.soft_reset_req[0-31]           0           0                                0.00 
+                             csr.sync_pattern[0-9]           0           0                                0.00 
+                         csr_capability_word[0-31]           0           0                                0.00 
+                                 csr_read_mux[2-3]           0           0                                0.00 
+                                   csr_read_mux[5]           0           0                                0.00 
+                                 csr_read_mux[7-9]           0           0                                0.00 
+                               csr_read_mux[11-13]           0           0                                0.00 
+                               csr_read_mux[15-16]           0           0                                0.00 
+                                  csr_read_mux[19]           0           0                                0.00 
+                                  csr_read_mux[21]           0           0                                0.00 
+                               csr_read_mux[23-25]           0           0                                0.00 
+                               csr_read_mux[28-29]           0           0                                0.00 
+                                  csr_read_mux[31]           0           0                                0.00 
+                            csr_version_word[0-31]           0           0                                0.00 
+                            dpa_hold_data_d1[0-31]           0           0                                0.00 
+                            dpa_hold_data_d2[0-31]           0           0                                0.00 
+                         engine_attach_event[0-31]           0           0                                0.00 
+                        engine_attach_lane[0][0-5]           0           0                                0.00 
+                        engine_attach_lane[1][0-5]           0           0                                0.00 
+                        engine_attach_lane[2][0-5]           0           0                                0.00 
+                        engine_attach_lane[3][0-5]           0           0                                0.00 
+                        engine_attach_lane[4][0-5]           0           0                                0.00 
+                        engine_attach_lane[5][0-5]           0           0                                0.00 
+                        engine_attach_lane[6][0-5]           0           0                                0.00 
+                        engine_attach_lane[7][0-5]           0           0                                0.00 
+                        engine_attach_lane[8][0-5]           0           0                                0.00 
+                        engine_attach_lane[9][0-5]           0           0                                0.00 
+                       engine_attach_lane[10][0-5]           0           0                                0.00 
+                       engine_attach_lane[11][0-5]           0           0                                0.00 
+                       engine_attach_lane[12][0-5]           0           0                                0.00 
+                       engine_attach_lane[13][0-5]           0           0                                0.00 
+                       engine_attach_lane[14][0-5]           0           0                                0.00 
+                       engine_attach_lane[15][0-5]           0           0                                0.00 
+                       engine_attach_lane[16][0-5]           0           0                                0.00 
+                       engine_attach_lane[17][0-5]           0           0                                0.00 
+                       engine_attach_lane[18][0-5]           0           0                                0.00 
+                       engine_attach_lane[19][0-5]           0           0                                0.00 
+                       engine_attach_lane[20][0-5]           0           0                                0.00 
+                       engine_attach_lane[21][0-5]           0           0                                0.00 
+                       engine_attach_lane[22][0-5]           0           0                                0.00 
+                       engine_attach_lane[23][0-5]           0           0                                0.00 
+                       engine_attach_lane[24][0-5]           0           0                                0.00 
+                       engine_attach_lane[25][0-5]           0           0                                0.00 
+                       engine_attach_lane[26][0-5]           0           0                                0.00 
+                       engine_attach_lane[27][0-5]           0           0                                0.00 
+                       engine_attach_lane[28][0-5]           0           0                                0.00 
+                       engine_attach_lane[29][0-5]           0           0                                0.00 
+                       engine_attach_lane[30][0-5]           0           0                                0.00 
+                       engine_attach_lane[31][0-5]           0           0                                0.00 
+                             engine_attached[0-31]           0           0                                0.00 
+                         engine_best_phase[0][0-3]           0           0                                0.00 
+                         engine_best_phase[1][0-3]           0           0                                0.00 
+                         engine_best_phase[2][0-3]           0           0                                0.00 
+                         engine_best_phase[3][0-3]           0           0                                0.00 
+                         engine_best_phase[4][0-3]           0           0                                0.00 
+                         engine_best_phase[5][0-3]           0           0                                0.00 
+                         engine_best_phase[6][0-3]           0           0                                0.00 
+                         engine_best_phase[7][0-3]           0           0                                0.00 
+                         engine_best_phase[8][0-3]           0           0                                0.00 
+                         engine_best_phase[9][0-3]           0           0                                0.00 
+                        engine_best_phase[10][0-3]           0           0                                0.00 
+                        engine_best_phase[11][0-3]           0           0                                0.00 
+                        engine_best_phase[12][0-3]           0           0                                0.00 
+                        engine_best_phase[13][0-3]           0           0                                0.00 
+                        engine_best_phase[14][0-3]           0           0                                0.00 
+                        engine_best_phase[15][0-3]           0           0                                0.00 
+                        engine_best_phase[16][0-3]           0           0                                0.00 
+                        engine_best_phase[17][0-3]           0           0                                0.00 
+                        engine_best_phase[18][0-3]           0           0                                0.00 
+                        engine_best_phase[19][0-3]           0           0                                0.00 
+                        engine_best_phase[20][0-3]           0           0                                0.00 
+                        engine_best_phase[21][0-3]           0           0                                0.00 
+                        engine_best_phase[22][0-3]           0           0                                0.00 
+                        engine_best_phase[23][0-3]           0           0                                0.00 
+                        engine_best_phase[24][0-3]           0           0                                0.00 
+                        engine_best_phase[25][0-3]           0           0                                0.00 
+                        engine_best_phase[26][0-3]           0           0                                0.00 
+                        engine_best_phase[27][0-3]           0           0                                0.00 
+                        engine_best_phase[28][0-3]           0           0                                0.00 
+                        engine_best_phase[29][0-3]           0           0                                0.00 
+                        engine_best_phase[30][0-3]           0           0                                0.00 
+                        engine_best_phase[31][0-3]           0           0                                0.00 
+                                 engine_busy[0-31]           0           0                                0.00 
+                         engine_channel_d1[0][0-5]           0           0                                0.00 
+                         engine_channel_d1[1][0-5]           0           0                                0.00 
+                         engine_channel_d1[2][0-5]           0           0                                0.00 
+                         engine_channel_d1[3][0-5]           0           0                                0.00 
+                         engine_channel_d1[4][0-5]           0           0                                0.00 
+                         engine_channel_d1[5][0-5]           0           0                                0.00 
+                         engine_channel_d1[6][0-5]           0           0                                0.00 
+                         engine_channel_d1[7][0-5]           0           0                                0.00 
+                         engine_channel_d1[8][0-5]           0           0                                0.00 
+                         engine_channel_d1[9][0-5]           0           0                                0.00 
+                        engine_channel_d1[10][0-5]           0           0                                0.00 
+                        engine_channel_d1[11][0-5]           0           0                                0.00 
+                        engine_channel_d1[12][0-5]           0           0                                0.00 
+                        engine_channel_d1[13][0-5]           0           0                                0.00 
+                        engine_channel_d1[14][0-5]           0           0                                0.00 
+                        engine_channel_d1[15][0-5]           0           0                                0.00 
+                        engine_channel_d1[16][0-5]           0           0                                0.00 
+                        engine_channel_d1[17][0-5]           0           0                                0.00 
+                        engine_channel_d1[18][0-5]           0           0                                0.00 
+                        engine_channel_d1[19][0-5]           0           0                                0.00 
+                        engine_channel_d1[20][0-5]           0           0                                0.00 
+                        engine_channel_d1[21][0-5]           0           0                                0.00 
+                        engine_channel_d1[22][0-5]           0           0                                0.00 
+                        engine_channel_d1[23][0-5]           0           0                                0.00 
+                        engine_channel_d1[24][0-5]           0           0                                0.00 
+                        engine_channel_d1[25][0-5]           0           0                                0.00 
+                        engine_channel_d1[26][0-5]           0           0                                0.00 
+                        engine_channel_d1[27][0-5]           0           0                                0.00 
+                        engine_channel_d1[28][0-5]           0           0                                0.00 
+                        engine_channel_d1[29][0-5]           0           0                                0.00 
+                        engine_channel_d1[30][0-5]           0           0                                0.00 
+                        engine_channel_d1[31][0-5]           0           0                                0.00 
+                         engine_channel_d2[0][0-5]           0           0                                0.00 
+                         engine_channel_d2[1][0-5]           0           0                                0.00 
+                         engine_channel_d2[2][0-5]           0           0                                0.00 
+                         engine_channel_d2[3][0-5]           0           0                                0.00 
+                         engine_channel_d2[4][0-5]           0           0                                0.00 
+                         engine_channel_d2[5][0-5]           0           0                                0.00 
+                         engine_channel_d2[6][0-5]           0           0                                0.00 
+                         engine_channel_d2[7][0-5]           0           0                                0.00 
+                         engine_channel_d2[8][0-5]           0           0                                0.00 
+                         engine_channel_d2[9][0-5]           0           0                                0.00 
+                        engine_channel_d2[10][0-5]           0           0                                0.00 
+                        engine_channel_d2[11][0-5]           0           0                                0.00 
+                        engine_channel_d2[12][0-5]           0           0                                0.00 
+                        engine_channel_d2[13][0-5]           0           0                                0.00 
+                        engine_channel_d2[14][0-5]           0           0                                0.00 
+                        engine_channel_d2[15][0-5]           0           0                                0.00 
+                        engine_channel_d2[16][0-5]           0           0                                0.00 
+                        engine_channel_d2[17][0-5]           0           0                                0.00 
+                        engine_channel_d2[18][0-5]           0           0                                0.00 
+                        engine_channel_d2[19][0-5]           0           0                                0.00 
+                        engine_channel_d2[20][0-5]           0           0                                0.00 
+                        engine_channel_d2[21][0-5]           0           0                                0.00 
+                        engine_channel_d2[22][0-5]           0           0                                0.00 
+                        engine_channel_d2[23][0-5]           0           0                                0.00 
+                        engine_channel_d2[24][0-5]           0           0                                0.00 
+                        engine_channel_d2[25][0-5]           0           0                                0.00 
+                        engine_channel_d2[26][0-5]           0           0                                0.00 
+                        engine_channel_d2[27][0-5]           0           0                                0.00 
+                        engine_channel_d2[28][0-5]           0           0                                0.00 
+                        engine_channel_d2[29][0-5]           0           0                                0.00 
+                        engine_channel_d2[30][0-5]           0           0                                0.00 
+                        engine_channel_d2[31][0-5]           0           0                                0.00 
+                            engine_data_d1[0][0-8]           0           0                                0.00 
+                            engine_data_d1[1][0-8]           0           0                                0.00 
+                            engine_data_d1[2][0-8]           0           0                                0.00 
+                            engine_data_d1[3][0-8]           0           0                                0.00 
+                            engine_data_d1[4][0-8]           0           0                                0.00 
+                            engine_data_d1[5][0-8]           0           0                                0.00 
+                            engine_data_d1[6][0-8]           0           0                                0.00 
+                            engine_data_d1[7][0-8]           0           0                                0.00 
+                            engine_data_d1[8][0-8]           0           0                                0.00 
+                            engine_data_d1[9][0-8]           0           0                                0.00 
+                           engine_data_d1[10][0-8]           0           0                                0.00 
+                           engine_data_d1[11][0-8]           0           0                                0.00 
+                           engine_data_d1[12][0-8]           0           0                                0.00 
+                           engine_data_d1[13][0-8]           0           0                                0.00 
+                           engine_data_d1[14][0-8]           0           0                                0.00 
+                           engine_data_d1[15][0-8]           0           0                                0.00 
+                           engine_data_d1[16][0-8]           0           0                                0.00 
+                           engine_data_d1[17][0-8]           0           0                                0.00 
+                           engine_data_d1[18][0-8]           0           0                                0.00 
+                           engine_data_d1[19][0-8]           0           0                                0.00 
+                           engine_data_d1[20][0-8]           0           0                                0.00 
+                           engine_data_d1[21][0-8]           0           0                                0.00 
+                           engine_data_d1[22][0-8]           0           0                                0.00 
+                           engine_data_d1[23][0-8]           0           0                                0.00 
+                           engine_data_d1[24][0-8]           0           0                                0.00 
+                           engine_data_d1[25][0-8]           0           0                                0.00 
+                           engine_data_d1[26][0-8]           0           0                                0.00 
+                           engine_data_d1[27][0-8]           0           0                                0.00 
+                           engine_data_d1[28][0-8]           0           0                                0.00 
+                           engine_data_d1[29][0-8]           0           0                                0.00 
+                           engine_data_d1[30][0-8]           0           0                                0.00 
+                           engine_data_d1[31][0-8]           0           0                                0.00 
+                            engine_data_d2[0][0-8]           0           0                                0.00 
+                            engine_data_d2[1][0-8]           0           0                                0.00 
+                            engine_data_d2[2][0-8]           0           0                                0.00 
+                            engine_data_d2[3][0-8]           0           0                                0.00 
+                            engine_data_d2[4][0-8]           0           0                                0.00 
+                            engine_data_d2[5][0-8]           0           0                                0.00 
+                            engine_data_d2[6][0-8]           0           0                                0.00 
+                            engine_data_d2[7][0-8]           0           0                                0.00 
+                            engine_data_d2[8][0-8]           0           0                                0.00 
+                            engine_data_d2[9][0-8]           0           0                                0.00 
+                           engine_data_d2[10][0-8]           0           0                                0.00 
+                           engine_data_d2[11][0-8]           0           0                                0.00 
+                           engine_data_d2[12][0-8]           0           0                                0.00 
+                           engine_data_d2[13][0-8]           0           0                                0.00 
+                           engine_data_d2[14][0-8]           0           0                                0.00 
+                           engine_data_d2[15][0-8]           0           0                                0.00 
+                           engine_data_d2[16][0-8]           0           0                                0.00 
+                           engine_data_d2[17][0-8]           0           0                                0.00 
+                           engine_data_d2[18][0-8]           0           0                                0.00 
+                           engine_data_d2[19][0-8]           0           0                                0.00 
+                           engine_data_d2[20][0-8]           0           0                                0.00 
+                           engine_data_d2[21][0-8]           0           0                                0.00 
+                           engine_data_d2[22][0-8]           0           0                                0.00 
+                           engine_data_d2[23][0-8]           0           0                                0.00 
+                           engine_data_d2[24][0-8]           0           0                                0.00 
+                           engine_data_d2[25][0-8]           0           0                                0.00 
+                           engine_data_d2[26][0-8]           0           0                                0.00 
+                           engine_data_d2[27][0-8]           0           0                                0.00 
+                           engine_data_d2[28][0-8]           0           0                                0.00 
+                           engine_data_d2[29][0-8]           0           0                                0.00 
+                           engine_data_d2[30][0-8]           0           0                                0.00 
+                           engine_data_d2[31][0-8]           0           0                                0.00 
+                           engine_error_d1[0][0-2]           0           0                                0.00 
+                           engine_error_d1[1][0-2]           0           0                                0.00 
+                           engine_error_d1[2][0-2]           0           0                                0.00 
+                           engine_error_d1[3][0-2]           0           0                                0.00 
+                           engine_error_d1[4][0-2]           0           0                                0.00 
+                           engine_error_d1[5][0-2]           0           0                                0.00 
+                           engine_error_d1[6][0-2]           0           0                                0.00 
+                           engine_error_d1[7][0-2]           0           0                                0.00 
+                           engine_error_d1[8][0-2]           0           0                                0.00 
+                           engine_error_d1[9][0-2]           0           0                                0.00 
+                          engine_error_d1[10][0-2]           0           0                                0.00 
+                          engine_error_d1[11][0-2]           0           0                                0.00 
+                          engine_error_d1[12][0-2]           0           0                                0.00 
+                          engine_error_d1[13][0-2]           0           0                                0.00 
+                          engine_error_d1[14][0-2]           0           0                                0.00 
+                          engine_error_d1[15][0-2]           0           0                                0.00 
+                          engine_error_d1[16][0-2]           0           0                                0.00 
+                          engine_error_d1[17][0-2]           0           0                                0.00 
+                          engine_error_d1[18][0-2]           0           0                                0.00 
+                          engine_error_d1[19][0-2]           0           0                                0.00 
+                          engine_error_d1[20][0-2]           0           0                                0.00 
+                          engine_error_d1[21][0-2]           0           0                                0.00 
+                          engine_error_d1[22][0-2]           0           0                                0.00 
+                          engine_error_d1[23][0-2]           0           0                                0.00 
+                          engine_error_d1[24][0-2]           0           0                                0.00 
+                          engine_error_d1[25][0-2]           0           0                                0.00 
+                          engine_error_d1[26][0-2]           0           0                                0.00 
+                          engine_error_d1[27][0-2]           0           0                                0.00 
+                          engine_error_d1[28][0-2]           0           0                                0.00 
+                          engine_error_d1[29][0-2]           0           0                                0.00 
+                          engine_error_d1[30][0-2]           0           0                                0.00 
+                          engine_error_d1[31][0-2]           0           0                                0.00 
+                           engine_error_d2[0][0-2]           0           0                                0.00 
+                           engine_error_d2[1][0-2]           0           0                                0.00 
+                           engine_error_d2[2][0-2]           0           0                                0.00 
+                           engine_error_d2[3][0-2]           0           0                                0.00 
+                           engine_error_d2[4][0-2]           0           0                                0.00 
+                           engine_error_d2[5][0-2]           0           0                                0.00 
+                           engine_error_d2[6][0-2]           0           0                                0.00 
+                           engine_error_d2[7][0-2]           0           0                                0.00 
+                           engine_error_d2[8][0-2]           0           0                                0.00 
+                           engine_error_d2[9][0-2]           0           0                                0.00 
+                          engine_error_d2[10][0-2]           0           0                                0.00 
+                          engine_error_d2[11][0-2]           0           0                                0.00 
+                          engine_error_d2[12][0-2]           0           0                                0.00 
+                          engine_error_d2[13][0-2]           0           0                                0.00 
+                          engine_error_d2[14][0-2]           0           0                                0.00 
+                          engine_error_d2[15][0-2]           0           0                                0.00 
+                          engine_error_d2[16][0-2]           0           0                                0.00 
+                          engine_error_d2[17][0-2]           0           0                                0.00 
+                          engine_error_d2[18][0-2]           0           0                                0.00 
+                          engine_error_d2[19][0-2]           0           0                                0.00 
+                          engine_error_d2[20][0-2]           0           0                                0.00 
+                          engine_error_d2[21][0-2]           0           0                                0.00 
+                          engine_error_d2[22][0-2]           0           0                                0.00 
+                          engine_error_d2[23][0-2]           0           0                                0.00 
+                          engine_error_d2[24][0-2]           0           0                                0.00 
+                          engine_error_d2[25][0-2]           0           0                                0.00 
+                          engine_error_d2[26][0-2]           0           0                                0.00 
+                          engine_error_d2[27][0-2]           0           0                                0.00 
+                          engine_error_d2[28][0-2]           0           0                                0.00 
+                          engine_error_d2[29][0-2]           0           0                                0.00 
+                          engine_error_d2[30][0-2]           0           0                                0.00 
+                          engine_error_d2[31][0-2]           0           0                                0.00 
+                             engine_valid_d1[0-31]           0           0                                0.00 
+                             engine_valid_d2[0-31]           0           0                                0.00 
+                            lane_engine_seen[0-31]           0           0                                0.00 
+                             lane_go_data_d1[0-31]           0           0                                0.00 
+                             lane_go_data_d2[0-31]           0           0                                0.00 
+                           lane_good_count[0][4-7]           0           0                                0.00 
+                           lane_good_count[1][4-7]           0           0                                0.00 
+                           lane_good_count[2][4-7]           0           0                                0.00 
+                           lane_good_count[3][4-7]           0           0                                0.00 
+                           lane_good_count[4][4-7]           0           0                                0.00 
+                           lane_good_count[5][4-7]           0           0                                0.00 
+                           lane_good_count[6][4-7]           0           0                                0.00 
+                           lane_good_count[7][4-7]           0           0                                0.00 
+                           lane_good_count[8][4-7]           0           0                                0.00 
+                           lane_good_count[9][4-7]           0           0                                0.00 
+                          lane_good_count[10][4-7]           0           0                                0.00 
+                          lane_good_count[11][4-7]           0           0                                0.00 
+                          lane_good_count[12][4-7]           0           0                                0.00 
+                          lane_good_count[13][4-7]           0           0                                0.00 
+                          lane_good_count[14][4-7]           0           0                                0.00 
+                          lane_good_count[15][4-7]           0           0                                0.00 
+                          lane_good_count[16][4-7]           0           0                                0.00 
+                          lane_good_count[17][4-7]           0           0                                0.00 
+                          lane_good_count[18][4-7]           0           0                                0.00 
+                          lane_good_count[19][4-7]           0           0                                0.00 
+                          lane_good_count[20][4-7]           0           0                                0.00 
+                          lane_good_count[21][4-7]           0           0                                0.00 
+                          lane_good_count[22][4-7]           0           0                                0.00 
+                          lane_good_count[23][4-7]           0           0                                0.00 
+                          lane_good_count[24][4-7]           0           0                                0.00 
+                          lane_good_count[25][4-7]           0           0                                0.00 
+                          lane_good_count[26][4-7]           0           0                                0.00 
+                          lane_good_count[27][4-7]           0           0                                0.00 
+                          lane_good_count[28][4-7]           0           0                                0.00 
+                          lane_good_count[29][4-7]           0           0                                0.00 
+                          lane_good_count[30][4-7]           0           0                                0.00 
+                          lane_good_count[31][4-7]           0           0                                0.00 
+                                loss_sync_d1[0-31]           0           0                                0.00 
+                           mini_channel_d1[0][0-5]           0           0                                0.00 
+                           mini_channel_d1[1][1-5]           0           0                                0.00 
+                             mini_channel_d1[2][0]           0           0                                0.00 
+                           mini_channel_d1[2][2-5]           0           0                                0.00 
+                           mini_channel_d1[3][2-5]           0           0                                0.00 
+                           mini_channel_d1[4][0-1]           0           0                                0.00 
+                           mini_channel_d1[4][3-5]           0           0                                0.00 
+                             mini_channel_d1[5][1]           0           0                                0.00 
+                           mini_channel_d1[5][3-5]           0           0                                0.00 
+                             mini_channel_d1[6][0]           0           0                                0.00 
+                           mini_channel_d1[6][3-5]           0           0                                0.00 
+                           mini_channel_d1[7][3-5]           0           0                                0.00 
+                           mini_channel_d1[8][0-2]           0           0                                0.00 
+                           mini_channel_d1[8][4-5]           0           0                                0.00 
+                           mini_channel_d1[9][1-2]           0           0                                0.00 
+                           mini_channel_d1[9][4-5]           0           0                                0.00 
+                            mini_channel_d1[10][0]           0           0                                0.00 
+                            mini_channel_d1[10][2]           0           0                                0.00 
+                          mini_channel_d1[10][4-5]           0           0                                0.00 
+                            mini_channel_d1[11][2]           0           0                                0.00 
+                          mini_channel_d1[11][4-5]           0           0                                0.00 
+                          mini_channel_d1[12][0-1]           0           0                                0.00 
+                          mini_channel_d1[12][4-5]           0           0                                0.00 
+                            mini_channel_d1[13][1]           0           0                                0.00 
+                          mini_channel_d1[13][4-5]           0           0                                0.00 
+                            mini_channel_d1[14][0]           0           0                                0.00 
+                          mini_channel_d1[14][4-5]           0           0                                0.00 
+                          mini_channel_d1[15][4-5]           0           0                                0.00 
+                          mini_channel_d1[16][0-3]           0           0                                0.00 
+                            mini_channel_d1[16][5]           0           0                                0.00 
+                          mini_channel_d1[17][1-3]           0           0                                0.00 
+                            mini_channel_d1[17][5]           0           0                                0.00 
+                            mini_channel_d1[18][0]           0           0                                0.00 
+                          mini_channel_d1[18][2-3]           0           0                                0.00 
+                            mini_channel_d1[18][5]           0           0                                0.00 
+                          mini_channel_d1[19][2-3]           0           0                                0.00 
+                            mini_channel_d1[19][5]           0           0                                0.00 
+                          mini_channel_d1[20][0-1]           0           0                                0.00 
+                            mini_channel_d1[20][3]           0           0                                0.00 
+                            mini_channel_d1[20][5]           0           0                                0.00 
+                            mini_channel_d1[21][1]           0           0                                0.00 
+                            mini_channel_d1[21][3]           0           0                                0.00 
+                            mini_channel_d1[21][5]           0           0                                0.00 
+                            mini_channel_d1[22][0]           0           0                                0.00 
+                            mini_channel_d1[22][3]           0           0                                0.00 
+                            mini_channel_d1[22][5]           0           0                                0.00 
+                            mini_channel_d1[23][3]           0           0                                0.00 
+                            mini_channel_d1[23][5]           0           0                                0.00 
+                          mini_channel_d1[24][0-2]           0           0                                0.00 
+                            mini_channel_d1[24][5]           0           0                                0.00 
+                          mini_channel_d1[25][1-2]           0           0                                0.00 
+                            mini_channel_d1[25][5]           0           0                                0.00 
+                            mini_channel_d1[26][0]           0           0                                0.00 
+                            mini_channel_d1[26][2]           0           0                                0.00 
+                            mini_channel_d1[26][5]           0           0                                0.00 
+                            mini_channel_d1[27][2]           0           0                                0.00 
+                            mini_channel_d1[27][5]           0           0                                0.00 
+                          mini_channel_d1[28][0-1]           0           0                                0.00 
+                            mini_channel_d1[28][5]           0           0                                0.00 
+                            mini_channel_d1[29][1]           0           0                                0.00 
+                            mini_channel_d1[29][5]           0           0                                0.00 
+                            mini_channel_d1[30][0]           0           0                                0.00 
+                            mini_channel_d1[30][5]           0           0                                0.00 
+                            mini_channel_d1[31][5]           0           0                                0.00 
+                           mini_channel_d2[0][0-5]           0           0                                0.00 
+                           mini_channel_d2[1][1-5]           0           0                                0.00 
+                             mini_channel_d2[2][0]           0           0                                0.00 
+                           mini_channel_d2[2][2-5]           0           0                                0.00 
+                           mini_channel_d2[3][2-5]           0           0                                0.00 
+                           mini_channel_d2[4][0-1]           0           0                                0.00 
+                           mini_channel_d2[4][3-5]           0           0                                0.00 
+                             mini_channel_d2[5][1]           0           0                                0.00 
+                           mini_channel_d2[5][3-5]           0           0                                0.00 
+                             mini_channel_d2[6][0]           0           0                                0.00 
+                           mini_channel_d2[6][3-5]           0           0                                0.00 
+                           mini_channel_d2[7][3-5]           0           0                                0.00 
+                           mini_channel_d2[8][0-2]           0           0                                0.00 
+                           mini_channel_d2[8][4-5]           0           0                                0.00 
+                           mini_channel_d2[9][1-2]           0           0                                0.00 
+                           mini_channel_d2[9][4-5]           0           0                                0.00 
+                            mini_channel_d2[10][0]           0           0                                0.00 
+                            mini_channel_d2[10][2]           0           0                                0.00 
+                          mini_channel_d2[10][4-5]           0           0                                0.00 
+                            mini_channel_d2[11][2]           0           0                                0.00 
+                          mini_channel_d2[11][4-5]           0           0                                0.00 
+                          mini_channel_d2[12][0-1]           0           0                                0.00 
+                          mini_channel_d2[12][4-5]           0           0                                0.00 
+                            mini_channel_d2[13][1]           0           0                                0.00 
+                          mini_channel_d2[13][4-5]           0           0                                0.00 
+                            mini_channel_d2[14][0]           0           0                                0.00 
+                          mini_channel_d2[14][4-5]           0           0                                0.00 
+                          mini_channel_d2[15][4-5]           0           0                                0.00 
+                          mini_channel_d2[16][0-3]           0           0                                0.00 
+                            mini_channel_d2[16][5]           0           0                                0.00 
+                          mini_channel_d2[17][1-3]           0           0                                0.00 
+                            mini_channel_d2[17][5]           0           0                                0.00 
+                            mini_channel_d2[18][0]           0           0                                0.00 
+                          mini_channel_d2[18][2-3]           0           0                                0.00 
+                            mini_channel_d2[18][5]           0           0                                0.00 
+                          mini_channel_d2[19][2-3]           0           0                                0.00 
+                            mini_channel_d2[19][5]           0           0                                0.00 
+                          mini_channel_d2[20][0-1]           0           0                                0.00 
+                            mini_channel_d2[20][3]           0           0                                0.00 
+                            mini_channel_d2[20][5]           0           0                                0.00 
+                            mini_channel_d2[21][1]           0           0                                0.00 
+                            mini_channel_d2[21][3]           0           0                                0.00 
+                            mini_channel_d2[21][5]           0           0                                0.00 
+                            mini_channel_d2[22][0]           0           0                                0.00 
+                            mini_channel_d2[22][3]           0           0                                0.00 
+                            mini_channel_d2[22][5]           0           0                                0.00 
+                            mini_channel_d2[23][3]           0           0                                0.00 
+                            mini_channel_d2[23][5]           0           0                                0.00 
+                          mini_channel_d2[24][0-2]           0           0                                0.00 
+                            mini_channel_d2[24][5]           0           0                                0.00 
+                          mini_channel_d2[25][1-2]           0           0                                0.00 
+                            mini_channel_d2[25][5]           0           0                                0.00 
+                            mini_channel_d2[26][0]           0           0                                0.00 
+                            mini_channel_d2[26][2]           0           0                                0.00 
+                            mini_channel_d2[26][5]           0           0                                0.00 
+                            mini_channel_d2[27][2]           0           0                                0.00 
+                            mini_channel_d2[27][5]           0           0                                0.00 
+                          mini_channel_d2[28][0-1]           0           0                                0.00 
+                            mini_channel_d2[28][5]           0           0                                0.00 
+                            mini_channel_d2[29][1]           0           0                                0.00 
+                            mini_channel_d2[29][5]           0           0                                0.00 
+                            mini_channel_d2[30][0]           0           0                                0.00 
+                            mini_channel_d2[30][5]           0           0                                0.00 
+                            mini_channel_d2[31][5]           0           0                                0.00 
+                              mini_data_d1[0][0-1]           0           0                                0.00 
+                                mini_data_d1[0][6]           0           0                                0.00 
+                              mini_data_d1[1][0-1]           0           0                                0.00 
+                                mini_data_d1[1][6]           0           0                                0.00 
+                              mini_data_d1[2][0-1]           0           0                                0.00 
+                                mini_data_d1[2][6]           0           0                                0.00 
+                              mini_data_d1[3][0-1]           0           0                                0.00 
+                                mini_data_d1[3][6]           0           0                                0.00 
+                              mini_data_d1[4][0-1]           0           0                                0.00 
+                                mini_data_d1[4][6]           0           0                                0.00 
+                              mini_data_d1[5][0-1]           0           0                                0.00 
+                                mini_data_d1[5][6]           0           0                                0.00 
+                              mini_data_d1[6][0-1]           0           0                                0.00 
+                                mini_data_d1[6][6]           0           0                                0.00 
+                              mini_data_d1[7][0-1]           0           0                                0.00 
+                                mini_data_d1[7][6]           0           0                                0.00 
+                              mini_data_d1[8][0-1]           0           0                                0.00 
+                                mini_data_d1[8][6]           0           0                                0.00 
+                              mini_data_d1[9][0-1]           0           0                                0.00 
+                                mini_data_d1[9][6]           0           0                                0.00 
+                             mini_data_d1[10][0-1]           0           0                                0.00 
+                               mini_data_d1[10][6]           0           0                                0.00 
+                             mini_data_d1[11][0-1]           0           0                                0.00 
+                               mini_data_d1[11][6]           0           0                                0.00 
+                             mini_data_d1[12][0-1]           0           0                                0.00 
+                               mini_data_d1[12][6]           0           0                                0.00 
+                             mini_data_d1[13][0-1]           0           0                                0.00 
+                               mini_data_d1[13][6]           0           0                                0.00 
+                             mini_data_d1[14][0-1]           0           0                                0.00 
+                               mini_data_d1[14][6]           0           0                                0.00 
+                             mini_data_d1[15][0-1]           0           0                                0.00 
+                               mini_data_d1[15][6]           0           0                                0.00 
+                             mini_data_d1[16][0-1]           0           0                                0.00 
+                               mini_data_d1[16][6]           0           0                                0.00 
+                             mini_data_d1[17][0-1]           0           0                                0.00 
+                               mini_data_d1[17][6]           0           0                                0.00 
+                             mini_data_d1[18][0-1]           0           0                                0.00 
+                               mini_data_d1[18][6]           0           0                                0.00 
+                             mini_data_d1[19][0-1]           0           0                                0.00 
+                               mini_data_d1[19][6]           0           0                                0.00 
+                             mini_data_d1[20][0-1]           0           0                                0.00 
+                               mini_data_d1[20][6]           0           0                                0.00 
+                             mini_data_d1[21][0-1]           0           0                                0.00 
+                               mini_data_d1[21][6]           0           0                                0.00 
+                             mini_data_d1[22][0-1]           0           0                                0.00 
+                               mini_data_d1[22][6]           0           0                                0.00 
+                             mini_data_d1[23][0-1]           0           0                                0.00 
+                               mini_data_d1[23][6]           0           0                                0.00 
+                             mini_data_d1[24][0-1]           0           0                                0.00 
+                               mini_data_d1[24][6]           0           0                                0.00 
+                             mini_data_d1[25][0-1]           0           0                                0.00 
+                               mini_data_d1[25][6]           0           0                                0.00 
+                             mini_data_d1[26][0-1]           0           0                                0.00 
+                               mini_data_d1[26][6]           0           0                                0.00 
+                             mini_data_d1[27][0-1]           0           0                                0.00 
+                               mini_data_d1[27][6]           0           0                                0.00 
+                             mini_data_d1[28][0-1]           0           0                                0.00 
+                               mini_data_d1[28][6]           0           0                                0.00 
+                             mini_data_d1[29][0-1]           0           0                                0.00 
+                               mini_data_d1[29][6]           0           0                                0.00 
+                             mini_data_d1[30][0-1]           0           0                                0.00 
+                               mini_data_d1[30][6]           0           0                                0.00 
+                             mini_data_d1[31][0-1]           0           0                                0.00 
+                               mini_data_d1[31][6]           0           0                                0.00 
+                              mini_data_d2[0][0-1]           0           0                                0.00 
+                                mini_data_d2[0][6]           0           0                                0.00 
+                              mini_data_d2[1][0-1]           0           0                                0.00 
+                                mini_data_d2[1][6]           0           0                                0.00 
+                              mini_data_d2[2][0-1]           0           0                                0.00 
+                                mini_data_d2[2][6]           0           0                                0.00 
+                              mini_data_d2[3][0-1]           0           0                                0.00 
+                                mini_data_d2[3][6]           0           0                                0.00 
+                              mini_data_d2[4][0-1]           0           0                                0.00 
+                                mini_data_d2[4][6]           0           0                                0.00 
+                              mini_data_d2[5][0-1]           0           0                                0.00 
+                                mini_data_d2[5][6]           0           0                                0.00 
+                              mini_data_d2[6][0-1]           0           0                                0.00 
+                                mini_data_d2[6][6]           0           0                                0.00 
+                              mini_data_d2[7][0-1]           0           0                                0.00 
+                                mini_data_d2[7][6]           0           0                                0.00 
+                              mini_data_d2[8][0-1]           0           0                                0.00 
+                                mini_data_d2[8][6]           0           0                                0.00 
+                              mini_data_d2[9][0-1]           0           0                                0.00 
+                                mini_data_d2[9][6]           0           0                                0.00 
+                             mini_data_d2[10][0-1]           0           0                                0.00 
+                               mini_data_d2[10][6]           0           0                                0.00 
+                             mini_data_d2[11][0-1]           0           0                                0.00 
+                               mini_data_d2[11][6]           0           0                                0.00 
+                             mini_data_d2[12][0-1]           0           0                                0.00 
+                               mini_data_d2[12][6]           0           0                                0.00 
+                             mini_data_d2[13][0-1]           0           0                                0.00 
+                               mini_data_d2[13][6]           0           0                                0.00 
+                             mini_data_d2[14][0-1]           0           0                                0.00 
+                               mini_data_d2[14][6]           0           0                                0.00 
+                             mini_data_d2[15][0-1]           0           0                                0.00 
+                               mini_data_d2[15][6]           0           0                                0.00 
+                             mini_data_d2[16][0-1]           0           0                                0.00 
+                               mini_data_d2[16][6]           0           0                                0.00 
+                             mini_data_d2[17][0-1]           0           0                                0.00 
+                               mini_data_d2[17][6]           0           0                                0.00 
+                             mini_data_d2[18][0-1]           0           0                                0.00 
+                               mini_data_d2[18][6]           0           0                                0.00 
+                             mini_data_d2[19][0-1]           0           0                                0.00 
+                               mini_data_d2[19][6]           0           0                                0.00 
+                             mini_data_d2[20][0-1]           0           0                                0.00 
+                               mini_data_d2[20][6]           0           0                                0.00 
+                             mini_data_d2[21][0-1]           0           0                                0.00 
+                               mini_data_d2[21][6]           0           0                                0.00 
+                             mini_data_d2[22][0-1]           0           0                                0.00 
+                               mini_data_d2[22][6]           0           0                                0.00 
+                             mini_data_d2[23][0-1]           0           0                                0.00 
+                               mini_data_d2[23][6]           0           0                                0.00 
+                             mini_data_d2[24][0-1]           0           0                                0.00 
+                               mini_data_d2[24][6]           0           0                                0.00 
+                             mini_data_d2[25][0-1]           0           0                                0.00 
+                               mini_data_d2[25][6]           0           0                                0.00 
+                             mini_data_d2[26][0-1]           0           0                                0.00 
+                               mini_data_d2[26][6]           0           0                                0.00 
+                             mini_data_d2[27][0-1]           0           0                                0.00 
+                               mini_data_d2[27][6]           0           0                                0.00 
+                             mini_data_d2[28][0-1]           0           0                                0.00 
+                               mini_data_d2[28][6]           0           0                                0.00 
+                             mini_data_d2[29][0-1]           0           0                                0.00 
+                               mini_data_d2[29][6]           0           0                                0.00 
+                             mini_data_d2[30][0-1]           0           0                                0.00 
+                               mini_data_d2[30][6]           0           0                                0.00 
+                             mini_data_d2[31][0-1]           0           0                                0.00 
+                               mini_data_d2[31][6]           0           0                                0.00 
+                             mini_error_d1[0][0-2]           0           0                                0.00 
+                             mini_error_d1[1][0-2]           0           0                                0.00 
+                             mini_error_d1[2][0-2]           0           0                                0.00 
+                             mini_error_d1[3][0-2]           0           0                                0.00 
+                             mini_error_d1[4][0-2]           0           0                                0.00 
+                             mini_error_d1[5][0-2]           0           0                                0.00 
+                             mini_error_d1[6][0-2]           0           0                                0.00 
+                             mini_error_d1[7][0-2]           0           0                                0.00 
+                             mini_error_d1[8][0-2]           0           0                                0.00 
+                             mini_error_d1[9][0-2]           0           0                                0.00 
+                            mini_error_d1[10][0-2]           0           0                                0.00 
+                            mini_error_d1[11][0-2]           0           0                                0.00 
+                            mini_error_d1[12][0-2]           0           0                                0.00 
+                            mini_error_d1[13][0-2]           0           0                                0.00 
+                            mini_error_d1[14][0-2]           0           0                                0.00 
+                            mini_error_d1[15][0-2]           0           0                                0.00 
+                            mini_error_d1[16][0-2]           0           0                                0.00 
+                            mini_error_d1[17][0-2]           0           0                                0.00 
+                            mini_error_d1[18][0-2]           0           0                                0.00 
+                            mini_error_d1[19][0-2]           0           0                                0.00 
+                            mini_error_d1[20][0-2]           0           0                                0.00 
+                            mini_error_d1[21][0-2]           0           0                                0.00 
+                            mini_error_d1[22][0-2]           0           0                                0.00 
+                            mini_error_d1[23][0-2]           0           0                                0.00 
+                            mini_error_d1[24][0-2]           0           0                                0.00 
+                            mini_error_d1[25][0-2]           0           0                                0.00 
+                            mini_error_d1[26][0-2]           0           0                                0.00 
+                            mini_error_d1[27][0-2]           0           0                                0.00 
+                            mini_error_d1[28][0-2]           0           0                                0.00 
+                            mini_error_d1[29][0-2]           0           0                                0.00 
+                            mini_error_d1[30][0-2]           0           0                                0.00 
+                            mini_error_d1[31][0-2]           0           0                                0.00 
+                             mini_error_d2[0][0-2]           0           0                                0.00 
+                             mini_error_d2[1][0-2]           0           0                                0.00 
+                             mini_error_d2[2][0-2]           0           0                                0.00 
+                             mini_error_d2[3][0-2]           0           0                                0.00 
+                             mini_error_d2[4][0-2]           0           0                                0.00 
+                             mini_error_d2[5][0-2]           0           0                                0.00 
+                             mini_error_d2[6][0-2]           0           0                                0.00 
+                             mini_error_d2[7][0-2]           0           0                                0.00 
+                             mini_error_d2[8][0-2]           0           0                                0.00 
+                             mini_error_d2[9][0-2]           0           0                                0.00 
+                            mini_error_d2[10][0-2]           0           0                                0.00 
+                            mini_error_d2[11][0-2]           0           0                                0.00 
+                            mini_error_d2[12][0-2]           0           0                                0.00 
+                            mini_error_d2[13][0-2]           0           0                                0.00 
+                            mini_error_d2[14][0-2]           0           0                                0.00 
+                            mini_error_d2[15][0-2]           0           0                                0.00 
+                            mini_error_d2[16][0-2]           0           0                                0.00 
+                            mini_error_d2[17][0-2]           0           0                                0.00 
+                            mini_error_d2[18][0-2]           0           0                                0.00 
+                            mini_error_d2[19][0-2]           0           0                                0.00 
+                            mini_error_d2[20][0-2]           0           0                                0.00 
+                            mini_error_d2[21][0-2]           0           0                                0.00 
+                            mini_error_d2[22][0-2]           0           0                                0.00 
+                            mini_error_d2[23][0-2]           0           0                                0.00 
+                            mini_error_d2[24][0-2]           0           0                                0.00 
+                            mini_error_d2[25][0-2]           0           0                                0.00 
+                            mini_error_d2[26][0-2]           0           0                                0.00 
+                            mini_error_d2[27][0-2]           0           0                                0.00 
+                            mini_error_d2[28][0-2]           0           0                                0.00 
+                            mini_error_d2[29][0-2]           0           0                                0.00 
+                            mini_error_d2[30][0-2]           0           0                                0.00 
+                            mini_error_d2[31][0-2]           0           0                                0.00 
+                           mode_mask_data_d1[0-31]           0           0                                0.00 
+                           mode_mask_data_d2[0-31]           0           0                                0.00 
+                                 rollover_d1[0-31]           0           0                                0.00 
+                        score_accept_data_d1[0-15]           0           0                                0.00 
+                        score_accept_data_d2[0-15]           0           0                                0.00 
+                        score_reject_data_d1[0-15]           0           0                                0.00 
+                        score_reject_data_d2[0-15]           0           0                                0.00 
+                      soft_reset_req_data_d1[0-31]           0           0                                0.00 
+                      soft_reset_req_data_d2[0-31]           0           0                                0.00 
+                      soft_reset_req_data_d3[0-31]           0           0                                0.00 
+                             soft_reset_rise[0-31]           0           0                                0.00 
+                        steer_overflow_count[0-31]           0           0                                0.00 
+                            steer_queue_count[0-5]           0           0                                0.00 
+                                       steer_state               ENUM type       Value       Count 
+                                                            STEER_SCANNING           0        0.00 
+                                                           STEER_ATTACHING           0        0.00 
+                                                           STEER_RELEASING           0        0.00 
+                         sync_pattern_data_d1[0-9]           0           0                                0.00 
+                         sync_pattern_data_d2[0-9]           0           0                                0.00 
+
+Total Node Count     =       5271 
+Toggled Node Count   =       1732 
+Untoggled Node Count =       3539 
+
+Toggle Coverage      =      32.86% (3463 of 10538 bins)
+
+
+Total Coverage By Design Unit (filtered view): 27.38%
+
+End time: 12:32:19 on Apr 29,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0

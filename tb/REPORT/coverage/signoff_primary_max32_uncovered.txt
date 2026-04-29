@@ -1,0 +1,1570 @@
+QuestaSim-64 vcover 2026.1_1 Coverage Utility 2026.03 Mar  2 2026
+Start time: 13:04:48 on Apr 29,2026
+vcover report -details -du=work.mu3e_lvds_controller -codeAll tb/uvm/cov/signoff_primary_max32.ucdb 
+Coverage Report by DU with details
+
+=================================================================================
+=== Design Unit: work.mu3e_lvds_controller
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                       145       145         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for Design Unit work.mu3e_lvds_controller
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File /home/yifeng/packages/mu3e_ip_dev/worktrees/mu3e_lvds_controller_sv_rebuild_20260429/tb/uvm/../../rtl/mu3e_lvds_controller.sv
+------------------------------------IF Branch------------------------------------
+    260                                       76     Count coming in to IF
+    260             1                          4     
+                                              72     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    263                                       72     Count coming in to IF
+    263             1                          4     
+                                              68     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    270                                       50     Count coming in to IF
+    270             1                         14     
+                                              36     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    283                                  2129083     Count coming in to IF
+    283             1                        298     
+                                         2128785     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    290                                    37796     Count coming in to IF
+    290             1                          2     
+                                           37794     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    297                                   341724     Count coming in to IF
+    297             1                     341692     
+                                              32     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------CASE Branch------------------------------------
+    320                                  3177408     Count coming in to CASE
+    321             1                    1613952     
+    322             1                       7524     
+    324             1                       6564     
+    325             1                       3300     
+    327             1                       2818     
+    328             1                       3300     
+    335             1                    1539950     
+Branch totals: 7 hits of 7 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    330                                     6118     Count coming in to IF
+    330             1                        442     
+                                            5676     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    342                                  3177408     Count coming in to IF
+    342             1                    1554656     
+                                         1622752     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    345                                  3177408     Count coming in to IF
+    345             1                        810     
+                                         3176598     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------CASE Branch------------------------------------
+    397                                    82279     Count coming in to CASE
+    398             1                      63505     
+    399             1                        210     
+    400             1                       1490     
+    401             1                        264     
+    402             1                        566     
+    403             1                       2152     
+    404             1                       8460     
+    405             1                       2538     
+    406             1                        326     
+    407             1                        228     
+    408             1                        306     
+    409             1                        108     
+    417             1                       2126     
+Branch totals: 13 hits of 13 branches = 100.00%
+
+------------------------------------CASE Branch------------------------------------
+    410                                      108     Count coming in to CASE
+    411             1                         60     
+    412             1                         16     
+    413             1                         16     
+    414             1                         16     
+Branch totals: 4 hits of 4 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    418                                     2126     Count coming in to IF
+    418             1                       1604     
+                                             522     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    428                                     4183     Count coming in to IF
+    428             1                       1443     
+    442             1                       2740     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    444                                    87680     Count coming in to IF
+    444             1                        666     
+    451             1                      87014     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    445                                      666     Count coming in to IF
+    445             1                         74     
+    448             1                        592     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    456                                     2740     Count coming in to IF
+    456             1                        338     
+                                            2402     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------CASE Branch------------------------------------
+    457                                      338     Count coming in to CASE
+    458             1                         12     
+    463             1                         20     
+    468             1                         30     
+    471             1                         26     
+    474             1                         32     
+    482             1                         58     
+    485             1                         38     
+    489             1                         12     
+    492             1                         82     
+    499             1                         28     
+Branch totals: 10 hits of 10 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    459                                       12     Count coming in to IF
+    459             1                         10     
+                                               2     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    464                                       20     Count coming in to IF
+    464             1                         18     
+                                               2     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    477                                     1024     Count coming in to IF
+    477             1                         74     
+                                             950     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    493                                       82     Count coming in to IF
+    493             1                          6     
+    495             1                         76     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    504                                     2740     Count coming in to IF
+    504             1                        242     
+                                            2498     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    525                                    88010     Count coming in to IF
+    525             1                       1762     
+    593             1                      86248     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    610                                    86248     Count coming in to IF
+    610             1                       7096     
+    613             1                      79152     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    616                                    86248     Count coming in to IF
+    616             1                          8     
+                                           86240     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    643                                  2759936     Count coming in to IF
+    643             1                      91006     
+                                         2668930     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    646                                  2759936     Count coming in to IF
+    646             1                       1984     
+                                         2757952     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    670                                  2759936     Count coming in to IF
+    670             1                     861240     
+    678             1                        372     
+    686             1                         74     
+    699             1                        972     
+    707             1                        238     
+    715             1                     316360     
+    727             1                    1580680     
+Branch totals: 7 hits of 7 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    722                                   316360     Count coming in to IF
+    722             1                     316036     
+                                             324     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    733                                  1580680     Count coming in to IF
+    733             1                     158650     
+    737             1                    1422030     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    742                                  2759936     Count coming in to IF
+    742             1                    1897114     
+                                          862822     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    743                                  1897114     Count coming in to IF
+    743             1                     301656     
+                                         1595458     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    747                                  1897114     Count coming in to IF
+    747             1                       1252     
+                                         1895862     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    751                                  1897114     Count coming in to IF
+    751             1                       4341     
+                                         1892773     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    755                                  1897114     Count coming in to IF
+    755             1                    1412936     
+                                          484178     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    761                                  2759936     Count coming in to IF
+    761             1                        306     
+                                         2759630     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    765                                  2759936     Count coming in to IF
+    765             1                          2     
+                                         2759934     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    770                                  2759936     Count coming in to IF
+    770             1                      92990     
+                                         2666946     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    772                                    92990     Count coming in to IF
+    772             1                      91396     
+    788             1                       1594     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    775                                    91396     Count coming in to IF
+    775             1                      91380     
+                                              16     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    790                                     1594     Count coming in to IF
+    790             1                        758     
+    792             1                        836     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    802                                  2759936     Count coming in to IF
+    802             1                    1334922     
+    809             1                      37952     
+                                         1387062     All False Count
+Branch totals: 3 hits of 3 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    819                                   379520     Count coming in to IF
+    819             1                      37796     
+    822             1                     341724     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    827                                   379520     Count coming in to IF
+    827             1                      37256     
+                                          342264     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    833                                    37952     Count coming in to IF
+    833             1                        264     
+                                           37688     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    845                                    37952     Count coming in to IF
+    845             1                      33350     
+                                            4602     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    852                                    33350     Count coming in to IF
+    852             1                         89     
+                                           33261     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    860                                    86248     Count coming in to IF
+    860             1                      83550     
+                                            2698     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    861                                    83550     Count coming in to IF
+    861             1                      82804     
+                                             746     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    867                                  2759936     Count coming in to IF
+    867             1                     861240     
+    872             1                    1887330     
+                                           11366     All False Count
+Branch totals: 3 hits of 3 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    873                                  1887330     Count coming in to IF
+    873             1                      37547     
+    878             1                    1849783     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    888                                    86248     Count coming in to IF
+    888             1                         10     
+                                           86238     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    893                                    86248     Count coming in to IF
+    893             1                         10     
+                                           86238     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    901                                    86248     Count coming in to IF
+    901             1                          4     
+                                           86244     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    906                                    86248     Count coming in to IF
+    906             1                         66     
+                                           86182     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                      73        69         4    94.52%
+
+================================Condition Details================================
+
+Condition Coverage for Design Unit work.mu3e_lvds_controller --
+
+  File /home/yifeng/packages/mu3e_ip_dev/worktrees/mu3e_lvds_controller_sv_rebuild_20260429/tb/uvm/../../rtl/mu3e_lvds_controller.sv
+----------------Focused Condition View-------------------
+Line       260 Item    1  (value == 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       263 Item    1  (value > 1023)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       270 Item    1  (value >= accept)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       283 Item    1  (value == -1)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       290 Item    1  (value >= 1023)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       297 Item    1  (value == 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       330 Item    1  ((sync_pattern != 936) && (sync_pattern != 87))
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+             Input Term   Covered  Reason for no coverage   Hint
+            -----------  --------  -----------------------  --------------
+  (sync_pattern != 936)         Y
+   (sync_pattern != 87)         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target               Non-masking condition(s)      
+ ---------  ---------  --------------------     -------------------------     
+  Row   1:          2  (sync_pattern != 936)_0  -                             
+  Row   2:          4  (sync_pattern != 936)_1  (sync_pattern != 87)          
+  Row   3:    ***0***  (sync_pattern != 87)_0   (sync_pattern != 936)         
+  Row   4:          4  (sync_pattern != 87)_1   (sync_pattern != 936)         
+
+----------------Focused Condition View-------------------
+Line       342 Item    1  (symbol != sync_pattern)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       345 Item    1  (symbol == 1023)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       418 Item    1  ((avs_csr_address >= 17) && (avs_csr_address <= 26))
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       445 Item    1  (soft_reset_hold_count[lane_idx] >= 8)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       459 Item    1  (avs_csr_writedata <= 3)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       493 Item    1  (avs_csr_writedata >= 32)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       610 Item    1  (pll_reset_count != 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       616 Item    1  (plllock_d1 && ~coe_ctrl_plllock)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       643 Item    1  ((data_v_mode != 0) && data_v_error_event)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       646 Item    1  (((((lane_engine_seen[lane_idx] ~| data_v_decode.error[2]) && ((data_v_mode == 1) || (data_v_mode == 2))) && data_v_lane_live) && coe_ctrl_dpalock[lane_idx]) && (lane_good_count[lane_idx] >= score_accept_data_d2[7:0]))
+Condition totals: 6 of 7 input terms covered = 85.71%
+
+                                                Input Term   Covered  Reason for no coverage   Hint
+                                               -----------  --------  -----------------------  --------------
+                                lane_engine_seen[lane_idx]         Y
+                                    data_v_decode.error[2]         Y
+                                        (data_v_mode == 1)         Y
+                                        (data_v_mode == 2)         Y
+                                          data_v_lane_live         Y
+                                coe_ctrl_dpalock[lane_idx]         N  '_0' not hit             Hit '_0'
+  (lane_good_count[lane_idx] >= score_accept_data_d2[7:0])         Y
+
+     Rows:       Hits  FEC Target                                                  Non-masking condition(s)      
+ ---------  ---------  --------------------                                        -------------------------     
+  Row   1:         18  lane_engine_seen[lane_idx]_0                                ((lane_good_count[lane_idx] >= score_accept_data_d2[7:0]) && coe_ctrl_dpalock[lane_idx] && data_v_lane_live && ((data_v_mode == 1) || (data_v_mode == 2)) && ~data_v_decode.error[2])
+  Row   2:         22  lane_engine_seen[lane_idx]_1                                ~data_v_decode.error[2]       
+  Row   3:         18  data_v_decode.error[2]_0                                    ((lane_good_count[lane_idx] >= score_accept_data_d2[7:0]) && coe_ctrl_dpalock[lane_idx] && data_v_lane_live && ((data_v_mode == 1) || (data_v_mode == 2)) && ~lane_engine_seen[lane_idx])
+  Row   4:        323  data_v_decode.error[2]_1                                    ~lane_engine_seen[lane_idx]   
+  Row   5:        436  (data_v_mode == 1)_0                                        ((lane_engine_seen[lane_idx] ~| data_v_decode.error[2]) && ~(data_v_mode == 2))
+  Row   6:         16  (data_v_mode == 1)_1                                        ((lane_good_count[lane_idx] >= score_accept_data_d2[7:0]) && coe_ctrl_dpalock[lane_idx] && data_v_lane_live && (lane_engine_seen[lane_idx] ~| data_v_decode.error[2]))
+  Row   7:        436  (data_v_mode == 2)_0                                        ((lane_engine_seen[lane_idx] ~| data_v_decode.error[2]) && ~(data_v_mode == 1))
+  Row   8:          2  (data_v_mode == 2)_1                                        ((lane_good_count[lane_idx] >= score_accept_data_d2[7:0]) && coe_ctrl_dpalock[lane_idx] && data_v_lane_live && (lane_engine_seen[lane_idx] ~| data_v_decode.error[2]) && ~(data_v_mode == 1))
+  Row   9:          2  data_v_lane_live_0                                          ((lane_engine_seen[lane_idx] ~| data_v_decode.error[2]) && ((data_v_mode == 1) || (data_v_mode == 2)))
+ Row   10:         18  data_v_lane_live_1                                          ((lane_good_count[lane_idx] >= score_accept_data_d2[7:0]) && coe_ctrl_dpalock[lane_idx] && ((lane_engine_seen[lane_idx] ~| data_v_decode.error[2]) && ((data_v_mode == 1) || (data_v_mode == 2))))
+ Row   11:    ***0***  coe_ctrl_dpalock[lane_idx]_0                                (((lane_engine_seen[lane_idx] ~| data_v_decode.error[2]) && ((data_v_mode == 1) || (data_v_mode == 2))) && data_v_lane_live)
+ Row   12:         18  coe_ctrl_dpalock[lane_idx]_1                                ((lane_good_count[lane_idx] >= score_accept_data_d2[7:0]) && (((lane_engine_seen[lane_idx] ~| data_v_decode.error[2]) && ((data_v_mode == 1) || (data_v_mode == 2))) && data_v_lane_live))
+ Row   13:         12  (lane_good_count[lane_idx] >= score_accept_data_d2[7:0])_0  ((((lane_engine_seen[lane_idx] ~| data_v_decode.error[2]) && ((data_v_mode == 1) || (data_v_mode == 2))) && data_v_lane_live) && coe_ctrl_dpalock[lane_idx])
+ Row   14:         18  (lane_good_count[lane_idx] >= score_accept_data_d2[7:0])_1  ((((lane_engine_seen[lane_idx] ~| data_v_decode.error[2]) && ((data_v_mode == 1) || (data_v_mode == 2))) && data_v_lane_live) && coe_ctrl_dpalock[lane_idx])
+
+----------------Focused Condition View-------------------
+Line       670 Item    1  (lane_idx >= 32)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       699 Item    1  (coe_ctrl_plllock ~& coe_redriver_losn[lane_idx])
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       733 Item    1  (~dpa_hold_data_d2[lane_idx] && (lane_good_count[lane_idx] < score_accept_data_d2[7:0]))
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       742 Item    1  (data_v_lane_live && coe_ctrl_dpalock[lane_idx])
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       751 Item    1  (~loss_sync_d1[lane_idx] && data_v_decode.error[2])
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       755 Item    1  ((train_state[lane_idx] == TRAIN_HOLDING_LOCK) && ~data_v_decode.error[2])
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       761 Item    1  (dpalock_d1[lane_idx] && ~coe_ctrl_dpalock[lane_idx])
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       765 Item    1  (~rollover_d1[lane_idx] && coe_ctrl_rollover[lane_idx])
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       772 Item    1  ((~data_v_engine_taken[data_v_engine] || data_v_error_event) || (engine_attach_lane[data_v_engine] == lane_idx[5:0]))
+Condition totals: 3 of 3 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       775 Item    1  (~engine_busy[data_v_engine] || data_v_error_event)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       790 Item    1  (steer_queue_count < 4)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       802 Item    1  (engine_idx >= 32)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       819 Item    1  (data_v_phase_decode.error[0] ~| data_v_phase_decode.error[2])
+Condition totals: 0 of 2 input terms covered = 0.00%
+
+                    Input Term   Covered  Reason for no coverage   Hint
+                   -----------  --------  -----------------------  --------------
+  data_v_phase_decode.error[0]         N  '_1' not hit             Hit '_1'
+  data_v_phase_decode.error[2]         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                      Non-masking condition(s)      
+ ---------  ---------  --------------------            -------------------------     
+  Row   1:         42  data_v_phase_decode.error[0]_0  ~data_v_phase_decode.error[2] 
+  Row   2:    ***0***  data_v_phase_decode.error[0]_1  ~data_v_phase_decode.error[2] 
+  Row   3:         42  data_v_phase_decode.error[2]_0  ~data_v_phase_decode.error[0] 
+  Row   4:    ***0***  data_v_phase_decode.error[2]_1  ~data_v_phase_decode.error[0] 
+
+----------------Focused Condition View-------------------
+Line       827 Item    1  (engine_score[engine_idx][phase_idx] > data_v_best_score)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       833 Item    1  (engine_best_phase[engine_idx] != data_v_best_phase)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       845 Item    1  (((~lane_go_data_d2[data_v_attached_lane] || soft_reset_req_data_d2[data_v_attached_lane]) || (engine_age[engine_idx] >= {0,score_accept_data_d2[14:0]})) || (data_v_best_score >= score_accept_data_d2))
+Condition totals: 4 of 4 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       852 Item    1  (steer_queue_count != 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       861 Item    1  (steer_queue_count == 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       867 Item    1  (lane_idx >= 32)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       872 Item    1  (~aso_decoded_valid[lane_idx] || aso_decoded_ready[lane_idx])
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       888 Item    1  ((dv_debug_counter_we && (dv_debug_counter_lane < 32)) && (dv_debug_counter_idx < 10))
+Condition totals: 3 of 3 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       893 Item    1  ((dv_debug_engine_attach_we && (dv_debug_engine_idx < 32)) && (dv_debug_engine_lane < 32))
+Condition totals: 3 of 3 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       901 Item    1  ((dv_debug_engine_score_we && (dv_debug_engine_score_idx < 32)) && (dv_debug_engine_score_phase < 10))
+Condition totals: 3 of 3 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       906 Item    1  (dv_debug_engine_age_we && (dv_debug_engine_age_idx < 32))
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+
+Expression Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Expressions                     10         9         1    90.00%
+
+================================Expression Details================================
+
+Expression Coverage for Design Unit work.mu3e_lvds_controller --
+
+  File /home/yifeng/packages/mu3e_ip_dev/worktrees/mu3e_lvds_controller_sv_rebuild_20260429/tb/uvm/../../rtl/mu3e_lvds_controller.sv
+----------------Focused Expression View-----------------
+Line       635 Item    1  (lane_is_live(lane_idx,lane_go_data_d2) && coe_ctrl_plllock && coe_redriver_losn[lane_idx])
+Expression totals: 3 of 3 input terms covered = 100.00%
+
+----------------Focused Expression View-----------------
+Line       638 Item    1  ((data_v_lane_live && coe_ctrl_dpalock[lane_idx]) && (data_v_decode.error != 0))
+Expression totals: 3 of 3 input terms covered = 100.00%
+
+----------------Focused Expression View-----------------
+Line       655 Item    1  (data_v_lane_live && coe_ctrl_dpalock[lane_idx])
+Expression totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Expression View-----------------
+Line       731 Item    1  (~dpalock_d1[lane_idx] && coe_ctrl_dpalock[lane_idx])
+Expression totals: 1 of 2 input terms covered = 50.00%
+
+                  Input Term   Covered  Reason for no coverage   Hint
+                 -----------  --------  -----------------------  --------------
+        dpalock_d1[lane_idx]         Y
+  coe_ctrl_dpalock[lane_idx]         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target                    Non-masking condition(s)      
+ ---------  ---------  --------------------          -------------------------     
+  Row   1:        436  dpalock_d1[lane_idx]_0        coe_ctrl_dpalock[lane_idx]    
+  Row   2:        436  dpalock_d1[lane_idx]_1        -                             
+  Row   3:    ***0***  coe_ctrl_dpalock[lane_idx]_0  ~dpalock_d1[lane_idx]         
+  Row   4:        436  coe_ctrl_dpalock[lane_idx]_1  ~dpalock_d1[lane_idx]         
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                     333       330         3    99.09%
+
+================================Statement Details================================
+
+Statement Coverage for Design Unit work.mu3e_lvds_controller --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File /home/yifeng/packages/mu3e_ip_dev/worktrees/mu3e_lvds_controller_sv_rebuild_20260429/tb/uvm/../../rtl/mu3e_lvds_controller.sv
+    245             1                       1000     
+    248             1                    ***0***     
+    252             1                    ***0***     
+    256             1                    ***0***     
+    261             1                          4     
+    264             1                          4     
+    266             1                         68     
+    271             1                         14     
+    273             1                         36     
+    277             1                         20     
+    284             1                        298     
+    286             1                    2128785     
+    291             1                          2     
+    293             1                      37794     
+    298             1                     341692     
+    300             1                         32     
+    305             1                     379520     
+    306             1                     379520     
+    316             1                    3177408     
+    317             1                    3177408     
+    318             1                    3177408     
+    322             1                    1621476     
+    325             1                       9864     
+    329             1                       6118     
+    331             1                        442     
+    336             1                    1539950     
+    337             1                    1539950     
+    338             1                    1539950     
+    343             1                    1554656     
+    346             1                        810     
+    349             1                    3177408     
+    353             1                    2759936     
+    360             1                      26551     
+    362             1                      66439     
+    367             1                      92990     
+    373             1                    2759936     
+    391             1                      82279     
+    394             1                      82279     
+    395             1                      82279     
+    398             1                      63505     
+    399             1                        210     
+    400             1                       1490     
+    401             1                        264     
+    402             1                        566     
+    403             1                       2152     
+    404             1                       8460     
+    405             1                       2538     
+    406             1                        326     
+    407             1                        228     
+    408             1                        306     
+    411             1                         60     
+    412             1                         16     
+    413             1                         16     
+    414             1                         16     
+    420             1                       1604     
+    421             1                       1604     
+    427             1                       4183     
+    429             1                       1443     
+    430             1                       1443     
+    431             1                       1443     
+    432             1                       1443     
+    433             1                       1443     
+    434             1                       1443     
+    435             1                       1443     
+    436             1                       1443     
+    437             1                       1443     
+    438             1                       1443     
+    439             1                       1443     
+    439             2                      46176     
+    440             1                      46176     
+    443             1                       2740     
+    443             2                      87680     
+    446             1                         74     
+    447             1                         74     
+    449             1                        592     
+    452             1                      87014     
+    460             1                         10     
+    465             1                         18     
+    469             1                         30     
+    472             1                         26     
+    475             1                         32     
+    476             1                         32     
+    476             2                       1024     
+    478             1                         74     
+    483             1                         58     
+    486             1                         38     
+    487             1                         38     
+    490             1                         12     
+    494             1                          6     
+    496             1                         76     
+    505             1                        242     
+    510             1                      88010     
+    526             1                       1762     
+    527             1                       1762     
+    528             1                       1762     
+    529             1                       1762     
+    530             1                       1762     
+    531             1                       1762     
+    532             1                       1762     
+    533             1                       1762     
+    534             1                       1762     
+    535             1                       1762     
+    537             1                       1762     
+    538             1                       1762     
+    539             1                       1762     
+    540             1                       1762     
+    541             1                       1762     
+    542             1                       1762     
+    543             1                       1762     
+    544             1                       1762     
+    545             1                       1762     
+    546             1                       1762     
+    547             1                       1762     
+    548             1                       1762     
+    549             1                       1762     
+    550             1                       1762     
+    551             1                       1762     
+    553             1                       1762     
+    554             1                       1762     
+    555             1                       1762     
+    556             1                       1762     
+    557             1                       1762     
+    558             1                       1762     
+    559             1                       1762     
+    560             1                       1762     
+    561             1                       1762     
+    562             1                       1762     
+    563             1                       1762     
+    564             1                       1762     
+    565             1                       1762     
+    566             1                       1762     
+    567             1                       1762     
+    568             1                       1762     
+    570             1                       1762     
+    571             1                       1762     
+    572             1                       1762     
+    573             1                       1762     
+    574             1                       1762     
+    575             1                       1762     
+    576             1                       1762     
+    577             1                       1762     
+    578             1                       1762     
+    579             1                       1762     
+    581             1                       1762     
+    582             1                       1762     
+    583             1                       1762     
+    584             1                       1762     
+    585             1                       1762     
+    586             1                       1762     
+    587             1                       1762     
+    588             1                       1762     
+    590             1                       1762     
+    590             2                      56384     
+    591             1                      56384     
+    594             1                      86248     
+    595             1                      86248     
+    596             1                      86248     
+    597             1                      86248     
+    598             1                      86248     
+    599             1                      86248     
+    600             1                      86248     
+    601             1                      86248     
+    602             1                      86248     
+    603             1                      86248     
+    604             1                      86248     
+    605             1                      86248     
+    606             1                      86248     
+    607             1                      86248     
+    608             1                      86248     
+    611             1                       7096     
+    612             1                       7096     
+    614             1                      79152     
+    617             1                          8     
+    618             1                          8     
+    620             1                      86248     
+    621             1                      86248     
+    622             1                      86248     
+    623             1                      86248     
+    624             1                      86248     
+    625             1                      86248     
+    627             1                      86248     
+    628             1                      86248     
+    629             1                      86248     
+    630             1                      86248     
+    632             1                      86248     
+    632             2                    2759936     
+    633             1                    2759936     
+    634             1                    2759936     
+    635             1                    2759936     
+    638             1                    2759936     
+    641             1                    2759936     
+    642             1                    2759936     
+    644             1                      91006     
+    652             1                       1984     
+    655             1                    2759936     
+    656             1                    2759936     
+    657             1                    2759936     
+    658             1                    2759936     
+    660             1                    2759936     
+    661             1                    2759936     
+    662             1                    2759936     
+    663             1                    2759936     
+    665             1                    2759936     
+    666             1                    2759936     
+    667             1                    2759936     
+    668             1                    2759936     
+    671             1                     861240     
+    672             1                     861240     
+    673             1                     861240     
+    674             1                     861240     
+    675             1                     861240     
+    676             1                     861240     
+    677             1                     861240     
+    679             1                        372     
+    680             1                        372     
+    681             1                        372     
+    682             1                        372     
+    683             1                        372     
+    684             1                        372     
+    685             1                        372     
+    687             1                         74     
+    688             1                         74     
+    689             1                         74     
+    690             1                         74     
+    691             1                         74     
+    692             1                         74     
+    693             1                         74     
+    695             1                         74     
+    697             1                         74     
+    700             1                        972     
+    701             1                        972     
+    702             1                        972     
+    703             1                        972     
+    704             1                        972     
+    705             1                        972     
+    706             1                        972     
+    708             1                        238     
+    709             1                        238     
+    710             1                        238     
+    711             1                        238     
+    712             1                        238     
+    713             1                        238     
+    714             1                        238     
+    716             1                     316360     
+    717             1                     316360     
+    718             1                     316360     
+    719             1                     316360     
+    720             1                     316360     
+    721             1                     316360     
+    723             1                     316036     
+    724             1                     316036     
+    728             1                    1580680     
+    729             1                    1580680     
+    730             1                    1580680     
+    731             1                    1580680     
+    735             1                     158650     
+    736             1                     158650     
+    738             1                    1422030     
+    744             1                     301656     
+    748             1                       1252     
+    752             1                       4341     
+    756             1                    1412936     
+    762             1                        306     
+    766             1                          2     
+    771             1                      92990     
+    777             1                      91380     
+    778             1                      91380     
+    779             1                      91380     
+    780             1                      91380     
+    781             1                      91380     
+    782             1                      91380     
+    783             1                      91380     
+    784             1                      91380     
+    786             1                      91380     
+    789             1                       1594     
+    791             1                        758     
+    793             1                        836     
+    798             1                    2759936     
+    801             1                      86248     
+    801             2                    2759936     
+    803             1                    1334922     
+    804             1                    1334922     
+    805             1                    1334922     
+    806             1                    1334922     
+    807             1                    1334922     
+    808             1                    1334922     
+    810             1                      37952     
+    811             1                      37952     
+    812             1                      37952     
+    813             1                      37952     
+    814             1                      37952     
+    816             1                      37952     
+    816             2                     379520     
+    817             1                     379520     
+    818             1                     379520     
+    820             1                      37796     
+    823             1                     341724     
+    828             1                      37256     
+    829             1                      37256     
+    834             1                        264     
+    835             1                        264     
+    839             1                      37952     
+    840             1                      37952     
+    841             1                      37952     
+    842             1                      37952     
+    843             1                      37952     
+    849             1                      33350     
+    850             1                      33350     
+    851             1                      33350     
+    853             1                         89     
+    855             1                      33350     
+    862             1                      82804     
+    866             1                      86248     
+    866             2                    2759936     
+    868             1                     861240     
+    869             1                     861240     
+    870             1                     861240     
+    871             1                     861240     
+    874             1                      37547     
+    875             1                      37547     
+    876             1                      37547     
+    877             1                      37547     
+    879             1                    1849783     
+    880             1                    1849783     
+    881             1                    1849783     
+    882             1                    1849783     
+    891             1                         10     
+    896             1                         10     
+    897             1                         10     
+    898             1                         10     
+    899             1                         10     
+    904             1                          4     
+    908             1                         66     
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                      10538      8534      2004    80.98%
+
+================================Toggle Details================================
+
+Toggle Coverage for Design Unit work.mu3e_lvds_controller
+
+                                              Node      1H->0L      0L->1H                          "Coverage"
+                                              ---------------------------------------------------------------
+                       aso_decoded_channel[0][0-5]           0           0                                0.00 
+                       aso_decoded_channel[1][1-5]           0           0                                0.00 
+                         aso_decoded_channel[2][0]           0           0                                0.00 
+                       aso_decoded_channel[2][2-5]           0           0                                0.00 
+                       aso_decoded_channel[3][2-5]           0           0                                0.00 
+                       aso_decoded_channel[4][0-1]           0           0                                0.00 
+                       aso_decoded_channel[4][3-5]           0           0                                0.00 
+                         aso_decoded_channel[5][1]           0           0                                0.00 
+                       aso_decoded_channel[5][3-5]           0           0                                0.00 
+                         aso_decoded_channel[6][0]           0           0                                0.00 
+                       aso_decoded_channel[6][3-5]           0           0                                0.00 
+                       aso_decoded_channel[7][3-5]           0           0                                0.00 
+                       aso_decoded_channel[8][0-2]           0           0                                0.00 
+                       aso_decoded_channel[8][4-5]           0           0                                0.00 
+                       aso_decoded_channel[9][1-2]           0           0                                0.00 
+                       aso_decoded_channel[9][4-5]           0           0                                0.00 
+                        aso_decoded_channel[10][0]           0           0                                0.00 
+                        aso_decoded_channel[10][2]           0           0                                0.00 
+                      aso_decoded_channel[10][4-5]           0           0                                0.00 
+                        aso_decoded_channel[11][2]           0           0                                0.00 
+                      aso_decoded_channel[11][4-5]           0           0                                0.00 
+                      aso_decoded_channel[12][0-1]           0           0                                0.00 
+                      aso_decoded_channel[12][4-5]           0           0                                0.00 
+                        aso_decoded_channel[13][1]           0           0                                0.00 
+                      aso_decoded_channel[13][4-5]           0           0                                0.00 
+                        aso_decoded_channel[14][0]           0           0                                0.00 
+                      aso_decoded_channel[14][4-5]           0           0                                0.00 
+                      aso_decoded_channel[15][4-5]           0           0                                0.00 
+                      aso_decoded_channel[16][0-3]           0           0                                0.00 
+                        aso_decoded_channel[16][5]           0           0                                0.00 
+                      aso_decoded_channel[17][1-3]           0           0                                0.00 
+                        aso_decoded_channel[17][5]           0           0                                0.00 
+                        aso_decoded_channel[18][0]           0           0                                0.00 
+                      aso_decoded_channel[18][2-3]           0           0                                0.00 
+                        aso_decoded_channel[18][5]           0           0                                0.00 
+                      aso_decoded_channel[19][2-3]           0           0                                0.00 
+                        aso_decoded_channel[19][5]           0           0                                0.00 
+                      aso_decoded_channel[20][0-1]           0           0                                0.00 
+                        aso_decoded_channel[20][3]           0           0                                0.00 
+                        aso_decoded_channel[20][5]           0           0                                0.00 
+                        aso_decoded_channel[21][1]           0           0                                0.00 
+                        aso_decoded_channel[21][3]           0           0                                0.00 
+                        aso_decoded_channel[21][5]           0           0                                0.00 
+                        aso_decoded_channel[22][0]           0           0                                0.00 
+                        aso_decoded_channel[22][3]           0           0                                0.00 
+                        aso_decoded_channel[22][5]           0           0                                0.00 
+                        aso_decoded_channel[23][3]           0           0                                0.00 
+                        aso_decoded_channel[23][5]           0           0                                0.00 
+                      aso_decoded_channel[24][0-2]           0           0                                0.00 
+                        aso_decoded_channel[24][5]           0           0                                0.00 
+                      aso_decoded_channel[25][1-2]           0           0                                0.00 
+                        aso_decoded_channel[25][5]           0           0                                0.00 
+                        aso_decoded_channel[26][0]           0           0                                0.00 
+                        aso_decoded_channel[26][2]           0           0                                0.00 
+                        aso_decoded_channel[26][5]           0           0                                0.00 
+                        aso_decoded_channel[27][2]           0           0                                0.00 
+                        aso_decoded_channel[27][5]           0           0                                0.00 
+                      aso_decoded_channel[28][0-1]           0           0                                0.00 
+                        aso_decoded_channel[28][5]           0           0                                0.00 
+                        aso_decoded_channel[29][1]           0           0                                0.00 
+                        aso_decoded_channel[29][5]           0           0                                0.00 
+                        aso_decoded_channel[30][0]           0           0                                0.00 
+                        aso_decoded_channel[30][5]           0           0                                0.00 
+                        aso_decoded_channel[31][5]           0           0                                0.00 
+                               avs_csr_waitrequest           0           0                                0.00 
+                                csr.lane_select[5]           0           0                                0.00 
+                                  csr.mode_mask[3]           0           0                                0.00 
+                                  csr.mode_mask[5]           0           0                                0.00 
+                                  csr.mode_mask[7]           0           0                                0.00 
+                                  csr.mode_mask[9]           0           0                                0.00 
+                                 csr.mode_mask[11]           0           0                                0.00 
+                                 csr.mode_mask[13]           0           0                                0.00 
+                                 csr.mode_mask[15]           0           0                                0.00 
+                                 csr.mode_mask[17]           0           0                                0.00 
+                                 csr.mode_mask[19]           0           0                                0.00 
+                                 csr.mode_mask[21]           0           0                                0.00 
+                                 csr.mode_mask[23]           0           0                                0.00 
+                                 csr.mode_mask[25]           0           0                                0.00 
+                                 csr.mode_mask[27]           0           0                                0.00 
+                                 csr.mode_mask[29]           0           0                                0.00 
+                                 csr.mode_mask[31]           0           0                                0.00 
+                           csr.score_accept[10-15]           0           0                                0.00 
+                            csr.score_reject[3-15]           0           0                                0.00 
+                               csr.sync_pattern[0]           0           0                                0.00 
+                               csr.sync_pattern[5]           0           0                                0.00 
+                               csr.sync_pattern[7]           0           0                                0.00 
+                         csr_capability_word[0-31]           0           0                                0.00 
+                            csr_version_word[0-31]           0           0                                0.00 
+                        engine_attach_lane[0][4-5]           0           0                                0.00 
+                        engine_attach_lane[1][1-5]           0           0                                0.00 
+                          engine_attach_lane[2][0]           0           0                                0.00 
+                        engine_attach_lane[2][2-5]           0           0                                0.00 
+                        engine_attach_lane[3][2-5]           0           0                                0.00 
+                        engine_attach_lane[4][0-1]           0           0                                0.00 
+                        engine_attach_lane[4][3-5]           0           0                                0.00 
+                          engine_attach_lane[5][1]           0           0                                0.00 
+                        engine_attach_lane[5][3-5]           0           0                                0.00 
+                          engine_attach_lane[6][0]           0           0                                0.00 
+                        engine_attach_lane[6][3-5]           0           0                                0.00 
+                        engine_attach_lane[7][3-5]           0           0                                0.00 
+                        engine_attach_lane[8][0-2]           0           0                                0.00 
+                        engine_attach_lane[8][4-5]           0           0                                0.00 
+                        engine_attach_lane[9][1-2]           0           0                                0.00 
+                        engine_attach_lane[9][4-5]           0           0                                0.00 
+                         engine_attach_lane[10][0]           0           0                                0.00 
+                         engine_attach_lane[10][2]           0           0                                0.00 
+                       engine_attach_lane[10][4-5]           0           0                                0.00 
+                         engine_attach_lane[11][2]           0           0                                0.00 
+                       engine_attach_lane[11][4-5]           0           0                                0.00 
+                       engine_attach_lane[12][0-1]           0           0                                0.00 
+                       engine_attach_lane[12][4-5]           0           0                                0.00 
+                         engine_attach_lane[13][1]           0           0                                0.00 
+                       engine_attach_lane[13][4-5]           0           0                                0.00 
+                         engine_attach_lane[14][0]           0           0                                0.00 
+                       engine_attach_lane[14][4-5]           0           0                                0.00 
+                       engine_attach_lane[15][4-5]           0           0                                0.00 
+                       engine_attach_lane[16][0-3]           0           0                                0.00 
+                         engine_attach_lane[16][5]           0           0                                0.00 
+                       engine_attach_lane[17][1-3]           0           0                                0.00 
+                         engine_attach_lane[17][5]           0           0                                0.00 
+                         engine_attach_lane[18][0]           0           0                                0.00 
+                       engine_attach_lane[18][2-3]           0           0                                0.00 
+                         engine_attach_lane[18][5]           0           0                                0.00 
+                       engine_attach_lane[19][2-3]           0           0                                0.00 
+                         engine_attach_lane[19][5]           0           0                                0.00 
+                       engine_attach_lane[20][0-1]           0           0                                0.00 
+                         engine_attach_lane[20][3]           0           0                                0.00 
+                         engine_attach_lane[20][5]           0           0                                0.00 
+                         engine_attach_lane[21][1]           0           0                                0.00 
+                         engine_attach_lane[21][3]           0           0                                0.00 
+                         engine_attach_lane[21][5]           0           0                                0.00 
+                         engine_attach_lane[22][0]           0           0                                0.00 
+                         engine_attach_lane[22][3]           0           0                                0.00 
+                         engine_attach_lane[22][5]           0           0                                0.00 
+                         engine_attach_lane[23][3]           0           0                                0.00 
+                         engine_attach_lane[23][5]           0           0                                0.00 
+                       engine_attach_lane[24][0-2]           0           0                                0.00 
+                         engine_attach_lane[24][5]           0           0                                0.00 
+                       engine_attach_lane[25][1-2]           0           0                                0.00 
+                         engine_attach_lane[25][5]           0           0                                0.00 
+                         engine_attach_lane[26][0]           0           0                                0.00 
+                         engine_attach_lane[26][2]           0           0                                0.00 
+                         engine_attach_lane[26][5]           0           0                                0.00 
+                         engine_attach_lane[27][2]           0           0                                0.00 
+                         engine_attach_lane[27][5]           0           0                                0.00 
+                       engine_attach_lane[28][0-1]           0           0                                0.00 
+                         engine_attach_lane[28][5]           0           0                                0.00 
+                         engine_attach_lane[29][1]           0           0                                0.00 
+                         engine_attach_lane[29][5]           0           0                                0.00 
+                         engine_attach_lane[30][0]           0           0                                0.00 
+                         engine_attach_lane[30][5]           0           0                                0.00 
+                         engine_attach_lane[31][5]           0           0                                0.00 
+                         engine_channel_d1[0][0-5]           0           0                                0.00 
+                         engine_channel_d1[1][1-5]           0           0                                0.00 
+                           engine_channel_d1[2][0]           0           0                                0.00 
+                         engine_channel_d1[2][2-5]           0           0                                0.00 
+                         engine_channel_d1[3][2-5]           0           0                                0.00 
+                         engine_channel_d1[4][0-1]           0           0                                0.00 
+                         engine_channel_d1[4][3-5]           0           0                                0.00 
+                           engine_channel_d1[5][1]           0           0                                0.00 
+                         engine_channel_d1[5][3-5]           0           0                                0.00 
+                           engine_channel_d1[6][0]           0           0                                0.00 
+                         engine_channel_d1[6][3-5]           0           0                                0.00 
+                         engine_channel_d1[7][3-5]           0           0                                0.00 
+                         engine_channel_d1[8][0-2]           0           0                                0.00 
+                         engine_channel_d1[8][4-5]           0           0                                0.00 
+                         engine_channel_d1[9][1-2]           0           0                                0.00 
+                         engine_channel_d1[9][4-5]           0           0                                0.00 
+                          engine_channel_d1[10][0]           0           0                                0.00 
+                          engine_channel_d1[10][2]           0           0                                0.00 
+                        engine_channel_d1[10][4-5]           0           0                                0.00 
+                          engine_channel_d1[11][2]           0           0                                0.00 
+                        engine_channel_d1[11][4-5]           0           0                                0.00 
+                        engine_channel_d1[12][0-1]           0           0                                0.00 
+                        engine_channel_d1[12][4-5]           0           0                                0.00 
+                          engine_channel_d1[13][1]           0           0                                0.00 
+                        engine_channel_d1[13][4-5]           0           0                                0.00 
+                          engine_channel_d1[14][0]           0           0                                0.00 
+                        engine_channel_d1[14][4-5]           0           0                                0.00 
+                        engine_channel_d1[15][4-5]           0           0                                0.00 
+                        engine_channel_d1[16][0-3]           0           0                                0.00 
+                          engine_channel_d1[16][5]           0           0                                0.00 
+                        engine_channel_d1[17][1-3]           0           0                                0.00 
+                          engine_channel_d1[17][5]           0           0                                0.00 
+                          engine_channel_d1[18][0]           0           0                                0.00 
+                        engine_channel_d1[18][2-3]           0           0                                0.00 
+                          engine_channel_d1[18][5]           0           0                                0.00 
+                        engine_channel_d1[19][2-3]           0           0                                0.00 
+                          engine_channel_d1[19][5]           0           0                                0.00 
+                        engine_channel_d1[20][0-1]           0           0                                0.00 
+                          engine_channel_d1[20][3]           0           0                                0.00 
+                          engine_channel_d1[20][5]           0           0                                0.00 
+                          engine_channel_d1[21][1]           0           0                                0.00 
+                          engine_channel_d1[21][3]           0           0                                0.00 
+                          engine_channel_d1[21][5]           0           0                                0.00 
+                          engine_channel_d1[22][0]           0           0                                0.00 
+                          engine_channel_d1[22][3]           0           0                                0.00 
+                          engine_channel_d1[22][5]           0           0                                0.00 
+                          engine_channel_d1[23][3]           0           0                                0.00 
+                          engine_channel_d1[23][5]           0           0                                0.00 
+                        engine_channel_d1[24][0-2]           0           0                                0.00 
+                          engine_channel_d1[24][5]           0           0                                0.00 
+                        engine_channel_d1[25][1-2]           0           0                                0.00 
+                          engine_channel_d1[25][5]           0           0                                0.00 
+                          engine_channel_d1[26][0]           0           0                                0.00 
+                          engine_channel_d1[26][2]           0           0                                0.00 
+                          engine_channel_d1[26][5]           0           0                                0.00 
+                          engine_channel_d1[27][2]           0           0                                0.00 
+                          engine_channel_d1[27][5]           0           0                                0.00 
+                        engine_channel_d1[28][0-1]           0           0                                0.00 
+                          engine_channel_d1[28][5]           0           0                                0.00 
+                          engine_channel_d1[29][1]           0           0                                0.00 
+                          engine_channel_d1[29][5]           0           0                                0.00 
+                          engine_channel_d1[30][0]           0           0                                0.00 
+                          engine_channel_d1[30][5]           0           0                                0.00 
+                          engine_channel_d1[31][5]           0           0                                0.00 
+                         engine_channel_d2[0][0-5]           0           0                                0.00 
+                         engine_channel_d2[1][1-5]           0           0                                0.00 
+                           engine_channel_d2[2][0]           0           0                                0.00 
+                         engine_channel_d2[2][2-5]           0           0                                0.00 
+                         engine_channel_d2[3][2-5]           0           0                                0.00 
+                         engine_channel_d2[4][0-1]           0           0                                0.00 
+                         engine_channel_d2[4][3-5]           0           0                                0.00 
+                           engine_channel_d2[5][1]           0           0                                0.00 
+                         engine_channel_d2[5][3-5]           0           0                                0.00 
+                           engine_channel_d2[6][0]           0           0                                0.00 
+                         engine_channel_d2[6][3-5]           0           0                                0.00 
+                         engine_channel_d2[7][3-5]           0           0                                0.00 
+                         engine_channel_d2[8][0-2]           0           0                                0.00 
+                         engine_channel_d2[8][4-5]           0           0                                0.00 
+                         engine_channel_d2[9][1-2]           0           0                                0.00 
+                         engine_channel_d2[9][4-5]           0           0                                0.00 
+                          engine_channel_d2[10][0]           0           0                                0.00 
+                          engine_channel_d2[10][2]           0           0                                0.00 
+                        engine_channel_d2[10][4-5]           0           0                                0.00 
+                          engine_channel_d2[11][2]           0           0                                0.00 
+                        engine_channel_d2[11][4-5]           0           0                                0.00 
+                        engine_channel_d2[12][0-1]           0           0                                0.00 
+                        engine_channel_d2[12][4-5]           0           0                                0.00 
+                          engine_channel_d2[13][1]           0           0                                0.00 
+                        engine_channel_d2[13][4-5]           0           0                                0.00 
+                          engine_channel_d2[14][0]           0           0                                0.00 
+                        engine_channel_d2[14][4-5]           0           0                                0.00 
+                        engine_channel_d2[15][4-5]           0           0                                0.00 
+                        engine_channel_d2[16][0-3]           0           0                                0.00 
+                          engine_channel_d2[16][5]           0           0                                0.00 
+                        engine_channel_d2[17][1-3]           0           0                                0.00 
+                          engine_channel_d2[17][5]           0           0                                0.00 
+                          engine_channel_d2[18][0]           0           0                                0.00 
+                        engine_channel_d2[18][2-3]           0           0                                0.00 
+                          engine_channel_d2[18][5]           0           0                                0.00 
+                        engine_channel_d2[19][2-3]           0           0                                0.00 
+                          engine_channel_d2[19][5]           0           0                                0.00 
+                        engine_channel_d2[20][0-1]           0           0                                0.00 
+                          engine_channel_d2[20][3]           0           0                                0.00 
+                          engine_channel_d2[20][5]           0           0                                0.00 
+                          engine_channel_d2[21][1]           0           0                                0.00 
+                          engine_channel_d2[21][3]           0           0                                0.00 
+                          engine_channel_d2[21][5]           0           0                                0.00 
+                          engine_channel_d2[22][0]           0           0                                0.00 
+                          engine_channel_d2[22][3]           0           0                                0.00 
+                          engine_channel_d2[22][5]           0           0                                0.00 
+                          engine_channel_d2[23][3]           0           0                                0.00 
+                          engine_channel_d2[23][5]           0           0                                0.00 
+                        engine_channel_d2[24][0-2]           0           0                                0.00 
+                          engine_channel_d2[24][5]           0           0                                0.00 
+                        engine_channel_d2[25][1-2]           0           0                                0.00 
+                          engine_channel_d2[25][5]           0           0                                0.00 
+                          engine_channel_d2[26][0]           0           0                                0.00 
+                          engine_channel_d2[26][2]           0           0                                0.00 
+                          engine_channel_d2[26][5]           0           0                                0.00 
+                          engine_channel_d2[27][2]           0           0                                0.00 
+                          engine_channel_d2[27][5]           0           0                                0.00 
+                        engine_channel_d2[28][0-1]           0           0                                0.00 
+                          engine_channel_d2[28][5]           0           0                                0.00 
+                          engine_channel_d2[29][1]           0           0                                0.00 
+                          engine_channel_d2[29][5]           0           0                                0.00 
+                          engine_channel_d2[30][0]           0           0                                0.00 
+                          engine_channel_d2[30][5]           0           0                                0.00 
+                          engine_channel_d2[31][5]           0           0                                0.00 
+                             engine_error_d1[0][1]           0           0                                0.00 
+                             engine_error_d1[1][1]           0           0                                0.00 
+                             engine_error_d1[2][1]           0           0                                0.00 
+                             engine_error_d1[3][1]           0           0                                0.00 
+                             engine_error_d1[4][1]           0           0                                0.00 
+                             engine_error_d1[5][1]           0           0                                0.00 
+                             engine_error_d1[6][1]           0           0                                0.00 
+                             engine_error_d1[7][1]           0           0                                0.00 
+                             engine_error_d1[8][1]           0           0                                0.00 
+                             engine_error_d1[9][1]           0           0                                0.00 
+                            engine_error_d1[10][1]           0           0                                0.00 
+                            engine_error_d1[11][1]           0           0                                0.00 
+                            engine_error_d1[12][1]           0           0                                0.00 
+                            engine_error_d1[13][1]           0           0                                0.00 
+                            engine_error_d1[14][1]           0           0                                0.00 
+                            engine_error_d1[15][1]           0           0                                0.00 
+                            engine_error_d1[16][1]           0           0                                0.00 
+                            engine_error_d1[17][1]           0           0                                0.00 
+                            engine_error_d1[18][1]           0           0                                0.00 
+                            engine_error_d1[19][1]           0           0                                0.00 
+                            engine_error_d1[20][1]           0           0                                0.00 
+                            engine_error_d1[21][1]           0           0                                0.00 
+                            engine_error_d1[22][1]           0           0                                0.00 
+                            engine_error_d1[23][1]           0           0                                0.00 
+                            engine_error_d1[24][1]           0           0                                0.00 
+                            engine_error_d1[25][1]           0           0                                0.00 
+                            engine_error_d1[26][1]           0           0                                0.00 
+                            engine_error_d1[27][1]           0           0                                0.00 
+                            engine_error_d1[28][1]           0           0                                0.00 
+                            engine_error_d1[29][1]           0           0                                0.00 
+                            engine_error_d1[30][1]           0           0                                0.00 
+                            engine_error_d1[31][1]           0           0                                0.00 
+                             engine_error_d2[0][1]           0           0                                0.00 
+                             engine_error_d2[1][1]           0           0                                0.00 
+                             engine_error_d2[2][1]           0           0                                0.00 
+                             engine_error_d2[3][1]           0           0                                0.00 
+                             engine_error_d2[4][1]           0           0                                0.00 
+                             engine_error_d2[5][1]           0           0                                0.00 
+                             engine_error_d2[6][1]           0           0                                0.00 
+                             engine_error_d2[7][1]           0           0                                0.00 
+                             engine_error_d2[8][1]           0           0                                0.00 
+                             engine_error_d2[9][1]           0           0                                0.00 
+                            engine_error_d2[10][1]           0           0                                0.00 
+                            engine_error_d2[11][1]           0           0                                0.00 
+                            engine_error_d2[12][1]           0           0                                0.00 
+                            engine_error_d2[13][1]           0           0                                0.00 
+                            engine_error_d2[14][1]           0           0                                0.00 
+                            engine_error_d2[15][1]           0           0                                0.00 
+                            engine_error_d2[16][1]           0           0                                0.00 
+                            engine_error_d2[17][1]           0           0                                0.00 
+                            engine_error_d2[18][1]           0           0                                0.00 
+                            engine_error_d2[19][1]           0           0                                0.00 
+                            engine_error_d2[20][1]           0           0                                0.00 
+                            engine_error_d2[21][1]           0           0                                0.00 
+                            engine_error_d2[22][1]           0           0                                0.00 
+                            engine_error_d2[23][1]           0           0                                0.00 
+                            engine_error_d2[24][1]           0           0                                0.00 
+                            engine_error_d2[25][1]           0           0                                0.00 
+                            engine_error_d2[26][1]           0           0                                0.00 
+                            engine_error_d2[27][1]           0           0                                0.00 
+                            engine_error_d2[28][1]           0           0                                0.00 
+                            engine_error_d2[29][1]           0           0                                0.00 
+                            engine_error_d2[30][1]           0           0                                0.00 
+                            engine_error_d2[31][1]           0           0                                0.00 
+                             lane_good_count[0][7]           0           0                                0.00 
+                             lane_good_count[1][7]           0           0                                0.00 
+                             lane_good_count[2][7]           0           0                                0.00 
+                             lane_good_count[3][7]           0           0                                0.00 
+                             lane_good_count[4][7]           0           0                                0.00 
+                             lane_good_count[5][7]           0           0                                0.00 
+                             lane_good_count[6][7]           0           0                                0.00 
+                             lane_good_count[7][7]           0           0                                0.00 
+                             lane_good_count[8][7]           0           0                                0.00 
+                             lane_good_count[9][7]           0           0                                0.00 
+                            lane_good_count[10][7]           0           0                                0.00 
+                            lane_good_count[11][7]           0           0                                0.00 
+                            lane_good_count[12][7]           0           0                                0.00 
+                            lane_good_count[13][7]           0           0                                0.00 
+                            lane_good_count[14][7]           0           0                                0.00 
+                            lane_good_count[15][7]           0           0                                0.00 
+                            lane_good_count[16][7]           0           0                                0.00 
+                            lane_good_count[17][7]           0           0                                0.00 
+                            lane_good_count[18][7]           0           0                                0.00 
+                            lane_good_count[19][7]           0           0                                0.00 
+                            lane_good_count[20][7]           0           0                                0.00 
+                            lane_good_count[21][7]           0           0                                0.00 
+                            lane_good_count[22][7]           0           0                                0.00 
+                            lane_good_count[23][7]           0           0                                0.00 
+                            lane_good_count[24][7]           0           0                                0.00 
+                            lane_good_count[25][7]           0           0                                0.00 
+                            lane_good_count[26][7]           0           0                                0.00 
+                            lane_good_count[27][7]           0           0                                0.00 
+                            lane_good_count[28][7]           0           0                                0.00 
+                            lane_good_count[29][7]           0           0                                0.00 
+                            lane_good_count[30][7]           0           0                                0.00 
+                            lane_good_count[31][7]           0           0                                0.00 
+                           mini_channel_d1[0][0-5]           0           0                                0.00 
+                           mini_channel_d1[1][1-5]           0           0                                0.00 
+                             mini_channel_d1[2][0]           0           0                                0.00 
+                           mini_channel_d1[2][2-5]           0           0                                0.00 
+                           mini_channel_d1[3][2-5]           0           0                                0.00 
+                           mini_channel_d1[4][0-1]           0           0                                0.00 
+                           mini_channel_d1[4][3-5]           0           0                                0.00 
+                             mini_channel_d1[5][1]           0           0                                0.00 
+                           mini_channel_d1[5][3-5]           0           0                                0.00 
+                             mini_channel_d1[6][0]           0           0                                0.00 
+                           mini_channel_d1[6][3-5]           0           0                                0.00 
+                           mini_channel_d1[7][3-5]           0           0                                0.00 
+                           mini_channel_d1[8][0-2]           0           0                                0.00 
+                           mini_channel_d1[8][4-5]           0           0                                0.00 
+                           mini_channel_d1[9][1-2]           0           0                                0.00 
+                           mini_channel_d1[9][4-5]           0           0                                0.00 
+                            mini_channel_d1[10][0]           0           0                                0.00 
+                            mini_channel_d1[10][2]           0           0                                0.00 
+                          mini_channel_d1[10][4-5]           0           0                                0.00 
+                            mini_channel_d1[11][2]           0           0                                0.00 
+                          mini_channel_d1[11][4-5]           0           0                                0.00 
+                          mini_channel_d1[12][0-1]           0           0                                0.00 
+                          mini_channel_d1[12][4-5]           0           0                                0.00 
+                            mini_channel_d1[13][1]           0           0                                0.00 
+                          mini_channel_d1[13][4-5]           0           0                                0.00 
+                            mini_channel_d1[14][0]           0           0                                0.00 
+                          mini_channel_d1[14][4-5]           0           0                                0.00 
+                          mini_channel_d1[15][4-5]           0           0                                0.00 
+                          mini_channel_d1[16][0-3]           0           0                                0.00 
+                            mini_channel_d1[16][5]           0           0                                0.00 
+                          mini_channel_d1[17][1-3]           0           0                                0.00 
+                            mini_channel_d1[17][5]           0           0                                0.00 
+                            mini_channel_d1[18][0]           0           0                                0.00 
+                          mini_channel_d1[18][2-3]           0           0                                0.00 
+                            mini_channel_d1[18][5]           0           0                                0.00 
+                          mini_channel_d1[19][2-3]           0           0                                0.00 
+                            mini_channel_d1[19][5]           0           0                                0.00 
+                          mini_channel_d1[20][0-1]           0           0                                0.00 
+                            mini_channel_d1[20][3]           0           0                                0.00 
+                            mini_channel_d1[20][5]           0           0                                0.00 
+                            mini_channel_d1[21][1]           0           0                                0.00 
+                            mini_channel_d1[21][3]           0           0                                0.00 
+                            mini_channel_d1[21][5]           0           0                                0.00 
+                            mini_channel_d1[22][0]           0           0                                0.00 
+                            mini_channel_d1[22][3]           0           0                                0.00 
+                            mini_channel_d1[22][5]           0           0                                0.00 
+                            mini_channel_d1[23][3]           0           0                                0.00 
+                            mini_channel_d1[23][5]           0           0                                0.00 
+                          mini_channel_d1[24][0-2]           0           0                                0.00 
+                            mini_channel_d1[24][5]           0           0                                0.00 
+                          mini_channel_d1[25][1-2]           0           0                                0.00 
+                            mini_channel_d1[25][5]           0           0                                0.00 
+                            mini_channel_d1[26][0]           0           0                                0.00 
+                            mini_channel_d1[26][2]           0           0                                0.00 
+                            mini_channel_d1[26][5]           0           0                                0.00 
+                            mini_channel_d1[27][2]           0           0                                0.00 
+                            mini_channel_d1[27][5]           0           0                                0.00 
+                          mini_channel_d1[28][0-1]           0           0                                0.00 
+                            mini_channel_d1[28][5]           0           0                                0.00 
+                            mini_channel_d1[29][1]           0           0                                0.00 
+                            mini_channel_d1[29][5]           0           0                                0.00 
+                            mini_channel_d1[30][0]           0           0                                0.00 
+                            mini_channel_d1[30][5]           0           0                                0.00 
+                            mini_channel_d1[31][5]           0           0                                0.00 
+                           mini_channel_d2[0][0-5]           0           0                                0.00 
+                           mini_channel_d2[1][1-5]           0           0                                0.00 
+                             mini_channel_d2[2][0]           0           0                                0.00 
+                           mini_channel_d2[2][2-5]           0           0                                0.00 
+                           mini_channel_d2[3][2-5]           0           0                                0.00 
+                           mini_channel_d2[4][0-1]           0           0                                0.00 
+                           mini_channel_d2[4][3-5]           0           0                                0.00 
+                             mini_channel_d2[5][1]           0           0                                0.00 
+                           mini_channel_d2[5][3-5]           0           0                                0.00 
+                             mini_channel_d2[6][0]           0           0                                0.00 
+                           mini_channel_d2[6][3-5]           0           0                                0.00 
+                           mini_channel_d2[7][3-5]           0           0                                0.00 
+                           mini_channel_d2[8][0-2]           0           0                                0.00 
+                           mini_channel_d2[8][4-5]           0           0                                0.00 
+                           mini_channel_d2[9][1-2]           0           0                                0.00 
+                           mini_channel_d2[9][4-5]           0           0                                0.00 
+                            mini_channel_d2[10][0]           0           0                                0.00 
+                            mini_channel_d2[10][2]           0           0                                0.00 
+                          mini_channel_d2[10][4-5]           0           0                                0.00 
+                            mini_channel_d2[11][2]           0           0                                0.00 
+                          mini_channel_d2[11][4-5]           0           0                                0.00 
+                          mini_channel_d2[12][0-1]           0           0                                0.00 
+                          mini_channel_d2[12][4-5]           0           0                                0.00 
+                            mini_channel_d2[13][1]           0           0                                0.00 
+                          mini_channel_d2[13][4-5]           0           0                                0.00 
+                            mini_channel_d2[14][0]           0           0                                0.00 
+                          mini_channel_d2[14][4-5]           0           0                                0.00 
+                          mini_channel_d2[15][4-5]           0           0                                0.00 
+                          mini_channel_d2[16][0-3]           0           0                                0.00 
+                            mini_channel_d2[16][5]           0           0                                0.00 
+                          mini_channel_d2[17][1-3]           0           0                                0.00 
+                            mini_channel_d2[17][5]           0           0                                0.00 
+                            mini_channel_d2[18][0]           0           0                                0.00 
+                          mini_channel_d2[18][2-3]           0           0                                0.00 
+                            mini_channel_d2[18][5]           0           0                                0.00 
+                          mini_channel_d2[19][2-3]           0           0                                0.00 
+                            mini_channel_d2[19][5]           0           0                                0.00 
+                          mini_channel_d2[20][0-1]           0           0                                0.00 
+                            mini_channel_d2[20][3]           0           0                                0.00 
+                            mini_channel_d2[20][5]           0           0                                0.00 
+                            mini_channel_d2[21][1]           0           0                                0.00 
+                            mini_channel_d2[21][3]           0           0                                0.00 
+                            mini_channel_d2[21][5]           0           0                                0.00 
+                            mini_channel_d2[22][0]           0           0                                0.00 
+                            mini_channel_d2[22][3]           0           0                                0.00 
+                            mini_channel_d2[22][5]           0           0                                0.00 
+                            mini_channel_d2[23][3]           0           0                                0.00 
+                            mini_channel_d2[23][5]           0           0                                0.00 
+                          mini_channel_d2[24][0-2]           0           0                                0.00 
+                            mini_channel_d2[24][5]           0           0                                0.00 
+                          mini_channel_d2[25][1-2]           0           0                                0.00 
+                            mini_channel_d2[25][5]           0           0                                0.00 
+                            mini_channel_d2[26][0]           0           0                                0.00 
+                            mini_channel_d2[26][2]           0           0                                0.00 
+                            mini_channel_d2[26][5]           0           0                                0.00 
+                            mini_channel_d2[27][2]           0           0                                0.00 
+                            mini_channel_d2[27][5]           0           0                                0.00 
+                          mini_channel_d2[28][0-1]           0           0                                0.00 
+                            mini_channel_d2[28][5]           0           0                                0.00 
+                            mini_channel_d2[29][1]           0           0                                0.00 
+                            mini_channel_d2[29][5]           0           0                                0.00 
+                            mini_channel_d2[30][0]           0           0                                0.00 
+                            mini_channel_d2[30][5]           0           0                                0.00 
+                            mini_channel_d2[31][5]           0           0                                0.00 
+                              mode_mask_data_d1[3]           0           0                                0.00 
+                              mode_mask_data_d1[5]           0           0                                0.00 
+                              mode_mask_data_d1[7]           0           0                                0.00 
+                              mode_mask_data_d1[9]           0           0                                0.00 
+                             mode_mask_data_d1[11]           0           0                                0.00 
+                             mode_mask_data_d1[13]           0           0                                0.00 
+                             mode_mask_data_d1[15]           0           0                                0.00 
+                             mode_mask_data_d1[17]           0           0                                0.00 
+                             mode_mask_data_d1[19]           0           0                                0.00 
+                             mode_mask_data_d1[21]           0           0                                0.00 
+                             mode_mask_data_d1[23]           0           0                                0.00 
+                             mode_mask_data_d1[25]           0           0                                0.00 
+                             mode_mask_data_d1[27]           0           0                                0.00 
+                             mode_mask_data_d1[29]           0           0                                0.00 
+                             mode_mask_data_d1[31]           0           0                                0.00 
+                              mode_mask_data_d2[3]           0           0                                0.00 
+                              mode_mask_data_d2[5]           0           0                                0.00 
+                              mode_mask_data_d2[7]           0           0                                0.00 
+                              mode_mask_data_d2[9]           0           0                                0.00 
+                             mode_mask_data_d2[11]           0           0                                0.00 
+                             mode_mask_data_d2[13]           0           0                                0.00 
+                             mode_mask_data_d2[15]           0           0                                0.00 
+                             mode_mask_data_d2[17]           0           0                                0.00 
+                             mode_mask_data_d2[19]           0           0                                0.00 
+                             mode_mask_data_d2[21]           0           0                                0.00 
+                             mode_mask_data_d2[23]           0           0                                0.00 
+                             mode_mask_data_d2[25]           0           0                                0.00 
+                             mode_mask_data_d2[27]           0           0                                0.00 
+                             mode_mask_data_d2[29]           0           0                                0.00 
+                             mode_mask_data_d2[31]           0           0                                0.00 
+                                 rollover_d1[1-31]           0           0                                0.00 
+                       score_accept_data_d1[10-15]           0           0                                0.00 
+                       score_accept_data_d2[10-15]           0           0                                0.00 
+                        score_reject_data_d1[3-15]           0           0                                0.00 
+                        score_reject_data_d2[3-15]           0           0                                0.00 
+                        steer_overflow_count[5-31]           0           0                                0.00 
+                            steer_queue_count[3-5]           0           0                                0.00 
+                           sync_pattern_data_d1[0]           0           0                                0.00 
+                           sync_pattern_data_d1[5]           0           0                                0.00 
+                           sync_pattern_data_d1[7]           0           0                                0.00 
+                           sync_pattern_data_d2[0]           0           0                                0.00 
+                           sync_pattern_data_d2[5]           0           0                                0.00 
+                           sync_pattern_data_d2[7]           0           0                                0.00 
+
+Total Node Count     =       5271 
+Toggled Node Count   =       4269 
+Untoggled Node Count =       1002 
+
+Toggle Coverage      =      80.98% (8534 of 10538 bins)
+
+
+Total Coverage By Design Unit (filtered view): 92.92%
+
+End time: 13:04:48 on Apr 29,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0

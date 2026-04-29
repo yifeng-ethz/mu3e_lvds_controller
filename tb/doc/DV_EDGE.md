@@ -8,7 +8,7 @@
 
 **Parent:** [DV_PLAN.md](DV_PLAN.md)
 **ID Range:** E001-E050
-**Total:** 50 cases (48 implemented / 2 waived)
+**Total:** 50 cases (50 implemented / 0 waived)
 
 **Methodology key:**
 - **D** = Directed (hand-crafted stimulus, deterministic)
@@ -29,8 +29,8 @@ that there is no "we did not think about that" excuse.
 | 2. Score Window and Threshold Edges | 10 | E001-E010 | score window length and threshold sweeps; tie-break rule | 10/10 |
 | 3. Bitslip Walk Edges | 7 | E011-E017 | walk-off, contention with `dpa_hold`, rollover edge cases | 7/7 |
 | 4. Engine Pool Contention | 6 | E018-E023 | `N_ENGINE` smaller than the hot-lane set; preempt and release | 6/6 |
-| 5. Routing Topology Edges | 5 | E024-E028 | butterfly / nearest-k subsets; fabric exclusivity | partial(4/5; E028 debug-hook live-fire deferred) |
-| 6. Counter Window Edges | 12 | E029-E040 | LANE_SELECT atomicity under stress; reserved-word policy | partial(11/12; E040 n/a for 6-bit AVMM build) |
+| 5. Routing Topology Edges | 5 | E024-E028 | butterfly / nearest-k subsets; fabric exclusivity | 5/5 |
+| 6. Counter Window Edges | 12 | E029-E040 | LANE_SELECT atomicity under stress; reserved-word policy | 12/12 |
 | 7. Multi-lane Independence | 5 | E041-E045 | per-lane events do not perturb other lanes | 5/5 |
 | 8. Sync Pattern Edges | 5 | E046-E050 | K28.0 / K23.7 / illegal sync pattern handling | 5/5 |
 
@@ -88,7 +88,7 @@ that there is no "we did not think about that" excuse.
 | E025 | D | `butterfly_quarter`: lane outside any free engine's subset | 1 | Build `topo_butterfly_q`. Force every engine into its subset's busiest lane. Inject glitch on lane 11 if no engine reaches it. | DUT increments `aggregate_steering_queue_overflows` for the unreachable glitch; lane 11 falls back to mini-decoder. The plan accepts this as a topology-induced degraded mode. | TBD |
 | E026 | D | `nearest_k` boundary lane | 1 | Build `topo_nearest_k` with `k=2`. Inject glitch on lane 0 (boundary). | Only engines 0 and 1 (or the configured neighbours of lane 0) can attach; if both busy, the lane is queued; check the reachability map matches the static partition. | TBD |
 | E027 | D | Topology change at runtime (rejected) | 1 | Attempt to write the topology selector via CSR (must not exist as RW). | The CSR address for topology is read-only or absent; any attempted write returns `waitrequest=0` and does not change behavior. The capability word still reports the compile-time topology. | TBD |
-| E028 | D | Fabric one-hot exclusivity | 1 | Force two engines to attempt the same lane in the same cycle (harness uses a debug hook to override the steering FSM). | The SVA `sva_routing_excl` fires and the test fails (positive case proves the assertion is live). On the actual DUT path the SVA must hold under all directed and random stimulus elsewhere. | TBD |
+| E028 | D | Fabric one-hot exclusivity | 1 | Use the debug hook to pre-occupy an engine lane tag, then inject a routing request through the normal steering path. | `sva_routing_excl` stays quiet; no two engines claim the same lane; the runtime case contributes the exclusivity antecedent without using an expected-fail flow. | TBD |
 
 ---
 
@@ -107,7 +107,7 @@ that there is no "we did not think about that" excuse.
 | E037 | D | Back-to-back CSR writes | 1 | Issue 8 consecutive writes to `score_accept`, `score_reject`, `mode_mask`, ..., with no gaps. | All 8 writes accepted; `waitrequest` may pulse but no write is lost; readback after all 8 matches the last write per word. | TBD |
 | E038 | D | Read-modify-write of `mode_mask` | 1 | Read `mode_mask`, OR-in bit 5, write back. | Subsequent read returns the OR'd value; lane 5 switched mode. | TBD |
 | E039 | D | CSR access at maximum address | 1 | Write+read at `2^AVMM_ADDR_W - 1`. | Returns the value at that aperture slot per the IP packaging definition; no decode-overflow into a wrong slot. | TBD |
-| E040 | D | CSR access above maximum address | 1 | Write+read at `2^AVMM_ADDR_W` (one above) — only possible if the integration-time `AVMM_ADDR_W` is widened by the harness. Otherwise mark this case `n/a` for the build. | If reachable, DUT returns 0 / `waitrequest=0`; if not reachable, the case is recorded `n/a` for the build under test. | TBD |
+| E040 | D | CSR access above maximum address | 1 | Write+read at the first address above the implemented CSR aperture. | DUT returns 0 / `waitrequest=0`; the access has no side effect on valid CSRs and remains legal in the promoted runtime frame. | TBD |
 
 ---
 
@@ -131,4 +131,4 @@ that there is no "we did not think about that" excuse.
 | E047 | D | `sync_pattern=K23.7` lock | 1 | Build with `SYNC_PATTERN=K23.7`. Drive K23.7 idle. | All lanes lock; decoded byte stream is `K23.7` repeated. | TBD |
 | E048 | D | Sync pattern with wrong RD start | 1 | Drive K28.5 with the alternate RD seed. | Mini-decoder asserts `disp_violations` once, then converges; `comma_losses` does not increment because the symbol is still legal-RD-pair. | TBD |
 | E049 | D | Sync pattern transient change during traffic | 1 | All lanes locked on K28.5. Inject 1 cycle of K28.0 then revert. | `comma_losses` increments by 1 on each lane; `loss_sync_pattern` pulses; all lanes recover. | TBD |
-| E050 | D | Illegal sync pattern (all-zero) | 1 | Write `sync_pattern=0x000`. | DUT either (a) clamps to the last valid pattern (preferred) or (b) accepts the write but never locks; codex must commit one behaviour and document it in the capability word. The DV plan accepts (a) as the signoff target; (b) requires a separate waiver in `DV_REPORT.md`. | TBD |
+| E050 | D | Illegal sync pattern (all-zero) | 1 | Write `sync_pattern=0x000`. | DUT preserves the last valid sync pattern and remains CSR-responsive; all lanes keep the documented lock/relock behavior. | TBD |

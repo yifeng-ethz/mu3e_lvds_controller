@@ -1,0 +1,6764 @@
+{
+  "build": "max32",
+  "du": "work.mu3e_lvds_controller",
+  "cases": [
+    {
+      "index": 1,
+      "case_id": "B001",
+      "ucdb": "cov/max32/isolated/B001.ucdb",
+      "merged_ucdb": "cov/max32/merged/001_B001.ucdb",
+      "isolated": {
+        "branch": 28.27,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.19,
+        "toggle": 23.14,
+        "total": 22.74
+      },
+      "merged": {
+        "branch": 28.27,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.19,
+        "toggle": 23.14,
+        "total": 22.74
+      },
+      "delta": {
+        "branch": 28.27,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.19,
+        "toggle": 23.14,
+        "total": 22.74
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 2,
+      "case_id": "B002",
+      "ucdb": "cov/max32/isolated/B002.ucdb",
+      "merged_ucdb": "cov/max32/merged/002_B002.ucdb",
+      "isolated": {
+        "branch": 29.65,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.19,
+        "toggle": 23.14,
+        "total": 23.02
+      },
+      "merged": {
+        "branch": 29.65,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.19,
+        "toggle": 23.14,
+        "total": 23.02
+      },
+      "delta": {
+        "branch": 1.379999999999999,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.28000000000000114
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 3,
+      "case_id": "B003",
+      "ucdb": "cov/max32/isolated/B003.ucdb",
+      "merged_ucdb": "cov/max32/merged/003_B003.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.79,
+        "toggle": 23.29,
+        "total": 23.58
+      },
+      "merged": {
+        "branch": 32.41,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.79,
+        "toggle": 23.48,
+        "total": 23.76
+      },
+      "delta": {
+        "branch": 2.759999999999998,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.6000000000000014,
+        "toggle": 0.33999999999999986,
+        "total": 0.740000000000002
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 4,
+      "case_id": "B004",
+      "ucdb": "cov/max32/isolated/B004.ucdb",
+      "merged_ucdb": "cov/max32/merged/004_B004.ucdb",
+      "isolated": {
+        "branch": 32.41,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.09,
+        "toggle": 23.39,
+        "total": 23.8
+      },
+      "merged": {
+        "branch": 33.1,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.09,
+        "toggle": 23.6,
+        "total": 23.98
+      },
+      "delta": {
+        "branch": 0.6900000000000048,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.30000000000000426,
+        "toggle": 0.120000000000001,
+        "total": 0.21999999999999886
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 5,
+      "case_id": "B005",
+      "ucdb": "cov/max32/isolated/B005.ucdb",
+      "merged_ucdb": "cov/max32/merged/005_B005.ucdb",
+      "isolated": {
+        "branch": 32.41,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.09,
+        "toggle": 23.23,
+        "total": 23.77
+      },
+      "merged": {
+        "branch": 33.79,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.39,
+        "toggle": 23.65,
+        "total": 24.19
+      },
+      "delta": {
+        "branch": 0.6899999999999977,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.29999999999999716,
+        "toggle": 0.04999999999999716,
+        "total": 0.21000000000000085
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 6,
+      "case_id": "B006",
+      "ucdb": "cov/max32/isolated/B006.ucdb",
+      "merged_ucdb": "cov/max32/merged/006_B006.ucdb",
+      "isolated": {
+        "branch": 32.41,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.09,
+        "toggle": 23.25,
+        "total": 23.77
+      },
+      "merged": {
+        "branch": 34.48,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.69,
+        "toggle": 23.65,
+        "total": 24.38
+      },
+      "delta": {
+        "branch": 0.6899999999999977,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.29999999999999716,
+        "toggle": 0.0,
+        "total": 0.18999999999999773
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 7,
+      "case_id": "B007",
+      "ucdb": "cov/max32/isolated/B007.ucdb",
+      "merged_ucdb": "cov/max32/merged/007_B007.ucdb",
+      "isolated": {
+        "branch": 32.41,
+        "cond": 5.47,
+        "expr": 10.0,
+        "stmt": 48.79,
+        "toggle": 23.29,
+        "total": 23.99
+      },
+      "merged": {
+        "branch": 35.17,
+        "cond": 5.47,
+        "expr": 10.0,
+        "stmt": 49.69,
+        "toggle": 23.65,
+        "total": 24.8
+      },
+      "delta": {
+        "branch": 0.6900000000000048,
+        "cond": 1.37,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.4200000000000017
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 8,
+      "case_id": "B008",
+      "ucdb": "cov/max32/isolated/B008.ucdb",
+      "merged_ucdb": "cov/max32/merged/008_B008.ucdb",
+      "isolated": {
+        "branch": 28.96,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.49,
+        "toggle": 23.33,
+        "total": 22.98
+      },
+      "merged": {
+        "branch": 35.86,
+        "cond": 5.47,
+        "expr": 10.0,
+        "stmt": 50.0,
+        "toggle": 23.69,
+        "total": 25.0
+      },
+      "delta": {
+        "branch": 0.6899999999999977,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.3100000000000023,
+        "toggle": 0.0400000000000027,
+        "total": 0.1999999999999993
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 9,
+      "case_id": "B009",
+      "ucdb": "cov/max32/isolated/B009.ucdb",
+      "merged_ucdb": "cov/max32/merged/009_B009.ucdb",
+      "isolated": {
+        "branch": 28.96,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.49,
+        "toggle": 23.25,
+        "total": 22.96
+      },
+      "merged": {
+        "branch": 36.55,
+        "cond": 5.47,
+        "expr": 10.0,
+        "stmt": 50.3,
+        "toggle": 23.73,
+        "total": 25.21
+      },
+      "delta": {
+        "branch": 0.6899999999999977,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.29999999999999716,
+        "toggle": 0.03999999999999915,
+        "total": 0.21000000000000085
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 10,
+      "case_id": "B010",
+      "ucdb": "cov/max32/isolated/B010.ucdb",
+      "merged_ucdb": "cov/max32/merged/010_B010.ucdb",
+      "isolated": {
+        "branch": 34.48,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.4,
+        "toggle": 26.48,
+        "total": 28.59
+      },
+      "merged": {
+        "branch": 41.37,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 54.21,
+        "toggle": 26.97,
+        "total": 30.7
+      },
+      "delta": {
+        "branch": 4.82,
+        "cond": 5.4799999999999995,
+        "expr": 10.0,
+        "stmt": 3.9100000000000037,
+        "toggle": 3.2399999999999984,
+        "total": 5.489999999999998
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 11,
+      "case_id": "B011",
+      "ucdb": "cov/max32/isolated/B011.ucdb",
+      "merged_ucdb": "cov/max32/merged/011_B011.ucdb",
+      "isolated": {
+        "branch": 28.96,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.49,
+        "toggle": 23.86,
+        "total": 23.08
+      },
+      "merged": {
+        "branch": 42.06,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 54.51,
+        "toggle": 27.35,
+        "total": 30.98
+      },
+      "delta": {
+        "branch": 0.6900000000000048,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.29999999999999716,
+        "toggle": 0.38000000000000256,
+        "total": 0.28000000000000114
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 12,
+      "case_id": "B012",
+      "ucdb": "cov/max32/isolated/B012.ucdb",
+      "merged_ucdb": "cov/max32/merged/012_B012.ucdb",
+      "isolated": {
+        "branch": 32.41,
+        "cond": 5.47,
+        "expr": 30.0,
+        "stmt": 51.2,
+        "toggle": 23.56,
+        "total": 28.53
+      },
+      "merged": {
+        "branch": 45.51,
+        "cond": 12.32,
+        "expr": 50.0,
+        "stmt": 57.53,
+        "toggle": 27.41,
+        "total": 38.55
+      },
+      "delta": {
+        "branch": 3.4499999999999957,
+        "cond": 1.370000000000001,
+        "expr": 30.0,
+        "stmt": 3.020000000000003,
+        "toggle": 0.05999999999999872,
+        "total": 7.569999999999997
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 13,
+      "case_id": "B013",
+      "ucdb": "cov/max32/isolated/B013.ucdb",
+      "merged_ucdb": "cov/max32/merged/013_B013.ucdb",
+      "isolated": {
+        "branch": 32.41,
+        "cond": 5.47,
+        "expr": 30.0,
+        "stmt": 51.2,
+        "toggle": 25.32,
+        "total": 28.88
+      },
+      "merged": {
+        "branch": 45.51,
+        "cond": 12.32,
+        "expr": 50.0,
+        "stmt": 57.53,
+        "toggle": 29.18,
+        "total": 38.91
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 1.7699999999999996,
+        "total": 0.35999999999999943
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 14,
+      "case_id": "B014",
+      "ucdb": "cov/max32/isolated/B014.ucdb",
+      "merged_ucdb": "cov/max32/merged/014_B014.ucdb",
+      "isolated": {
+        "branch": 31.03,
+        "cond": 5.47,
+        "expr": 10.0,
+        "stmt": 49.09,
+        "toggle": 23.56,
+        "total": 23.83
+      },
+      "merged": {
+        "branch": 45.51,
+        "cond": 13.69,
+        "expr": 50.0,
+        "stmt": 57.53,
+        "toggle": 29.23,
+        "total": 39.19
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 1.3699999999999992,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.05000000000000071,
+        "total": 0.28000000000000114
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 15,
+      "case_id": "B015",
+      "ucdb": "cov/max32/isolated/B015.ucdb",
+      "merged_ucdb": "cov/max32/merged/015_B015.ucdb",
+      "isolated": {
+        "branch": 40.0,
+        "cond": 5.47,
+        "expr": 10.0,
+        "stmt": 55.72,
+        "toggle": 23.61,
+        "total": 26.96
+      },
+      "merged": {
+        "branch": 53.79,
+        "cond": 15.06,
+        "expr": 50.0,
+        "stmt": 63.85,
+        "toggle": 29.33,
+        "total": 42.4
+      },
+      "delta": {
+        "branch": 8.280000000000001,
+        "cond": 1.370000000000001,
+        "expr": 0.0,
+        "stmt": 6.32,
+        "toggle": 0.09999999999999787,
+        "total": 3.210000000000001
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 16,
+      "case_id": "B016",
+      "ucdb": "cov/max32/isolated/B016.ucdb",
+      "merged_ucdb": "cov/max32/merged/016_B016.ucdb",
+      "isolated": {
+        "branch": 35.86,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 51.2,
+        "toggle": 23.5,
+        "total": 24.93
+      },
+      "merged": {
+        "branch": 55.17,
+        "cond": 15.06,
+        "expr": 50.0,
+        "stmt": 64.45,
+        "toggle": 29.33,
+        "total": 42.8
+      },
+      "delta": {
+        "branch": 1.3800000000000026,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.6000000000000014,
+        "toggle": 0.0,
+        "total": 0.3999999999999986
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 17,
+      "case_id": "B017",
+      "ucdb": "cov/max32/isolated/B017.ucdb",
+      "merged_ucdb": "cov/max32/merged/017_B017.ucdb",
+      "isolated": {
+        "branch": 48.96,
+        "cond": 10.95,
+        "expr": 10.0,
+        "stmt": 65.36,
+        "toggle": 41.5,
+        "total": 35.35
+      },
+      "merged": {
+        "branch": 67.58,
+        "cond": 21.91,
+        "expr": 50.0,
+        "stmt": 78.31,
+        "toggle": 47.31,
+        "total": 53.02
+      },
+      "delta": {
+        "branch": 12.409999999999997,
+        "cond": 6.85,
+        "expr": 0.0,
+        "stmt": 13.86,
+        "toggle": 17.980000000000004,
+        "total": 10.220000000000006
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 18,
+      "case_id": "B018",
+      "ucdb": "cov/max32/isolated/B018.ucdb",
+      "merged_ucdb": "cov/max32/merged/018_B018.ucdb",
+      "isolated": {
+        "branch": 52.41,
+        "cond": 19.17,
+        "expr": 20.0,
+        "stmt": 68.67,
+        "toggle": 41.65,
+        "total": 40.38
+      },
+      "merged": {
+        "branch": 68.96,
+        "cond": 27.39,
+        "expr": 50.0,
+        "stmt": 78.91,
+        "toggle": 47.42,
+        "total": 54.54
+      },
+      "delta": {
+        "branch": 1.3799999999999955,
+        "cond": 5.48,
+        "expr": 0.0,
+        "stmt": 0.5999999999999943,
+        "toggle": 0.10999999999999943,
+        "total": 1.519999999999996
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 19,
+      "case_id": "B019",
+      "ucdb": "cov/max32/isolated/B019.ucdb",
+      "merged_ucdb": "cov/max32/merged/019_B019.ucdb",
+      "isolated": {
+        "branch": 32.41,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.69,
+        "toggle": 23.96,
+        "total": 24.03
+      },
+      "merged": {
+        "branch": 72.41,
+        "cond": 27.39,
+        "expr": 50.0,
+        "stmt": 80.42,
+        "toggle": 47.94,
+        "total": 55.63
+      },
+      "delta": {
+        "branch": 3.450000000000003,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 1.5100000000000051,
+        "toggle": 0.519999999999996,
+        "total": 1.0900000000000034
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 20,
+      "case_id": "B020",
+      "ucdb": "cov/max32/isolated/B020.ucdb",
+      "merged_ucdb": "cov/max32/merged/020_B020.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.39,
+        "toggle": 23.37,
+        "total": 23.72
+      },
+      "merged": {
+        "branch": 74.48,
+        "cond": 28.76,
+        "expr": 50.0,
+        "stmt": 81.32,
+        "toggle": 48.05,
+        "total": 56.52
+      },
+      "delta": {
+        "branch": 2.0700000000000074,
+        "cond": 1.370000000000001,
+        "expr": 0.0,
+        "stmt": 0.8999999999999915,
+        "toggle": 0.10999999999999943,
+        "total": 0.8900000000000006
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 21,
+      "case_id": "B021",
+      "ucdb": "cov/max32/isolated/B021.ucdb",
+      "merged_ucdb": "cov/max32/merged/021_B021.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 74.48,
+        "cond": 28.76,
+        "expr": 50.0,
+        "stmt": 81.32,
+        "toggle": 48.05,
+        "total": 56.52
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 22,
+      "case_id": "B022",
+      "ucdb": "cov/max32/isolated/B022.ucdb",
+      "merged_ucdb": "cov/max32/merged/022_B022.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 74.48,
+        "cond": 28.76,
+        "expr": 50.0,
+        "stmt": 81.32,
+        "toggle": 48.05,
+        "total": 56.52
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 23,
+      "case_id": "B023",
+      "ucdb": "cov/max32/isolated/B023.ucdb",
+      "merged_ucdb": "cov/max32/merged/023_B023.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 74.48,
+        "cond": 28.76,
+        "expr": 50.0,
+        "stmt": 81.32,
+        "toggle": 48.05,
+        "total": 56.52
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 24,
+      "case_id": "B024",
+      "ucdb": "cov/max32/isolated/B024.ucdb",
+      "merged_ucdb": "cov/max32/merged/024_B024.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 74.48,
+        "cond": 28.76,
+        "expr": 50.0,
+        "stmt": 81.32,
+        "toggle": 48.05,
+        "total": 56.52
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 25,
+      "case_id": "B025",
+      "ucdb": "cov/max32/isolated/B025.ucdb",
+      "merged_ucdb": "cov/max32/merged/025_B025.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 6.84,
+        "expr": 30.0,
+        "stmt": 49.69,
+        "toggle": 22.89,
+        "total": 27.4
+      },
+      "merged": {
+        "branch": 75.86,
+        "cond": 32.87,
+        "expr": 60.0,
+        "stmt": 84.03,
+        "toggle": 48.05,
+        "total": 60.16
+      },
+      "delta": {
+        "branch": 1.3799999999999955,
+        "cond": 4.109999999999996,
+        "expr": 10.0,
+        "stmt": 2.710000000000008,
+        "toggle": 0.0,
+        "total": 3.6399999999999935
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 26,
+      "case_id": "B026",
+      "ucdb": "cov/max32/isolated/B026.ucdb",
+      "merged_ucdb": "cov/max32/merged/026_B026.ucdb",
+      "isolated": {
+        "branch": 24.82,
+        "cond": 0.0,
+        "expr": 10.0,
+        "stmt": 46.68,
+        "toggle": 22.87,
+        "total": 20.87
+      },
+      "merged": {
+        "branch": 75.86,
+        "cond": 32.87,
+        "expr": 60.0,
+        "stmt": 84.03,
+        "toggle": 48.05,
+        "total": 60.16
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 27,
+      "case_id": "B027",
+      "ucdb": "cov/max32/isolated/B027.ucdb",
+      "merged_ucdb": "cov/max32/merged/027_B027.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 75.86,
+        "cond": 32.87,
+        "expr": 60.0,
+        "stmt": 84.03,
+        "toggle": 48.05,
+        "total": 60.16
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 28,
+      "case_id": "B028",
+      "ucdb": "cov/max32/isolated/B028.ucdb",
+      "merged_ucdb": "cov/max32/merged/028_B028.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 75.86,
+        "cond": 32.87,
+        "expr": 60.0,
+        "stmt": 84.03,
+        "toggle": 48.05,
+        "total": 60.16
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 29,
+      "case_id": "B029",
+      "ucdb": "cov/max32/isolated/B029.ucdb",
+      "merged_ucdb": "cov/max32/merged/029_B029.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 5.47,
+        "expr": 20.0,
+        "stmt": 51.5,
+        "toggle": 29.57,
+        "total": 27.38
+      },
+      "merged": {
+        "branch": 75.86,
+        "cond": 32.87,
+        "expr": 60.0,
+        "stmt": 84.03,
+        "toggle": 51.64,
+        "total": 60.88
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 3.5900000000000034,
+        "total": 0.720000000000006
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 30,
+      "case_id": "B030",
+      "ucdb": "cov/max32/isolated/B030.ucdb",
+      "merged_ucdb": "cov/max32/merged/030_B030.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 5.47,
+        "expr": 20.0,
+        "stmt": 51.5,
+        "toggle": 31.4,
+        "total": 27.74
+      },
+      "merged": {
+        "branch": 75.86,
+        "cond": 32.87,
+        "expr": 60.0,
+        "stmt": 84.03,
+        "toggle": 53.46,
+        "total": 61.24
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 1.8200000000000003,
+        "total": 0.35999999999999943
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 31,
+      "case_id": "B031",
+      "ucdb": "cov/max32/isolated/B031.ucdb",
+      "merged_ucdb": "cov/max32/merged/031_B031.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 5.47,
+        "expr": 20.0,
+        "stmt": 51.5,
+        "toggle": 29.57,
+        "total": 27.38
+      },
+      "merged": {
+        "branch": 75.86,
+        "cond": 32.87,
+        "expr": 60.0,
+        "stmt": 84.03,
+        "toggle": 55.28,
+        "total": 61.61
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 1.8200000000000003,
+        "total": 0.36999999999999744
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 32,
+      "case_id": "B032",
+      "ucdb": "cov/max32/isolated/B032.ucdb",
+      "merged_ucdb": "cov/max32/merged/032_B032.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 5.47,
+        "expr": 20.0,
+        "stmt": 51.5,
+        "toggle": 33.22,
+        "total": 28.11
+      },
+      "merged": {
+        "branch": 75.86,
+        "cond": 32.87,
+        "expr": 60.0,
+        "stmt": 84.03,
+        "toggle": 55.28,
+        "total": 61.61
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 33,
+      "case_id": "B033",
+      "ucdb": "cov/max32/isolated/B033.ucdb",
+      "merged_ucdb": "cov/max32/merged/033_B033.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 5.47,
+        "expr": 20.0,
+        "stmt": 51.5,
+        "toggle": 29.57,
+        "total": 27.38
+      },
+      "merged": {
+        "branch": 75.86,
+        "cond": 32.87,
+        "expr": 60.0,
+        "stmt": 84.03,
+        "toggle": 55.28,
+        "total": 61.61
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 34,
+      "case_id": "B034",
+      "ucdb": "cov/max32/isolated/B034.ucdb",
+      "merged_ucdb": "cov/max32/merged/034_B034.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 75.86,
+        "cond": 32.87,
+        "expr": 60.0,
+        "stmt": 84.03,
+        "toggle": 55.28,
+        "total": 61.61
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 35,
+      "case_id": "B035",
+      "ucdb": "cov/max32/isolated/B035.ucdb",
+      "merged_ucdb": "cov/max32/merged/035_B035.ucdb",
+      "isolated": {
+        "branch": 29.65,
+        "cond": 5.47,
+        "expr": 20.0,
+        "stmt": 50.3,
+        "toggle": 25.93,
+        "total": 26.27
+      },
+      "merged": {
+        "branch": 76.55,
+        "cond": 32.87,
+        "expr": 60.0,
+        "stmt": 84.03,
+        "toggle": 55.28,
+        "total": 61.75
+      },
+      "delta": {
+        "branch": 0.6899999999999977,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.14000000000000057
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 36,
+      "case_id": "B036",
+      "ucdb": "cov/max32/isolated/B036.ucdb",
+      "merged_ucdb": "cov/max32/merged/036_B036.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 5.47,
+        "expr": 20.0,
+        "stmt": 51.5,
+        "toggle": 33.22,
+        "total": 28.11
+      },
+      "merged": {
+        "branch": 76.55,
+        "cond": 32.87,
+        "expr": 60.0,
+        "stmt": 84.03,
+        "toggle": 55.28,
+        "total": 61.75
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 37,
+      "case_id": "B037",
+      "ucdb": "cov/max32/isolated/B037.ucdb",
+      "merged_ucdb": "cov/max32/merged/037_B037.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 5.47,
+        "expr": 20.0,
+        "stmt": 51.5,
+        "toggle": 31.4,
+        "total": 27.74
+      },
+      "merged": {
+        "branch": 76.55,
+        "cond": 32.87,
+        "expr": 60.0,
+        "stmt": 84.03,
+        "toggle": 55.28,
+        "total": 61.75
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 38,
+      "case_id": "B038",
+      "ucdb": "cov/max32/isolated/B038.ucdb",
+      "merged_ucdb": "cov/max32/merged/038_B038.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 5.47,
+        "expr": 20.0,
+        "stmt": 51.5,
+        "toggle": 29.57,
+        "total": 27.38
+      },
+      "merged": {
+        "branch": 76.55,
+        "cond": 32.87,
+        "expr": 60.0,
+        "stmt": 84.03,
+        "toggle": 55.28,
+        "total": 61.75
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 39,
+      "case_id": "B039",
+      "ucdb": "cov/max32/isolated/B039.ucdb",
+      "merged_ucdb": "cov/max32/merged/039_B039.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 5.47,
+        "expr": 20.0,
+        "stmt": 51.5,
+        "toggle": 29.57,
+        "total": 27.38
+      },
+      "merged": {
+        "branch": 76.55,
+        "cond": 32.87,
+        "expr": 60.0,
+        "stmt": 84.03,
+        "toggle": 55.28,
+        "total": 61.75
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 40,
+      "case_id": "B040",
+      "ucdb": "cov/max32/isolated/B040.ucdb",
+      "merged_ucdb": "cov/max32/merged/040_B040.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 76.55,
+        "cond": 32.87,
+        "expr": 60.0,
+        "stmt": 84.03,
+        "toggle": 55.28,
+        "total": 61.75
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 41,
+      "case_id": "B041",
+      "ucdb": "cov/max32/isolated/B041.ucdb",
+      "merged_ucdb": "cov/max32/merged/041_B041.ucdb",
+      "isolated": {
+        "branch": 45.51,
+        "cond": 13.69,
+        "expr": 20.0,
+        "stmt": 65.96,
+        "toggle": 54.25,
+        "total": 39.88
+      },
+      "merged": {
+        "branch": 77.24,
+        "cond": 34.24,
+        "expr": 60.0,
+        "stmt": 84.63,
+        "toggle": 62.22,
+        "total": 63.66
+      },
+      "delta": {
+        "branch": 0.6899999999999977,
+        "cond": 1.3700000000000045,
+        "expr": 0.0,
+        "stmt": 0.5999999999999943,
+        "toggle": 6.939999999999998,
+        "total": 1.9099999999999966
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 42,
+      "case_id": "B042",
+      "ucdb": "cov/max32/isolated/B042.ucdb",
+      "merged_ucdb": "cov/max32/merged/042_B042.ucdb",
+      "isolated": {
+        "branch": 45.51,
+        "cond": 13.69,
+        "expr": 20.0,
+        "stmt": 65.96,
+        "toggle": 50.6,
+        "total": 39.15
+      },
+      "merged": {
+        "branch": 77.24,
+        "cond": 34.24,
+        "expr": 60.0,
+        "stmt": 84.63,
+        "toggle": 63.43,
+        "total": 63.91
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 1.2100000000000009,
+        "total": 0.25
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 43,
+      "case_id": "B043",
+      "ucdb": "cov/max32/isolated/B043.ucdb",
+      "merged_ucdb": "cov/max32/merged/043_B043.ucdb",
+      "isolated": {
+        "branch": 45.51,
+        "cond": 13.69,
+        "expr": 20.0,
+        "stmt": 65.96,
+        "toggle": 53.64,
+        "total": 39.76
+      },
+      "merged": {
+        "branch": 77.24,
+        "cond": 34.24,
+        "expr": 60.0,
+        "stmt": 84.63,
+        "toggle": 64.65,
+        "total": 64.15
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 1.220000000000006,
+        "total": 0.2400000000000091
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 44,
+      "case_id": "B044",
+      "ucdb": "cov/max32/isolated/B044.ucdb",
+      "merged_ucdb": "cov/max32/merged/044_B044.ucdb",
+      "isolated": {
+        "branch": 45.51,
+        "cond": 13.69,
+        "expr": 20.0,
+        "stmt": 65.96,
+        "toggle": 53.03,
+        "total": 39.64
+      },
+      "merged": {
+        "branch": 77.24,
+        "cond": 34.24,
+        "expr": 60.0,
+        "stmt": 84.63,
+        "toggle": 64.65,
+        "total": 64.15
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 45,
+      "case_id": "B045",
+      "ucdb": "cov/max32/isolated/B045.ucdb",
+      "merged_ucdb": "cov/max32/merged/045_B045.ucdb",
+      "isolated": {
+        "branch": 45.51,
+        "cond": 13.69,
+        "expr": 20.0,
+        "stmt": 65.96,
+        "toggle": 53.64,
+        "total": 39.76
+      },
+      "merged": {
+        "branch": 77.24,
+        "cond": 34.24,
+        "expr": 60.0,
+        "stmt": 84.63,
+        "toggle": 64.65,
+        "total": 64.15
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 46,
+      "case_id": "B046",
+      "ucdb": "cov/max32/isolated/B046.ucdb",
+      "merged_ucdb": "cov/max32/merged/046_B046.ucdb",
+      "isolated": {
+        "branch": 45.51,
+        "cond": 13.69,
+        "expr": 20.0,
+        "stmt": 65.96,
+        "toggle": 51.21,
+        "total": 39.27
+      },
+      "merged": {
+        "branch": 77.24,
+        "cond": 34.24,
+        "expr": 60.0,
+        "stmt": 84.63,
+        "toggle": 64.65,
+        "total": 64.15
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 47,
+      "case_id": "B047",
+      "ucdb": "cov/max32/isolated/B047.ucdb",
+      "merged_ucdb": "cov/max32/merged/047_B047.ucdb",
+      "isolated": {
+        "branch": 45.51,
+        "cond": 13.69,
+        "expr": 20.0,
+        "stmt": 65.96,
+        "toggle": 51.82,
+        "total": 39.4
+      },
+      "merged": {
+        "branch": 77.24,
+        "cond": 34.24,
+        "expr": 60.0,
+        "stmt": 84.63,
+        "toggle": 64.65,
+        "total": 64.15
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 48,
+      "case_id": "B048",
+      "ucdb": "cov/max32/isolated/B048.ucdb",
+      "merged_ucdb": "cov/max32/merged/048_B048.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 6.84,
+        "expr": 20.0,
+        "stmt": 52.4,
+        "toggle": 29.82,
+        "total": 28.43
+      },
+      "merged": {
+        "branch": 77.24,
+        "cond": 34.24,
+        "expr": 60.0,
+        "stmt": 84.63,
+        "toggle": 64.65,
+        "total": 64.15
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 49,
+      "case_id": "B049",
+      "ucdb": "cov/max32/isolated/B049.ucdb",
+      "merged_ucdb": "cov/max32/merged/049_B049.ucdb",
+      "isolated": {
+        "branch": 45.51,
+        "cond": 13.69,
+        "expr": 20.0,
+        "stmt": 65.96,
+        "toggle": 50.6,
+        "total": 39.15
+      },
+      "merged": {
+        "branch": 77.24,
+        "cond": 34.24,
+        "expr": 60.0,
+        "stmt": 84.63,
+        "toggle": 64.65,
+        "total": 64.15
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 50,
+      "case_id": "B050",
+      "ucdb": "cov/max32/isolated/B050.ucdb",
+      "merged_ucdb": "cov/max32/merged/050_B050.ucdb",
+      "isolated": {
+        "branch": 46.2,
+        "cond": 19.17,
+        "expr": 20.0,
+        "stmt": 65.96,
+        "toggle": 42.24,
+        "total": 38.71
+      },
+      "merged": {
+        "branch": 77.24,
+        "cond": 34.24,
+        "expr": 60.0,
+        "stmt": 84.63,
+        "toggle": 64.65,
+        "total": 64.15
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 51,
+      "case_id": "B051",
+      "ucdb": "cov/max32/isolated/B051.ucdb",
+      "merged_ucdb": "cov/max32/merged/051_B051.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.39,
+        "toggle": 23.27,
+        "total": 23.7
+      },
+      "merged": {
+        "branch": 77.24,
+        "cond": 34.24,
+        "expr": 60.0,
+        "stmt": 84.63,
+        "toggle": 64.68,
+        "total": 64.16
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.030000000000001137,
+        "total": 0.009999999999990905
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 52,
+      "case_id": "B052",
+      "ucdb": "cov/max32/isolated/B052.ucdb",
+      "merged_ucdb": "cov/max32/merged/052_B052.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.39,
+        "toggle": 23.27,
+        "total": 23.7
+      },
+      "merged": {
+        "branch": 77.24,
+        "cond": 34.24,
+        "expr": 60.0,
+        "stmt": 84.63,
+        "toggle": 64.68,
+        "total": 64.16
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 53,
+      "case_id": "B053",
+      "ucdb": "cov/max32/isolated/B053.ucdb",
+      "merged_ucdb": "cov/max32/merged/053_B053.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.39,
+        "toggle": 23.29,
+        "total": 23.7
+      },
+      "merged": {
+        "branch": 77.24,
+        "cond": 34.24,
+        "expr": 60.0,
+        "stmt": 84.63,
+        "toggle": 64.7,
+        "total": 64.16
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.01999999999999602,
+        "total": 0.0
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 54,
+      "case_id": "B054",
+      "ucdb": "cov/max32/isolated/B054.ucdb",
+      "merged_ucdb": "cov/max32/merged/054_B054.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.39,
+        "toggle": 23.33,
+        "total": 23.71
+      },
+      "merged": {
+        "branch": 77.93,
+        "cond": 35.61,
+        "expr": 60.0,
+        "stmt": 84.93,
+        "toggle": 64.74,
+        "total": 64.64
+      },
+      "delta": {
+        "branch": 0.6900000000000119,
+        "cond": 1.3699999999999974,
+        "expr": 0.0,
+        "stmt": 0.30000000000001137,
+        "toggle": 0.03999999999999204,
+        "total": 0.480000000000004
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 55,
+      "case_id": "B055",
+      "ucdb": "cov/max32/isolated/B055.ucdb",
+      "merged_ucdb": "cov/max32/merged/055_B055.ucdb",
+      "isolated": {
+        "branch": 35.86,
+        "cond": 8.21,
+        "expr": 20.0,
+        "stmt": 53.61,
+        "toggle": 23.31,
+        "total": 28.2
+      },
+      "merged": {
+        "branch": 77.93,
+        "cond": 35.61,
+        "expr": 60.0,
+        "stmt": 84.93,
+        "toggle": 64.74,
+        "total": 64.64
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 56,
+      "case_id": "B056",
+      "ucdb": "cov/max32/isolated/B056.ucdb",
+      "merged_ucdb": "cov/max32/merged/056_B056.ucdb",
+      "isolated": {
+        "branch": 36.55,
+        "cond": 8.21,
+        "expr": 20.0,
+        "stmt": 53.31,
+        "toggle": 23.48,
+        "total": 28.31
+      },
+      "merged": {
+        "branch": 80.0,
+        "cond": 35.61,
+        "expr": 60.0,
+        "stmt": 85.84,
+        "toggle": 64.8,
+        "total": 65.25
+      },
+      "delta": {
+        "branch": 2.069999999999993,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.9099999999999966,
+        "toggle": 0.060000000000002274,
+        "total": 0.6099999999999994
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 57,
+      "case_id": "B057",
+      "ucdb": "cov/max32/isolated/B057.ucdb",
+      "merged_ucdb": "cov/max32/merged/057_B057.ucdb",
+      "isolated": {
+        "branch": 35.17,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 23.25,
+        "total": 28.14
+      },
+      "merged": {
+        "branch": 80.0,
+        "cond": 35.61,
+        "expr": 60.0,
+        "stmt": 85.84,
+        "toggle": 64.8,
+        "total": 65.25
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 58,
+      "case_id": "B058",
+      "ucdb": "cov/max32/isolated/B058.ucdb",
+      "merged_ucdb": "cov/max32/merged/058_B058.ucdb",
+      "isolated": {
+        "branch": 34.48,
+        "cond": 5.47,
+        "expr": 20.0,
+        "stmt": 53.01,
+        "toggle": 33.58,
+        "total": 29.31
+      },
+      "merged": {
+        "branch": 80.0,
+        "cond": 35.61,
+        "expr": 60.0,
+        "stmt": 85.84,
+        "toggle": 64.8,
+        "total": 65.25
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 59,
+      "case_id": "B059",
+      "ucdb": "cov/max32/isolated/B059.ucdb",
+      "merged_ucdb": "cov/max32/merged/059_B059.ucdb",
+      "isolated": {
+        "branch": 33.79,
+        "cond": 8.21,
+        "expr": 20.0,
+        "stmt": 51.8,
+        "toggle": 23.16,
+        "total": 27.39
+      },
+      "merged": {
+        "branch": 81.37,
+        "cond": 39.72,
+        "expr": 80.0,
+        "stmt": 88.25,
+        "toggle": 64.8,
+        "total": 70.83
+      },
+      "delta": {
+        "branch": 1.3700000000000045,
+        "cond": 4.109999999999999,
+        "expr": 20.0,
+        "stmt": 2.4099999999999966,
+        "toggle": 0.0,
+        "total": 5.579999999999998
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 60,
+      "case_id": "B060",
+      "ucdb": "cov/max32/isolated/B060.ucdb",
+      "merged_ucdb": "cov/max32/merged/060_B060.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.39,
+        "toggle": 23.14,
+        "total": 23.67
+      },
+      "merged": {
+        "branch": 81.37,
+        "cond": 39.72,
+        "expr": 80.0,
+        "stmt": 88.25,
+        "toggle": 64.8,
+        "total": 70.83
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 61,
+      "case_id": "B061",
+      "ucdb": "cov/max32/isolated/B061.ucdb",
+      "merged_ucdb": "cov/max32/merged/061_B061.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.39,
+        "toggle": 23.14,
+        "total": 23.67
+      },
+      "merged": {
+        "branch": 81.37,
+        "cond": 39.72,
+        "expr": 80.0,
+        "stmt": 88.25,
+        "toggle": 64.8,
+        "total": 70.83
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 62,
+      "case_id": "B062",
+      "ucdb": "cov/max32/isolated/B062.ucdb",
+      "merged_ucdb": "cov/max32/merged/062_B062.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.39,
+        "toggle": 23.14,
+        "total": 23.67
+      },
+      "merged": {
+        "branch": 81.37,
+        "cond": 39.72,
+        "expr": 80.0,
+        "stmt": 88.25,
+        "toggle": 64.8,
+        "total": 70.83
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 63,
+      "case_id": "B063",
+      "ucdb": "cov/max32/isolated/B063.ucdb",
+      "merged_ucdb": "cov/max32/merged/063_B063.ucdb",
+      "isolated": {
+        "branch": 37.24,
+        "cond": 5.47,
+        "expr": 10.0,
+        "stmt": 54.51,
+        "toggle": 23.27,
+        "total": 26.1
+      },
+      "merged": {
+        "branch": 81.37,
+        "cond": 39.72,
+        "expr": 80.0,
+        "stmt": 88.25,
+        "toggle": 64.8,
+        "total": 70.83
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 64,
+      "case_id": "B064",
+      "ucdb": "cov/max32/isolated/B064.ucdb",
+      "merged_ucdb": "cov/max32/merged/064_B064.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.39,
+        "toggle": 23.25,
+        "total": 23.69
+      },
+      "merged": {
+        "branch": 81.37,
+        "cond": 39.72,
+        "expr": 80.0,
+        "stmt": 88.25,
+        "toggle": 64.8,
+        "total": 70.83
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 65,
+      "case_id": "B065",
+      "ucdb": "cov/max32/isolated/B065.ucdb",
+      "merged_ucdb": "cov/max32/merged/065_B065.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.39,
+        "toggle": 23.14,
+        "total": 23.67
+      },
+      "merged": {
+        "branch": 81.37,
+        "cond": 39.72,
+        "expr": 80.0,
+        "stmt": 88.25,
+        "toggle": 64.8,
+        "total": 70.83
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 66,
+      "case_id": "B066",
+      "ucdb": "cov/max32/isolated/B066.ucdb",
+      "merged_ucdb": "cov/max32/merged/066_B066.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.39,
+        "toggle": 23.14,
+        "total": 23.67
+      },
+      "merged": {
+        "branch": 81.37,
+        "cond": 39.72,
+        "expr": 80.0,
+        "stmt": 88.25,
+        "toggle": 64.8,
+        "total": 70.83
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 67,
+      "case_id": "B067",
+      "ucdb": "cov/max32/isolated/B067.ucdb",
+      "merged_ucdb": "cov/max32/merged/067_B067.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.39,
+        "toggle": 23.14,
+        "total": 23.67
+      },
+      "merged": {
+        "branch": 81.37,
+        "cond": 39.72,
+        "expr": 80.0,
+        "stmt": 88.25,
+        "toggle": 64.8,
+        "total": 70.83
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 68,
+      "case_id": "B068",
+      "ucdb": "cov/max32/isolated/B068.ucdb",
+      "merged_ucdb": "cov/max32/merged/068_B068.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.39,
+        "toggle": 23.14,
+        "total": 23.67
+      },
+      "merged": {
+        "branch": 81.37,
+        "cond": 39.72,
+        "expr": 80.0,
+        "stmt": 88.25,
+        "toggle": 64.8,
+        "total": 70.83
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 69,
+      "case_id": "B071",
+      "ucdb": "cov/max32/isolated/B071.ucdb",
+      "merged_ucdb": "cov/max32/merged/069_B071.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 23.29,
+        "total": 27.73
+      },
+      "merged": {
+        "branch": 82.06,
+        "cond": 39.72,
+        "expr": 80.0,
+        "stmt": 88.55,
+        "toggle": 64.8,
+        "total": 71.03
+      },
+      "delta": {
+        "branch": 0.6899999999999977,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.29999999999999716,
+        "toggle": 0.0,
+        "total": 0.20000000000000284
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 70,
+      "case_id": "B072",
+      "ucdb": "cov/max32/isolated/B072.ucdb",
+      "merged_ucdb": "cov/max32/merged/070_B072.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 23.29,
+        "total": 27.73
+      },
+      "merged": {
+        "branch": 82.06,
+        "cond": 39.72,
+        "expr": 80.0,
+        "stmt": 88.55,
+        "toggle": 64.8,
+        "total": 71.03
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 71,
+      "case_id": "B073",
+      "ucdb": "cov/max32/isolated/B073.ucdb",
+      "merged_ucdb": "cov/max32/merged/071_B073.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 23.29,
+        "total": 27.73
+      },
+      "merged": {
+        "branch": 82.06,
+        "cond": 39.72,
+        "expr": 80.0,
+        "stmt": 88.55,
+        "toggle": 64.8,
+        "total": 71.03
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 72,
+      "case_id": "B074",
+      "ucdb": "cov/max32/isolated/B074.ucdb",
+      "merged_ucdb": "cov/max32/merged/072_B074.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 23.29,
+        "total": 27.73
+      },
+      "merged": {
+        "branch": 82.06,
+        "cond": 39.72,
+        "expr": 80.0,
+        "stmt": 88.55,
+        "toggle": 64.8,
+        "total": 71.03
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 73,
+      "case_id": "B075",
+      "ucdb": "cov/max32/isolated/B075.ucdb",
+      "merged_ucdb": "cov/max32/merged/073_B075.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 23.29,
+        "total": 27.73
+      },
+      "merged": {
+        "branch": 82.06,
+        "cond": 39.72,
+        "expr": 80.0,
+        "stmt": 88.55,
+        "toggle": 64.8,
+        "total": 71.03
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 74,
+      "case_id": "B076",
+      "ucdb": "cov/max32/isolated/B076.ucdb",
+      "merged_ucdb": "cov/max32/merged/074_B076.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 23.29,
+        "total": 27.73
+      },
+      "merged": {
+        "branch": 82.06,
+        "cond": 39.72,
+        "expr": 80.0,
+        "stmt": 88.55,
+        "toggle": 64.8,
+        "total": 71.03
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 75,
+      "case_id": "B077",
+      "ucdb": "cov/max32/isolated/B077.ucdb",
+      "merged_ucdb": "cov/max32/merged/075_B077.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 23.29,
+        "total": 27.73
+      },
+      "merged": {
+        "branch": 82.06,
+        "cond": 39.72,
+        "expr": 80.0,
+        "stmt": 88.55,
+        "toggle": 64.8,
+        "total": 71.03
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 76,
+      "case_id": "B078",
+      "ucdb": "cov/max32/isolated/B078.ucdb",
+      "merged_ucdb": "cov/max32/merged/076_B078.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 23.29,
+        "total": 27.73
+      },
+      "merged": {
+        "branch": 82.06,
+        "cond": 39.72,
+        "expr": 80.0,
+        "stmt": 88.55,
+        "toggle": 64.8,
+        "total": 71.03
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 77,
+      "case_id": "B079",
+      "ucdb": "cov/max32/isolated/B079.ucdb",
+      "merged_ucdb": "cov/max32/merged/077_B079.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 23.29,
+        "total": 27.73
+      },
+      "merged": {
+        "branch": 82.06,
+        "cond": 39.72,
+        "expr": 80.0,
+        "stmt": 88.55,
+        "toggle": 64.8,
+        "total": 71.03
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 78,
+      "case_id": "B080",
+      "ucdb": "cov/max32/isolated/B080.ucdb",
+      "merged_ucdb": "cov/max32/merged/078_B080.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 28.0,
+        "total": 28.68
+      },
+      "merged": {
+        "branch": 82.06,
+        "cond": 39.72,
+        "expr": 80.0,
+        "stmt": 88.55,
+        "toggle": 64.8,
+        "total": 71.03
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 79,
+      "case_id": "E001",
+      "ucdb": "cov/max32/isolated/E001.ucdb",
+      "merged_ucdb": "cov/max32/merged/079_E001.ucdb",
+      "isolated": {
+        "branch": 35.17,
+        "cond": 6.84,
+        "expr": 20.0,
+        "stmt": 53.31,
+        "toggle": 31.72,
+        "total": 29.41
+      },
+      "merged": {
+        "branch": 82.75,
+        "cond": 41.09,
+        "expr": 80.0,
+        "stmt": 88.85,
+        "toggle": 64.8,
+        "total": 71.5
+      },
+      "delta": {
+        "branch": 0.6899999999999977,
+        "cond": 1.3700000000000045,
+        "expr": 0.0,
+        "stmt": 0.29999999999999716,
+        "toggle": 0.0,
+        "total": 0.46999999999999886
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 80,
+      "case_id": "E002",
+      "ucdb": "cov/max32/isolated/E002.ucdb",
+      "merged_ucdb": "cov/max32/merged/080_E002.ucdb",
+      "isolated": {
+        "branch": 35.17,
+        "cond": 6.84,
+        "expr": 20.0,
+        "stmt": 53.31,
+        "toggle": 29.9,
+        "total": 29.04
+      },
+      "merged": {
+        "branch": 82.75,
+        "cond": 41.09,
+        "expr": 80.0,
+        "stmt": 88.85,
+        "toggle": 64.8,
+        "total": 71.5
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 81,
+      "case_id": "E003",
+      "ucdb": "cov/max32/isolated/E003.ucdb",
+      "merged_ucdb": "cov/max32/merged/081_E003.ucdb",
+      "isolated": {
+        "branch": 35.17,
+        "cond": 6.84,
+        "expr": 20.0,
+        "stmt": 53.31,
+        "toggle": 31.72,
+        "total": 29.41
+      },
+      "merged": {
+        "branch": 82.75,
+        "cond": 41.09,
+        "expr": 80.0,
+        "stmt": 88.85,
+        "toggle": 64.8,
+        "total": 71.5
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 82,
+      "case_id": "E004",
+      "ucdb": "cov/max32/isolated/E004.ucdb",
+      "merged_ucdb": "cov/max32/merged/082_E004.ucdb",
+      "isolated": {
+        "branch": 35.17,
+        "cond": 6.84,
+        "expr": 20.0,
+        "stmt": 53.31,
+        "toggle": 31.83,
+        "total": 29.43
+      },
+      "merged": {
+        "branch": 82.75,
+        "cond": 41.09,
+        "expr": 80.0,
+        "stmt": 88.85,
+        "toggle": 64.91,
+        "total": 71.52
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.10999999999999943,
+        "total": 0.01999999999999602
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 83,
+      "case_id": "E005",
+      "ucdb": "cov/max32/isolated/E005.ucdb",
+      "merged_ucdb": "cov/max32/merged/083_E005.ucdb",
+      "isolated": {
+        "branch": 33.79,
+        "cond": 6.84,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 33.52,
+        "total": 29.37
+      },
+      "merged": {
+        "branch": 82.75,
+        "cond": 41.09,
+        "expr": 80.0,
+        "stmt": 88.85,
+        "toggle": 64.91,
+        "total": 71.52
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 84,
+      "case_id": "E006",
+      "ucdb": "cov/max32/isolated/E006.ucdb",
+      "merged_ucdb": "cov/max32/merged/084_E006.ucdb",
+      "isolated": {
+        "branch": 35.17,
+        "cond": 6.84,
+        "expr": 20.0,
+        "stmt": 53.31,
+        "toggle": 31.72,
+        "total": 29.41
+      },
+      "merged": {
+        "branch": 82.75,
+        "cond": 41.09,
+        "expr": 80.0,
+        "stmt": 88.85,
+        "toggle": 64.91,
+        "total": 71.52
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 85,
+      "case_id": "E007",
+      "ucdb": "cov/max32/isolated/E007.ucdb",
+      "merged_ucdb": "cov/max32/merged/085_E007.ucdb",
+      "isolated": {
+        "branch": 35.17,
+        "cond": 6.84,
+        "expr": 20.0,
+        "stmt": 53.31,
+        "toggle": 31.72,
+        "total": 29.41
+      },
+      "merged": {
+        "branch": 82.75,
+        "cond": 41.09,
+        "expr": 80.0,
+        "stmt": 88.85,
+        "toggle": 64.91,
+        "total": 71.52
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 86,
+      "case_id": "E008",
+      "ucdb": "cov/max32/isolated/E008.ucdb",
+      "merged_ucdb": "cov/max32/merged/086_E008.ucdb",
+      "isolated": {
+        "branch": 35.17,
+        "cond": 6.84,
+        "expr": 20.0,
+        "stmt": 53.31,
+        "toggle": 29.9,
+        "total": 29.04
+      },
+      "merged": {
+        "branch": 82.75,
+        "cond": 41.09,
+        "expr": 80.0,
+        "stmt": 88.85,
+        "toggle": 64.91,
+        "total": 71.52
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 87,
+      "case_id": "E009",
+      "ucdb": "cov/max32/isolated/E009.ucdb",
+      "merged_ucdb": "cov/max32/merged/087_E009.ucdb",
+      "isolated": {
+        "branch": 35.17,
+        "cond": 6.84,
+        "expr": 20.0,
+        "stmt": 53.31,
+        "toggle": 29.9,
+        "total": 29.04
+      },
+      "merged": {
+        "branch": 82.75,
+        "cond": 41.09,
+        "expr": 80.0,
+        "stmt": 88.85,
+        "toggle": 64.91,
+        "total": 71.52
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 88,
+      "case_id": "E010",
+      "ucdb": "cov/max32/isolated/E010.ucdb",
+      "merged_ucdb": "cov/max32/merged/088_E010.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.39,
+        "toggle": 23.22,
+        "total": 23.69
+      },
+      "merged": {
+        "branch": 82.75,
+        "cond": 41.09,
+        "expr": 80.0,
+        "stmt": 88.85,
+        "toggle": 64.91,
+        "total": 71.52
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 89,
+      "case_id": "E011",
+      "ucdb": "cov/max32/isolated/E011.ucdb",
+      "merged_ucdb": "cov/max32/merged/089_E011.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 5.47,
+        "expr": 20.0,
+        "stmt": 51.5,
+        "toggle": 31.4,
+        "total": 27.74
+      },
+      "merged": {
+        "branch": 82.75,
+        "cond": 41.09,
+        "expr": 80.0,
+        "stmt": 88.85,
+        "toggle": 64.91,
+        "total": 71.52
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 90,
+      "case_id": "E012",
+      "ucdb": "cov/max32/isolated/E012.ucdb",
+      "merged_ucdb": "cov/max32/merged/090_E012.ucdb",
+      "isolated": {
+        "branch": 33.79,
+        "cond": 6.84,
+        "expr": 20.0,
+        "stmt": 52.4,
+        "toggle": 31.7,
+        "total": 28.95
+      },
+      "merged": {
+        "branch": 83.44,
+        "cond": 41.09,
+        "expr": 80.0,
+        "stmt": 88.85,
+        "toggle": 64.91,
+        "total": 71.66
+      },
+      "delta": {
+        "branch": 0.6899999999999977,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.14000000000000057
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 91,
+      "case_id": "E013",
+      "ucdb": "cov/max32/isolated/E013.ucdb",
+      "merged_ucdb": "cov/max32/merged/091_E013.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 5.47,
+        "expr": 20.0,
+        "stmt": 51.5,
+        "toggle": 29.57,
+        "total": 27.38
+      },
+      "merged": {
+        "branch": 83.44,
+        "cond": 41.09,
+        "expr": 80.0,
+        "stmt": 88.85,
+        "toggle": 64.91,
+        "total": 71.66
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 92,
+      "case_id": "E014",
+      "ucdb": "cov/max32/isolated/E014.ucdb",
+      "merged_ucdb": "cov/max32/merged/092_E014.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 5.47,
+        "expr": 20.0,
+        "stmt": 51.5,
+        "toggle": 31.4,
+        "total": 27.74
+      },
+      "merged": {
+        "branch": 83.44,
+        "cond": 41.09,
+        "expr": 80.0,
+        "stmt": 88.85,
+        "toggle": 64.91,
+        "total": 71.66
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 93,
+      "case_id": "E015",
+      "ucdb": "cov/max32/isolated/E015.ucdb",
+      "merged_ucdb": "cov/max32/merged/093_E015.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 5.47,
+        "expr": 20.0,
+        "stmt": 51.5,
+        "toggle": 31.4,
+        "total": 27.74
+      },
+      "merged": {
+        "branch": 83.44,
+        "cond": 41.09,
+        "expr": 80.0,
+        "stmt": 88.85,
+        "toggle": 64.91,
+        "total": 71.66
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 94,
+      "case_id": "E016",
+      "ucdb": "cov/max32/isolated/E016.ucdb",
+      "merged_ucdb": "cov/max32/merged/094_E016.ucdb",
+      "isolated": {
+        "branch": 32.41,
+        "cond": 10.95,
+        "expr": 50.0,
+        "stmt": 54.21,
+        "toggle": 31.4,
+        "total": 35.79
+      },
+      "merged": {
+        "branch": 83.44,
+        "cond": 41.09,
+        "expr": 80.0,
+        "stmt": 88.85,
+        "toggle": 64.91,
+        "total": 71.66
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 95,
+      "case_id": "E017",
+      "ucdb": "cov/max32/isolated/E017.ucdb",
+      "merged_ucdb": "cov/max32/merged/095_E017.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 5.47,
+        "expr": 20.0,
+        "stmt": 51.5,
+        "toggle": 31.4,
+        "total": 27.74
+      },
+      "merged": {
+        "branch": 83.44,
+        "cond": 41.09,
+        "expr": 80.0,
+        "stmt": 88.85,
+        "toggle": 64.91,
+        "total": 71.66
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 96,
+      "case_id": "E018",
+      "ucdb": "cov/max32/isolated/E018.ucdb",
+      "merged_ucdb": "cov/max32/merged/096_E018.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 8.21,
+        "expr": 20.0,
+        "stmt": 52.1,
+        "toggle": 23.2,
+        "total": 27.05
+      },
+      "merged": {
+        "branch": 83.44,
+        "cond": 41.09,
+        "expr": 80.0,
+        "stmt": 88.85,
+        "toggle": 64.91,
+        "total": 71.66
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 97,
+      "case_id": "E019",
+      "ucdb": "cov/max32/isolated/E019.ucdb",
+      "merged_ucdb": "cov/max32/merged/097_E019.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 8.21,
+        "expr": 20.0,
+        "stmt": 52.1,
+        "toggle": 23.5,
+        "total": 27.11
+      },
+      "merged": {
+        "branch": 83.44,
+        "cond": 41.09,
+        "expr": 80.0,
+        "stmt": 88.85,
+        "toggle": 64.91,
+        "total": 71.66
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 98,
+      "case_id": "E020",
+      "ucdb": "cov/max32/isolated/E020.ucdb",
+      "merged_ucdb": "cov/max32/merged/098_E020.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 8.21,
+        "expr": 20.0,
+        "stmt": 52.1,
+        "toggle": 27.75,
+        "total": 27.96
+      },
+      "merged": {
+        "branch": 83.44,
+        "cond": 41.09,
+        "expr": 80.0,
+        "stmt": 88.85,
+        "toggle": 64.91,
+        "total": 71.66
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 99,
+      "case_id": "E021",
+      "ucdb": "cov/max32/isolated/E021.ucdb",
+      "merged_ucdb": "cov/max32/merged/099_E021.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 8.21,
+        "expr": 20.0,
+        "stmt": 52.1,
+        "toggle": 27.75,
+        "total": 27.96
+      },
+      "merged": {
+        "branch": 83.44,
+        "cond": 41.09,
+        "expr": 80.0,
+        "stmt": 88.85,
+        "toggle": 64.91,
+        "total": 71.66
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 100,
+      "case_id": "E022",
+      "ucdb": "cov/max32/isolated/E022.ucdb",
+      "merged_ucdb": "cov/max32/merged/100_E022.ucdb",
+      "isolated": {
+        "branch": 57.24,
+        "cond": 17.8,
+        "expr": 20.0,
+        "stmt": 74.39,
+        "toggle": 26.02,
+        "total": 39.09
+      },
+      "merged": {
+        "branch": 84.82,
+        "cond": 46.57,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 73.57
+      },
+      "delta": {
+        "branch": 1.3799999999999955,
+        "cond": 5.479999999999997,
+        "expr": 0.0,
+        "stmt": 1.5100000000000051,
+        "toggle": 1.2000000000000028,
+        "total": 1.9099999999999966
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 101,
+      "case_id": "E023",
+      "ucdb": "cov/max32/isolated/E023.ucdb",
+      "merged_ucdb": "cov/max32/merged/101_E023.ucdb",
+      "isolated": {
+        "branch": 53.1,
+        "cond": 17.8,
+        "expr": 50.0,
+        "stmt": 71.38,
+        "toggle": 25.97,
+        "total": 43.65
+      },
+      "merged": {
+        "branch": 84.82,
+        "cond": 49.31,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 74.12
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 2.740000000000002,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.5500000000000114
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 102,
+      "case_id": "E024",
+      "ucdb": "cov/max32/isolated/E024.ucdb",
+      "merged_ucdb": "cov/max32/merged/102_E024.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 23.29,
+        "total": 27.73
+      },
+      "merged": {
+        "branch": 84.82,
+        "cond": 49.31,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 74.12
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 103,
+      "case_id": "E025",
+      "ucdb": "cov/max32/isolated/E025.ucdb",
+      "merged_ucdb": "cov/max32/merged/103_E025.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 23.29,
+        "total": 27.73
+      },
+      "merged": {
+        "branch": 84.82,
+        "cond": 49.31,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 74.12
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 104,
+      "case_id": "E026",
+      "ucdb": "cov/max32/isolated/E026.ucdb",
+      "merged_ucdb": "cov/max32/merged/104_E026.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 23.29,
+        "total": 27.73
+      },
+      "merged": {
+        "branch": 84.82,
+        "cond": 49.31,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 74.12
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 105,
+      "case_id": "E027",
+      "ucdb": "cov/max32/isolated/E027.ucdb",
+      "merged_ucdb": "cov/max32/merged/105_E027.ucdb",
+      "isolated": {
+        "branch": 35.17,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 53.01,
+        "toggle": 23.39,
+        "total": 28.23
+      },
+      "merged": {
+        "branch": 84.82,
+        "cond": 49.31,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 74.12
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 106,
+      "case_id": "E028",
+      "ucdb": "cov/max32/isolated/E028.ucdb",
+      "merged_ucdb": "cov/max32/merged/106_E028.ucdb",
+      "isolated": {
+        "branch": 49.65,
+        "cond": 24.65,
+        "expr": 20.0,
+        "stmt": 68.07,
+        "toggle": 41.36,
+        "total": 40.74
+      },
+      "merged": {
+        "branch": 85.51,
+        "cond": 52.05,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 74.8
+      },
+      "delta": {
+        "branch": 0.6900000000000119,
+        "cond": 2.739999999999995,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.6799999999999926
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 107,
+      "case_id": "E029",
+      "ucdb": "cov/max32/isolated/E029.ucdb",
+      "merged_ucdb": "cov/max32/merged/107_E029.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.39,
+        "toggle": 23.16,
+        "total": 23.67
+      },
+      "merged": {
+        "branch": 85.51,
+        "cond": 52.05,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 74.8
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 108,
+      "case_id": "E030",
+      "ucdb": "cov/max32/isolated/E030.ucdb",
+      "merged_ucdb": "cov/max32/merged/108_E030.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.39,
+        "toggle": 23.27,
+        "total": 23.7
+      },
+      "merged": {
+        "branch": 85.51,
+        "cond": 52.05,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 74.8
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 109,
+      "case_id": "E031",
+      "ucdb": "cov/max32/isolated/E031.ucdb",
+      "merged_ucdb": "cov/max32/merged/109_E031.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.79,
+        "toggle": 23.14,
+        "total": 23.27
+      },
+      "merged": {
+        "branch": 85.51,
+        "cond": 52.05,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 74.8
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 110,
+      "case_id": "E032",
+      "ucdb": "cov/max32/isolated/E032.ucdb",
+      "merged_ucdb": "cov/max32/merged/110_E032.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.79,
+        "toggle": 23.14,
+        "total": 23.27
+      },
+      "merged": {
+        "branch": 85.51,
+        "cond": 52.05,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 74.8
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 111,
+      "case_id": "E033",
+      "ucdb": "cov/max32/isolated/E033.ucdb",
+      "merged_ucdb": "cov/max32/merged/111_E033.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.79,
+        "toggle": 23.2,
+        "total": 23.29
+      },
+      "merged": {
+        "branch": 85.51,
+        "cond": 52.05,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 74.8
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 112,
+      "case_id": "E034",
+      "ucdb": "cov/max32/isolated/E034.ucdb",
+      "merged_ucdb": "cov/max32/merged/112_E034.ucdb",
+      "isolated": {
+        "branch": 28.27,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.19,
+        "toggle": 23.14,
+        "total": 22.74
+      },
+      "merged": {
+        "branch": 85.51,
+        "cond": 53.42,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 75.08
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 1.3700000000000045,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.28000000000000114
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 113,
+      "case_id": "E035",
+      "ucdb": "cov/max32/isolated/E035.ucdb",
+      "merged_ucdb": "cov/max32/merged/113_E035.ucdb",
+      "isolated": {
+        "branch": 29.65,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.19,
+        "toggle": 23.14,
+        "total": 23.02
+      },
+      "merged": {
+        "branch": 85.51,
+        "cond": 54.79,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 75.35
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 1.3699999999999974,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.269999999999996
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 114,
+      "case_id": "E036",
+      "ucdb": "cov/max32/isolated/E036.ucdb",
+      "merged_ucdb": "cov/max32/merged/114_E036.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.79,
+        "toggle": 23.14,
+        "total": 23.27
+      },
+      "merged": {
+        "branch": 85.51,
+        "cond": 54.79,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 75.35
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 115,
+      "case_id": "E037",
+      "ucdb": "cov/max32/isolated/E037.ucdb",
+      "merged_ucdb": "cov/max32/merged/115_E037.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.79,
+        "toggle": 23.14,
+        "total": 23.27
+      },
+      "merged": {
+        "branch": 85.51,
+        "cond": 54.79,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 75.35
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 116,
+      "case_id": "E038",
+      "ucdb": "cov/max32/isolated/E038.ucdb",
+      "merged_ucdb": "cov/max32/merged/116_E038.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.79,
+        "toggle": 23.14,
+        "total": 23.27
+      },
+      "merged": {
+        "branch": 85.51,
+        "cond": 54.79,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 75.35
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 117,
+      "case_id": "E039",
+      "ucdb": "cov/max32/isolated/E039.ucdb",
+      "merged_ucdb": "cov/max32/merged/117_E039.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.79,
+        "toggle": 23.14,
+        "total": 23.27
+      },
+      "merged": {
+        "branch": 85.51,
+        "cond": 54.79,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 75.35
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 118,
+      "case_id": "E040",
+      "ucdb": "cov/max32/isolated/E040.ucdb",
+      "merged_ucdb": "cov/max32/merged/118_E040.ucdb",
+      "isolated": {
+        "branch": 29.65,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.19,
+        "toggle": 23.14,
+        "total": 23.02
+      },
+      "merged": {
+        "branch": 85.51,
+        "cond": 54.79,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 75.35
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 119,
+      "case_id": "E041",
+      "ucdb": "cov/max32/isolated/E041.ucdb",
+      "merged_ucdb": "cov/max32/merged/119_E041.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.1,
+        "toggle": 23.04,
+        "total": 27.29
+      },
+      "merged": {
+        "branch": 85.51,
+        "cond": 54.79,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 75.35
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 120,
+      "case_id": "E042",
+      "ucdb": "cov/max32/isolated/E042.ucdb",
+      "merged_ucdb": "cov/max32/merged/120_E042.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.1,
+        "toggle": 23.04,
+        "total": 27.29
+      },
+      "merged": {
+        "branch": 85.51,
+        "cond": 54.79,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 75.35
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 121,
+      "case_id": "E043",
+      "ucdb": "cov/max32/isolated/E043.ucdb",
+      "merged_ucdb": "cov/max32/merged/121_E043.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.1,
+        "toggle": 23.04,
+        "total": 27.29
+      },
+      "merged": {
+        "branch": 85.51,
+        "cond": 54.79,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 75.35
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 122,
+      "case_id": "E044",
+      "ucdb": "cov/max32/isolated/E044.ucdb",
+      "merged_ucdb": "cov/max32/merged/122_E044.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.1,
+        "toggle": 23.04,
+        "total": 27.29
+      },
+      "merged": {
+        "branch": 85.51,
+        "cond": 54.79,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 75.35
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 123,
+      "case_id": "E045",
+      "ucdb": "cov/max32/isolated/E045.ucdb",
+      "merged_ucdb": "cov/max32/merged/123_E045.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.1,
+        "toggle": 23.04,
+        "total": 27.29
+      },
+      "merged": {
+        "branch": 85.51,
+        "cond": 54.79,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 75.35
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 124,
+      "case_id": "E046",
+      "ucdb": "cov/max32/isolated/E046.ucdb",
+      "merged_ucdb": "cov/max32/merged/124_E046.ucdb",
+      "isolated": {
+        "branch": 34.48,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.1,
+        "toggle": 26.39,
+        "total": 28.51
+      },
+      "merged": {
+        "branch": 86.2,
+        "cond": 54.79,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 66.11,
+        "total": 75.49
+      },
+      "delta": {
+        "branch": 0.6899999999999977,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.14000000000000057
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 125,
+      "case_id": "E047",
+      "ucdb": "cov/max32/isolated/E047.ucdb",
+      "merged_ucdb": "cov/max32/merged/125_E047.ucdb",
+      "isolated": {
+        "branch": 36.55,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 33.84,
+        "total": 30.81
+      },
+      "merged": {
+        "branch": 87.58,
+        "cond": 56.16,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 68.1,
+        "total": 76.44
+      },
+      "delta": {
+        "branch": 1.3799999999999955,
+        "cond": 1.3699999999999974,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 1.9899999999999949,
+        "total": 0.9500000000000028
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 126,
+      "case_id": "E048",
+      "ucdb": "cov/max32/isolated/E048.ucdb",
+      "merged_ucdb": "cov/max32/merged/126_E048.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.79,
+        "toggle": 23.14,
+        "total": 23.27
+      },
+      "merged": {
+        "branch": 87.58,
+        "cond": 56.16,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 68.1,
+        "total": 76.44
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 127,
+      "case_id": "E049",
+      "ucdb": "cov/max32/isolated/E049.ucdb",
+      "merged_ucdb": "cov/max32/merged/127_E049.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.79,
+        "toggle": 23.14,
+        "total": 23.27
+      },
+      "merged": {
+        "branch": 87.58,
+        "cond": 56.16,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 68.1,
+        "total": 76.44
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 128,
+      "case_id": "E050",
+      "ucdb": "cov/max32/isolated/E050.ucdb",
+      "merged_ucdb": "cov/max32/merged/128_E050.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.49,
+        "toggle": 23.14,
+        "total": 23.21
+      },
+      "merged": {
+        "branch": 88.27,
+        "cond": 56.16,
+        "expr": 80.0,
+        "stmt": 90.36,
+        "toggle": 68.1,
+        "total": 76.58
+      },
+      "delta": {
+        "branch": 0.6899999999999977,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.14000000000000057
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 129,
+      "case_id": "P001",
+      "ucdb": "cov/max32/isolated/P001.ucdb",
+      "merged_ucdb": "cov/max32/merged/129_P001.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 24.41,
+        "total": 28.23
+      },
+      "merged": {
+        "branch": 88.96,
+        "cond": 57.53,
+        "expr": 80.0,
+        "stmt": 90.66,
+        "toggle": 68.1,
+        "total": 77.05
+      },
+      "delta": {
+        "branch": 0.6899999999999977,
+        "cond": 1.3700000000000045,
+        "expr": 0.0,
+        "stmt": 0.29999999999999716,
+        "toggle": 0.0,
+        "total": 0.46999999999999886
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 130,
+      "case_id": "P002",
+      "ucdb": "cov/max32/isolated/P002.ucdb",
+      "merged_ucdb": "cov/max32/merged/130_P002.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 25.02,
+        "total": 28.35
+      },
+      "merged": {
+        "branch": 88.96,
+        "cond": 57.53,
+        "expr": 80.0,
+        "stmt": 90.66,
+        "toggle": 68.1,
+        "total": 77.05
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 131,
+      "case_id": "P003",
+      "ucdb": "cov/max32/isolated/P003.ucdb",
+      "merged_ucdb": "cov/max32/merged/131_P003.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 25.25,
+        "total": 28.4
+      },
+      "merged": {
+        "branch": 88.96,
+        "cond": 57.53,
+        "expr": 80.0,
+        "stmt": 90.66,
+        "toggle": 68.1,
+        "total": 77.05
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 132,
+      "case_id": "P004",
+      "ucdb": "cov/max32/isolated/P004.ucdb",
+      "merged_ucdb": "cov/max32/merged/132_P004.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 25.47,
+        "total": 28.45
+      },
+      "merged": {
+        "branch": 88.96,
+        "cond": 57.53,
+        "expr": 80.0,
+        "stmt": 90.66,
+        "toggle": 68.1,
+        "total": 77.05
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 133,
+      "case_id": "P005",
+      "ucdb": "cov/max32/isolated/P005.ucdb",
+      "merged_ucdb": "cov/max32/merged/133_P005.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 25.17,
+        "total": 28.38
+      },
+      "merged": {
+        "branch": 88.96,
+        "cond": 57.53,
+        "expr": 80.0,
+        "stmt": 90.66,
+        "toggle": 68.1,
+        "total": 77.05
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 134,
+      "case_id": "P006",
+      "ucdb": "cov/max32/isolated/P006.ucdb",
+      "merged_ucdb": "cov/max32/merged/134_P006.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 23.73,
+        "total": 28.1
+      },
+      "merged": {
+        "branch": 88.96,
+        "cond": 57.53,
+        "expr": 80.0,
+        "stmt": 90.66,
+        "toggle": 68.1,
+        "total": 77.05
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 135,
+      "case_id": "P007",
+      "ucdb": "cov/max32/isolated/P007.ucdb",
+      "merged_ucdb": "cov/max32/merged/135_P007.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 24.87,
+        "total": 28.32
+      },
+      "merged": {
+        "branch": 88.96,
+        "cond": 57.53,
+        "expr": 80.0,
+        "stmt": 90.66,
+        "toggle": 68.1,
+        "total": 77.05
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 136,
+      "case_id": "P008",
+      "ucdb": "cov/max32/isolated/P008.ucdb",
+      "merged_ucdb": "cov/max32/merged/136_P008.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 23.65,
+        "total": 28.08
+      },
+      "merged": {
+        "branch": 88.96,
+        "cond": 57.53,
+        "expr": 80.0,
+        "stmt": 90.66,
+        "toggle": 68.1,
+        "total": 77.05
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 137,
+      "case_id": "P009",
+      "ucdb": "cov/max32/isolated/P009.ucdb",
+      "merged_ucdb": "cov/max32/merged/137_P009.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 25.02,
+        "total": 28.35
+      },
+      "merged": {
+        "branch": 88.96,
+        "cond": 57.53,
+        "expr": 80.0,
+        "stmt": 90.66,
+        "toggle": 68.1,
+        "total": 77.05
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 138,
+      "case_id": "P010",
+      "ucdb": "cov/max32/isolated/P010.ucdb",
+      "merged_ucdb": "cov/max32/merged/138_P010.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 25.25,
+        "total": 28.4
+      },
+      "merged": {
+        "branch": 88.96,
+        "cond": 57.53,
+        "expr": 80.0,
+        "stmt": 90.66,
+        "toggle": 68.1,
+        "total": 77.05
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 139,
+      "case_id": "P011",
+      "ucdb": "cov/max32/isolated/P011.ucdb",
+      "merged_ucdb": "cov/max32/merged/139_P011.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 88.96,
+        "cond": 57.53,
+        "expr": 80.0,
+        "stmt": 90.66,
+        "toggle": 68.1,
+        "total": 77.05
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 140,
+      "case_id": "P012",
+      "ucdb": "cov/max32/isolated/P012.ucdb",
+      "merged_ucdb": "cov/max32/merged/140_P012.ucdb",
+      "isolated": {
+        "branch": 28.27,
+        "cond": 6.84,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 23.18
+      },
+      "merged": {
+        "branch": 89.65,
+        "cond": 60.27,
+        "expr": 80.0,
+        "stmt": 90.66,
+        "toggle": 68.1,
+        "total": 77.73
+      },
+      "delta": {
+        "branch": 0.6900000000000119,
+        "cond": 2.740000000000002,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.6800000000000068
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 141,
+      "case_id": "P013",
+      "ucdb": "cov/max32/isolated/P013.ucdb",
+      "merged_ucdb": "cov/max32/merged/141_P013.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 89.65,
+        "cond": 60.27,
+        "expr": 80.0,
+        "stmt": 90.66,
+        "toggle": 68.1,
+        "total": 77.73
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 142,
+      "case_id": "P014",
+      "ucdb": "cov/max32/isolated/P014.ucdb",
+      "merged_ucdb": "cov/max32/merged/142_P014.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 89.65,
+        "cond": 60.27,
+        "expr": 80.0,
+        "stmt": 90.66,
+        "toggle": 68.1,
+        "total": 77.73
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 143,
+      "case_id": "P015",
+      "ucdb": "cov/max32/isolated/P015.ucdb",
+      "merged_ucdb": "cov/max32/merged/143_P015.ucdb",
+      "isolated": {
+        "branch": 28.27,
+        "cond": 6.84,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 23.18
+      },
+      "merged": {
+        "branch": 89.65,
+        "cond": 60.27,
+        "expr": 80.0,
+        "stmt": 90.66,
+        "toggle": 68.1,
+        "total": 77.73
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 144,
+      "case_id": "P016",
+      "ucdb": "cov/max32/isolated/P016.ucdb",
+      "merged_ucdb": "cov/max32/merged/144_P016.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 89.65,
+        "cond": 60.27,
+        "expr": 80.0,
+        "stmt": 90.66,
+        "toggle": 68.1,
+        "total": 77.73
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 145,
+      "case_id": "P017",
+      "ucdb": "cov/max32/isolated/P017.ucdb",
+      "merged_ucdb": "cov/max32/merged/145_P017.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 89.65,
+        "cond": 60.27,
+        "expr": 80.0,
+        "stmt": 90.66,
+        "toggle": 68.1,
+        "total": 77.73
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 146,
+      "case_id": "P018",
+      "ucdb": "cov/max32/isolated/P018.ucdb",
+      "merged_ucdb": "cov/max32/merged/146_P018.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 89.65,
+        "cond": 60.27,
+        "expr": 80.0,
+        "stmt": 90.66,
+        "toggle": 68.1,
+        "total": 77.73
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 147,
+      "case_id": "P019",
+      "ucdb": "cov/max32/isolated/P019.ucdb",
+      "merged_ucdb": "cov/max32/merged/147_P019.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 89.65,
+        "cond": 60.27,
+        "expr": 80.0,
+        "stmt": 90.66,
+        "toggle": 68.1,
+        "total": 77.73
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 148,
+      "case_id": "P020",
+      "ucdb": "cov/max32/isolated/P020.ucdb",
+      "merged_ucdb": "cov/max32/merged/148_P020.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 89.65,
+        "cond": 60.27,
+        "expr": 80.0,
+        "stmt": 90.66,
+        "toggle": 68.1,
+        "total": 77.73
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 149,
+      "case_id": "P021",
+      "ucdb": "cov/max32/isolated/P021.ucdb",
+      "merged_ucdb": "cov/max32/merged/149_P021.ucdb",
+      "isolated": {
+        "branch": 48.96,
+        "cond": 13.69,
+        "expr": 20.0,
+        "stmt": 59.33,
+        "toggle": 24.43,
+        "total": 33.28
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 1.3799999999999955,
+        "cond": 2.739999999999995,
+        "expr": 0.0,
+        "stmt": 0.6000000000000085,
+        "toggle": 0.0,
+        "total": 0.9500000000000028
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 150,
+      "case_id": "P022",
+      "ucdb": "cov/max32/isolated/P022.ucdb",
+      "merged_ucdb": "cov/max32/merged/150_P022.ucdb",
+      "isolated": {
+        "branch": 50.34,
+        "cond": 15.06,
+        "expr": 20.0,
+        "stmt": 59.93,
+        "toggle": 24.66,
+        "total": 34.0
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 151,
+      "case_id": "P023",
+      "ucdb": "cov/max32/isolated/P023.ucdb",
+      "merged_ucdb": "cov/max32/merged/151_P023.ucdb",
+      "isolated": {
+        "branch": 48.96,
+        "cond": 13.69,
+        "expr": 20.0,
+        "stmt": 59.33,
+        "toggle": 34.6,
+        "total": 35.32
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 152,
+      "case_id": "P024",
+      "ucdb": "cov/max32/isolated/P024.ucdb",
+      "merged_ucdb": "cov/max32/merged/152_P024.ucdb",
+      "isolated": {
+        "branch": 44.82,
+        "cond": 8.21,
+        "expr": 10.0,
+        "stmt": 55.12,
+        "toggle": 24.28,
+        "total": 28.49
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 153,
+      "case_id": "P025",
+      "ucdb": "cov/max32/isolated/P025.ucdb",
+      "merged_ucdb": "cov/max32/merged/153_P025.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 154,
+      "case_id": "P026",
+      "ucdb": "cov/max32/isolated/P026.ucdb",
+      "merged_ucdb": "cov/max32/merged/154_P026.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 155,
+      "case_id": "P027",
+      "ucdb": "cov/max32/isolated/P027.ucdb",
+      "merged_ucdb": "cov/max32/merged/155_P027.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 156,
+      "case_id": "P028",
+      "ucdb": "cov/max32/isolated/P028.ucdb",
+      "merged_ucdb": "cov/max32/merged/156_P028.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.39,
+        "toggle": 23.48,
+        "total": 23.74
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 157,
+      "case_id": "P029",
+      "ucdb": "cov/max32/isolated/P029.ucdb",
+      "merged_ucdb": "cov/max32/merged/157_P029.ucdb",
+      "isolated": {
+        "branch": 33.79,
+        "cond": 5.47,
+        "expr": 10.0,
+        "stmt": 53.01,
+        "toggle": 23.23,
+        "total": 25.1
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 158,
+      "case_id": "P030",
+      "ucdb": "cov/max32/isolated/P030.ucdb",
+      "merged_ucdb": "cov/max32/merged/158_P030.ucdb",
+      "isolated": {
+        "branch": 29.65,
+        "cond": 9.58,
+        "expr": 30.0,
+        "stmt": 50.6,
+        "toggle": 22.89,
+        "total": 28.54
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 159,
+      "case_id": "P031",
+      "ucdb": "cov/max32/isolated/P031.ucdb",
+      "merged_ucdb": "cov/max32/merged/159_P031.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 24.03,
+        "total": 28.16
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 160,
+      "case_id": "P032",
+      "ucdb": "cov/max32/isolated/P032.ucdb",
+      "merged_ucdb": "cov/max32/merged/160_P032.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 24.34,
+        "total": 28.22
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 161,
+      "case_id": "P033",
+      "ucdb": "cov/max32/isolated/P033.ucdb",
+      "merged_ucdb": "cov/max32/merged/161_P033.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 24.34,
+        "total": 28.22
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 162,
+      "case_id": "P034",
+      "ucdb": "cov/max32/isolated/P034.ucdb",
+      "merged_ucdb": "cov/max32/merged/162_P034.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 24.34,
+        "total": 28.22
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 163,
+      "case_id": "P035",
+      "ucdb": "cov/max32/isolated/P035.ucdb",
+      "merged_ucdb": "cov/max32/merged/163_P035.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 24.49,
+        "total": 28.25
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 164,
+      "case_id": "P036",
+      "ucdb": "cov/max32/isolated/P036.ucdb",
+      "merged_ucdb": "cov/max32/merged/164_P036.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 25.02,
+        "total": 28.35
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 165,
+      "case_id": "P037",
+      "ucdb": "cov/max32/isolated/P037.ucdb",
+      "merged_ucdb": "cov/max32/merged/165_P037.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 24.26,
+        "total": 28.2
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 166,
+      "case_id": "P038",
+      "ucdb": "cov/max32/isolated/P038.ucdb",
+      "merged_ucdb": "cov/max32/merged/166_P038.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 24.64,
+        "total": 28.28
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 167,
+      "case_id": "P039",
+      "ucdb": "cov/max32/isolated/P039.ucdb",
+      "merged_ucdb": "cov/max32/merged/167_P039.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 24.18,
+        "total": 28.19
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 168,
+      "case_id": "P040",
+      "ucdb": "cov/max32/isolated/P040.ucdb",
+      "merged_ucdb": "cov/max32/merged/168_P040.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 10.95,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 26.39,
+        "total": 28.63
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 169,
+      "case_id": "X001",
+      "ucdb": "cov/max32/isolated/X001.ucdb",
+      "merged_ucdb": "cov/max32/merged/169_X001.ucdb",
+      "isolated": {
+        "branch": 33.79,
+        "cond": 5.47,
+        "expr": 10.0,
+        "stmt": 53.01,
+        "toggle": 23.23,
+        "total": 25.1
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 170,
+      "case_id": "X002",
+      "ucdb": "cov/max32/isolated/X002.ucdb",
+      "merged_ucdb": "cov/max32/merged/170_X002.ucdb",
+      "isolated": {
+        "branch": 33.79,
+        "cond": 5.47,
+        "expr": 10.0,
+        "stmt": 53.01,
+        "toggle": 23.23,
+        "total": 25.1
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 171,
+      "case_id": "X003",
+      "ucdb": "cov/max32/isolated/X003.ucdb",
+      "merged_ucdb": "cov/max32/merged/171_X003.ucdb",
+      "isolated": {
+        "branch": 33.79,
+        "cond": 5.47,
+        "expr": 10.0,
+        "stmt": 53.01,
+        "toggle": 23.23,
+        "total": 25.1
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 172,
+      "case_id": "X004",
+      "ucdb": "cov/max32/isolated/X004.ucdb",
+      "merged_ucdb": "cov/max32/merged/172_X004.ucdb",
+      "isolated": {
+        "branch": 33.79,
+        "cond": 5.47,
+        "expr": 10.0,
+        "stmt": 53.01,
+        "toggle": 23.23,
+        "total": 25.1
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 68.1,
+        "total": 78.68
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 173,
+      "case_id": "X005",
+      "ucdb": "cov/max32/isolated/X005.ucdb",
+      "merged_ucdb": "cov/max32/merged/173_X005.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 5.47,
+        "expr": 10.0,
+        "stmt": 53.01,
+        "toggle": 26.54,
+        "total": 25.62
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 71.04,
+        "total": 79.27
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 2.940000000000012,
+        "total": 0.5899999999999892
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 174,
+      "case_id": "X006",
+      "ucdb": "cov/max32/isolated/X006.ucdb",
+      "merged_ucdb": "cov/max32/merged/174_X006.ucdb",
+      "isolated": {
+        "branch": 33.79,
+        "cond": 5.47,
+        "expr": 10.0,
+        "stmt": 53.01,
+        "toggle": 23.23,
+        "total": 25.1
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 71.04,
+        "total": 79.27
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 175,
+      "case_id": "X007",
+      "ucdb": "cov/max32/isolated/X007.ucdb",
+      "merged_ucdb": "cov/max32/merged/175_X007.ucdb",
+      "isolated": {
+        "branch": 33.79,
+        "cond": 5.47,
+        "expr": 10.0,
+        "stmt": 53.01,
+        "toggle": 23.23,
+        "total": 25.1
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 71.04,
+        "total": 79.27
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 176,
+      "case_id": "X008",
+      "ucdb": "cov/max32/isolated/X008.ucdb",
+      "merged_ucdb": "cov/max32/merged/176_X008.ucdb",
+      "isolated": {
+        "branch": 33.79,
+        "cond": 5.47,
+        "expr": 10.0,
+        "stmt": 53.01,
+        "toggle": 23.23,
+        "total": 25.1
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 71.04,
+        "total": 79.27
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 177,
+      "case_id": "X009",
+      "ucdb": "cov/max32/isolated/X009.ucdb",
+      "merged_ucdb": "cov/max32/merged/177_X009.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 9.58,
+        "expr": 20.0,
+        "stmt": 52.71,
+        "toggle": 23.27,
+        "total": 27.73
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 71.04,
+        "total": 79.27
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 178,
+      "case_id": "X010",
+      "ucdb": "cov/max32/isolated/X010.ucdb",
+      "merged_ucdb": "cov/max32/merged/178_X010.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 8.21,
+        "expr": 20.0,
+        "stmt": 52.1,
+        "toggle": 23.04,
+        "total": 27.02
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 71.04,
+        "total": 79.27
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 179,
+      "case_id": "X011",
+      "ucdb": "cov/max32/isolated/X011.ucdb",
+      "merged_ucdb": "cov/max32/merged/179_X011.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 8.21,
+        "expr": 20.0,
+        "stmt": 52.1,
+        "toggle": 23.1,
+        "total": 27.03
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 71.04,
+        "total": 79.27
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 180,
+      "case_id": "X012",
+      "ucdb": "cov/max32/isolated/X012.ucdb",
+      "merged_ucdb": "cov/max32/merged/180_X012.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 8.21,
+        "expr": 20.0,
+        "stmt": 52.1,
+        "toggle": 23.16,
+        "total": 27.04
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 71.04,
+        "total": 79.27
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 181,
+      "case_id": "X013",
+      "ucdb": "cov/max32/isolated/X013.ucdb",
+      "merged_ucdb": "cov/max32/merged/181_X013.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 8.21,
+        "expr": 20.0,
+        "stmt": 52.1,
+        "toggle": 23.16,
+        "total": 27.04
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 71.04,
+        "total": 79.27
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 182,
+      "case_id": "X014",
+      "ucdb": "cov/max32/isolated/X014.ucdb",
+      "merged_ucdb": "cov/max32/merged/182_X014.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 8.21,
+        "expr": 20.0,
+        "stmt": 52.1,
+        "toggle": 23.16,
+        "total": 27.04
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 71.04,
+        "total": 79.27
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 183,
+      "case_id": "X015",
+      "ucdb": "cov/max32/isolated/X015.ucdb",
+      "merged_ucdb": "cov/max32/merged/183_X015.ucdb",
+      "isolated": {
+        "branch": 44.82,
+        "cond": 16.43,
+        "expr": 20.0,
+        "stmt": 65.06,
+        "toggle": 41.13,
+        "total": 37.49
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 71.04,
+        "total": 79.27
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 184,
+      "case_id": "X016",
+      "ucdb": "cov/max32/isolated/X016.ucdb",
+      "merged_ucdb": "cov/max32/merged/184_X016.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 8.21,
+        "expr": 20.0,
+        "stmt": 52.1,
+        "toggle": 23.16,
+        "total": 27.04
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 63.01,
+        "expr": 80.0,
+        "stmt": 91.26,
+        "toggle": 71.04,
+        "total": 79.27
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 185,
+      "case_id": "X017",
+      "ucdb": "cov/max32/isolated/X017.ucdb",
+      "merged_ucdb": "cov/max32/merged/185_X017.ucdb",
+      "isolated": {
+        "branch": 44.13,
+        "cond": 15.06,
+        "expr": 30.0,
+        "stmt": 64.75,
+        "toggle": 41.13,
+        "total": 39.02
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 64.38,
+        "expr": 90.0,
+        "stmt": 91.26,
+        "toggle": 71.04,
+        "total": 81.54
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 1.3699999999999974,
+        "expr": 10.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 2.2700000000000102
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 186,
+      "case_id": "X018",
+      "ucdb": "cov/max32/isolated/X018.ucdb",
+      "merged_ucdb": "cov/max32/merged/186_X018.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 8.21,
+        "expr": 20.0,
+        "stmt": 52.1,
+        "toggle": 23.16,
+        "total": 27.04
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 64.38,
+        "expr": 90.0,
+        "stmt": 91.26,
+        "toggle": 71.04,
+        "total": 81.54
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 187,
+      "case_id": "X019",
+      "ucdb": "cov/max32/isolated/X019.ucdb",
+      "merged_ucdb": "cov/max32/merged/187_X019.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 8.21,
+        "expr": 20.0,
+        "stmt": 52.1,
+        "toggle": 23.16,
+        "total": 27.04
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 64.38,
+        "expr": 90.0,
+        "stmt": 91.26,
+        "toggle": 71.04,
+        "total": 81.54
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 188,
+      "case_id": "X020",
+      "ucdb": "cov/max32/isolated/X020.ucdb",
+      "merged_ucdb": "cov/max32/merged/188_X020.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 6.84,
+        "expr": 30.0,
+        "stmt": 49.69,
+        "toggle": 22.89,
+        "total": 27.4
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 64.38,
+        "expr": 90.0,
+        "stmt": 91.26,
+        "toggle": 71.04,
+        "total": 81.54
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 189,
+      "case_id": "X021",
+      "ucdb": "cov/max32/isolated/X021.ucdb",
+      "merged_ucdb": "cov/max32/merged/189_X021.ucdb",
+      "isolated": {
+        "branch": 29.65,
+        "cond": 8.21,
+        "expr": 20.0,
+        "stmt": 50.3,
+        "toggle": 22.89,
+        "total": 26.21
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 64.38,
+        "expr": 90.0,
+        "stmt": 91.26,
+        "toggle": 71.04,
+        "total": 81.54
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 190,
+      "case_id": "X022",
+      "ucdb": "cov/max32/isolated/X022.ucdb",
+      "merged_ucdb": "cov/max32/merged/190_X022.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 8.21,
+        "expr": 20.0,
+        "stmt": 52.1,
+        "toggle": 23.16,
+        "total": 27.04
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 64.38,
+        "expr": 90.0,
+        "stmt": 91.26,
+        "toggle": 71.04,
+        "total": 81.54
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 191,
+      "case_id": "X023",
+      "ucdb": "cov/max32/isolated/X023.ucdb",
+      "merged_ucdb": "cov/max32/merged/191_X023.ucdb",
+      "isolated": {
+        "branch": 31.72,
+        "cond": 8.21,
+        "expr": 20.0,
+        "stmt": 52.1,
+        "toggle": 23.16,
+        "total": 27.04
+      },
+      "merged": {
+        "branch": 91.03,
+        "cond": 64.38,
+        "expr": 90.0,
+        "stmt": 91.26,
+        "toggle": 71.04,
+        "total": 81.54
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 192,
+      "case_id": "X024",
+      "ucdb": "cov/max32/isolated/X024.ucdb",
+      "merged_ucdb": "cov/max32/merged/192_X024.ucdb",
+      "isolated": {
+        "branch": 28.27,
+        "cond": 6.84,
+        "expr": 10.0,
+        "stmt": 48.19,
+        "toggle": 22.91,
+        "total": 23.24
+      },
+      "merged": {
+        "branch": 91.72,
+        "cond": 67.12,
+        "expr": 90.0,
+        "stmt": 91.56,
+        "toggle": 71.06,
+        "total": 82.29
+      },
+      "delta": {
+        "branch": 0.6899999999999977,
+        "cond": 2.740000000000009,
+        "expr": 0.0,
+        "stmt": 0.29999999999999716,
+        "toggle": 0.01999999999999602,
+        "total": 0.75
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 193,
+      "case_id": "X025",
+      "ucdb": "cov/max32/isolated/X025.ucdb",
+      "merged_ucdb": "cov/max32/merged/193_X025.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.79,
+        "toggle": 23.14,
+        "total": 23.27
+      },
+      "merged": {
+        "branch": 91.72,
+        "cond": 67.12,
+        "expr": 90.0,
+        "stmt": 91.56,
+        "toggle": 71.06,
+        "total": 82.29
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 194,
+      "case_id": "X026",
+      "ucdb": "cov/max32/isolated/X026.ucdb",
+      "merged_ucdb": "cov/max32/merged/194_X026.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 91.72,
+        "cond": 67.12,
+        "expr": 90.0,
+        "stmt": 91.56,
+        "toggle": 71.06,
+        "total": 82.29
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 195,
+      "case_id": "X027",
+      "ucdb": "cov/max32/isolated/X027.ucdb",
+      "merged_ucdb": "cov/max32/merged/195_X027.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 91.72,
+        "cond": 67.12,
+        "expr": 90.0,
+        "stmt": 91.56,
+        "toggle": 71.06,
+        "total": 82.29
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 196,
+      "case_id": "X028",
+      "ucdb": "cov/max32/isolated/X028.ucdb",
+      "merged_ucdb": "cov/max32/merged/196_X028.ucdb",
+      "isolated": {
+        "branch": 29.65,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.19,
+        "toggle": 23.14,
+        "total": 23.02
+      },
+      "merged": {
+        "branch": 91.72,
+        "cond": 67.12,
+        "expr": 90.0,
+        "stmt": 91.56,
+        "toggle": 71.06,
+        "total": 82.29
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 197,
+      "case_id": "X029",
+      "ucdb": "cov/max32/isolated/X029.ucdb",
+      "merged_ucdb": "cov/max32/merged/197_X029.ucdb",
+      "isolated": {
+        "branch": 29.65,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.49,
+        "toggle": 23.25,
+        "total": 23.1
+      },
+      "merged": {
+        "branch": 91.72,
+        "cond": 67.12,
+        "expr": 90.0,
+        "stmt": 91.56,
+        "toggle": 71.06,
+        "total": 82.29
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 198,
+      "case_id": "X030",
+      "ucdb": "cov/max32/isolated/X030.ucdb",
+      "merged_ucdb": "cov/max32/merged/198_X030.ucdb",
+      "isolated": {
+        "branch": 29.65,
+        "cond": 5.47,
+        "expr": 10.0,
+        "stmt": 48.49,
+        "toggle": 25.32,
+        "total": 23.79
+      },
+      "merged": {
+        "branch": 91.72,
+        "cond": 67.12,
+        "expr": 90.0,
+        "stmt": 91.56,
+        "toggle": 72.83,
+        "total": 82.64
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 1.769999999999996,
+        "total": 0.3499999999999943
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 199,
+      "case_id": "X031",
+      "ucdb": "cov/max32/isolated/X031.ucdb",
+      "merged_ucdb": "cov/max32/merged/199_X031.ucdb",
+      "isolated": {
+        "branch": 30.34,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.49,
+        "toggle": 23.27,
+        "total": 23.24
+      },
+      "merged": {
+        "branch": 91.72,
+        "cond": 67.12,
+        "expr": 90.0,
+        "stmt": 91.56,
+        "toggle": 72.83,
+        "total": 82.64
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 200,
+      "case_id": "X032",
+      "ucdb": "cov/max32/isolated/X032.ucdb",
+      "merged_ucdb": "cov/max32/merged/200_X032.ucdb",
+      "isolated": {
+        "branch": 31.03,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 49.39,
+        "toggle": 23.33,
+        "total": 23.57
+      },
+      "merged": {
+        "branch": 92.41,
+        "cond": 68.49,
+        "expr": 90.0,
+        "stmt": 91.86,
+        "toggle": 72.83,
+        "total": 83.12
+      },
+      "delta": {
+        "branch": 0.6899999999999977,
+        "cond": 1.3699999999999903,
+        "expr": 0.0,
+        "stmt": 0.29999999999999716,
+        "toggle": 0.0,
+        "total": 0.480000000000004
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 201,
+      "case_id": "X033",
+      "ucdb": "cov/max32/isolated/X033.ucdb",
+      "merged_ucdb": "cov/max32/merged/201_X033.ucdb",
+      "isolated": {
+        "branch": 29.65,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.49,
+        "toggle": 23.25,
+        "total": 23.1
+      },
+      "merged": {
+        "branch": 92.41,
+        "cond": 68.49,
+        "expr": 90.0,
+        "stmt": 91.86,
+        "toggle": 72.83,
+        "total": 83.12
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 202,
+      "case_id": "X034",
+      "ucdb": "cov/max32/isolated/X034.ucdb",
+      "merged_ucdb": "cov/max32/merged/202_X034.ucdb",
+      "isolated": {
+        "branch": 29.65,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 48.19,
+        "toggle": 23.14,
+        "total": 23.02
+      },
+      "merged": {
+        "branch": 92.41,
+        "cond": 68.49,
+        "expr": 90.0,
+        "stmt": 91.86,
+        "toggle": 72.83,
+        "total": 83.12
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 203,
+      "case_id": "X035",
+      "ucdb": "cov/max32/isolated/X035.ucdb",
+      "merged_ucdb": "cov/max32/merged/203_X035.ucdb",
+      "isolated": {
+        "branch": 48.96,
+        "cond": 15.06,
+        "expr": 20.0,
+        "stmt": 67.46,
+        "toggle": 26.36,
+        "total": 35.57
+      },
+      "merged": {
+        "branch": 92.41,
+        "cond": 68.49,
+        "expr": 90.0,
+        "stmt": 91.86,
+        "toggle": 73.51,
+        "total": 83.25
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.6800000000000068,
+        "total": 0.12999999999999545
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 204,
+      "case_id": "X036",
+      "ucdb": "cov/max32/isolated/X036.ucdb",
+      "merged_ucdb": "cov/max32/merged/204_X036.ucdb",
+      "isolated": {
+        "branch": 50.34,
+        "cond": 15.06,
+        "expr": 20.0,
+        "stmt": 66.26,
+        "toggle": 25.69,
+        "total": 35.47
+      },
+      "merged": {
+        "branch": 93.79,
+        "cond": 71.23,
+        "expr": 90.0,
+        "stmt": 92.46,
+        "toggle": 73.51,
+        "total": 84.2
+      },
+      "delta": {
+        "branch": 1.3800000000000097,
+        "cond": 2.740000000000009,
+        "expr": 0.0,
+        "stmt": 0.5999999999999943,
+        "toggle": 0.0,
+        "total": 0.9500000000000028
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 205,
+      "case_id": "X037",
+      "ucdb": "cov/max32/isolated/X037.ucdb",
+      "merged_ucdb": "cov/max32/merged/205_X037.ucdb",
+      "isolated": {
+        "branch": 28.27,
+        "cond": 6.84,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 23.18
+      },
+      "merged": {
+        "branch": 93.79,
+        "cond": 71.23,
+        "expr": 90.0,
+        "stmt": 92.46,
+        "toggle": 73.51,
+        "total": 84.2
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 206,
+      "case_id": "X038",
+      "ucdb": "cov/max32/isolated/X038.ucdb",
+      "merged_ucdb": "cov/max32/merged/206_X038.ucdb",
+      "isolated": {
+        "branch": 42.06,
+        "cond": 9.58,
+        "expr": 10.0,
+        "stmt": 61.74,
+        "toggle": 40.75,
+        "total": 32.83
+      },
+      "merged": {
+        "branch": 93.79,
+        "cond": 73.97,
+        "expr": 90.0,
+        "stmt": 92.46,
+        "toggle": 73.51,
+        "total": 84.75
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 2.739999999999995,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.5499999999999972
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 207,
+      "case_id": "X039",
+      "ucdb": "cov/max32/isolated/X039.ucdb",
+      "merged_ucdb": "cov/max32/merged/207_X039.ucdb",
+      "isolated": {
+        "branch": 33.1,
+        "cond": 10.95,
+        "expr": 10.0,
+        "stmt": 50.0,
+        "toggle": 32.86,
+        "total": 27.38
+      },
+      "merged": {
+        "branch": 94.48,
+        "cond": 82.19,
+        "expr": 90.0,
+        "stmt": 92.77,
+        "toggle": 80.74,
+        "total": 88.03
+      },
+      "delta": {
+        "branch": 0.6899999999999977,
+        "cond": 8.219999999999999,
+        "expr": 0.0,
+        "stmt": 0.3100000000000023,
+        "toggle": 7.22999999999999,
+        "total": 3.280000000000001
+      },
+      "zero_increment": false
+    },
+    {
+      "index": 208,
+      "case_id": "X040",
+      "ucdb": "cov/max32/isolated/X040.ucdb",
+      "merged_ucdb": "cov/max32/merged/208_X040.ucdb",
+      "isolated": {
+        "branch": 48.96,
+        "cond": 17.8,
+        "expr": 20.0,
+        "stmt": 67.16,
+        "toggle": 41.3,
+        "total": 39.05
+      },
+      "merged": {
+        "branch": 94.48,
+        "cond": 82.19,
+        "expr": 90.0,
+        "stmt": 92.77,
+        "toggle": 80.74,
+        "total": 88.03
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 209,
+      "case_id": "X041",
+      "ucdb": "cov/max32/isolated/X041.ucdb",
+      "merged_ucdb": "cov/max32/merged/209_X041.ucdb",
+      "isolated": {
+        "branch": 33.79,
+        "cond": 13.69,
+        "expr": 40.0,
+        "stmt": 54.51,
+        "toggle": 33.22,
+        "total": 35.04
+      },
+      "merged": {
+        "branch": 94.48,
+        "cond": 82.19,
+        "expr": 90.0,
+        "stmt": 92.77,
+        "toggle": 80.74,
+        "total": 88.03
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 210,
+      "case_id": "X042",
+      "ucdb": "cov/max32/isolated/X042.ucdb",
+      "merged_ucdb": "cov/max32/merged/210_X042.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 94.48,
+        "cond": 82.19,
+        "expr": 90.0,
+        "stmt": 92.77,
+        "toggle": 80.74,
+        "total": 88.03
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 211,
+      "case_id": "X043",
+      "ucdb": "cov/max32/isolated/X043.ucdb",
+      "merged_ucdb": "cov/max32/merged/211_X043.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 94.48,
+        "cond": 82.19,
+        "expr": 90.0,
+        "stmt": 92.77,
+        "toggle": 80.74,
+        "total": 88.03
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 212,
+      "case_id": "X044",
+      "ucdb": "cov/max32/isolated/X044.ucdb",
+      "merged_ucdb": "cov/max32/merged/212_X044.ucdb",
+      "isolated": {
+        "branch": 27.58,
+        "cond": 4.1,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 22.49
+      },
+      "merged": {
+        "branch": 94.48,
+        "cond": 82.19,
+        "expr": 90.0,
+        "stmt": 92.77,
+        "toggle": 80.74,
+        "total": 88.03
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 213,
+      "case_id": "X045",
+      "ucdb": "cov/max32/isolated/X045.ucdb",
+      "merged_ucdb": "cov/max32/merged/213_X045.ucdb",
+      "isolated": {
+        "branch": 41.37,
+        "cond": 9.58,
+        "expr": 10.0,
+        "stmt": 61.44,
+        "toggle": 40.51,
+        "total": 32.58
+      },
+      "merged": {
+        "branch": 94.48,
+        "cond": 82.19,
+        "expr": 90.0,
+        "stmt": 92.77,
+        "toggle": 80.74,
+        "total": 88.03
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 214,
+      "case_id": "X046",
+      "ucdb": "cov/max32/isolated/X046.ucdb",
+      "merged_ucdb": "cov/max32/merged/214_X046.ucdb",
+      "isolated": {
+        "branch": 28.27,
+        "cond": 6.84,
+        "expr": 10.0,
+        "stmt": 47.89,
+        "toggle": 22.89,
+        "total": 23.18
+      },
+      "merged": {
+        "branch": 94.48,
+        "cond": 82.19,
+        "expr": 90.0,
+        "stmt": 92.77,
+        "toggle": 80.74,
+        "total": 88.03
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 215,
+      "case_id": "X047",
+      "ucdb": "cov/max32/isolated/X047.ucdb",
+      "merged_ucdb": "cov/max32/merged/215_X047.ucdb",
+      "isolated": {
+        "branch": 24.82,
+        "cond": 0.0,
+        "expr": 10.0,
+        "stmt": 46.68,
+        "toggle": 22.87,
+        "total": 20.87
+      },
+      "merged": {
+        "branch": 94.48,
+        "cond": 82.19,
+        "expr": 90.0,
+        "stmt": 92.77,
+        "toggle": 80.74,
+        "total": 88.03
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 216,
+      "case_id": "X048",
+      "ucdb": "cov/max32/isolated/X048.ucdb",
+      "merged_ucdb": "cov/max32/merged/216_X048.ucdb",
+      "isolated": {
+        "branch": 24.82,
+        "cond": 0.0,
+        "expr": 10.0,
+        "stmt": 46.68,
+        "toggle": 22.87,
+        "total": 20.87
+      },
+      "merged": {
+        "branch": 94.48,
+        "cond": 82.19,
+        "expr": 90.0,
+        "stmt": 92.77,
+        "toggle": 80.74,
+        "total": 88.03
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 217,
+      "case_id": "X049",
+      "ucdb": "cov/max32/isolated/X049.ucdb",
+      "merged_ucdb": "cov/max32/merged/217_X049.ucdb",
+      "isolated": {
+        "branch": 24.82,
+        "cond": 0.0,
+        "expr": 10.0,
+        "stmt": 46.68,
+        "toggle": 22.87,
+        "total": 20.87
+      },
+      "merged": {
+        "branch": 94.48,
+        "cond": 82.19,
+        "expr": 90.0,
+        "stmt": 92.77,
+        "toggle": 80.74,
+        "total": 88.03
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    },
+    {
+      "index": 218,
+      "case_id": "X050",
+      "ucdb": "cov/max32/isolated/X050.ucdb",
+      "merged_ucdb": "cov/max32/merged/218_X050.ucdb",
+      "isolated": {
+        "branch": 24.82,
+        "cond": 0.0,
+        "expr": 10.0,
+        "stmt": 46.68,
+        "toggle": 22.87,
+        "total": 20.87
+      },
+      "merged": {
+        "branch": 94.48,
+        "cond": 82.19,
+        "expr": 90.0,
+        "stmt": 92.77,
+        "toggle": 80.74,
+        "total": 88.03
+      },
+      "delta": {
+        "branch": 0.0,
+        "cond": 0.0,
+        "expr": 0.0,
+        "stmt": 0.0,
+        "toggle": 0.0,
+        "total": 0.0
+      },
+      "zero_increment": true
+    }
+  ]
+}

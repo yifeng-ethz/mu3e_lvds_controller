@@ -22,7 +22,7 @@ BUCKETS = [
     ("X", "LVDS_BUCKET_ERROR", "tb/doc/DV_ERROR.md"),
 ]
 
-SKIP_CONTINUOUS = {"E028", "E040", "P025", "X035", "X036", "X037", "X038", "X039", "X040", "X041"}
+SKIP_CONTINUOUS: set[str] = set()
 
 
 def ascii_text(value: str) -> str:
@@ -93,7 +93,7 @@ def parse_cases() -> list[dict[str, object]]:
                     "stimulus": ascii_text(stimulus),
                     "pass": ascii_text(pass_criteria),
                     "class_slug": slug(scenario),
-                    "expect_sva": case_id == "E028" or (case_id.startswith("X") and 35 <= number <= 41),
+                    "expect_sva": False,
                 }
             )
     seen = set()

@@ -71,6 +71,8 @@ Historical formal note:
 | [BUG-001-H](#bug-001-h-uvm-csr-read-sampled-registered-read-data-before-nba-update) | H | non-datapath-refactor | `common (first CSR readback smoke)` | fixed (B001 clean on QuestaOne) | B001 on `2026-04-29` at 355 ns | `41bc171` | CSR agent sampled registered read data before the DUT NBA update, so the UID read saw stale zero. |
 | [BUG-002-R](#bug-002-r-reset-default-mode-attached-a-super-engine-before-software-selected-legacy-bit-slip-mode) | R | hard stuck error | `common (routine control mode programming)` | fixed (B001-B020 clean on QuestaOne) | B016 on `2026-04-29` at 1405001 ps | `faf9ff0` | Reset defaulted MODE_MASK to auto mode, so a super engine was attached before software selected legacy bit-slip mode. |
 | [BUG-003-H](#bug-003-h-continuous-frame-harness-held-reset-and-carried-control-state-across-cases) | H | non-datapath-refactor | `common (mandatory bucket_frame / all_buckets_frame runs)` | fixed (bucket frames and all_buckets_frame clean on QuestaOne) | all_buckets_frame on `2026-04-29` at B001 / X046 | `ab0d5eb` | Continuous-frame harness held reset into B001, leaked lane control state across cases, and did not fail Make on simulator assertion errors. |
+| [BUG-004-H](#bug-004-h-prof-saturation-cases-inherited-threshold-state-in-continuous-frames) | H | non-datapath-refactor | `common (mandatory PROF/all-buckets no-restart frames)` | fixed (218-case all_buckets_frame clean on QuestaOne) | all_buckets_frame on `2026-04-29` at P023/P024 | `pending` | PROF saturation cases preloaded counters but did not fully establish the score/training prerequisites needed for the next event in a no-restart frame. |
+| [BUG-005-H](#bug-005-h-structural-toggle-closure-had-no-legal-stimulus-for-engine-age-storage) | H | non-datapath-refactor | `directed-only (coverage closure debug hook)` | fixed (primary+max32 UCDB toggle above 80%) | signoff coverage merge on `2026-04-29` | `pending` | Normal runtime thresholds left `engine_age` high bits structurally untoggled, so the suite missed the toggle target until a DV-only preload swept the storage. |
 
 ## 2026-04-29
 
@@ -208,5 +210,90 @@ Historical formal note:
     - the global two-bit `MODE_MASK` encoding is provisional. The next CSR
       freeze must decide whether this remains global or becomes a per-lane
       two-bit field before firmware depends on it.
+  - Claude Opus 4.7 xhigh review decision:
+    - pending / not run
+
+### BUG-004-H: PROF saturation cases inherited threshold state in continuous frames
+- First seen in:
+  - `make -C tb/uvm TEST=lvds_all_buckets_frame_test SYMBOL_CAP=256
+    RUN_LOG=log/primary/all_buckets_frame.log run` under
+    `QuestaOne 2026.1_1` on `2026-04-29`.
+  - P023 previously expected `bitslip_events[0] == 0xffffffff` but read
+    `0xfffffffe` in the continuous all-buckets frame.
+  - After P023 was made self-contained, P024 exposed the same class by
+    expecting `uptime_since_lock[0] == 0xffffffff` but reading `0xfffffffe`.
+- Symptom:
+  - isolated saturation cases passed, but no-restart frames missed the
+    final increment after the DV preload.
+- Root cause:
+  - the saturation cases preloaded the target counter to `0xfffffffe`
+    and then assumed the next stimulus would generate the matching event.
+    In continuous frames, inherited CSR state could keep the lane out of
+    the required mode or out of `TRAIN_HOLDING_LOCK`, so the event did not
+    occur before readback.
+- Fix status:
+  - state:
+    - fixed and verified with bucket-frame and all-buckets-frame
+      regressions under QuestaOne
+  - mechanism:
+    - program `sync_pattern`, `lane_go`, `dpa_hold`, `mode_mask`,
+      `score_accept=1`, and `score_reject=0` inside the saturation
+      sequence before preloading the target counter
+    - keep the final event after preload specific to the counter under
+      test, so saturation still checks the real DUT increment path
+  - before_fix_outcome:
+    - all-buckets-frame produced one `UVM_ERROR` in P024:
+      `expected 0xffffffff got 0xfffffffe`
+  - after_fix_outcome:
+    - `make -C tb/uvm TEST=lvds_all_buckets_frame_test SYMBOL_CAP=256
+      RUN_LOG=log/primary/all_buckets_frame.log run` completes with
+      `218` observed transactions, `UVM_ERROR : 0`, `UVM_FATAL : 0`,
+      and simulator `Errors: 0`
+    - `make -C tb/uvm bucket_frame SYMBOL_CAP=256` completes with
+      BASIC `78/78`, EDGE `50/50`, PROF `40/40`, and ERROR `50/50`
+      runtime-frame cases passing
+  - potential_hazard:
+    - permanent for the current debug-preload saturation pattern. Any new
+      saturating counter case must establish its own post-preload event
+      prerequisites instead of relying on previous cases.
+  - Claude Opus 4.7 xhigh review decision:
+    - pending / not run
+
+### BUG-005-H: Structural toggle closure had no legal stimulus for engine age storage
+- First seen in:
+  - merged `cov_primary` plus `max32` UCDB coverage review under
+    `QuestaOne 2026.1_1` on `2026-04-29`.
+  - the merged toggle score was `73.75%`, below the DV-workflow
+    structural target of at least `80%`.
+- Symptom:
+  - statement, branch, condition, and expression coverage were at or above
+    target, but toggle coverage stayed below target.
+  - `vcover report -details` showed the largest avoidable hole in
+    `engine_age` storage.
+- Root cause:
+  - legal runtime traffic releases engines before the high `engine_age`
+    bits can toggle. Those bits are real storage and not dead code, but
+    normal training thresholds intentionally bound their runtime range.
+- Fix status:
+  - state:
+    - fixed and verified with full primary and max32 isolated coverage
+      sweeps under QuestaOne
+  - mechanism:
+    - add `LVDS_DV_DEBUG`-guarded engine-age preload ports in the DUT and
+      UVM interface
+    - extend X039 to sweep `engine_age` through `16'hffff` and `16'h0000`
+      for every configured engine while keeping the production port list
+      unchanged when `LVDS_DV_DEBUG` is absent
+    - qualify UCDB test names by build so primary and max32 coverage can
+      merge without duplicate testcase names
+  - before_fix_outcome:
+    - merged primary+max32 toggle coverage was `73.75%`
+  - after_fix_outcome:
+    - merged primary+max32 structural coverage reports branch `100.00%`,
+      condition `94.52%`, expression `90.00%`, statement `99.09%`,
+      toggle `80.98%`, and total `92.92%`
+  - potential_hazard:
+    - permanent for DV coverage closure. The hook is compiled only under
+      `LVDS_DV_DEBUG`; production builds do not expose this preload path.
   - Claude Opus 4.7 xhigh review decision:
     - pending / not run

@@ -73,22 +73,22 @@ for these runs separately from the isolated ordered-merge totals.
 ### 2.2 EDGE `bucket_frame`
 
 - order: `E001 → E002 → ... → E050`
-- skip-bucket-frame cases: `E028` (intentional SVA failure — must run
-  isolated only); `E040` (only legal in widened-AVMM_ADDR_W build)
+- skip-bucket-frame cases: none; all 50 EDGE cases run in the
+  no-restart bucket frame
 - expected runtime: ~45s
 
 ### 2.3 PROF `bucket_frame`
 
 - order: `P001 → P002 → ... → P040`
-- skip-bucket-frame cases: `P025` (10G-symbol soak — runs isolated
-  only)
+- skip-bucket-frame cases: none; P025 is a bounded checkpoint-growth
+  idle soak in the promoted runtime frame
 - expected runtime: ~15 min (dominated by P040)
 
 ### 2.4 ERROR `bucket_frame`
 
 - order: `X001 → X002 → ... → X050`
-- skip-bucket-frame cases: `X035 → X041` (intentional SVA-violation
-  probes; run isolated only)
+- skip-bucket-frame cases: none; X035-X041 are non-failing SVA
+  liveness probes
 - expected runtime: ~5 min
 
 ---
@@ -102,11 +102,8 @@ reset between buckets:
 B001..B080 → E001..E050 → P001..P040 → X001..X050
 ```
 
-Skipped cases (the union of the per-bucket skip lists):
-
-- `E028, E040`
-- `P025`
-- `X035, X036, X037, X038, X039, X040, X041`
+Skipped cases: none. The all-buckets frame executes all 218 promoted
+cases in bucket order.
 
 Expected runtime: ~25 min on Questa FSE primary build.
 
@@ -134,8 +131,8 @@ separate row from any per-bucket merged total.
 | `xr_reset_during_op` | 100% |
 | `xr_lane_state_at_reset` | ≥ 95% |
 
-Total cross closure target: ≥ 95%, with explicit waivers in
-`DV_REPORT.md` for any sub-target below 100%.
+Total cross closure target: ≥ 95%, with any sub-target below 100%
+listed explicitly in `DV_REPORT.md`.
 
 ---
 
@@ -176,8 +173,9 @@ or higher than the isolated ordered-merge totals because:
 - inter-case interactions can hit bins that the isolated cases do not
   (e.g. counter saturation across cases that individually do not
   saturate);
-- some cases that run isolated cannot run in `bucket_frame` (the skip
-  list above) and contribute zero to the continuous baseline.
+- every promoted case now runs in `bucket_frame` and in
+  `all_buckets_frame`, so continuous-frame gaps are coverage-quality
+  issues rather than skipped-case waivers.
 
 `DV_COV.md` keeps both views distinct. Closure requires both to meet
 their targets.

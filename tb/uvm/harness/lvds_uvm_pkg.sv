@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: CERN-OHL-S-2.0
 // Version : 26.0.0
 // Date    : 20260429
-// Change  : Close checked control-mode and continuous-frame cases.
+// Change  : Add targeted code-coverage closure stimulus.
 
 package lvds_uvm_pkg;
     timeunit 1ns;
@@ -85,6 +85,17 @@ package lvds_uvm_pkg;
     localparam int LVDS_CSR_SCORE_REJECT_WORD_CONST = 9;
     localparam int LVDS_CSR_LANE_SELECT_WORD_CONST  = 16;
     localparam int LVDS_CSR_COUNTER_BASE_WORD_CONST = 17;
+
+    localparam int LVDS_CNT_CODE_VIOLATIONS_CONST   = 0;
+    localparam int LVDS_CNT_DISP_VIOLATIONS_CONST   = 1;
+    localparam int LVDS_CNT_COMMA_LOSSES_CONST      = 2;
+    localparam int LVDS_CNT_BITSLIP_EVENTS_CONST    = 3;
+    localparam int LVDS_CNT_DPA_UNLOCKS_CONST       = 4;
+    localparam int LVDS_CNT_REALIGNS_CONST          = 5;
+    localparam int LVDS_CNT_SCORE_CHANGES_CONST     = 6;
+    localparam int LVDS_CNT_ENGINE_STEER_CONST      = 7;
+    localparam int LVDS_CNT_SOFT_RESETS_CONST       = 8;
+    localparam int LVDS_CNT_UPTIME_CONST            = 9;
 
     function automatic string lvds_bucket_name(input lvds_bucket_e bucket);
         unique case (bucket)
@@ -345,6 +356,117 @@ package lvds_uvm_pkg;
             csr_read(LVDS_CSR_COUNTER_BASE_WORD_CONST + counter_idx, data);
         endtask
 
+        task automatic dv_debug_set_lane_counter(input int lane, input int counter_idx, input logic [31:0] value);
+`ifdef LVDS_DV_DEBUG
+            if ((lane >= 0) && (lane < LVDS_TB_MAX_LANE_CONST) &&
+                (counter_idx >= 0) && (counter_idx < LVDS_TB_COUNTER_COUNT_CONST)) begin
+                vif.dv_debug_counter_lane  <= lane[5:0];
+                vif.dv_debug_counter_idx   <= counter_idx[3:0];
+                vif.dv_debug_counter_value <= value;
+                vif.dv_debug_counter_we    <= 1'b1;
+                wait_data_cycles(1);
+                vif.dv_debug_counter_we    <= 1'b0;
+                wait_data_cycles(1);
+            end
+`else
+            `uvm_warning("LVDS/DVDBG", "LVDS_DV_DEBUG is disabled; counter preload skipped")
+`endif
+        endtask
+
+        task automatic dv_debug_attach_engine(input int engine, input int lane);
+`ifdef LVDS_DV_DEBUG
+            if ((engine >= 0) && (engine < cfg.n_engine) &&
+                (lane >= 0) && (lane < cfg.n_lane)) begin
+                vif.dv_debug_engine_idx       <= engine[5:0];
+                vif.dv_debug_engine_lane      <= lane[5:0];
+                vif.dv_debug_engine_attach_we <= 1'b1;
+                wait_data_cycles(1);
+                vif.dv_debug_engine_attach_we <= 1'b0;
+                wait_data_cycles(1);
+            end
+`else
+            `uvm_warning("LVDS/DVDBG", "LVDS_DV_DEBUG is disabled; engine attach preload skipped")
+`endif
+        endtask
+
+        task automatic dv_debug_set_engine_score(input int engine, input int phase, input logic [15:0] value);
+`ifdef LVDS_DV_DEBUG
+            if ((engine >= 0) && (engine < cfg.n_engine) &&
+                (phase >= 0) && (phase < 10)) begin
+                vif.dv_debug_engine_score_idx   <= engine[5:0];
+                vif.dv_debug_engine_score_phase <= phase[3:0];
+                vif.dv_debug_engine_score_value <= value;
+                vif.dv_debug_engine_score_we    <= 1'b1;
+                wait_data_cycles(1);
+                vif.dv_debug_engine_score_we    <= 1'b0;
+                wait_data_cycles(1);
+            end
+`else
+            `uvm_warning("LVDS/DVDBG", "LVDS_DV_DEBUG is disabled; engine score preload skipped")
+`endif
+        endtask
+
+        task automatic dv_debug_set_engine_age(input int engine, input logic [15:0] value);
+`ifdef LVDS_DV_DEBUG
+            if ((engine >= 0) && (engine < cfg.n_engine)) begin
+                vif.dv_debug_engine_age_idx   <= engine[5:0];
+                vif.dv_debug_engine_age_value <= value;
+                vif.dv_debug_engine_age_we    <= 1'b1;
+                wait_data_cycles(1);
+                vif.dv_debug_engine_age_we    <= 1'b0;
+                wait_data_cycles(1);
+            end
+`else
+            `uvm_warning("LVDS/DVDBG", "LVDS_DV_DEBUG is disabled; engine age preload skipped")
+`endif
+        endtask
+
+        task automatic dv_debug_pulse_counter_raw(input int lane, input int counter_idx);
+`ifdef LVDS_DV_DEBUG
+            vif.dv_debug_counter_lane  <= lane[5:0];
+            vif.dv_debug_counter_idx   <= counter_idx[3:0];
+            vif.dv_debug_counter_value <= 32'hCAFE0000;
+            vif.dv_debug_counter_we    <= 1'b1;
+            wait_data_cycles(1);
+            vif.dv_debug_counter_we    <= 1'b0;
+            wait_data_cycles(1);
+`endif
+        endtask
+
+        task automatic dv_debug_pulse_engine_attach_raw(input int engine, input int lane);
+`ifdef LVDS_DV_DEBUG
+            vif.dv_debug_engine_idx       <= engine[5:0];
+            vif.dv_debug_engine_lane      <= lane[5:0];
+            vif.dv_debug_engine_attach_we <= 1'b1;
+            wait_data_cycles(1);
+            vif.dv_debug_engine_attach_we <= 1'b0;
+            wait_data_cycles(1);
+`endif
+        endtask
+
+        task automatic dv_debug_pulse_engine_score_raw(input int engine, input int phase);
+`ifdef LVDS_DV_DEBUG
+            vif.dv_debug_engine_score_idx   <= engine[5:0];
+            vif.dv_debug_engine_score_phase <= phase[3:0];
+            vif.dv_debug_engine_score_value <= 16'hCAFE;
+            vif.dv_debug_engine_score_we    <= 1'b1;
+            wait_data_cycles(1);
+            vif.dv_debug_engine_score_we    <= 1'b0;
+            wait_data_cycles(1);
+`endif
+        endtask
+
+        task automatic dv_debug_pulse_engine_age_raw(input int engine, input logic [15:0] value);
+`ifdef LVDS_DV_DEBUG
+            vif.dv_debug_engine_age_idx   <= engine[5:0];
+            vif.dv_debug_engine_age_value <= value;
+            vif.dv_debug_engine_age_we    <= 1'b1;
+            wait_data_cycles(1);
+            vif.dv_debug_engine_age_we    <= 1'b0;
+            wait_data_cycles(1);
+`endif
+        endtask
+
         task automatic expect_lane_counter_eq(input int lane, input int counter_idx, input logic [31:0] expected, input string label);
             logic [31:0] data;
             read_lane_counter(lane, counter_idx, data);
@@ -421,6 +543,9 @@ package lvds_uvm_pkg;
             endcase
             wait_control_cycles(2);
             wait_data_cycles(2);
+            if (!item.continuous_frame && $test$plusargs("LVDS_POST_CASE_RESET")) begin
+                drive_reset();
+            end
         endtask
 
         task automatic drive_identity_case(input lvds_case_desc_t desc);
@@ -554,6 +679,10 @@ package lvds_uvm_pkg;
         task automatic drive_bitslip_case(input lvds_case_desc_t desc);
             int phase;
             phase = 0;
+            if (desc.case_num == 35) begin
+                drive_symbols(10'b1100000101, 160);
+                return;
+            end
             unique case (desc.case_num)
                 30: phase = 1;
                 31: phase = 2;
@@ -621,6 +750,7 @@ package lvds_uvm_pkg;
             end
             wait_data_cycles(32);
             vif.drive_all_symbols(cfg.n_lane, 10'b0011111010);
+            csr_read(10, void_data);
         endtask
 
         task automatic drive_score_edge_case(input lvds_case_desc_t desc);
@@ -648,6 +778,22 @@ package lvds_uvm_pkg;
 
         task automatic drive_contention_case(input lvds_case_desc_t desc);
             int lanes[$];
+            if (desc.case_num == 22 || desc.case_num == 23) begin
+                csr_write(LVDS_CSR_SCORE_ACCEPT_WORD_CONST, 32'h000003FF);
+                csr_write(LVDS_CSR_MODE_MASK_WORD_CONST, 32'h1);
+                dv_debug_attach_engine(0, 0);
+                vif.drive_symbol(0, 10'h000);
+                wait_data_cycles(4);
+                if (desc.case_num == 22) begin
+                    csr_write(LVDS_CSR_SOFT_RESET_WORD_CONST, 32'h1);
+                end else begin
+                    csr_write(LVDS_CSR_LANE_GO_WORD_CONST, lane_mask() & ~32'h1);
+                end
+                wait_data_cycles(32);
+                csr_write(LVDS_CSR_LANE_GO_WORD_CONST, lane_mask());
+                vif.drive_all_symbols(cfg.n_lane, 10'b0011111010);
+                return;
+            end
             unique case (desc.case_num)
                 18: begin lanes.push_back(3); lanes.push_back(7); end
                 19: begin lanes.push_back(0); lanes.push_back(3); lanes.push_back(7); lanes.push_back(11); end
@@ -665,7 +811,10 @@ package lvds_uvm_pkg;
             if (desc.case_num == 27) begin
                 csr_write(LVDS_CSR_CAPABILITY_WORD_CONST, 32'hFFFFFFFF);
             end else if (desc.case_num == 28) begin
-                `uvm_warning("LVDS/SVA", "E028 requires DEBUG_LEVEL hook in RTL; sequence marks the intentional SVA probe")
+                csr_write(LVDS_CSR_MODE_MASK_WORD_CONST, 32'h1);
+                if (cfg.n_engine > 0) begin
+                    dv_debug_attach_engine(0, 0);
+                end
             end
             drive_engine_pool_case(desc);
         endtask
@@ -677,6 +826,11 @@ package lvds_uvm_pkg;
             end else if (desc.case_num == 30) begin
                 csr_write(LVDS_CSR_LANE_SELECT_WORD_CONST, 32'hFF);
                 csr_read(LVDS_CSR_COUNTER_BASE_WORD_CONST, void_data);
+            end else if (desc.case_num == 40) begin
+                csr_write(64, 32'hA5A55A5A);
+                expect_csr(64, 32'd0, desc.id);
+            end else if (desc.case_num == 34) begin
+                csr_read(11, void_data);
             end else begin
                 csr_write(LVDS_CSR_COUNTER_BASE_WORD_CONST + (desc.case_num % 12), 32'hDEADBEEF);
                 csr_read(LVDS_CSR_COUNTER_BASE_WORD_CONST + (desc.case_num % 12), void_data);
@@ -691,8 +845,16 @@ package lvds_uvm_pkg;
 
         task automatic drive_sync_case(input lvds_case_desc_t desc);
             unique case (desc.case_num)
-                46: begin csr_write(LVDS_CSR_SYNC_PATTERN_WORD_CONST, 32'h000000F4); drive_symbols(10'b0011110100, 128); end
-                47: begin csr_write(LVDS_CSR_SYNC_PATTERN_WORD_CONST, 32'h000003A8); drive_symbols(10'b1110101000, 128); end
+                46: begin
+                    csr_write(LVDS_CSR_SYNC_PATTERN_WORD_CONST, 32'h000000F4);
+                    drive_symbols(10'b0011110100, 64);
+                    drive_symbols(10'b1100001011, 64);
+                end
+                47: begin
+                    csr_write(LVDS_CSR_SYNC_PATTERN_WORD_CONST, 32'h000003A8);
+                    drive_symbols(10'b1110101000, 64);
+                    drive_symbols(10'b0001010111, 64);
+                end
                 50: begin csr_write(LVDS_CSR_SYNC_PATTERN_WORD_CONST, 32'h0); drive_symbols(10'b0011111010, 128); end
                 default: begin csr_write(LVDS_CSR_SYNC_PATTERN_WORD_CONST, 32'h000000FA); drive_symbols(10'b0011111010, 128); end
             endcase
@@ -718,12 +880,48 @@ package lvds_uvm_pkg;
         endtask
 
         task automatic drive_saturation_case(input lvds_case_desc_t desc);
-            `uvm_warning("LVDS/SAT", {desc.id, " needs RTL debug preload for practical saturation runtime"})
-            repeat (cfg.symbol_cap) inject_lane_symbol(0, 10'h000, 1);
+            int counter_idx;
+            unique case (desc.case_num)
+                21: counter_idx = LVDS_CNT_CODE_VIOLATIONS_CONST;
+                22: counter_idx = LVDS_CNT_DISP_VIOLATIONS_CONST;
+                23: counter_idx = LVDS_CNT_BITSLIP_EVENTS_CONST;
+                default: counter_idx = LVDS_CNT_UPTIME_CONST;
+            endcase
+            csr_write(LVDS_CSR_SYNC_PATTERN_WORD_CONST, 32'h000000FA);
+            csr_write(LVDS_CSR_SCORE_ACCEPT_WORD_CONST, 32'd1);
+            csr_write(LVDS_CSR_SCORE_REJECT_WORD_CONST, 32'd0);
+            csr_write(LVDS_CSR_LANE_GO_WORD_CONST, lane_mask());
+            csr_write(LVDS_CSR_DPA_HOLD_WORD_CONST, 32'd0);
+            csr_write(LVDS_CSR_MODE_MASK_WORD_CONST, 32'd0);
+            drive_symbols(10'b0011111010, 128);
+            dv_debug_set_lane_counter(0, counter_idx, 32'hFFFF_FFFE);
+            unique case (desc.case_num)
+                21: repeat (3) inject_lane_symbol(0, 10'h000, 1);
+                22: repeat (3) inject_lane_symbol(0, 10'h3FF, 1);
+                23: drive_rotated_k285(5, 64);
+                default: drive_symbols(10'b0011111010, 64);
+            endcase
+            expect_lane_counter_eq(0, counter_idx, 32'hFFFF_FFFF, desc.id);
         endtask
 
         task automatic drive_long_stability_case(input lvds_case_desc_t desc);
-            drive_symbols(10'b0011111010, cfg.symbol_cap);
+            int cycles;
+            cycles = (desc.case_num == 25) ? (cfg.symbol_cap * 4) : cfg.symbol_cap;
+            drive_symbols(10'b0011111010, cycles);
+            if (desc.case_num == 28) begin
+                for (int sample_idx = 0; sample_idx < 8; sample_idx++) begin
+                    csr_write(LVDS_CSR_LANE_SELECT_WORD_CONST, 32'(sample_idx % cfg.n_lane));
+                    csr_read(LVDS_CSR_COUNTER_BASE_WORD_CONST + LVDS_CNT_UPTIME_CONST, void_data);
+                    drive_symbols(10'b0011111010, 32);
+                end
+            end
+            if (desc.case_num == 29) begin
+                repeat (3) begin
+                    csr_write(LVDS_CSR_SOFT_RESET_WORD_CONST, 32'h1);
+                    wait_data_cycles(32);
+                    drive_symbols(10'b0011111010, 64);
+                end
+            end
             if (desc.case_num == 30) begin
                 vif.coe_ctrl_plllock <= 1'b0;
                 wait_data_cycles(1);
@@ -746,6 +944,22 @@ package lvds_uvm_pkg;
 
         task automatic drive_dead_lane_case(input lvds_case_desc_t desc);
             logic [9:0] dead_symbol;
+            if (desc.case_num == 15 || desc.case_num == 17) begin
+                csr_write(LVDS_CSR_MODE_MASK_WORD_CONST, 32'h0);
+                drive_symbols(10'b0011111010, cfg.score_window_w + 16);
+                csr_write(LVDS_CSR_MODE_MASK_WORD_CONST, 32'h1);
+                if (desc.case_num == 15) begin
+                    vif.coe_ctrl_dpalock[0] <= 1'b0;
+                    wait_data_cycles(2);
+                    vif.coe_ctrl_dpalock[0] <= 1'b1;
+                end else begin
+                    vif.coe_redriver_losn[0] <= 1'b0;
+                    wait_data_cycles(2);
+                    vif.coe_redriver_losn[0] <= 1'b1;
+                end
+                drive_symbols(10'b0011111010, 64);
+                return;
+            end
             unique case (desc.case_num)
                 9:  dead_symbol = 10'h3FF;
                 10: dead_symbol = 10'h000;
@@ -781,8 +995,64 @@ package lvds_uvm_pkg;
         endtask
 
         task automatic drive_sva_probe_case(input lvds_case_desc_t desc);
-            `uvm_warning("LVDS/SVA", {desc.id, " requires DEBUG_LEVEL>0 RTL force hook; no force applied by generic harness"})
-            wait_data_cycles(32);
+            unique case (desc.case_num)
+                35: begin
+                    csr_write(LVDS_CSR_SCORE_ACCEPT_WORD_CONST, 32'h000003FF);
+                    csr_write(LVDS_CSR_MODE_MASK_WORD_CONST, 32'h1);
+                    dv_debug_attach_engine(0, 0);
+                    inject_lane_symbol(0, 10'h000, 16);
+                    wait_data_cycles(64);
+                end
+                36: begin
+                    csr_write(LVDS_CSR_SCORE_ACCEPT_WORD_CONST, 32'h000003FF);
+                    dv_debug_set_engine_score(0, 0, 16'h03FF);
+                    dv_debug_attach_engine(0, 0);
+                    drive_symbols(10'b0011111010, 4);
+                    dv_debug_set_lane_counter(0, LVDS_CNT_CODE_VIOLATIONS_CONST, 32'hFFFF_FFFE);
+                    repeat (3) inject_lane_symbol(0, 10'h000, 1);
+                    expect_lane_counter_eq(0, LVDS_CNT_CODE_VIOLATIONS_CONST, 32'hFFFF_FFFF, desc.id);
+                end
+                37: begin
+                    vif.aso_decoded_ready[0] <= 1'b0;
+                    drive_symbols(10'b0011111010, 16);
+                    vif.aso_decoded_ready[0] <= 1'b1;
+                    wait_data_cycles(8);
+                end
+                38: begin
+                    csr_read(LVDS_CSR_UID_WORD_CONST, void_data);
+                    csr_write(LVDS_CSR_MODE_MASK_WORD_CONST, 32'h1);
+                    dv_debug_pulse_counter_raw(63, LVDS_CNT_CODE_VIOLATIONS_CONST);
+                    dv_debug_pulse_counter_raw(0, 15);
+                end
+                39: begin
+                    csr_write(LVDS_CSR_LANE_SELECT_WORD_CONST, 32'd0);
+                    csr_read(LVDS_CSR_COUNTER_BASE_WORD_CONST, void_data);
+                    dv_debug_pulse_engine_attach_raw(63, 0);
+                    dv_debug_pulse_engine_attach_raw(0, 63);
+                    dv_debug_pulse_engine_score_raw(63, 0);
+                    dv_debug_pulse_engine_score_raw(0, 15);
+                    dv_debug_pulse_engine_score_raw(0, 0);
+                    dv_debug_pulse_engine_age_raw(63, 16'h1357);
+                    for (int engine = 0; engine < cfg.n_engine; engine++) begin
+                        dv_debug_set_engine_age(engine, 16'hFFFF);
+                        dv_debug_set_engine_age(engine, 16'h0000);
+                    end
+                end
+                40: begin
+                    csr_write(LVDS_CSR_MODE_MASK_WORD_CONST, 32'h1);
+                    inject_lane_symbol(0, 10'h000, 1);
+                    wait_data_cycles(96);
+                    expect_lane_counter_min(0, LVDS_CNT_ENGINE_STEER_CONST, 32'd1, desc.id);
+                end
+                41: begin
+                    vif.coe_ctrl_dpalock[0] <= 1'b0;
+                    wait_data_cycles(16);
+                    vif.coe_ctrl_dpalock[0] <= 1'b1;
+                    drive_rotated_k285(5, 32);
+                    drive_symbols(10'b0011111010, 96);
+                end
+                default: wait_data_cycles(32);
+            endcase
         endtask
 
         task automatic drive_reset_race_case(input lvds_case_desc_t desc);

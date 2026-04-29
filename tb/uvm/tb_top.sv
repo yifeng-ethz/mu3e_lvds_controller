@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: CERN-OHL-S-2.0
 // Version : 26.0.0
 // Date    : 20260429
-// Change  : Initial UVM top for LVDS controller SV rebuild.
+// Change  : Connect DV-only debug preload conduits.
 
 `ifndef LVDS_N_LANE
 `define LVDS_N_LANE 12
@@ -63,6 +63,23 @@ module tb_top;
         .aso_decoded_data(dut_if.aso_decoded_data),
         .aso_decoded_error(dut_if.aso_decoded_error),
         .aso_decoded_channel(dut_if.aso_decoded_channel)
+`ifdef LVDS_DV_DEBUG
+        ,
+        .dv_debug_counter_we(dut_if.dv_debug_counter_we),
+        .dv_debug_counter_lane(dut_if.dv_debug_counter_lane),
+        .dv_debug_counter_idx(dut_if.dv_debug_counter_idx),
+        .dv_debug_counter_value(dut_if.dv_debug_counter_value),
+        .dv_debug_engine_attach_we(dut_if.dv_debug_engine_attach_we),
+        .dv_debug_engine_idx(dut_if.dv_debug_engine_idx),
+        .dv_debug_engine_lane(dut_if.dv_debug_engine_lane),
+        .dv_debug_engine_score_we(dut_if.dv_debug_engine_score_we),
+        .dv_debug_engine_score_idx(dut_if.dv_debug_engine_score_idx),
+        .dv_debug_engine_score_phase(dut_if.dv_debug_engine_score_phase),
+        .dv_debug_engine_score_value(dut_if.dv_debug_engine_score_value),
+        .dv_debug_engine_age_we(dut_if.dv_debug_engine_age_we),
+        .dv_debug_engine_age_idx(dut_if.dv_debug_engine_age_idx),
+        .dv_debug_engine_age_value(dut_if.dv_debug_engine_age_value)
+`endif
     );
 
     sva_avalon_mm #(

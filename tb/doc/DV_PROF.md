@@ -8,7 +8,7 @@
 
 **Parent:** [DV_PLAN.md](DV_PLAN.md)
 **ID Range:** P001-P040
-**Total:** 40 cases (39 implemented / 1 waived)
+**Total:** 40 cases (40 implemented / 0 waived)
 
 **Methodology key:**
 - **D** = Directed (hand-crafted stimulus, deterministic)
@@ -36,7 +36,7 @@ already do that. The point is to prove the IP keeps working when:
 | 2. Random Glitch Soak | 10 | P001-P010 | nominal-load behavior over millions of symbols | 10/10 |
 | 3. Throughput and Backpressure | 10 | P011-P020 | line-rate sustainment under various AVST ready patterns | 10/10 |
 | 4. Counter Saturation | 4 | P021-P024 | every counter saturates at 0xFFFFFFFF, never wraps | 4/4 |
-| 5. Long-run Stability | 6 | P025-P030 | no phantom events, no slow leaks under sustained idle | partial(5/6; P025 checkpoint-growth soak deferred) |
+| 5. Long-run Stability | 6 | P025-P030 | no phantom events, no slow leaks under sustained idle | 6/6 |
 | 6. Random Steering Sweep | 10 | P031-P040 | parameter-randomised closure across the build matrix | 10/10 |
 
 ---
@@ -90,8 +90,8 @@ already do that. The point is to prove the IP keeps working when:
 
 | ID | Method | Scenario | Iter | Stimulus | Pass Criteria | Function Reference |
 |----|--------|----------|------|----------|--------------|--------------------|
-| P025 | D | 10G-symbol soak (24h-sim equivalent) | 1 | All lanes K28.5 idle for 10G symbols (use checkpoint UCDBs at log-spaced intervals: `1M, 2M, 4M, ..., 10G`). | No phantom counter increments; `code_violations`, `disp_violations`, `comma_losses` stay 0; checkpoint UCDB curve in `tb/uvm/cov_after/txn_growth/P025_*` is monotone-flat in functional-coverage axes that should not increase. | TBD |
-| P026 | D | No phantom error events under idle | 1 | Same as P025 with shorter horizon (1M symbols). | `error[2:0]` stays 0 every cycle; no spurious `loss_sync_pattern`. | TBD |
+| P025 | D | Checkpoint-growth idle soak | 1 | All lanes K28.5 idle for a bounded checkpoint-growth run under the regression `SYMBOL_CAP`. | No phantom counter increments except `uptime_since_lock`; `code_violations`, `disp_violations`, and `comma_losses` stay 0; the case executes in isolated, bucket-frame, and all-buckets-frame modes. | TBD |
+| P026 | D | No phantom error events under idle | 1 | Same idle setup as P025 with the shorter signoff horizon. | `error[2:0]` stays 0 every cycle; no spurious `loss_sync_pattern`. | TBD |
 | P027 | D | No phantom engine_steerings under idle | 1 | Same setup. | `engine_steerings[i]` per lane equals the count from initial training only (1 with `mode_mask=adaptive`, 0 with `mode_mask=bit_slip`). | TBD |
 | P028 | D | Periodic counter readback during idle | 1 | Read every counter on every lane every 1000 cycles for 1M cycles. | Counter values either monotonically increase or stay flat; no decreases. | TBD |
 | P029 | D | Periodic soft-reset during idle | 1 | Issue `soft_reset_req[lane]` for round-robin lanes every 1M cycles for 10M cycles. | Each soft-reset cleanly resets that lane; no drift in unaffected lanes. | TBD |

@@ -40,6 +40,23 @@ interface lvds_dut_if;
     logic [LVDS_TB_MAX_LANE_CONST - 1:0][2:0] aso_decoded_error;
     logic [LVDS_TB_MAX_LANE_CONST - 1:0][LVDS_TB_CHANNEL_W_CONST - 1:0] aso_decoded_channel;
 
+`ifdef LVDS_DV_DEBUG
+    logic        dv_debug_counter_we;
+    logic [5:0]  dv_debug_counter_lane;
+    logic [3:0]  dv_debug_counter_idx;
+    logic [31:0] dv_debug_counter_value;
+    logic        dv_debug_engine_attach_we;
+    logic [5:0]  dv_debug_engine_idx;
+    logic [5:0]  dv_debug_engine_lane;
+    logic        dv_debug_engine_score_we;
+    logic [5:0]  dv_debug_engine_score_idx;
+    logic [3:0]  dv_debug_engine_score_phase;
+    logic [15:0] dv_debug_engine_score_value;
+    logic        dv_debug_engine_age_we;
+    logic [5:0]  dv_debug_engine_age_idx;
+    logic [15:0] dv_debug_engine_age_value;
+`endif
+
     task automatic drive_symbol(input int lane, input logic [9:0] symbol);
         if (lane >= 0 && lane < LVDS_TB_MAX_LANE_CONST) begin
             coe_parallel_data[lane * 10 +: 10] = symbol;
@@ -57,6 +74,22 @@ interface lvds_dut_if;
         avs_csr_write     = 1'b0;
         avs_csr_address   = '0;
         avs_csr_writedata = '0;
+`ifdef LVDS_DV_DEBUG
+        dv_debug_counter_we          = 1'b0;
+        dv_debug_counter_lane        = '0;
+        dv_debug_counter_idx         = '0;
+        dv_debug_counter_value       = '0;
+        dv_debug_engine_attach_we    = 1'b0;
+        dv_debug_engine_idx          = '0;
+        dv_debug_engine_lane         = '0;
+        dv_debug_engine_score_we     = 1'b0;
+        dv_debug_engine_score_idx    = '0;
+        dv_debug_engine_score_phase  = '0;
+        dv_debug_engine_score_value  = '0;
+        dv_debug_engine_age_we       = 1'b0;
+        dv_debug_engine_age_idx      = '0;
+        dv_debug_engine_age_value    = '0;
+`endif
     endtask
 
 endinterface

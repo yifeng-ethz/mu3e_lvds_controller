@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: CERN-OHL-S-2.0
 // Version : 26.0.0
 // Date    : 20260429
-// Change  : Add checked control-mode steering and PHY reset sequencing.
+// Change  : Add DV-only engine age preload for structural toggle closure.
 
 module mu3e_lvds_controller #(
     parameter int          N_LANE              = 12,
@@ -52,6 +52,23 @@ module mu3e_lvds_controller #(
     output logic [31:0][8:0]      aso_decoded_data,
     output logic [31:0][2:0]      aso_decoded_error,
     output logic [31:0][5:0]      aso_decoded_channel
+`ifdef LVDS_DV_DEBUG
+    ,
+    input  logic                  dv_debug_counter_we,
+    input  logic [5:0]            dv_debug_counter_lane,
+    input  logic [3:0]            dv_debug_counter_idx,
+    input  logic [31:0]           dv_debug_counter_value,
+    input  logic                  dv_debug_engine_attach_we,
+    input  logic [5:0]            dv_debug_engine_idx,
+    input  logic [5:0]            dv_debug_engine_lane,
+    input  logic                  dv_debug_engine_score_we,
+    input  logic [5:0]            dv_debug_engine_score_idx,
+    input  logic [3:0]            dv_debug_engine_score_phase,
+    input  logic [15:0]           dv_debug_engine_score_value,
+    input  logic                  dv_debug_engine_age_we,
+    input  logic [5:0]            dv_debug_engine_age_idx,
+    input  logic [15:0]           dv_debug_engine_age_value
+`endif
 );
     timeunit 1ns;
     timeprecision 1ps;
@@ -250,9 +267,6 @@ module mu3e_lvds_controller #(
     endfunction
 
     function automatic logic [15:0] clamp_score_reject(input logic [31:0] value, input logic [15:0] accept);
-        if (accept == 16'd0) begin
-            return 16'd0;
-        end
         if (value >= {16'd0, accept}) begin
             return accept - 16'd1;
         end
@@ -350,11 +364,6 @@ module mu3e_lvds_controller #(
             engine = (lane * N_ENGINE_CLAMP_CONST) / N_LANE_CLAMP_CONST;
         end
 
-        if (engine < 0) begin
-            engine = 0;
-        end else if (engine >= N_ENGINE_CLAMP_CONST) begin
-            engine = N_ENGINE_CLAMP_CONST - 1;
-        end
         return engine;
     endfunction
 
@@ -760,13 +769,11 @@ module mu3e_lvds_controller #(
 
                 if (data_v_engine_request) begin
                     data_v_engine = engine_for_lane(lane_idx);
-                    if ((data_v_engine < N_ENGINE_CLAMP_CONST) &&
-                        (!data_v_engine_taken[data_v_engine] ||
-                         data_v_error_event ||
-                         (engine_attach_lane[data_v_engine] == lane_idx[5:0]))) begin
+                    if (!data_v_engine_taken[data_v_engine] ||
+                        data_v_error_event ||
+                        (engine_attach_lane[data_v_engine] == lane_idx[5:0])) begin
                         if (!engine_busy[data_v_engine] ||
-                            data_v_error_event ||
-                            (engine_attach_lane[data_v_engine] != lane_idx[5:0])) begin
+                            data_v_error_event) begin
                             data_v_engine_taken[data_v_engine]                       = 1'b1;
                             engine_busy[data_v_engine]                            <= 1'b1;
                             engine_attached[data_v_engine]                        <= 1'b1;
@@ -876,6 +883,31 @@ module mu3e_lvds_controller #(
                     end
                 end
             end
+
+`ifdef LVDS_DV_DEBUG
+            if (dv_debug_counter_we &&
+                (int'(dv_debug_counter_lane) < MAX_LANE_CONST) &&
+                (int'(dv_debug_counter_idx) < COUNTER_COUNT_CONST)) begin
+                lane_counter[dv_debug_counter_lane][dv_debug_counter_idx] <= dv_debug_counter_value;
+            end
+            if (dv_debug_engine_attach_we &&
+                (int'(dv_debug_engine_idx) < MAX_ENGINE_CONST) &&
+                (int'(dv_debug_engine_lane) < MAX_LANE_CONST)) begin
+                engine_busy[dv_debug_engine_idx]           <= 1'b1;
+                engine_attached[dv_debug_engine_idx]       <= 1'b1;
+                engine_attach_lane[dv_debug_engine_idx]    <= dv_debug_engine_lane;
+                engine_age[dv_debug_engine_idx]            <= 16'd0;
+            end
+            if (dv_debug_engine_score_we &&
+                (int'(dv_debug_engine_score_idx) < MAX_ENGINE_CONST) &&
+                (int'(dv_debug_engine_score_phase) < SCORE_PHASE_COUNT_CONST)) begin
+                engine_score[dv_debug_engine_score_idx][dv_debug_engine_score_phase] <= dv_debug_engine_score_value;
+            end
+            if (dv_debug_engine_age_we &&
+                (int'(dv_debug_engine_age_idx) < MAX_ENGINE_CONST)) begin
+                engine_age[dv_debug_engine_age_idx] <= dv_debug_engine_age_value;
+            end
+`endif
         end
     end
 endmodule

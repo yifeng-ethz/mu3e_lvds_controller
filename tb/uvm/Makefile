@@ -7,6 +7,11 @@ STUB ?= 0
 SYMBOL_CAP ?= 1024
 RUN_LOG ?= $(LOG_DIR)/$(TEST).log
 ALLOW_SIM_ERRORS ?= 0
+COVER ?= 0
+COVER_METRICS ?= bcesft
+UCDB ?= $(COV_DIR)/$(TEST).ucdb
+UCDB_TESTNAME ?= $(TEST)
+POST_CASE_RESET ?= 0
 
 SHELL := /bin/bash
 .SHELLFLAGS := -o pipefail -c
@@ -18,6 +23,7 @@ QUESTA_ARCH ?= linux_x86_64
 VLIB ?= $(QUESTA_HOME)/$(QUESTA_ARCH)/vlib
 VLOG ?= $(QUESTA_HOME)/$(QUESTA_ARCH)/vlog
 VSIM ?= $(QUESTA_HOME)/$(QUESTA_ARCH)/vsim
+VCOVER ?= $(QUESTA_HOME)/$(QUESTA_ARCH)/vcover
 
 export LM_LICENSE_FILE := $(ETH_LIC_SERVER)
 export MGLS_LICENSE_FILE := $(LM_LICENSE_FILE)
@@ -27,6 +33,7 @@ export QSIM_INI := $(QUESTA_HOME)/modelsim.ini
 WORK_ROOT := builds/$(BUILD)
 WORK_LIB := $(WORK_ROOT)/work
 LOG_DIR := log/$(BUILD)
+COV_DIR := cov/$(BUILD)
 
 ifeq ($(BUILD),legacy)
   N_LANE := 9
@@ -52,12 +59,20 @@ else ifeq ($(BUILD),lane1)
 else ifeq ($(BUILD),lane4)
   N_LANE := 4
   N_ENGINE := 2
+else ifeq ($(BUILD),max32)
+  N_LANE := 32
+  N_ENGINE := 32
 else
   N_LANE := 12
   N_ENGINE := 1
 endif
 
-DEFINES := +define+UVM_NO_DPI +define+LVDS_N_LANE=$(N_LANE) +define+LVDS_N_ENGINE=$(N_ENGINE)
+POST_CASE_RESET_ARG :=
+ifeq ($(POST_CASE_RESET),1)
+  POST_CASE_RESET_ARG := +LVDS_POST_CASE_RESET
+endif
+
+DEFINES := +define+UVM_NO_DPI +define+LVDS_DV_DEBUG +define+LVDS_N_LANE=$(N_LANE) +define+LVDS_N_ENGINE=$(N_ENGINE)
 ifeq ($(STUB),1)
   DEFINES += +define+LVDS_USE_STUB_DUT
   DUT_SRC :=
@@ -83,7 +98,17 @@ HARNESS_SRC := \
 	sva/lvds_coverage.sv \
 	tb_top.sv
 
-.PHONY: all compile run smoke_stub regression bucket_frame all_buckets_frame clean regen_cases
+ifeq ($(COVER),1)
+  VLOG_COVER_OPTS := +cover=$(COVER_METRICS)
+  VSIM_COVER_OPTS := -coverage
+  SIM_DO := coverage save -onexit -testname $(UCDB_TESTNAME) $(UCDB); run -all; quit -f
+else
+  VLOG_COVER_OPTS :=
+  VSIM_COVER_OPTS :=
+  SIM_DO := run -all; quit -f
+endif
+
+.PHONY: all compile run run_only smoke_stub regression bucket_frame all_buckets_frame coverage_case clean regen_cases
 
 all: run
 
@@ -91,18 +116,25 @@ regen_cases:
 	python3 script/generate_case_sequences.py
 
 compile: regen_cases
-	mkdir -p $(WORK_ROOT) $(LOG_DIR)
+	mkdir -p $(WORK_ROOT) $(LOG_DIR) $(COV_DIR)
 	$(VLIB) $(WORK_LIB)
-	$(VLOG) -work $(WORK_LIB) -sv $(DEFINES) $(INCDIRS) $(UVM_HOME)/src/uvm_pkg.sv $(DUT_SRC) $(HARNESS_SRC) | tee $(LOG_DIR)/compile.log
+	$(VLOG) -work $(WORK_LIB) -sv $(VLOG_COVER_OPTS) $(DEFINES) $(INCDIRS) $(UVM_HOME)/src/uvm_pkg.sv $(DUT_SRC) $(HARNESS_SRC) | tee $(LOG_DIR)/compile.log
 
 run: compile
-	$(VSIM) -c -work $(WORK_LIB) -nodpiexports -suppress 19 -suppress 3009 tb_top \
-		+UVM_TESTNAME=$(TEST) +N_LANE=$(N_LANE) +N_ENGINE=$(N_ENGINE) +SYMBOL_CAP=$(SYMBOL_CAP) $(EXTRA_ARGS) \
-		-do "run -all; quit -f" | tee $(RUN_LOG)
+	$(MAKE) run_only
+
+run_only:
+	mkdir -p $(LOG_DIR) $(dir $(RUN_LOG)) $(COV_DIR) $(dir $(UCDB))
+	$(VSIM) -c -work $(WORK_LIB) $(VSIM_COVER_OPTS) -nodpiexports -suppress 19 -suppress 3009 tb_top \
+		+UVM_TESTNAME=$(TEST) +N_LANE=$(N_LANE) +N_ENGINE=$(N_ENGINE) +SYMBOL_CAP=$(SYMBOL_CAP) $(POST_CASE_RESET_ARG) $(EXTRA_ARGS) \
+		-do "$(SIM_DO)" | tee $(RUN_LOG)
 	! grep -Eq "UVM_(ERROR|FATAL)[[:space:]]+:[[:space:]]*[1-9]" $(RUN_LOG)
 	@if [ "$(ALLOW_SIM_ERRORS)" = "0" ]; then \
 		! grep -Eq '(^# \\*\\* Error:|^\\*\\* Error:|Errors:[[:space:]]*[1-9])' $(RUN_LOG); \
 	fi
+
+coverage_case:
+	$(MAKE) COVER=1 POST_CASE_RESET=1 run_only TEST=lvds_base_test RUN_LOG=$(LOG_DIR)/isolated/$(CASE_ID).log UCDB=$(COV_DIR)/isolated/$(CASE_ID).ucdb UCDB_TESTNAME=$(BUILD)_$(CASE_ID) EXTRA_ARGS="+LVDS_CASE_ID=$(CASE_ID)"
 
 smoke_stub:
 	$(MAKE) STUB=1 TEST=lvds_b001_read_uid_after_cold_reset_test SYMBOL_CAP=64 run

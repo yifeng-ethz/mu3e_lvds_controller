@@ -1,0 +1,21 @@
+QuestaSim-64 vcover 2026.1_1 Coverage Utility 2026.03 Mar  2 2026
+Start time: 13:04:48 on Apr 29,2026
+vcover report -du=work.mu3e_lvds_controller -codeAll tb/uvm/cov/signoff_primary_max32.ucdb 
+Coverage Report Summary Data by DU
+
+=================================================================================
+=== Design Unit: work.mu3e_lvds_controller
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                       145       145         0   100.00%
+    Conditions                      73        69         4    94.52%
+    Expressions                     10         9         1    90.00%
+    Statements                     333       330         3    99.09%
+    Toggles                      10538      8534      2004    80.98%
+
+
+Total Coverage By Design Unit (filtered view): 92.92%
+
+End time: 13:04:48 on Apr 29,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0

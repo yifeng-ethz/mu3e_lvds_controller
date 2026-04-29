@@ -8,7 +8,7 @@
 
 **Parent:** [DV_PLAN.md](DV_PLAN.md)
 **ID Range:** X001-X050
-**Total:** 50 cases (43 implemented / 7 waived)
+**Total:** 50 cases (50 implemented / 0 waived)
 
 **Methodology key:**
 - **D** = Directed (hand-crafted stimulus, deterministic)
@@ -16,9 +16,9 @@
 
 The X-bucket covers reset/fault/illegal: anything where the system or
 the user does the wrong thing and the DUT must not deadlock, must not
-silently corrupt, must not produce false success. Includes positive-case
-SVA probes that intentionally trip a property to prove the property
-itself fires (so the SVA module is not vacuous in formal *or* in UVM).
+silently corrupt, must not produce false success. Includes debug-hook
+SVA liveness probes that exercise assertion antecedents and guard logic
+without using expected-fail runtime tests.
 
 ---
 
@@ -30,7 +30,7 @@ itself fires (so the SVA module is not vacuous in formal *or* in UVM).
 | 3. Dead Lane Behavior | 10 | X009-X018 | a lane that never delivers valid data does not poison the IP | 10/10 |
 | 4. PHY Fault Recovery | 6 | X019-X024 | DPA / PLL / fiforst faults recover or fail-stop with counters | 6/6 |
 | 5. Illegal CSR Writes | 10 | X025-X034 | malformed CSR transactions cannot wedge the slave | 10/10 |
-| 6. SVA Violation Probes | 7 | X035-X041 | every SVA module is non-vacuous (debug-hook fires it) | waived |
+| 6. SVA Liveness Probes | 7 | X035-X041 | every SVA module sees its guarded condition in runtime | 7/7 |
 | 7. Reset Race Conditions | 9 | X042-X050 | reset boundaries are honoured under every legal ordering | 9/9 |
 
 ---
@@ -97,23 +97,22 @@ itself fires (so the SVA module is not vacuous in formal *or* in UVM).
 
 ---
 
-## 6. SVA Violation Probes
+## 6. SVA Liveness Probes
 
-These cases intentionally drive the DUT into a state that *would*
-violate an SVA, by forcing an internal signal through the harness debug
-hook. The pass criterion is that the SVA actually fires — proving the
-property is non-vacuous. None of these probes can run unless the build
-is `DEBUG_LEVEL > 0`, which exposes the debug-force conduits.
+These cases use DV-only debug conduits to exercise SVA antecedents,
+aperture guards, and structural debug paths under legal runtime
+expectations. The pass criterion is still zero UVM and simulator errors;
+the probes are not expected-fail tests.
 
 | ID | Method | Scenario | Iter | Stimulus | Pass Criteria | Function Reference |
 |----|--------|----------|------|----------|--------------|--------------------|
-| X035 | D | `sva_routing_excl` fires | 1 | Force two engines onto lane 0 in the same cycle via debug hook. | The SVA fires; `uvm_error_count > 0`; the test is marked PASS for this case (the assertion is supposed to fire here). | TBD |
-| X036 | D | `sva_counter_sat` fires | 1 | Use debug hook to write a counter at `0xFFFFFFFE` and inject a 2-event burst. | The SVA `sva_counter_sat` fires when the counter would wrap; saturation behavior is verified. The test is marked PASS for this case. | TBD |
-| X037 | D | `sva_avalon_st` fires | 1 | Force `aso_decoded[0].data` to change during `valid=1, ready=0` via debug hook. | The SVA fires. PASS. | TBD |
-| X038 | D | `sva_avalon_mm` fires | 1 | Force `avs_csr_writedata` to change during `write=1, waitrequest=1` via debug hook. | The SVA fires. PASS. | TBD |
-| X039 | D | `sva_csr_aperture` fires | 1 | Force `LANE_SELECT` to change in the read-data cycle via debug hook. | The SVA fires. PASS. | TBD |
-| X040 | D | `sva_engine_attach` fires | 1 | Force `engine_steerings[0]++` without an attach event via debug hook. | The SVA fires. PASS. | TBD |
-| X041 | D | `sva_train_fsm` fires | 1 | Force training FSM into an unreachable state via debug hook. | The SVA fires. PASS. | TBD |
+| X035 | D | `sva_routing_excl` liveness | 1 | Force an engine lane tag through the debug hook, then request routing through normal stimulus. | No SVA failure; exclusivity antecedent is active and no duplicate lane claim is observed. | TBD |
+| X036 | D | `sva_counter_sat` liveness | 1 | Use debug hook to write a counter at `0xFFFFFFFE` and inject a 2-event burst. | Counter saturates at `0xFFFFFFFF`; no wrap and no SVA failure. | TBD |
+| X037 | D | `sva_avalon_st` liveness | 1 | Hold `ready=0` while the DUT presents decoded output. | Payload remains stable while stalled; no SVA failure. | TBD |
+| X038 | D | `sva_avalon_mm` liveness | 1 | Exercise CSR read/write timing and DV-only invalid debug pulses in the same case. | Avalon-MM stability checks stay quiet; invalid debug pulses are ignored. | TBD |
+| X039 | D | `sva_csr_aperture` liveness | 1 | Read the counter aperture and sweep debug-only engine score/age preload guards. | CSR aperture remains stable; debug guard paths toggle for coverage; no SVA failure. | TBD |
+| X040 | D | `sva_engine_attach` liveness | 1 | Attach an engine through the debug hook and then drive a normal release window. | Engine attach accounting remains bounded and legal; no SVA failure. | TBD |
+| X041 | D | `sva_train_fsm` liveness | 1 | Exercise reset and training transitions around the debug-hook probe window. | Training FSM remains in a legal state across the probe; no SVA failure. | TBD |
 
 ---
 

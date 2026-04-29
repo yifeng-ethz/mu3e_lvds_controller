@@ -1367,8 +1367,8 @@ class lvds_p024_uptime_since_lock_saturates_test extends lvds_case_test_base;
     endfunction
 endclass
 
-class lvds_p025_10g_symbol_soak_24h_sim_equivalent_test extends lvds_case_test_base;
-    `uvm_component_utils(lvds_p025_10g_symbol_soak_24h_sim_equivalent_test)
+class lvds_p025_checkpoint_growth_idle_soak_test extends lvds_case_test_base;
+    `uvm_component_utils(lvds_p025_checkpoint_growth_idle_soak_test)
 
     function new(string name, uvm_component parent);
         super.new(name, parent);
@@ -1817,8 +1817,8 @@ class lvds_x034_csr_access_at_non_existent_address_test extends lvds_case_test_b
     endfunction
 endclass
 
-class lvds_x035_sva_routing_excl_fires_test extends lvds_case_test_base;
-    `uvm_component_utils(lvds_x035_sva_routing_excl_fires_test)
+class lvds_x035_sva_routing_excl_liveness_test extends lvds_case_test_base;
+    `uvm_component_utils(lvds_x035_sva_routing_excl_liveness_test)
 
     function new(string name, uvm_component parent);
         super.new(name, parent);
@@ -1826,8 +1826,8 @@ class lvds_x035_sva_routing_excl_fires_test extends lvds_case_test_base;
     endfunction
 endclass
 
-class lvds_x036_sva_counter_sat_fires_test extends lvds_case_test_base;
-    `uvm_component_utils(lvds_x036_sva_counter_sat_fires_test)
+class lvds_x036_sva_counter_sat_liveness_test extends lvds_case_test_base;
+    `uvm_component_utils(lvds_x036_sva_counter_sat_liveness_test)
 
     function new(string name, uvm_component parent);
         super.new(name, parent);
@@ -1835,8 +1835,8 @@ class lvds_x036_sva_counter_sat_fires_test extends lvds_case_test_base;
     endfunction
 endclass
 
-class lvds_x037_sva_avalon_st_fires_test extends lvds_case_test_base;
-    `uvm_component_utils(lvds_x037_sva_avalon_st_fires_test)
+class lvds_x037_sva_avalon_st_liveness_test extends lvds_case_test_base;
+    `uvm_component_utils(lvds_x037_sva_avalon_st_liveness_test)
 
     function new(string name, uvm_component parent);
         super.new(name, parent);
@@ -1844,8 +1844,8 @@ class lvds_x037_sva_avalon_st_fires_test extends lvds_case_test_base;
     endfunction
 endclass
 
-class lvds_x038_sva_avalon_mm_fires_test extends lvds_case_test_base;
-    `uvm_component_utils(lvds_x038_sva_avalon_mm_fires_test)
+class lvds_x038_sva_avalon_mm_liveness_test extends lvds_case_test_base;
+    `uvm_component_utils(lvds_x038_sva_avalon_mm_liveness_test)
 
     function new(string name, uvm_component parent);
         super.new(name, parent);
@@ -1853,8 +1853,8 @@ class lvds_x038_sva_avalon_mm_fires_test extends lvds_case_test_base;
     endfunction
 endclass
 
-class lvds_x039_sva_csr_aperture_fires_test extends lvds_case_test_base;
-    `uvm_component_utils(lvds_x039_sva_csr_aperture_fires_test)
+class lvds_x039_sva_csr_aperture_liveness_test extends lvds_case_test_base;
+    `uvm_component_utils(lvds_x039_sva_csr_aperture_liveness_test)
 
     function new(string name, uvm_component parent);
         super.new(name, parent);
@@ -1862,8 +1862,8 @@ class lvds_x039_sva_csr_aperture_fires_test extends lvds_case_test_base;
     endfunction
 endclass
 
-class lvds_x040_sva_engine_attach_fires_test extends lvds_case_test_base;
-    `uvm_component_utils(lvds_x040_sva_engine_attach_fires_test)
+class lvds_x040_sva_engine_attach_liveness_test extends lvds_case_test_base;
+    `uvm_component_utils(lvds_x040_sva_engine_attach_liveness_test)
 
     function new(string name, uvm_component parent);
         super.new(name, parent);
@@ -1871,8 +1871,8 @@ class lvds_x040_sva_engine_attach_fires_test extends lvds_case_test_base;
     endfunction
 endclass
 
-class lvds_x041_sva_train_fsm_fires_test extends lvds_case_test_base;
-    `uvm_component_utils(lvds_x041_sva_train_fsm_fires_test)
+class lvds_x041_sva_train_fsm_liveness_test extends lvds_case_test_base;
+    `uvm_component_utils(lvds_x041_sva_train_fsm_liveness_test)
 
     function new(string name, uvm_component parent);
         super.new(name, parent);

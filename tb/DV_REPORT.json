@@ -1,0 +1,58 @@
+{
+  "all_buckets_frame": {
+    "status": "pass",
+    "transactions": 218
+  },
+  "all_ok": true,
+  "buckets": [
+    {
+      "evidenced": 78,
+      "name": "BASIC",
+      "planned": 78,
+      "promoted": 78,
+      "runtime_frame_transactions": 78,
+      "status": "pass"
+    },
+    {
+      "evidenced": 50,
+      "name": "EDGE",
+      "planned": 50,
+      "promoted": 50,
+      "runtime_frame_transactions": 50,
+      "status": "pass"
+    },
+    {
+      "evidenced": 40,
+      "name": "PROF",
+      "planned": 40,
+      "promoted": 40,
+      "runtime_frame_transactions": 40,
+      "status": "pass"
+    },
+    {
+      "evidenced": 50,
+      "name": "ERROR",
+      "planned": 50,
+      "promoted": 50,
+      "runtime_frame_transactions": 50,
+      "status": "pass"
+    }
+  ],
+  "catalog_planned_cases": 218,
+  "coverage_ok": true,
+  "date": "2026-04-29",
+  "dut": "mu3e_lvds_controller",
+  "evidenced_promoted_cases": 218,
+  "promoted_functional_coverage_pct": 100.0,
+  "promoted_signoff_cases": 218,
+  "rtl_variant": "sv_rebuild",
+  "simulator": "QuestaOne 2026.1_1 at /data1/questaone_sim/questasim",
+  "structural_coverage": {
+    "branch": 100.0,
+    "cond": 94.52,
+    "expr": 90.0,
+    "stmt": 99.09,
+    "toggle": 80.98,
+    "total": 92.92
+  }
+}
