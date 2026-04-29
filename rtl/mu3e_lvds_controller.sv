@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: CERN-OHL-S-2.0
-// Version : 26.0.0
+// Version : 26.0.2
 // Date    : 20260429
-// Change  : Pipeline super-engine request and score selection for timing closure.
+// Change  : Add explicit control/data CDC handshakes for CSR configuration and status.
 
 module mu3e_lvds_controller #(
     parameter int          N_LANE              = 12,
@@ -16,7 +16,7 @@ module mu3e_lvds_controller #(
     parameter logic [31:0] IP_UID              = 32'h4C564453,
     parameter int          VERSION_MAJOR       = 26,
     parameter int          VERSION_MINOR       = 0,
-    parameter int          VERSION_PATCH       = 0,
+    parameter int          VERSION_PATCH       = 2,
     parameter int          BUILD               = 12'h429,
     parameter logic [31:0] VERSION_DATE        = 32'h20260429,
     parameter logic [31:0] VERSION_GIT         = 32'h00000000,
@@ -81,6 +81,7 @@ module mu3e_lvds_controller #(
     localparam int SCORE_W_CONST               = 16;
     localparam int SOFT_RESET_HOLD_CYCLES_CONST = 8;
     localparam int PLL_RESET_CYCLES_CONST      = 8;
+    localparam logic [7:0] SNAPSHOT_TIMEOUT_CYCLES_CONST = 8'd128;
 
     localparam int N_LANE_CLAMP_CONST          =
         (N_LANE < 1) ? 1 : ((N_LANE > MAX_LANE_CONST) ? MAX_LANE_CONST : N_LANE);
@@ -173,12 +174,71 @@ module mu3e_lvds_controller #(
         logic [5:0]  lane_select;
     } csr_state_t;
 
+    typedef struct packed {
+        logic [9:0]  sync_pattern;
+        logic [31:0] lane_go;
+        logic [31:0] dpa_hold;
+        logic [31:0] soft_reset_req;
+        logic [31:0] mode_mask;
+        logic [15:0] score_accept;
+        logic [15:0] score_reject;
+    } data_cfg_t;
+
+    typedef logic [COUNTER_COUNT_CONST - 1:0][31:0] counter_snapshot_t;
+
     csr_state_t csr;
+    data_cfg_t  cfg_control_bus;
+    data_cfg_t  cfg_data;
 
     train_state_t train_state [0:MAX_LANE_CONST - 1];
     steer_state_t steer_state;
 
     logic [MAX_LANE_CONST - 1:0][COUNTER_COUNT_CONST - 1:0][31:0] lane_counter;
+
+    logic cfg_req_toggle_control;
+    logic cfg_idle_control;
+    logic cfg_resend_control;
+    logic cfg_ack_toggle_control_d1;
+    logic cfg_ack_toggle_control_d2;
+    logic cfg_req_toggle_data_d1;
+    logic cfg_req_toggle_data_d2;
+    logic cfg_req_toggle_data_seen;
+    logic cfg_ack_toggle_data;
+
+    logic data_reset_control_d1;
+    logic data_reset_control_d2;
+    logic data_reset_control_d3;
+
+    logic snapshot_req_toggle_control;
+    logic snapshot_pending_control;
+    logic snapshot_response_valid_control;
+    logic [9:0] snapshot_pending_addr_control;
+    logic [5:0] snapshot_lane_control;
+    logic [7:0] snapshot_timeout_control;
+    logic snapshot_timed_out_control;
+    logic snapshot_ack_toggle_control_d1;
+    logic snapshot_ack_toggle_control_d2;
+    logic snapshot_ack_toggle_control_seen;
+    logic snapshot_req_toggle_data_d1;
+    logic snapshot_req_toggle_data_d2;
+    logic snapshot_req_toggle_data_seen;
+    logic snapshot_ack_toggle_data;
+    logic [31:0] snapshot_status_data_bus;
+    counter_snapshot_t snapshot_counter_data_bus;
+
+    logic        plllock_control_d1;
+    logic        plllock_control_d2;
+    logic        plllock_control_d3;
+    logic [3:0]  pll_reset_count_control;
+
+    logic        plllock_data_d1;
+    logic        plllock_data_d2;
+    logic [31:0] dpalock_data_d1;
+    logic [31:0] dpalock_data_d2;
+    logic [31:0] rollover_data_d1;
+    logic [31:0] rollover_data_d2;
+    logic [31:0] redriver_losn_data_d1;
+    logic [31:0] redriver_losn_data_d2;
 
     logic [MAX_ENGINE_CONST - 1:0]                         engine_attached;
     logic [MAX_ENGINE_CONST - 1:0]                         engine_busy;
@@ -202,8 +262,6 @@ module mu3e_lvds_controller #(
     logic [MAX_LANE_CONST - 1:0]      loss_sync_d1;
     logic [MAX_LANE_CONST - 1:0]      dpalock_d1;
     logic [MAX_LANE_CONST - 1:0]      rollover_d1;
-    logic                             plllock_d1;
-    logic [3:0]                       pll_reset_count;
 
     logic [31:0] lane_go_data_d1;
     logic [31:0] lane_go_data_d2;
@@ -248,7 +306,12 @@ module mu3e_lvds_controller #(
     logic [31:0] csr_capability_word;
     logic [31:0] csr_version_word;
 
-    assign avs_csr_waitrequest = 1'b0;
+    assign avs_csr_waitrequest = snapshot_pending_control ||
+                                 (avs_csr_read &&
+                                  csr_read_needs_snapshot(avs_csr_address) &&
+                                  !snapshot_response_valid_control &&
+                                  !snapshot_timed_out_control);
+    assign cfg_idle_control     = (cfg_ack_toggle_control_d2 == cfg_req_toggle_control);
     assign soft_reset_rise     = soft_reset_req_data_d2 & ~soft_reset_req_data_d3;
 
     function automatic logic [7:0] int_to_u8(input int value);
@@ -278,6 +341,58 @@ module mu3e_lvds_controller #(
             return accept - 16'd1;
         end
         return value[15:0];
+    endfunction
+
+    function automatic data_cfg_t data_cfg_default();
+        data_cfg_t cfg_value;
+
+        cfg_value.sync_pattern   = SYNC_PATTERN;
+        cfg_value.lane_go        = ACTIVE_LANE_MASK_CONST;
+        cfg_value.dpa_hold       = 32'd0;
+        cfg_value.soft_reset_req = 32'd0;
+        cfg_value.mode_mask      = 32'h0000_0000;
+        cfg_value.score_accept   = clamp_score_accept(SCORE_ACCEPT);
+        cfg_value.score_reject   = clamp_score_reject(SCORE_REJECT, clamp_score_accept(SCORE_ACCEPT));
+        return cfg_value;
+    endfunction
+
+    function automatic data_cfg_t data_cfg_from_csr(input csr_state_t state);
+        data_cfg_t cfg_value;
+
+        cfg_value.sync_pattern   = state.sync_pattern;
+        cfg_value.lane_go        = state.lane_go;
+        cfg_value.dpa_hold       = state.dpa_hold;
+        cfg_value.soft_reset_req = state.soft_reset_req;
+        cfg_value.mode_mask      = state.mode_mask;
+        cfg_value.score_accept   = state.score_accept;
+        cfg_value.score_reject   = state.score_reject;
+        return cfg_value;
+    endfunction
+
+    function automatic logic csr_read_needs_snapshot(input logic [9:0] address);
+        return (address == CSR_STEER_STATUS_ADDR_CONST) ||
+               ((address >= CSR_COUNTER_BASE_ADDR_CONST) && (address <= CSR_COUNTER_LAST_ADDR_CONST));
+    endfunction
+
+    function automatic logic [31:0] snapshot_read_word(
+        input logic [ 9    :0]   address,
+        input logic [31    :0]   status_word,
+        input counter_snapshot_t counters
+    );
+        unique case (address)
+            CSR_STEER_STATUS_ADDR_CONST:                 return status_word;
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd0:          return counters[0];
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd1:          return counters[1];
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd2:          return counters[2];
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd3:          return counters[3];
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd4:          return counters[4];
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd5:          return counters[5];
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd6:          return counters[6];
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd7:          return counters[7];
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd8:          return counters[8];
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd9:          return counters[9];
+            default:                                      return 32'd0;
+        endcase
     endfunction
 
     function automatic logic sync_pattern_is_legal(input logic [9:0] pattern);
@@ -408,7 +523,7 @@ module mu3e_lvds_controller #(
             CSR_MODE_MASK_ADDR_CONST:    csr_read_mux = csr.mode_mask;
             CSR_SCORE_ACCEPT_ADDR_CONST: csr_read_mux = {16'd0, csr.score_accept};
             CSR_SCORE_REJECT_ADDR_CONST: csr_read_mux = {16'd0, csr.score_reject};
-            CSR_STEER_STATUS_ADDR_CONST: csr_read_mux = {steer_overflow_count[15:0], 10'd0, steer_queue_count};
+            CSR_STEER_STATUS_ADDR_CONST: csr_read_mux = 32'd0;
             CSR_LANE_SELECT_ADDR_CONST:  csr_read_mux = {26'd0, csr.lane_select};
             CSR_META_ADDR_CONST: begin
                 unique case (csr.meta_page)
@@ -418,16 +533,16 @@ module mu3e_lvds_controller #(
                     default: csr_read_mux = INSTANCE_ID[31:0];
                 endcase
             end
-            CSR_COUNTER_BASE_ADDR_CONST + 10'd0: csr_read_mux = lane_counter[csr.lane_select][0];
-            CSR_COUNTER_BASE_ADDR_CONST + 10'd1: csr_read_mux = lane_counter[csr.lane_select][1];
-            CSR_COUNTER_BASE_ADDR_CONST + 10'd2: csr_read_mux = lane_counter[csr.lane_select][2];
-            CSR_COUNTER_BASE_ADDR_CONST + 10'd3: csr_read_mux = lane_counter[csr.lane_select][3];
-            CSR_COUNTER_BASE_ADDR_CONST + 10'd4: csr_read_mux = lane_counter[csr.lane_select][4];
-            CSR_COUNTER_BASE_ADDR_CONST + 10'd5: csr_read_mux = lane_counter[csr.lane_select][5];
-            CSR_COUNTER_BASE_ADDR_CONST + 10'd6: csr_read_mux = lane_counter[csr.lane_select][6];
-            CSR_COUNTER_BASE_ADDR_CONST + 10'd7: csr_read_mux = lane_counter[csr.lane_select][7];
-            CSR_COUNTER_BASE_ADDR_CONST + 10'd8: csr_read_mux = lane_counter[csr.lane_select][8];
-            CSR_COUNTER_BASE_ADDR_CONST + 10'd9: csr_read_mux = lane_counter[csr.lane_select][9];
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd0: csr_read_mux = 32'd0;
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd1: csr_read_mux = 32'd0;
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd2: csr_read_mux = 32'd0;
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd3: csr_read_mux = 32'd0;
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd4: csr_read_mux = 32'd0;
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd5: csr_read_mux = 32'd0;
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd6: csr_read_mux = 32'd0;
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd7: csr_read_mux = 32'd0;
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd8: csr_read_mux = 32'd0;
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd9: csr_read_mux = 32'd0;
             default:                            csr_read_mux = 32'd0;
         endcase
     end
@@ -444,24 +559,89 @@ module mu3e_lvds_controller #(
             csr.score_reject      <= clamp_score_reject(SCORE_REJECT, clamp_score_accept(SCORE_ACCEPT));
             csr.lane_select       <= 6'd0;
             avs_csr_readdata      <= 32'd0;
+
+            cfg_control_bus           <= data_cfg_default();
+            cfg_req_toggle_control    <= 1'b0;
+            cfg_resend_control        <= 1'b1;
+
+            cfg_ack_toggle_control_d1    <= 1'b0;
+            cfg_ack_toggle_control_d2    <= 1'b0;
+
+            data_reset_control_d1    <= 1'b1;
+            data_reset_control_d2    <= 1'b1;
+            data_reset_control_d3    <= 1'b1;
+
+            snapshot_req_toggle_control        <= 1'b0;
+            snapshot_pending_control           <= 1'b0;
+            snapshot_response_valid_control    <= 1'b0;
+            snapshot_pending_addr_control      <= 10'd0;
+            snapshot_lane_control              <= 6'd0;
+            snapshot_timeout_control           <= 8'd0;
+            snapshot_timed_out_control         <= 1'b0;
+
+            snapshot_ack_toggle_control_d1      <= 1'b0;
+            snapshot_ack_toggle_control_d2      <= 1'b0;
+            snapshot_ack_toggle_control_seen    <= 1'b0;
+
+            plllock_control_d1         <= 1'b0;
+            plllock_control_d2         <= 1'b0;
+            plllock_control_d3         <= 1'b0;
+            pll_reset_count_control    <= PLL_RESET_CYCLES_CONST[3:0];
+            coe_ctrl_pllrst            <= 1'b1;
             for (int lane_idx = 0; lane_idx < MAX_LANE_CONST; lane_idx++) begin
                 soft_reset_hold_count[lane_idx] <= 4'd0;
             end
         end else begin
+            plllock_control_d1    <= coe_ctrl_plllock;
+            plllock_control_d2    <= plllock_control_d1;
+            plllock_control_d3    <= plllock_control_d2;
+
+            if (plllock_control_d3 && !plllock_control_d2) begin
+                pll_reset_count_control    <= PLL_RESET_CYCLES_CONST[3:0];
+                coe_ctrl_pllrst            <= 1'b1;
+            end else if (pll_reset_count_control != 4'd0) begin
+                pll_reset_count_control    <= pll_reset_count_control - 4'd1;
+                coe_ctrl_pllrst            <= 1'b1;
+            end else begin
+                coe_ctrl_pllrst <= 1'b0;
+            end
+
+            cfg_ack_toggle_control_d1    <= cfg_ack_toggle_data;
+            cfg_ack_toggle_control_d2    <= cfg_ack_toggle_control_d1;
+
+            data_reset_control_d1    <= rsi_data_reset;
+            data_reset_control_d2    <= data_reset_control_d1;
+            data_reset_control_d3    <= data_reset_control_d2;
+
+            snapshot_ack_toggle_control_d1    <= snapshot_ack_toggle_data;
+            snapshot_ack_toggle_control_d2    <= snapshot_ack_toggle_control_d1;
+
+            if (!snapshot_pending_control &&
+                (snapshot_ack_toggle_control_d2 != snapshot_ack_toggle_control_seen)) begin
+                snapshot_ack_toggle_control_seen    <= snapshot_ack_toggle_control_d2;
+                snapshot_timed_out_control          <= 1'b0;
+            end
+
             for (int lane_idx = 0; lane_idx < MAX_LANE_CONST; lane_idx++) begin
                 if (csr.soft_reset_req[lane_idx]) begin
-                    if (soft_reset_hold_count[lane_idx] >= SOFT_RESET_HOLD_CYCLES_CONST[3:0]) begin
-                        csr.soft_reset_req[lane_idx]       <= 1'b0;
-                        soft_reset_hold_count[lane_idx]    <= 4'd0;
-                    end else begin
-                        soft_reset_hold_count[lane_idx] <= soft_reset_hold_count[lane_idx] + 4'd1;
+                    if (cfg_idle_control && cfg_control_bus.soft_reset_req[lane_idx]) begin
+                        if (soft_reset_hold_count[lane_idx] >= SOFT_RESET_HOLD_CYCLES_CONST[3:0]) begin
+                            csr.soft_reset_req[lane_idx]       <= 1'b0;
+                            soft_reset_hold_count[lane_idx]    <= 4'd0;
+                        end else begin
+                            soft_reset_hold_count[lane_idx] <= soft_reset_hold_count[lane_idx] + 4'd1;
+                        end
                     end
                 end else begin
                     soft_reset_hold_count[lane_idx] <= 4'd0;
                 end
             end
 
-            if (avs_csr_write) begin
+            if (data_reset_control_d3 && !data_reset_control_d2) begin
+                cfg_resend_control <= 1'b1;
+            end
+
+            if (!avs_csr_waitrequest && avs_csr_write) begin
                 unique case (avs_csr_address)
                     CSR_META_ADDR_CONST: begin
                         if (avs_csr_writedata <= 32'd3) begin
@@ -509,8 +689,64 @@ module mu3e_lvds_controller #(
                 endcase
             end
 
-            if (avs_csr_read) begin
-                avs_csr_readdata <= csr_read_mux;
+            if (cfg_idle_control &&
+                (cfg_resend_control || (cfg_control_bus != data_cfg_from_csr(csr)))) begin
+                cfg_control_bus           <= data_cfg_from_csr(csr);
+                cfg_req_toggle_control    <= ~cfg_req_toggle_control;
+                cfg_resend_control        <= 1'b0;
+            end
+
+            if (snapshot_pending_control) begin
+                if (snapshot_ack_toggle_control_d2 != snapshot_ack_toggle_control_seen) begin
+                    snapshot_ack_toggle_control_seen    <= snapshot_ack_toggle_control_d2;
+                    avs_csr_readdata                    <= snapshot_read_word(
+                        snapshot_pending_addr_control,
+                        snapshot_status_data_bus,
+                        snapshot_counter_data_bus
+                    );
+                    snapshot_pending_control           <= 1'b0;
+                    snapshot_response_valid_control    <= 1'b1;
+                    snapshot_timeout_control           <= 8'd0;
+                    snapshot_timed_out_control         <= 1'b0;
+                end else if (snapshot_timeout_control >= SNAPSHOT_TIMEOUT_CYCLES_CONST) begin
+                    avs_csr_readdata                    <= snapshot_read_word(
+                        snapshot_pending_addr_control,
+                        snapshot_status_data_bus,
+                        snapshot_counter_data_bus
+                    );
+                    snapshot_pending_control           <= 1'b0;
+                    snapshot_response_valid_control    <= 1'b1;
+                    snapshot_timeout_control           <= 8'd0;
+                    snapshot_timed_out_control         <= 1'b1;
+                end else begin
+                    snapshot_timeout_control <= snapshot_timeout_control + 8'd1;
+                end
+            end else begin
+                if (snapshot_response_valid_control &&
+                    avs_csr_read &&
+                    !avs_csr_waitrequest) begin
+                    snapshot_response_valid_control <= 1'b0;
+                end else if (snapshot_timed_out_control &&
+                    avs_csr_read &&
+                    csr_read_needs_snapshot(avs_csr_address) &&
+                    !avs_csr_waitrequest) begin
+                    avs_csr_readdata <= snapshot_read_word(
+                        avs_csr_address,
+                        snapshot_status_data_bus,
+                        snapshot_counter_data_bus
+                    );
+                end else if (!snapshot_response_valid_control &&
+                    !snapshot_timed_out_control &&
+                    avs_csr_read &&
+                    csr_read_needs_snapshot(avs_csr_address)) begin
+                    snapshot_lane_control            <= csr.lane_select;
+                    snapshot_pending_addr_control    <= avs_csr_address;
+                    snapshot_timeout_control         <= 8'd0;
+                    snapshot_req_toggle_control      <= ~snapshot_req_toggle_control;
+                    snapshot_pending_control         <= 1'b1;
+                end else if (avs_csr_read && !avs_csr_waitrequest) begin
+                    avs_csr_readdata <= csr_read_mux;
+                end
             end
         end
     end
@@ -531,7 +767,6 @@ module mu3e_lvds_controller #(
         int             data_v_attached_lane;
 
         if (rsi_data_reset) begin
-            coe_ctrl_pllrst        <= 1'b1;
             coe_ctrl_dparst        <= 32'hFFFF_FFFF;
             coe_ctrl_lockrst       <= 32'hFFFF_FFFF;
             coe_ctrl_dpahold       <= 32'hFFFF_FFFF;
@@ -598,40 +833,78 @@ module mu3e_lvds_controller #(
             loss_sync_d1              <= '0;
             dpalock_d1                <= '0;
             rollover_d1               <= '0;
-            plllock_d1                <= 1'b0;
-            pll_reset_count           <= PLL_RESET_CYCLES_CONST[3:0];
             lane_counter              <= '0;
+
+            cfg_data                    <= data_cfg_default();
+            cfg_req_toggle_data_d1      <= 1'b0;
+            cfg_req_toggle_data_d2      <= 1'b0;
+            cfg_req_toggle_data_seen    <= 1'b0;
+            cfg_ack_toggle_data         <= 1'b0;
+
+            snapshot_req_toggle_data_d1      <= 1'b0;
+            snapshot_req_toggle_data_d2      <= 1'b0;
+            snapshot_req_toggle_data_seen    <= 1'b0;
+            snapshot_ack_toggle_data         <= 1'b0;
+            snapshot_status_data_bus         <= 32'd0;
+            snapshot_counter_data_bus        <= '0;
+
+            plllock_data_d1          <= 1'b0;
+            plllock_data_d2          <= 1'b0;
+            dpalock_data_d1          <= 32'd0;
+            dpalock_data_d2          <= 32'd0;
+            rollover_data_d1         <= 32'd0;
+            rollover_data_d2         <= 32'd0;
+            redriver_losn_data_d1    <= 32'hFFFF_FFFF;
+            redriver_losn_data_d2    <= 32'hFFFF_FFFF;
 
             for (int lane_idx = 0; lane_idx < MAX_LANE_CONST; lane_idx++) begin
                 train_state[lane_idx] <= TRAIN_IDLING;
             end
         end else begin
-            lane_go_data_d1           <= csr.lane_go;
+            cfg_req_toggle_data_d1    <= cfg_req_toggle_control;
+            cfg_req_toggle_data_d2    <= cfg_req_toggle_data_d1;
+
+            snapshot_req_toggle_data_d1    <= snapshot_req_toggle_control;
+            snapshot_req_toggle_data_d2    <= snapshot_req_toggle_data_d1;
+
+            plllock_data_d1          <= coe_ctrl_plllock;
+            plllock_data_d2          <= plllock_data_d1;
+            dpalock_data_d1          <= coe_ctrl_dpalock;
+            dpalock_data_d2          <= dpalock_data_d1;
+            rollover_data_d1         <= coe_ctrl_rollover;
+            rollover_data_d2         <= rollover_data_d1;
+            redriver_losn_data_d1    <= coe_redriver_losn;
+            redriver_losn_data_d2    <= redriver_losn_data_d1;
+
+            if (cfg_req_toggle_data_d2 != cfg_req_toggle_data_seen) begin
+                cfg_data                    <= cfg_control_bus;
+                cfg_req_toggle_data_seen    <= cfg_req_toggle_data_d2;
+                cfg_ack_toggle_data         <= cfg_req_toggle_data_d2;
+            end
+
+            if (snapshot_req_toggle_data_d2 != snapshot_req_toggle_data_seen) begin
+                snapshot_req_toggle_data_seen    <= snapshot_req_toggle_data_d2;
+                snapshot_status_data_bus         <= {steer_overflow_count[15:0], 10'd0, steer_queue_count};
+                snapshot_counter_data_bus        <= lane_counter[snapshot_lane_control];
+                snapshot_ack_toggle_data         <= snapshot_req_toggle_data_d2;
+            end
+
+            lane_go_data_d1           <= cfg_data.lane_go;
             lane_go_data_d2           <= lane_go_data_d1;
-            dpa_hold_data_d1          <= csr.dpa_hold;
+            dpa_hold_data_d1          <= cfg_data.dpa_hold;
             dpa_hold_data_d2          <= dpa_hold_data_d1;
-            soft_reset_req_data_d1    <= csr.soft_reset_req;
+            soft_reset_req_data_d1    <= cfg_data.soft_reset_req;
             soft_reset_req_data_d2    <= soft_reset_req_data_d1;
             soft_reset_req_data_d3    <= soft_reset_req_data_d2;
-            mode_mask_data_d1         <= csr.mode_mask;
+            mode_mask_data_d1         <= cfg_data.mode_mask;
             mode_mask_data_d2         <= mode_mask_data_d1;
-            sync_pattern_data_d1      <= csr.sync_pattern;
+            sync_pattern_data_d1      <= cfg_data.sync_pattern;
             sync_pattern_data_d2      <= sync_pattern_data_d1;
-            score_accept_data_d1      <= csr.score_accept;
+            score_accept_data_d1      <= cfg_data.score_accept;
             score_accept_data_d2      <= score_accept_data_d1;
-            score_reject_data_d1      <= csr.score_reject;
+            score_reject_data_d1      <= cfg_data.score_reject;
             score_reject_data_d2      <= score_reject_data_d1;
 
-            if (pll_reset_count != 4'd0) begin
-                pll_reset_count    <= pll_reset_count - 4'd1;
-                coe_ctrl_pllrst    <= 1'b1;
-            end else begin
-                coe_ctrl_pllrst    <= 1'b0;
-            end
-            if (plllock_d1 && !coe_ctrl_plllock) begin
-                pll_reset_count    <= PLL_RESET_CYCLES_CONST[3:0];
-                coe_ctrl_pllrst    <= 1'b1;
-            end
             coe_ctrl_bitslip       <= 32'd0;
             engine_attach_event    <= '0;
             engine_valid_d1        <= '0;
@@ -641,18 +914,17 @@ module mu3e_lvds_controller #(
 
             data_v_engine_taken = engine_busy;
             data_v_score_change_event = '0;
-            dpalock_d1     <= coe_ctrl_dpalock;
-            rollover_d1    <= coe_ctrl_rollover;
-            plllock_d1     <= coe_ctrl_plllock;
+            dpalock_d1     <= dpalock_data_d2;
+            rollover_d1    <= rollover_data_d2;
 
             for (int lane_idx = 0; lane_idx < MAX_LANE_CONST; lane_idx++) begin
                 data_v_symbol     = coe_parallel_data[lane_idx * 10 +: 10];
                 data_v_decode     = decode_symbol(data_v_symbol, sync_pattern_data_d2);
                 data_v_lane_live  = lane_is_live(lane_idx, lane_go_data_d2) &&
-                                    coe_ctrl_plllock &&
-                                    coe_redriver_losn[lane_idx];
+                                    plllock_data_d2 &&
+                                    redriver_losn_data_d2[lane_idx];
                 data_v_error_event = data_v_lane_live &&
-                                     coe_ctrl_dpalock[lane_idx] &&
+                                     dpalock_data_d2[lane_idx] &&
                                      (data_v_decode.error != 3'b000);
                 data_v_mode = lane_mode(mode_mask_data_d2, lane_idx);
                 data_v_engine_request = 1'b0;
@@ -661,14 +933,14 @@ module mu3e_lvds_controller #(
                 end
                 if (((data_v_mode == MODE_ADAPTING_CONST) || (data_v_mode == MODE_AUTOING_CONST)) &&
                     data_v_lane_live &&
-                    coe_ctrl_dpalock[lane_idx] &&
+                    dpalock_data_d2[lane_idx] &&
                     !lane_engine_seen[lane_idx] &&
                     !data_v_decode.error[2] &&
                     (lane_good_count[lane_idx] >= score_accept_data_d2[7:0])) begin
                     data_v_engine_request = 1'b1;
                 end
 
-                mini_valid_d1[lane_idx]             <= data_v_lane_live && coe_ctrl_dpalock[lane_idx];
+                mini_valid_d1[lane_idx]             <= data_v_lane_live && dpalock_data_d2[lane_idx];
                 mini_data_d1[lane_idx]              <= data_v_decode.data;
                 mini_error_d1[lane_idx]             <= data_v_decode.error;
                 mini_channel_d1[lane_idx]           <= lane_idx[5:0];
@@ -714,7 +986,7 @@ module mu3e_lvds_controller #(
                     end
                     lane_counter[lane_idx][COUNTER_SOFT_RESETS_CONST] <=
                         saturating_inc(lane_counter[lane_idx][COUNTER_SOFT_RESETS_CONST]);
-                end else if (!coe_ctrl_plllock || !coe_redriver_losn[lane_idx]) begin
+                end else if (!plllock_data_d2 || !redriver_losn_data_d2[lane_idx]) begin
                     train_state[lane_idx]         <= TRAIN_WAITING_PLL;
                     lane_good_count[lane_idx]     <= 8'd0;
                     lane_engine_seen[lane_idx]    <= 1'b0;
@@ -722,7 +994,7 @@ module mu3e_lvds_controller #(
                     coe_ctrl_lockrst[lane_idx]    <= 1'b1;
                     coe_ctrl_dpahold[lane_idx]    <= 1'b0;
                     coe_ctrl_fiforst[lane_idx]    <= 1'b1;
-                end else if (!coe_ctrl_dpalock[lane_idx]) begin
+                end else if (!dpalock_data_d2[lane_idx]) begin
                     train_state[lane_idx]         <= TRAIN_WAITING_DPA;
                     lane_good_count[lane_idx]     <= 8'd0;
                     lane_engine_seen[lane_idx]    <= 1'b0;
@@ -746,7 +1018,7 @@ module mu3e_lvds_controller #(
                     coe_ctrl_dparst[lane_idx]     <= 1'b0;
                     coe_ctrl_lockrst[lane_idx]    <= 1'b0;
                     coe_ctrl_dpahold[lane_idx]    <= dpa_hold_data_d2[lane_idx];
-                    coe_ctrl_fiforst[lane_idx]    <= !dpalock_d1[lane_idx] && coe_ctrl_dpalock[lane_idx];
+                    coe_ctrl_fiforst[lane_idx]    <= !dpalock_d1[lane_idx] && dpalock_data_d2[lane_idx];
 
                     if (!dpa_hold_data_d2[lane_idx] &&
                         (lane_good_count[lane_idx] < score_accept_data_d2[7:0])) begin
@@ -757,7 +1029,7 @@ module mu3e_lvds_controller #(
                     end
                 end
 
-                if (data_v_lane_live && coe_ctrl_dpalock[lane_idx]) begin
+                if (data_v_lane_live && dpalock_data_d2[lane_idx]) begin
                     if (data_v_decode.error[0]) begin
                         lane_counter[lane_idx][COUNTER_CODE_VIOLATIONS_CONST] <=
                             saturating_inc(lane_counter[lane_idx][COUNTER_CODE_VIOLATIONS_CONST]);
@@ -776,11 +1048,11 @@ module mu3e_lvds_controller #(
                     end
                 end
 
-                if (dpalock_d1[lane_idx] && !coe_ctrl_dpalock[lane_idx]) begin
+                if (dpalock_d1[lane_idx] && !dpalock_data_d2[lane_idx]) begin
                     lane_counter[lane_idx][COUNTER_DPA_UNLOCKS_CONST] <=
                         saturating_inc(lane_counter[lane_idx][COUNTER_DPA_UNLOCKS_CONST]);
                 end
-                if (!rollover_d1[lane_idx] && coe_ctrl_rollover[lane_idx]) begin
+                if (!rollover_d1[lane_idx] && rollover_data_d2[lane_idx]) begin
                     lane_counter[lane_idx][COUNTER_REALIGNS_CONST] <=
                         saturating_inc(lane_counter[lane_idx][COUNTER_REALIGNS_CONST]);
                 end
@@ -791,9 +1063,9 @@ module mu3e_lvds_controller #(
 
                 if (lane_engine_request_d1[lane_idx] &&
                     lane_is_live(lane_idx, lane_go_data_d2) &&
-                    coe_ctrl_plllock &&
-                    coe_redriver_losn[lane_idx] &&
-                    coe_ctrl_dpalock[lane_idx]) begin
+                    plllock_data_d2 &&
+                    redriver_losn_data_d2[lane_idx] &&
+                    dpalock_data_d2[lane_idx]) begin
                     data_v_engine = engine_for_lane(lane_idx);
                     if (!data_v_engine_taken[data_v_engine] ||
                         lane_engine_error_d1[lane_idx] ||

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: CERN-OHL-S-2.0
 // Version : 26.0.0
 // Date    : 20260429
-// Change  : Add targeted code-coverage closure stimulus.
+// Change  : Hold Avalon-MM CSR requests stable through waitrequest.
 
 package lvds_uvm_pkg;
     timeunit 1ns;
@@ -68,7 +68,7 @@ package lvds_uvm_pkg;
     } lvds_case_desc_t;
 
     localparam logic [31:0] LVDS_UID_CONST          = 32'h4C564453;
-    localparam logic [31:0] LVDS_VERSION_CONST      = {8'd26, 8'd0, 4'd0, 12'h429};
+    localparam logic [31:0] LVDS_VERSION_CONST      = {8'd26, 8'd0, 4'd2, 12'h429};
     localparam logic [31:0] LVDS_VERSION_DATE_CONST = 32'h20260429;
 
     // OPEN: Replace these provisional offsets with the generated register model
@@ -295,10 +295,10 @@ package lvds_uvm_pkg;
             vif.avs_csr_write     <= 1'b1;
             vif.avs_csr_read      <= 1'b0;
             guard = 0;
-            while (vif.avs_csr_waitrequest && guard < 256) begin
+            do begin
                 guard++;
                 @(posedge vif.csi_control_clk);
-            end
+            end while (vif.avs_csr_waitrequest && guard < 256);
             @(posedge vif.csi_control_clk);
             vif.avs_csr_write <= 1'b0;
             if (guard >= 256) begin
@@ -313,11 +313,10 @@ package lvds_uvm_pkg;
             vif.avs_csr_read    <= 1'b1;
             vif.avs_csr_write   <= 1'b0;
             guard = 0;
-            while (vif.avs_csr_waitrequest && guard < 256) begin
+            do begin
                 guard++;
                 @(posedge vif.csi_control_clk);
-            end
-            @(posedge vif.csi_control_clk);
+            end while (vif.avs_csr_waitrequest && guard < 256);
             #1ps;
             data = vif.avs_csr_readdata;
             vif.avs_csr_read <= 1'b0;
@@ -657,6 +656,8 @@ package lvds_uvm_pkg;
         endfunction
 
         task automatic drive_phy_powerup_case(input lvds_case_desc_t desc);
+            logic [31:0] void_data;
+
             if (desc.case_num == 25) begin
                 vif.coe_ctrl_plllock <= 1'b0;
                 wait_data_cycles(64);
@@ -664,6 +665,7 @@ package lvds_uvm_pkg;
             end else if (desc.case_num == 26) begin
                 vif.rsi_data_reset <= 1'b1;
                 wait_control_cycles(32);
+                csr_read(LVDS_CSR_COUNTER_BASE_WORD_CONST, void_data);
                 vif.rsi_data_reset <= 1'b0;
             end else if (desc.case_num == 27) begin
                 vif.rsi_control_reset <= 1'b1;

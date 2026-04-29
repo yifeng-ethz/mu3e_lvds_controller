@@ -4,12 +4,12 @@ package require -exact qsys 16.1
 
 set VERSION_MAJOR_DEFAULT_CONST 26
 set VERSION_MINOR_DEFAULT_CONST 0
-set VERSION_PATCH_DEFAULT_CONST 1
+set VERSION_PATCH_DEFAULT_CONST 2
 set BUILD_DEFAULT_CONST         0x429
 set VERSION_DATE_DEFAULT_CONST  0x20260429
 set VERSION_GIT_DEFAULT_CONST   0x00000000
 set INSTANCE_ID_DEFAULT_CONST   0
-set VERSION_STRING              {26.0.1.0429}
+set VERSION_STRING              {26.0.2.0429}
 
 set_module_property NAME                         {mu3e_lvds_controller}
 set_module_property DISPLAY_NAME                 {Mu3e LVDS Controller with Arria V PHY}

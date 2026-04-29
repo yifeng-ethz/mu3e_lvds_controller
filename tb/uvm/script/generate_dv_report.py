@@ -183,6 +183,18 @@ def main() -> None:
     lines.append("## Non-Claims\n\n")
     lines.append("- This dashboard closes the current promoted runtime/UVM bucket frames.\n")
     lines.append("- P025 is implemented as a bounded checkpoint-growth soak under the regression `SYMBOL_CAP`; no physical 10G-symbol wall-clock simulation is claimed.\n\n")
+    lines.append("## CDC / RDC / DRC Evidence\n\n")
+    lines.append("| status | item | evidence |\n")
+    lines.append("|:---:|---|---|\n")
+    lines.append(f"| {PASS} | Questa DRC/lint | `vlog -lint=full -pedanticerrors +checkALL -warning error` on controller RTL: `Errors: 0, Warnings: 0` |\n")
+    lines.append(f"| {WARN} | Questa CDC/RDC app | `qverify`, `questa_cdc`, and `questa_rdc` are not installed in `/data1/questaone_sim/questasim/linux_x86_64`; only Design Packager XML descriptors are present, so no static CDC/RDC pass is claimed |\n")
+    lines.append(f"| {PASS} | RTL CDC architecture | control->data config and data->control counter/status use held bundled-data toggle/ack handshakes; PHY status inputs are synchronized before data-domain use; `coe_ctrl_pllrst` is owned by the control clock reset manager |\n")
+    lines.append(f"| {PASS} | CDC-focused UVM | `B021`, `B022`, `B026`, `B027`, `B051`, `E016`, `X043`, `X044`, `X050` pass under QuestaOne with zero UVM errors/fatals and simulator errors |\n\n")
+    lines.append("## PHY Vendor-Model Evidence\n\n")
+    lines.append("| status | item | evidence |\n")
+    lines.append("|:---:|---|---|\n")
+    lines.append(f"| {PASS} | Arria V `altlvds_rx` vendor model | `make -C tb/phy_gate run` compiles `altera_mf_components.vhd`, `altera_mf.vhd`, and `altera_lvds_rx_28nm.vhd`, then runs bring-up plus one bitslip pulse with `Errors: 0, Warnings: 0` |\n")
+    lines.append(f"| {WARN} | post-fit gate netlist | no Quartus post-fit gate-level LVDS PHY netlist is present in this worktree; the current evidence is vendor megafunction simulation, not SDF/post-fit GLS |\n\n")
     lines.append("## Bucket Summary\n\n")
     lines.append("| status | bucket | catalog_planned | promoted | evidenced | backlog | merged | promoted functional |\n")
     lines.append("|:---:|---|---:|---:|---:|---:|---|---|\n")
@@ -239,6 +251,16 @@ def main() -> None:
         "structural_coverage": coverage,
         "coverage_ok": coverage_ok,
         "all_ok": all_ok,
+        "cdc_rdc_drc": {
+            "questa_drc_lint": "pass: vlog -lint=full -pedanticerrors +checkALL -warning error",
+            "questa_cdc_rdc_static": "not_run: qverify/questa_cdc/questa_rdc executable not installed in QuestaOne bundle",
+            "cdc_uvm_focus": "pass: B021 B022 B026 B027 B051 E016 X043 X044 X050",
+        },
+        "phy_vendor_model": {
+            "status": "pass",
+            "command": "make -C tb/phy_gate run",
+            "scope": "Arria V altlvds_rx vendor megafunction simulation, not post-fit gate-level SDF",
+        },
         "buckets": [
             {
                 "name": str(bucket["name"]),

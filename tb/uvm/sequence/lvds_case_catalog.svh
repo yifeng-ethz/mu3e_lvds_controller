@@ -311,8 +311,8 @@ function automatic lvds_case_desc_t lvds_get_case_desc(input string case_id);
             desc.case_num = 26;
             desc.iterations = 1;
             desc.scenario = "Control reset release independent of data reset";
-            desc.stimulus = "Release `rsi_control_reset` only.";
-            desc.pass_criteria = "CSR responds to identity reads; `coe_ctrl_pllrst` stays asserted because the data domain is still in reset.";
+            desc.stimulus = "Release `rsi_control_reset` only, hold `rsi_data_reset`, and read a dynamic counter aperture.";
+            desc.pass_criteria = "CSR identity and dynamic snapshot reads complete without wedging `waitrequest`; `coe_ctrl_pllrst` is owned by the control clock reset manager.";
             desc.expect_sva_failure = 0;
         end
         "B027": begin

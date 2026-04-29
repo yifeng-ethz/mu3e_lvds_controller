@@ -35,6 +35,22 @@ This page is generated from the QuestaOne bucket-frame and all-bucket-frame logs
 - This dashboard closes the current promoted runtime/UVM bucket frames.
 - P025 is implemented as a bounded checkpoint-growth soak under the regression `SYMBOL_CAP`; no physical 10G-symbol wall-clock simulation is claimed.
 
+## CDC / RDC / DRC Evidence
+
+| status | item | evidence |
+|:---:|---|---|
+| ✅ | Questa DRC/lint | `vlog -lint=full -pedanticerrors +checkALL -warning error` on controller RTL: `Errors: 0, Warnings: 0` |
+| ⚠️ | Questa CDC/RDC app | `qverify`, `questa_cdc`, and `questa_rdc` are not installed in `/data1/questaone_sim/questasim/linux_x86_64`; only Design Packager XML descriptors are present, so no static CDC/RDC pass is claimed |
+| ✅ | RTL CDC architecture | control->data config and data->control counter/status use held bundled-data toggle/ack handshakes; PHY status inputs are synchronized before data-domain use; `coe_ctrl_pllrst` is owned by the control clock reset manager |
+| ✅ | CDC-focused UVM | `B021`, `B022`, `B026`, `B027`, `B051`, `E016`, `X043`, `X044`, `X050` pass under QuestaOne with zero UVM errors/fatals and simulator errors |
+
+## PHY Vendor-Model Evidence
+
+| status | item | evidence |
+|:---:|---|---|
+| ✅ | Arria V `altlvds_rx` vendor model | `make -C tb/phy_gate run` compiles `altera_mf_components.vhd`, `altera_mf.vhd`, and `altera_lvds_rx_28nm.vhd`, then runs bring-up plus one bitslip pulse with `Errors: 0, Warnings: 0` |
+| ⚠️ | post-fit gate netlist | no Quartus post-fit gate-level LVDS PHY netlist is present in this worktree; the current evidence is vendor megafunction simulation, not SDF/post-fit GLS |
+
 ## Bucket Summary
 
 | status | bucket | catalog_planned | promoted | evidenced | backlog | merged | promoted functional |

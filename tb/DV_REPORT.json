@@ -39,10 +39,20 @@
     }
   ],
   "catalog_planned_cases": 218,
+  "cdc_rdc_drc": {
+    "cdc_uvm_focus": "pass: B021 B022 B026 B027 B051 E016 X043 X044 X050",
+    "questa_cdc_rdc_static": "not_run: qverify/questa_cdc/questa_rdc executable not installed in QuestaOne bundle",
+    "questa_drc_lint": "pass: vlog -lint=full -pedanticerrors +checkALL -warning error"
+  },
   "coverage_ok": true,
   "date": "2026-04-29",
   "dut": "mu3e_lvds_controller",
   "evidenced_promoted_cases": 218,
+  "phy_vendor_model": {
+    "command": "make -C tb/phy_gate run",
+    "scope": "Arria V altlvds_rx vendor megafunction simulation, not post-fit gate-level SDF",
+    "status": "pass"
+  },
   "promoted_functional_coverage_pct": 100.0,
   "promoted_signoff_cases": 218,
   "rtl_variant": "sv_rebuild",

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: CERN-OHL-S-2.0
-// Version : 26.0.1
+// Version : 26.0.2
 // Date    : 20260429
-// Change  : Add legacy per-lane decoded interfaces for system integration.
+// Change  : Propagate CDC-clean controller version metadata.
 
 module mu3e_lvds_controller_phy_adapter #(
     parameter int          N_LANE              = 12,
@@ -17,7 +17,7 @@ module mu3e_lvds_controller_phy_adapter #(
     parameter logic [31:0] IP_UID              = 32'h4C564453,
     parameter int          VERSION_MAJOR       = 26,
     parameter int          VERSION_MINOR       = 0,
-    parameter int          VERSION_PATCH       = 0,
+    parameter int          VERSION_PATCH       = 2,
     parameter int          BUILD               = 12'h429,
     parameter logic [31:0] VERSION_DATE        = 32'h20260429,
     parameter logic [31:0] VERSION_GIT         = 32'h00000000,

@@ -1,5 +1,6 @@
 *.*~
 *.bak
+qrun.log
 greybox_tmp/
 .qsys_edit/
 doc/vendor/
@@ -7,6 +8,9 @@ tb/uvm/builds/
 tb/uvm/cov/
 tb/uvm/transcript
 tb/uvm/tr_db.log
+tb/phy_gate/work/
+tb/phy_gate/log/
+tb/phy_gate/transcript
 syn/quartus/db/
 syn/quartus/incremental_db/
 syn/quartus/output_files/

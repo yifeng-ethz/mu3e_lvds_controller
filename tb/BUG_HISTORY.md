@@ -116,6 +116,77 @@ Historical formal note:
   - Claude Opus 4.7 xhigh review decision:
     - pending / not run
 
+### BUG-007-C: CSR/control and LVDS data domains were not CDC-clean
+- First seen in:
+  - CDC/RDC audit after integration review on `2026-04-29`.
+  - user review question: the CSR/controller clock is not the LVDS PLL
+    output clock, while the mini/super decoder engines run on the LVDS RX
+    clock.
+- Symptom:
+  - CSR configuration fields were sampled by data-clock logic as loose
+    multi-bit values.
+  - data-clock counters and steering status were read directly by the
+    Avalon-MM CSR mux.
+  - PHY status inputs were consumed without explicit synchronizers.
+  - `coe_ctrl_pllrst` was driven from the LVDS data clock, which is the
+    wrong owner because the Arria V wrapper explicitly warns not to rely on
+    `outclock` after PLL reset is asserted.
+- Root cause:
+  - the timing-closure rewrite reduced datapath cone length but did not
+    convert cross-domain CSR/status movement into explicit protocols.
+  - the legacy PHY note about `outclock` availability was true and the new
+    RTL had violated that architectural rule.
+- Fix status:
+  - state:
+    - fixed and verified with QuestaOne strict RTL lint, CDC/reset-focused
+      UVM, and Arria V vendor-model smoke
+  - mechanism:
+    - move `coe_ctrl_pllrst` ownership to the `csi_control_clk` reset
+      manager and synchronize `coe_ctrl_plllock` into that domain
+    - add a held bundled-data toggle/ack handshake for control->data
+      configuration transfer
+    - add a held bundled-data toggle/ack handshake for data->control
+      status/counter snapshots
+    - add a bounded snapshot timeout so CSR dynamic reads do not wedge
+      Avalon-MM `waitrequest` while the data clock/reset side is unavailable
+    - synchronize PHY `plllock`, `dpalock`, `rollover`, and `redriver_losn`
+      into the data domain before datapath use
+    - update UVM CSR driver to hold Avalon-MM requests stable while
+      `waitrequest` is asserted
+  - before_fix_outcome:
+    - `B051` initially exposed Avalon-MM request instability after dynamic
+      CSR reads started inserting `waitrequest`
+    - static CDC/RDC could not be run because `qverify`, `questa_cdc`, and
+      `questa_rdc` executables are absent from the installed QuestaOne
+      bundle
+  - after_fix_outcome:
+    - `python3 ~/.codex/skills/rtl-writing/scripts/rtl_style_check.py
+      rtl/mu3e_lvds_controller.sv rtl/mu3e_lvds_controller_phy_adapter.sv`
+      passes
+    - `/data1/questaone_sim/questasim/linux_x86_64/vlog -lint=full
+      -pedanticerrors +checkALL -warning error rtl/mu3e_lvds_controller.sv
+      rtl/mu3e_lvds_controller_phy_adapter.sv` reports `Errors: 0,
+      Warnings: 0`
+    - focused UVM cases `B001`, `B003`, `B021`, `B022`, `B026`, `B027`,
+      `B051`, `E016`, `X043`, `X044`, and `X050` pass with zero UVM
+      errors/fatals and simulator errors
+    - `make -C tb/uvm TEST=lvds_all_buckets_frame_test SYMBOL_CAP=256
+      RUN_LOG=log/primary/all_buckets_frame.log run` passes all `218`
+      cataloged transactions with zero UVM errors/fatals and simulator
+      errors after the CDC fix
+    - `make -C tb/phy_gate run` compiles and runs the Arria V
+      `altlvds_rx` vendor model, observes PLL/DPA lock, applies a bitslip
+      pulse, and reports `Errors: 0, Warnings: 0`
+  - potential_hazard:
+    - static CDC/RDC signoff remains a tool-availability blocker, not a
+      design waiver. The RTL now uses explicit protocols, but a real
+      `qverify` CDC/RDC run must still be executed when the application is
+      installed.
+    - the PHY smoke is vendor megafunction simulation, not a Quartus
+      post-fit gate-level SDF run.
+  - Claude Opus 4.7 xhigh review decision:
+    - pending / not run
+
 ### BUG-003-H: Continuous-frame harness held reset and carried control state across cases
 - First seen in:
   - `make -C tb/uvm TEST=lvds_all_buckets_frame_test SYMBOL_CAP=256
