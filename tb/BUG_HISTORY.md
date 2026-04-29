@@ -70,7 +70,7 @@ Historical formal note:
 |---|---|---|---|---|---|---|---|
 | [BUG-001-H](#bug-001-h-uvm-csr-read-sampled-registered-read-data-before-nba-update) | H | non-datapath-refactor | `common (first CSR readback smoke)` | fixed (B001 clean on QuestaOne) | B001 on `2026-04-29` at 355 ns | `41bc171` | CSR agent sampled registered read data before the DUT NBA update, so the UID read saw stale zero. |
 | [BUG-002-R](#bug-002-r-reset-default-mode-attached-a-super-engine-before-software-selected-legacy-bit-slip-mode) | R | hard stuck error | `common (routine control mode programming)` | fixed (B001-B020 clean on QuestaOne) | B016 on `2026-04-29` at 1405001 ps | `faf9ff0` | Reset defaulted MODE_MASK to auto mode, so a super engine was attached before software selected legacy bit-slip mode. |
-| [BUG-003-H](#bug-003-h-continuous-frame-harness-held-reset-and-carried-control-state-across-cases) | H | non-datapath-refactor | `common (mandatory bucket_frame / all_buckets_frame runs)` | fixed (bucket frames and all_buckets_frame clean on QuestaOne; commit pending) | all_buckets_frame on `2026-04-29` at B001 / X046 | `pending` | Continuous-frame harness held reset into B001, leaked lane control state across cases, and did not fail Make on simulator assertion errors. |
+| [BUG-003-H](#bug-003-h-continuous-frame-harness-held-reset-and-carried-control-state-across-cases) | H | non-datapath-refactor | `common (mandatory bucket_frame / all_buckets_frame runs)` | fixed (bucket frames and all_buckets_frame clean on QuestaOne) | all_buckets_frame on `2026-04-29` at B001 / X046 | `ab0d5eb` | Continuous-frame harness held reset into B001, leaked lane control state across cases, and did not fail Make on simulator assertion errors. |
 
 ## 2026-04-29
 
