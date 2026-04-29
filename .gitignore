@@ -10,8 +10,7 @@ tb/uvm/tr_db.log
 syn/quartus/db/
 syn/quartus/incremental_db/
 syn/quartus/output_files/
-syn/quartus/simulation/modelsim/
-syn/quartus/simulation/gls_work*/
+syn/quartus/simulation/
 syn/quartus/*.qws
 syn/quartus/*.smsg
 syn/quartus/a5_pin_model_dump.txt
