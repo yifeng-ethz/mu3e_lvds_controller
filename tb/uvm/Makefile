@@ -1,0 +1,114 @@
+# SPDX-License-Identifier: CERN-OHL-S-2.0
+# LVDS controller UVM harness
+
+BUILD ?= primary
+TEST ?= lvds_base_test
+STUB ?= 0
+SYMBOL_CAP ?= 1024
+
+SHELL := /bin/bash
+.SHELLFLAGS := -o pipefail -c
+
+QUESTA_BIN_DIR := $(dir $(shell command -v vlog 2>/dev/null))
+QUESTA_HOME ?= $(patsubst %/bin/,%,$(QUESTA_BIN_DIR))
+UVM_HOME ?= $(QUESTA_HOME)/verilog_src/uvm-1.2
+VLIB ?= vlib
+VLOG ?= vlog
+VSIM ?= vsim
+
+WORK_ROOT := builds/$(BUILD)
+WORK_LIB := $(WORK_ROOT)/work
+LOG_DIR := log/$(BUILD)
+
+ifeq ($(BUILD),legacy)
+  N_LANE := 9
+  N_ENGINE := 9
+else ifeq ($(BUILD),topo_butterfly_h)
+  N_LANE := 12
+  N_ENGINE := 4
+else ifeq ($(BUILD),topo_butterfly_q)
+  N_LANE := 12
+  N_ENGINE := 4
+else ifeq ($(BUILD),topo_nearest_k)
+  N_LANE := 12
+  N_ENGINE := 4
+else ifeq ($(BUILD),score_w6)
+  N_LANE := 4
+  N_ENGINE := 2
+else ifeq ($(BUILD),score_w16)
+  N_LANE := 4
+  N_ENGINE := 2
+else ifeq ($(BUILD),lane1)
+  N_LANE := 1
+  N_ENGINE := 1
+else ifeq ($(BUILD),lane4)
+  N_LANE := 4
+  N_ENGINE := 2
+else
+  N_LANE := 12
+  N_ENGINE := 1
+endif
+
+DEFINES := +define+UVM_NO_DPI +define+LVDS_N_LANE=$(N_LANE) +define+LVDS_N_ENGINE=$(N_ENGINE)
+ifeq ($(STUB),1)
+  DEFINES += +define+LVDS_USE_STUB_DUT
+  DUT_SRC :=
+else
+  DUT_SRC := ../../rtl/mu3e_lvds_controller.sv
+endif
+
+INCDIRS := +incdir+$(UVM_HOME)/src +incdir+harness +incdir+sequence +incdir+tests +incdir+sva
+HARNESS_SRC := \
+	harness/lvds_tb_const_pkg.sv \
+	harness/lvds_dut_if.sv \
+	harness/lvds_dut_stub.sv \
+	harness/lvds_uvm_pkg.sv \
+	sva/sva_avalon_mm.sv \
+	sva/sva_avalon_st.sv \
+	sva/sva_routing_excl.sv \
+	sva/sva_steering_queue.sv \
+	sva/sva_train_fsm.sv \
+	sva/sva_score_sat.sv \
+	sva/sva_csr_aperture.sv \
+	sva/sva_counter_sat.sv \
+	sva/sva_engine_attach.sv \
+	sva/lvds_coverage.sv \
+	tb_top.sv
+
+.PHONY: all compile run smoke_stub regression bucket_frame all_buckets_frame clean regen_cases
+
+all: run
+
+regen_cases:
+	python3 script/generate_case_sequences.py
+
+compile: regen_cases
+	mkdir -p $(WORK_ROOT) $(LOG_DIR)
+	$(VLIB) $(WORK_LIB)
+	$(VLOG) -work $(WORK_LIB) -sv $(DEFINES) $(INCDIRS) $(UVM_HOME)/src/uvm_pkg.sv $(DUT_SRC) $(HARNESS_SRC) | tee $(LOG_DIR)/compile.log
+
+run: compile
+	$(VSIM) -c -work $(WORK_LIB) -nodpiexports -suppress 19 -suppress 3009 tb_top \
+		+UVM_TESTNAME=$(TEST) +N_LANE=$(N_LANE) +N_ENGINE=$(N_ENGINE) +SYMBOL_CAP=$(SYMBOL_CAP) $(EXTRA_ARGS) \
+		-do "run -all; quit -f" | tee $(LOG_DIR)/$(TEST).log
+
+smoke_stub:
+	$(MAKE) STUB=1 TEST=lvds_b001_read_uid_after_cold_reset_test SYMBOL_CAP=64 run
+
+regression:
+	while read case_id; do \
+		test -z "$$case_id" && continue; \
+		$(MAKE) TEST=lvds_base_test run EXTRA_ARGS="+LVDS_CASE_ID=$$case_id"; \
+	done < regression_cases.list
+
+bucket_frame:
+	$(MAKE) TEST=lvds_bucket_frame_basic_test run
+	$(MAKE) TEST=lvds_bucket_frame_edge_test run
+	$(MAKE) TEST=lvds_bucket_frame_prof_test run
+	$(MAKE) TEST=lvds_bucket_frame_error_test run
+
+all_buckets_frame:
+	$(MAKE) TEST=lvds_all_buckets_frame_test run
+
+clean:
+	rm -rf builds
