@@ -9,12 +9,18 @@ SYMBOL_CAP ?= 1024
 SHELL := /bin/bash
 .SHELLFLAGS := -o pipefail -c
 
-QUESTA_BIN_DIR := $(dir $(shell command -v vlog 2>/dev/null))
-QUESTA_HOME ?= $(patsubst %/bin/,%,$(QUESTA_BIN_DIR))
+QUESTA_HOME ?= /data1/questaone_sim/questasim
+ETH_LIC_SERVER := 8161@lic-mentor.ethz.ch
 UVM_HOME ?= $(QUESTA_HOME)/verilog_src/uvm-1.2
-VLIB ?= vlib
-VLOG ?= vlog
-VSIM ?= vsim
+QUESTA_ARCH ?= linux_x86_64
+VLIB ?= $(QUESTA_HOME)/$(QUESTA_ARCH)/vlib
+VLOG ?= $(QUESTA_HOME)/$(QUESTA_ARCH)/vlog
+VSIM ?= $(QUESTA_HOME)/$(QUESTA_ARCH)/vsim
+
+export LM_LICENSE_FILE := $(ETH_LIC_SERVER)
+export MGLS_LICENSE_FILE := $(LM_LICENSE_FILE)
+export SALT_LICENSE_SERVER := $(LM_LICENSE_FILE)
+export QSIM_INI := $(QUESTA_HOME)/modelsim.ini
 
 WORK_ROOT := builds/$(BUILD)
 WORK_LIB := $(WORK_ROOT)/work

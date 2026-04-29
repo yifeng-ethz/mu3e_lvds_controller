@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: CERN-OHL-S-2.0
 // Version : 26.0.0
 // Date    : 20260429
-// Change  : Initial UVM environment and case-sequence framework.
+// Change  : Fix CSR sampling and sparse counter first-hit handling.
 
 package lvds_uvm_pkg;
     timeunit 1ns;
@@ -305,6 +305,7 @@ package lvds_uvm_pkg;
                 @(posedge vif.csi_control_clk);
             end
             @(posedge vif.csi_control_clk);
+            #1ps;
             data = vif.avs_csr_readdata;
             vif.avs_csr_read <= 1'b0;
             if (guard >= 256) begin
@@ -724,6 +725,9 @@ package lvds_uvm_pkg;
 
         function void write(lvds_case_item item);
             case_count++;
+            if (!bucket_count.exists(item.desc.bucket)) begin
+                bucket_count[item.desc.bucket] = 0;
+            end
             bucket_count[item.desc.bucket]++;
             if (item.desc.expect_sva_failure) begin
                 `uvm_info("LVDS/SB", {item.desc.id, " is an intentional SVA probe; final PASS needs assertion-fire accounting"}, UVM_LOW)
@@ -747,6 +751,9 @@ package lvds_uvm_pkg;
         endfunction
 
         function void write(lvds_case_item item);
+            if (!case_hit.exists(item.desc.id)) begin
+                case_hit[item.desc.id] = 0;
+            end
             case_hit[item.desc.id]++;
         endfunction
     endclass

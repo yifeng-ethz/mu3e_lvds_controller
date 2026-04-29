@@ -60,48 +60,53 @@ Historical formal note:
   reference image only and bugs found in it are NOT logged here
 - the current supported formal tool is `qverify` (primary) and
   `znformal` / `jaspergold` (cross-check) per the `dv-workflow` skill
-- the current supported simulator runtime is `Questa FSE 2022.4` at
-  `/data1/intelFPGA_pro/23.1/questa_fse/`
+- the current supported simulator runtime is `QuestaOne 2026.1_1` at
+  `/data1/questaone_sim/questasim/` with the ETH floating license at
+  `8161@lic-mentor.ethz.ch`
 
 ## Index
 
 | bug_id | class | severity | encounterability | status | first seen | commit | summary |
 |---|---|---|---|---|---|---|---|
-| [BUG-000-H](#bug-000-h-dv-plan-freeze-marker-no-rtl-bugs-reported-yet) | H | non-datapath-refactor | `directed-only (plan freeze)` | open (RTL not yet authored) | DV plan freeze on `2026-04-29` | `pending` | DV plan freeze marker; first real bug entry will follow once codex begins RTL/UVM authoring. |
+| [BUG-001-H](#bug-001-h-uvm-csr-read-sampled-registered-read-data-before-nba-update) | H | non-datapath-refactor | `common (first CSR readback smoke)` | fixed (B001 clean on QuestaOne) | B001 on `2026-04-29` at 355 ns | `pending` | CSR agent sampled registered read data before the DUT NBA update, so the UID read saw stale zero. |
 
 ## 2026-04-29
 
-### BUG-000-H: DV plan freeze marker; no RTL bugs reported yet
+### BUG-001-H: UVM CSR read sampled registered read data before NBA update
 - First seen in:
-  - `tb/doc/DV_PLAN.md` plan freeze on `2026-04-29` (the worktree at
-    `/home/yifeng/packages/mu3e_ip_dev/worktrees/mu3e_lvds_controller_sv_rebuild_20260429`
-    contains DV plan + harness plan + bucket files only; `rtl/`,
-    `tb/uvm/`, `tb/formal/` are placeholder directories until codex
-    begins authoring).
+  - `make -C tb/uvm TEST=lvds_b001_read_uid_after_cold_reset_test
+    SYMBOL_CAP=64 run` under `QuestaOne 2026.1_1` on `2026-04-29`.
+  - B001 reported `word 0 expected 0x4c564453 got 0x00000000` at
+    355 ns.
 - Symptom:
-  - none (this is a placeholder entry that satisfies the
-    `bug_history_format_check.py` requirement of at least one indexed
-    row and one dated section while the ledger is empty of real bugs).
+  - the first CSR UID read returned stale reset data even though the
+    RTL compiled and the UID decode path was present.
 - Root cause:
-  - the lint's contract assumes the ledger is created at first bug
-    discovery rather than at plan freeze.
+  - the UVM CSR agent asserted `avs_csr_read` after a clock edge and
+    sampled `avs_csr_readdata` at the next clock edge in the active
+    region. The DUT updates registered read data with a nonblocking
+    assignment on that same edge, so the agent sampled before the NBA
+    update.
 - Fix status:
   - state:
-    - open until the first real R-class or H-class bug is recorded
-      against the SV rebuild
+    - fixed and verified with B001 under QuestaOne
   - mechanism:
-    - delete this row when the first real bug entry lands; renumber
-      from BUG-001-X onward
+    - add a 1 ps post-clock sample skew in `csr_read` so the agent
+      observes the registered read-data update for the accepted read
+    - initialize sparse associative-array scoreboard/coverage counters
+      before first increment so QuestaOne regressions do not carry
+      avoidable simulator warnings
   - before_fix_outcome:
-    - lint failed with "BUG_HISTORY index must contain at least one
-      bug row" and "BUG_HISTORY must contain at least one dated
-      '## YYYY-MM-DD' section"
+    - B001 produced one `UVM_ERROR` and later two simulator warnings
+      from first-hit sparse associative-array increments
   - after_fix_outcome:
-    - lint passes; the ledger is structurally valid even before any
-      simulation has been run
+    - `make -C tb/uvm TEST=lvds_b001_read_uid_after_cold_reset_test
+      SYMBOL_CAP=64 run` completes under QuestaOne with compile
+      `Errors: 0, Warnings: 0`, simulation `Errors: 0, Warnings: 0`,
+      and UVM summary `UVM_ERROR : 0`
   - potential_hazard:
-    - a real first bug must replace this marker; leaving it
-      indefinitely hides whether the SV rebuild has been exercised at
-      all
+    - permanent for the current registered-read CSR contract; if the
+      CSR agent is later replaced by UVM RAL, the same post-edge
+      sampling rule must be preserved
   - Claude Opus 4.7 xhigh review decision:
     - pending / not run
