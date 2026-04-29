@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: CERN-OHL-S-2.0
 // Version : 26.0.0
 // Date    : 20260429
-// Change  : Initial SystemVerilog LVDS controller rebuild RTL.
+// Change  : Add checked control-mode steering and PHY reset sequencing.
 
 module mu3e_lvds_controller #(
     parameter int          N_LANE              = 12,
@@ -63,6 +63,7 @@ module mu3e_lvds_controller #(
     localparam int SCORE_PHASE_COUNT_CONST     = 10;
     localparam int SCORE_W_CONST               = 16;
     localparam int SOFT_RESET_HOLD_CYCLES_CONST = 8;
+    localparam int PLL_RESET_CYCLES_CONST      = 8;
 
     localparam int N_LANE_CLAMP_CONST          =
         (N_LANE < 1) ? 1 : ((N_LANE > MAX_LANE_CONST) ? MAX_LANE_CONST : N_LANE);
@@ -113,6 +114,10 @@ module mu3e_lvds_controller #(
     localparam logic [9:0] SYMBOL_K280_N_CONST = 10'b1100001011;
     localparam logic [9:0] SYMBOL_K237_P_CONST = 10'b1110101000;
     localparam logic [9:0] SYMBOL_K237_N_CONST = 10'b0001010111;
+
+    localparam logic [1:0] MODE_BITSLIPPING_CONST = 2'd0;
+    localparam logic [1:0] MODE_ADAPTING_CONST    = 2'd1;
+    localparam logic [1:0] MODE_AUTOING_CONST     = 2'd2;
 
     typedef enum logic [3:0] {
         TRAIN_IDLING,
@@ -169,9 +174,12 @@ module mu3e_lvds_controller #(
     logic [31:0]                                           steer_overflow_count;
 
     logic [MAX_LANE_CONST - 1:0][7:0] lane_good_count;
+    logic [MAX_LANE_CONST - 1:0]      lane_engine_seen;
     logic [MAX_LANE_CONST - 1:0]      loss_sync_d1;
     logic [MAX_LANE_CONST - 1:0]      dpalock_d1;
     logic [MAX_LANE_CONST - 1:0]      rollover_d1;
+    logic                             plllock_d1;
+    logic [3:0]                       pll_reset_count;
 
     logic [31:0] lane_go_data_d1;
     logic [31:0] lane_go_data_d2;
@@ -350,6 +358,12 @@ module mu3e_lvds_controller #(
         return engine;
     endfunction
 
+    // OPEN: the final CSR map should decide whether mode_mask is global or
+    // two bits per lane. The current UVM plan writes 0/1/2 as a global mode.
+    function automatic logic [1:0] lane_mode(input logic [31:0] mode_mask, input int lane);
+        return mode_mask[1:0];
+    endfunction
+
     assign csr_version_word = {
         int_to_u8(VERSION_MAJOR),
         int_to_u8(VERSION_MINOR),
@@ -408,7 +422,7 @@ module mu3e_lvds_controller #(
             csr.lane_go           <= ACTIVE_LANE_MASK_CONST;
             csr.dpa_hold          <= 32'd0;
             csr.soft_reset_req    <= 32'd0;
-            csr.mode_mask         <= 32'h0000_0002;
+            csr.mode_mask         <= 32'h0000_0000;
             csr.score_accept      <= clamp_score_accept(SCORE_ACCEPT);
             csr.score_reject      <= clamp_score_reject(SCORE_REJECT, clamp_score_accept(SCORE_ACCEPT));
             csr.lane_select       <= 6'd0;
@@ -489,10 +503,13 @@ module mu3e_lvds_controller #(
         decode_result_t data_v_phase_decode;
         logic           data_v_lane_live;
         logic           data_v_error_event;
+        logic           data_v_engine_request;
+        logic [1:0]     data_v_mode;
         logic [9:0]     data_v_symbol;
         logic [9:0]     data_v_phase_symbol;
         logic [15:0]    data_v_best_score;
         logic [3:0]     data_v_best_phase;
+        logic [MAX_ENGINE_CONST - 1:0] data_v_engine_taken;
         int             data_v_engine;
         int             data_v_attached_lane;
 
@@ -515,8 +532,8 @@ module mu3e_lvds_controller #(
             soft_reset_req_data_d1    <= 32'd0;
             soft_reset_req_data_d2    <= 32'd0;
             soft_reset_req_data_d3    <= 32'd0;
-            mode_mask_data_d1         <= 32'h0000_0002;
-            mode_mask_data_d2         <= 32'h0000_0002;
+            mode_mask_data_d1         <= 32'h0000_0000;
+            mode_mask_data_d2         <= 32'h0000_0000;
             sync_pattern_data_d1      <= SYNC_PATTERN;
             sync_pattern_data_d2      <= SYNC_PATTERN;
             score_accept_data_d1      <= clamp_score_accept(SCORE_ACCEPT);
@@ -552,11 +569,14 @@ module mu3e_lvds_controller #(
             engine_age              <= '0;
             engine_attach_event     <= '0;
 
-            lane_good_count    <= '0;
-            loss_sync_d1       <= '0;
-            dpalock_d1         <= '0;
-            rollover_d1        <= '0;
-            lane_counter       <= '0;
+            lane_good_count     <= '0;
+            lane_engine_seen    <= '0;
+            loss_sync_d1        <= '0;
+            dpalock_d1          <= '0;
+            rollover_d1         <= '0;
+            plllock_d1          <= 1'b0;
+            pll_reset_count     <= PLL_RESET_CYCLES_CONST[3:0];
+            lane_counter        <= '0;
 
             for (int lane_idx = 0; lane_idx < MAX_LANE_CONST; lane_idx++) begin
                 train_state[lane_idx] <= TRAIN_IDLING;
@@ -578,7 +598,16 @@ module mu3e_lvds_controller #(
             score_reject_data_d1      <= csr.score_reject;
             score_reject_data_d2      <= score_reject_data_d1;
 
-            coe_ctrl_pllrst        <= !coe_ctrl_plllock;
+            if (pll_reset_count != 4'd0) begin
+                pll_reset_count    <= pll_reset_count - 4'd1;
+                coe_ctrl_pllrst    <= 1'b1;
+            end else begin
+                coe_ctrl_pllrst    <= 1'b0;
+            end
+            if (plllock_d1 && !coe_ctrl_plllock) begin
+                pll_reset_count    <= PLL_RESET_CYCLES_CONST[3:0];
+                coe_ctrl_pllrst    <= 1'b1;
+            end
             coe_ctrl_bitslip       <= 32'd0;
             engine_attach_event    <= '0;
             engine_valid_d1        <= '0;
@@ -586,8 +615,10 @@ module mu3e_lvds_controller #(
             engine_error_d1        <= '0;
             engine_channel_d1      <= '0;
 
+            data_v_engine_taken = engine_busy;
             dpalock_d1     <= coe_ctrl_dpalock;
             rollover_d1    <= coe_ctrl_rollover;
+            plllock_d1     <= coe_ctrl_plllock;
 
             for (int lane_idx = 0; lane_idx < MAX_LANE_CONST; lane_idx++) begin
                 data_v_symbol     = coe_parallel_data[lane_idx * 10 +: 10];
@@ -598,6 +629,19 @@ module mu3e_lvds_controller #(
                 data_v_error_event = data_v_lane_live &&
                                      coe_ctrl_dpalock[lane_idx] &&
                                      (data_v_decode.error != 3'b000);
+                data_v_mode = lane_mode(mode_mask_data_d2, lane_idx);
+                data_v_engine_request = 1'b0;
+                if ((data_v_mode != MODE_BITSLIPPING_CONST) && data_v_error_event) begin
+                    data_v_engine_request = 1'b1;
+                end
+                if (((data_v_mode == MODE_ADAPTING_CONST) || (data_v_mode == MODE_AUTOING_CONST)) &&
+                    data_v_lane_live &&
+                    coe_ctrl_dpalock[lane_idx] &&
+                    !lane_engine_seen[lane_idx] &&
+                    !data_v_decode.error[2] &&
+                    (lane_good_count[lane_idx] >= score_accept_data_d2[7:0])) begin
+                    data_v_engine_request = 1'b1;
+                end
 
                 mini_valid_d1[lane_idx]      <= data_v_lane_live && coe_ctrl_dpalock[lane_idx];
                 mini_data_d1[lane_idx]       <= data_v_decode.data;
@@ -617,6 +661,7 @@ module mu3e_lvds_controller #(
                 if (lane_idx >= N_LANE_CLAMP_CONST) begin
                     train_state[lane_idx]         <= TRAIN_IDLING;
                     lane_good_count[lane_idx]     <= 8'd0;
+                    lane_engine_seen[lane_idx]    <= 1'b0;
                     coe_ctrl_dparst[lane_idx]     <= 1'b0;
                     coe_ctrl_lockrst[lane_idx]    <= 1'b0;
                     coe_ctrl_dpahold[lane_idx]    <= 1'b0;
@@ -624,6 +669,7 @@ module mu3e_lvds_controller #(
                 end else if (!lane_go_data_d2[lane_idx]) begin
                     train_state[lane_idx]         <= TRAIN_IDLING;
                     lane_good_count[lane_idx]     <= 8'd0;
+                    lane_engine_seen[lane_idx]    <= 1'b0;
                     coe_ctrl_dparst[lane_idx]     <= 1'b1;
                     coe_ctrl_lockrst[lane_idx]    <= 1'b1;
                     coe_ctrl_dpahold[lane_idx]    <= 1'b0;
@@ -631,6 +677,7 @@ module mu3e_lvds_controller #(
                 end else if (soft_reset_rise[lane_idx]) begin
                     train_state[lane_idx]         <= TRAIN_RESETTING_DPA;
                     lane_good_count[lane_idx]     <= 8'd0;
+                    lane_engine_seen[lane_idx]    <= 1'b0;
                     coe_ctrl_dparst[lane_idx]     <= 1'b1;
                     coe_ctrl_lockrst[lane_idx]    <= 1'b1;
                     coe_ctrl_dpahold[lane_idx]    <= 1'b0;
@@ -643,6 +690,7 @@ module mu3e_lvds_controller #(
                 end else if (!coe_ctrl_plllock || !coe_redriver_losn[lane_idx]) begin
                     train_state[lane_idx]         <= TRAIN_WAITING_PLL;
                     lane_good_count[lane_idx]     <= 8'd0;
+                    lane_engine_seen[lane_idx]    <= 1'b0;
                     coe_ctrl_dparst[lane_idx]     <= 1'b1;
                     coe_ctrl_lockrst[lane_idx]    <= 1'b1;
                     coe_ctrl_dpahold[lane_idx]    <= 1'b0;
@@ -650,6 +698,7 @@ module mu3e_lvds_controller #(
                 end else if (!coe_ctrl_dpalock[lane_idx]) begin
                     train_state[lane_idx]         <= TRAIN_WAITING_DPA;
                     lane_good_count[lane_idx]     <= 8'd0;
+                    lane_engine_seen[lane_idx]    <= 1'b0;
                     coe_ctrl_dparst[lane_idx]     <= 1'b0;
                     coe_ctrl_lockrst[lane_idx]    <= 1'b0;
                     coe_ctrl_dpahold[lane_idx]    <= 1'b0;
@@ -670,9 +719,10 @@ module mu3e_lvds_controller #(
                     coe_ctrl_dparst[lane_idx]     <= 1'b0;
                     coe_ctrl_lockrst[lane_idx]    <= 1'b0;
                     coe_ctrl_dpahold[lane_idx]    <= dpa_hold_data_d2[lane_idx];
-                    coe_ctrl_fiforst[lane_idx]    <= 1'b0;
+                    coe_ctrl_fiforst[lane_idx]    <= !dpalock_d1[lane_idx] && coe_ctrl_dpalock[lane_idx];
 
-                    if (lane_good_count[lane_idx] < score_accept_data_d2[7:0]) begin
+                    if (!dpa_hold_data_d2[lane_idx] &&
+                        (lane_good_count[lane_idx] < score_accept_data_d2[7:0])) begin
                         lane_good_count[lane_idx]    <= lane_good_count[lane_idx] + 8'd1;
                         train_state[lane_idx]        <= TRAIN_LOCKING;
                     end else begin
@@ -708,17 +758,22 @@ module mu3e_lvds_controller #(
                         saturating_inc(lane_counter[lane_idx][COUNTER_REALIGNS_CONST]);
                 end
 
-                if (data_v_error_event) begin
+                if (data_v_engine_request) begin
                     data_v_engine = engine_for_lane(lane_idx);
                     if ((data_v_engine < N_ENGINE_CLAMP_CONST) &&
-                        (!engine_busy[data_v_engine] ||
+                        (!data_v_engine_taken[data_v_engine] ||
+                         data_v_error_event ||
                          (engine_attach_lane[data_v_engine] == lane_idx[5:0]))) begin
-                        if (!engine_busy[data_v_engine]) begin
+                        if (!engine_busy[data_v_engine] ||
+                            data_v_error_event ||
+                            (engine_attach_lane[data_v_engine] != lane_idx[5:0])) begin
+                            data_v_engine_taken[data_v_engine]                       = 1'b1;
                             engine_busy[data_v_engine]                            <= 1'b1;
                             engine_attached[data_v_engine]                        <= 1'b1;
                             engine_attach_lane[data_v_engine]                     <= lane_idx[5:0];
                             engine_age[data_v_engine]                             <= 16'd0;
                             engine_attach_event[data_v_engine]                    <= 1'b1;
+                            lane_engine_seen[lane_idx]                            <= 1'b1;
                             lane_counter[lane_idx][COUNTER_ENGINE_STEER_CONST]    <=
                                 saturating_inc(lane_counter[lane_idx][COUNTER_ENGINE_STEER_CONST]);
                             steer_state                            <= STEER_ATTACHING;

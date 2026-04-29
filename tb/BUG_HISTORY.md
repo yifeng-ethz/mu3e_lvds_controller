@@ -69,6 +69,7 @@ Historical formal note:
 | bug_id | class | severity | encounterability | status | first seen | commit | summary |
 |---|---|---|---|---|---|---|---|
 | [BUG-001-H](#bug-001-h-uvm-csr-read-sampled-registered-read-data-before-nba-update) | H | non-datapath-refactor | `common (first CSR readback smoke)` | fixed (B001 clean on QuestaOne) | B001 on `2026-04-29` at 355 ns | `41bc171` | CSR agent sampled registered read data before the DUT NBA update, so the UID read saw stale zero. |
+| [BUG-002-R](#bug-002-r-reset-default-mode-attached-a-super-engine-before-software-selected-legacy-bit-slip-mode) | R | hard stuck error | `common (routine control mode programming)` | fixed (B001-B020 clean on QuestaOne; commit pending) | B016 on `2026-04-29` at 1405001 ps | `pending` | Reset defaulted MODE_MASK to auto mode, so a super engine was attached before software selected legacy bit-slip mode. |
 
 ## 2026-04-29
 
@@ -108,5 +109,43 @@ Historical formal note:
     - permanent for the current registered-read CSR contract; if the
       CSR agent is later replaced by UVM RAL, the same post-edge
       sampling rule must be preserved
+  - Claude Opus 4.7 xhigh review decision:
+    - pending / not run
+
+### BUG-002-R: Reset default mode attached a super engine before software selected legacy bit-slip mode
+- First seen in:
+  - `make -C tb/uvm TEST=lvds_base_test
+    EXTRA_ARGS="+LVDS_CASE_ID=B016" SYMBOL_CAP=256
+    RUN_LOG=log/primary/B016.log run` under `QuestaOne 2026.1_1` on
+    `2026-04-29`.
+  - B016 reported `lane 0 counter 7 expected 0 got 1` at 1405001 ps.
+- Symptom:
+  - the `engine_steerings` counter incremented even though B016 had
+    programmed legacy bit-slip mode (`MODE_MASK=0`) and expected the shared
+    super decoder-aligner pool to remain unused.
+- Root cause:
+  - the data-domain reset default for `mode_mask` was `2`, matching auto mode.
+    A locked lane could therefore request the shared engine during the reset
+    release window before the control-path CSR write to legacy mode arrived.
+- Fix status:
+  - state:
+    - fixed and verified with the checked B001-B020 batch under QuestaOne
+  - mechanism:
+    - reset `mode_mask` and its data-clock synchronizer defaults to legacy
+      bit-slip mode (`0`)
+    - keep adaptive and auto super-engine steering opt-in through explicit CSR
+      writes
+    - add checked B016/B017/B018 expectations so bit-slip, adaptive, and auto
+      mode now observe different steering-counter behavior
+  - before_fix_outcome:
+    - B016 produced one `UVM_ERROR` because lane 0 had already consumed an
+      engine steering event before the testcase wrote `MODE_MASK=0`
+  - after_fix_outcome:
+    - the checked B001-B020 batch completes under QuestaOne with all 20 cases
+      passing and UVM summary `UVM_ERROR : 0`
+  - potential_hazard:
+    - the global two-bit `MODE_MASK` encoding is provisional. The next CSR
+      freeze must decide whether this remains global or becomes a per-lane
+      two-bit field before firmware depends on it.
   - Claude Opus 4.7 xhigh review decision:
     - pending / not run

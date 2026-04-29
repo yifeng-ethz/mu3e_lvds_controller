@@ -2,3 +2,7 @@
 *.bak
 greybox_tmp/
 .qsys_edit/
+doc/vendor/
+tb/uvm/builds/
+tb/uvm/transcript
+tb/uvm/tr_db.log

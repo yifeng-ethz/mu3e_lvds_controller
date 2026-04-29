@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: CERN-OHL-S-2.0
 // Version : 26.0.0
 // Date    : 20260429
-// Change  : Fix CSR sampling and sparse counter first-hit handling.
+// Change  : Add checked control-mode and counter-aperture cases.
 
 package lvds_uvm_pkg;
     timeunit 1ns;
@@ -322,6 +322,45 @@ package lvds_uvm_pkg;
             end
         endtask
 
+        task automatic expect_lane_valid(input int lane, input bit expected, input string label);
+            #1ps;
+            if (vif.aso_decoded_valid[lane] !== expected) begin
+                `uvm_error("LVDS/AVST", $sformatf("%s lane %0d valid expected %0b got %0b",
+                    label, lane, expected, vif.aso_decoded_valid[lane]))
+            end
+        endtask
+
+        task automatic expect_ctrl_bit(input string signal_name, input bit actual, input bit expected, input string label);
+            #1ps;
+            if (actual !== expected) begin
+                `uvm_error("LVDS/CTRL", $sformatf("%s %s expected %0b got %0b",
+                    label, signal_name, expected, actual))
+            end
+        endtask
+
+        task automatic read_lane_counter(input int lane, input int counter_idx, output logic [31:0] data);
+            csr_write(LVDS_CSR_LANE_SELECT_WORD_CONST, 32'(lane));
+            csr_read(LVDS_CSR_COUNTER_BASE_WORD_CONST + counter_idx, data);
+        endtask
+
+        task automatic expect_lane_counter_eq(input int lane, input int counter_idx, input logic [31:0] expected, input string label);
+            logic [31:0] data;
+            read_lane_counter(lane, counter_idx, data);
+            if (data !== expected) begin
+                `uvm_error("LVDS/CNT", $sformatf("%s lane %0d counter %0d expected 0x%08x got 0x%08x",
+                    label, lane, counter_idx, expected, data))
+            end
+        endtask
+
+        task automatic expect_lane_counter_min(input int lane, input int counter_idx, input logic [31:0] expected_min, input string label);
+            logic [31:0] data;
+            read_lane_counter(lane, counter_idx, data);
+            if (data < expected_min) begin
+                `uvm_error("LVDS/CNT", $sformatf("%s lane %0d counter %0d expected >= 0x%08x got 0x%08x",
+                    label, lane, counter_idx, expected_min, data))
+            end
+        endtask
+
         task automatic drive_symbols(input logic [9:0] symbol, input int cycles);
             int capped_cycles;
             capped_cycles = (cycles > cfg.symbol_cap) ? cfg.symbol_cap : cycles;
@@ -410,15 +449,60 @@ package lvds_uvm_pkg;
         task automatic drive_control_case(input lvds_case_desc_t desc);
             unique case (desc.case_num)
                 11: expect_csr(LVDS_CSR_LANE_GO_WORD_CONST, lane_mask(), desc.id);
-                12: begin csr_write(LVDS_CSR_LANE_GO_WORD_CONST, lane_mask() & ~32'h1); drive_symbols(10'b0011111010, 64); end
-                13: begin csr_write(LVDS_CSR_LANE_GO_WORD_CONST, 32'd0); drive_symbols(10'b0011111010, 64); end
-                14: begin csr_write(LVDS_CSR_DPA_HOLD_WORD_CONST, 32'h1); drive_symbols(10'b0011111010, 64); end
-                15: begin csr_write(LVDS_CSR_SOFT_RESET_WORD_CONST, 32'h1); wait_data_cycles(64); end
-                16: begin csr_write(LVDS_CSR_MODE_MASK_WORD_CONST, 32'h0); drive_symbols(10'b0011111010, 128); end
-                17: begin csr_write(LVDS_CSR_MODE_MASK_WORD_CONST, 32'h1); drive_symbols(10'b0011111010, 128); end
-                18: begin csr_write(LVDS_CSR_MODE_MASK_WORD_CONST, 32'h2); drive_symbols(10'b0011111010, 64); inject_lane_symbol(0, 10'h000); end
-                19: begin csr_write(LVDS_CSR_SCORE_ACCEPT_WORD_CONST, 32'hFFFFFFFF); csr_read(LVDS_CSR_SCORE_ACCEPT_WORD_CONST, void_data); end
-                20: begin csr_write(LVDS_CSR_SCORE_REJECT_WORD_CONST, 32'hFFFFFFFF); csr_read(LVDS_CSR_SCORE_REJECT_WORD_CONST, void_data); end
+                12: begin
+                    csr_write(LVDS_CSR_LANE_GO_WORD_CONST, lane_mask() & ~32'h1);
+                    drive_symbols(10'b0011111010, 64);
+                    expect_lane_valid(0, 1'b0, desc.id);
+                    if (cfg.n_lane > 1) expect_lane_valid(1, 1'b1, desc.id);
+                end
+                13: begin
+                    csr_write(LVDS_CSR_LANE_GO_WORD_CONST, 32'd0);
+                    drive_symbols(10'b0011111010, 64);
+                    for (int lane = 0; lane < cfg.n_lane; lane++) begin
+                        expect_lane_valid(lane, 1'b0, desc.id);
+                    end
+                end
+                14: begin
+                    csr_write(LVDS_CSR_DPA_HOLD_WORD_CONST, 32'h1);
+                    drive_symbols(10'b0011111010, 64);
+                    expect_ctrl_bit("coe_ctrl_dpahold[0]", vif.coe_ctrl_dpahold[0], 1'b1, desc.id);
+                    if (cfg.n_lane > 1) begin
+                        expect_ctrl_bit("coe_ctrl_dpahold[1]", vif.coe_ctrl_dpahold[1], 1'b0, desc.id);
+                    end
+                end
+                15: begin
+                    csr_write(LVDS_CSR_SOFT_RESET_WORD_CONST, 32'h1);
+                    wait_data_cycles(64);
+                    expect_csr(LVDS_CSR_SOFT_RESET_WORD_CONST, 32'd0, desc.id);
+                    expect_lane_counter_min(0, 8, 32'd1, desc.id);
+                end
+                16: begin
+                    csr_write(LVDS_CSR_MODE_MASK_WORD_CONST, 32'h0);
+                    drive_symbols(10'b0011111010, 128);
+                    expect_lane_counter_eq(0, 7, 32'd0, desc.id);
+                end
+                17: begin
+                    csr_write(LVDS_CSR_MODE_MASK_WORD_CONST, 32'h1);
+                    drive_symbols(10'b0011111010, 128);
+                    expect_lane_counter_min(0, 7, 32'd1, desc.id);
+                end
+                18: begin
+                    csr_write(LVDS_CSR_MODE_MASK_WORD_CONST, 32'h2);
+                    drive_symbols(10'b0011111010, 64);
+                    inject_lane_symbol(0, 10'h000);
+                    wait_data_cycles(128);
+                    expect_lane_counter_min(0, 7, 32'd2, desc.id);
+                end
+                19: begin
+                    csr_write(LVDS_CSR_SCORE_ACCEPT_WORD_CONST, 32'hFFFFFFFF);
+                    expect_csr(LVDS_CSR_SCORE_ACCEPT_WORD_CONST, (32'd1 << cfg.score_window_w) - 32'd1, desc.id);
+                end
+                20: begin
+                    logic [31:0] accept_value;
+                    csr_read(LVDS_CSR_SCORE_ACCEPT_WORD_CONST, accept_value);
+                    csr_write(LVDS_CSR_SCORE_REJECT_WORD_CONST, 32'hFFFFFFFF);
+                    expect_csr(LVDS_CSR_SCORE_REJECT_WORD_CONST, accept_value - 32'd1, desc.id);
+                end
                 default: begin end
             endcase
         endtask

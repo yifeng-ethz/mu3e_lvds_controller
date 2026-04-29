@@ -5,6 +5,7 @@ BUILD ?= primary
 TEST ?= lvds_base_test
 STUB ?= 0
 SYMBOL_CAP ?= 1024
+RUN_LOG ?= $(LOG_DIR)/$(TEST).log
 
 SHELL := /bin/bash
 .SHELLFLAGS := -o pipefail -c
@@ -96,7 +97,8 @@ compile: regen_cases
 run: compile
 	$(VSIM) -c -work $(WORK_LIB) -nodpiexports -suppress 19 -suppress 3009 tb_top \
 		+UVM_TESTNAME=$(TEST) +N_LANE=$(N_LANE) +N_ENGINE=$(N_ENGINE) +SYMBOL_CAP=$(SYMBOL_CAP) $(EXTRA_ARGS) \
-		-do "run -all; quit -f" | tee $(LOG_DIR)/$(TEST).log
+		-do "run -all; quit -f" | tee $(RUN_LOG)
+	! grep -Eq "UVM_(ERROR|FATAL)[[:space:]]+:[[:space:]]*[1-9]" $(RUN_LOG)
 
 smoke_stub:
 	$(MAKE) STUB=1 TEST=lvds_b001_read_uid_after_cold_reset_test SYMBOL_CAP=64 run
