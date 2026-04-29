@@ -73,6 +73,7 @@ Historical formal note:
 | [BUG-003-H](#bug-003-h-continuous-frame-harness-held-reset-and-carried-control-state-across-cases) | H | non-datapath-refactor | `common (mandatory bucket_frame / all_buckets_frame runs)` | fixed (bucket frames and all_buckets_frame clean on QuestaOne) | all_buckets_frame on `2026-04-29` at B001 / X046 | `ab0d5eb` | Continuous-frame harness held reset into B001, leaked lane control state across cases, and did not fail Make on simulator assertion errors. |
 | [BUG-004-H](#bug-004-h-prof-saturation-cases-inherited-threshold-state-in-continuous-frames) | H | non-datapath-refactor | `common (mandatory PROF/all-buckets no-restart frames)` | fixed (218-case all_buckets_frame clean on QuestaOne) | all_buckets_frame on `2026-04-29` at P023/P024 | `fe639d8` | PROF saturation cases preloaded counters but did not fully establish the score/training prerequisites needed for the next event in a no-restart frame. |
 | [BUG-005-H](#bug-005-h-structural-toggle-closure-had-no-legal-stimulus-for-engine-age-storage) | H | non-datapath-refactor | `directed-only (coverage closure debug hook)` | fixed (primary+max32 UCDB toggle above 80%) | signoff coverage merge on `2026-04-29` | `fe639d8` | Normal runtime thresholds left `engine_age` high bits structurally untoggled, so the suite missed the toggle target until a DV-only preload swept the storage. |
+| [BUG-006-R](#bug-006-r-standalone-timing-exposed-unpipelined-shared-engine-and-csr-cones) | R | non-datapath-refactor | `corner-only (standalone 1.1x Quartus timing signoff)` | fixed (Quartus 1.1x timing and QuestaOne frame regressions clean) | standalone compile on `2026-04-29` | pending | Shared-engine score/release logic, dynamic CSR counter reads, and dynamic score-change counter writes were too deep for 1.1x standalone timing. |
 
 ## 2026-04-29
 
@@ -295,5 +296,60 @@ Historical formal note:
   - potential_hazard:
     - permanent for DV coverage closure. The hook is compiled only under
       `LVDS_DV_DEBUG`; production builds do not expose this preload path.
+  - Claude Opus 4.7 xhigh review decision:
+    - pending / not run
+
+### BUG-006-R: Standalone timing exposed unpipelined shared-engine and CSR cones
+- First seen in:
+  - `quartus_sh --flow compile lvds_controller_syn -c lvds_controller_syn`
+    under Quartus 18.1 Standard on `2026-04-29`.
+  - the first standalone fit missed setup with data WNS `-22.059 ns` and
+    control WNS `-0.766 ns` at the 1.1x signoff clocks.
+- Symptom:
+  - the RTL passed QuestaOne UVM but failed standalone timing closure for
+    the default `N_LANE=12`, `N_ENGINE=1` resource-saving configuration.
+- Root cause:
+  - the shared super-engine path combined selected-lane symbol routing,
+    10-phase decode/score bookkeeping, best-score selection, and release
+    decisions in the same data-clock cycle.
+  - the CSR read mux subtracted the counter base address and dynamically
+    indexed the per-lane counter aperture in the control-clock readback path.
+  - the score-change statistic increment used `engine_attach_lane` as a
+    dynamic write index directly into `lane_counter[*][SCORE_CHANGES]`.
+- Fix status:
+  - state:
+    - fixed and verified with Quartus standalone timing, bucket-frame
+      regression, all-buckets-frame regression, and generated-netlist smoke
+  - mechanism:
+    - scan the 10 score phases with registered `engine_score_scan_phase`
+      and `engine_best_score` instead of reducing all phases into the
+      release path in one cycle
+    - register selected engine score symbols and per-lane engine requests
+      before updating shared engine state
+    - replace CSR counter-aperture subtract/index decode with direct
+      address cases
+    - convert score-change counter updates into one-cycle per-lane
+      one-hot events before incrementing `lane_counter`
+  - before_fix_outcome:
+    - initial standalone compile: data setup WNS `-22.059 ns`, control setup
+      WNS `-0.766 ns`
+    - intermediate compile after partial pipelines: data setup WNS
+      `-0.485 ns`, control setup WNS `+0.291 ns`
+  - after_fix_outcome:
+    - final standalone compile: slow 85 C setup slack `+0.202 ns`
+      on `control_clk`, `+0.427 ns` on `data_clk`; hold slack `+0.260 ns`
+      on `control_clk`, `+0.283 ns` on `data_clk`
+    - `make -C tb/uvm bucket_frame SYMBOL_CAP=256` passes BASIC `78`,
+      EDGE `50`, PROF `40`, and ERROR `50` frame cases with zero UVM
+      errors/fatals
+    - `make -C tb/uvm TEST=lvds_all_buckets_frame_test SYMBOL_CAP=256
+      RUN_LOG=log/primary/all_buckets_frame_after_timing_close.log run`
+      passes `218` transactions with zero UVM errors/fatals
+    - Quartus-generated functional netlist smoke compiles and runs under
+      QuestaOne with `Errors: 0, Warnings: 0`
+  - potential_hazard:
+    - permanent for the default standalone signoff geometry. Larger
+      `N_ENGINE` / `N_LANE` matrix builds still need their own timing
+      compiles because the routing network changes placement and fanout.
   - Claude Opus 4.7 xhigh review decision:
     - pending / not run

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: CERN-OHL-S-2.0
 // Version : 26.0.0
 // Date    : 20260429
-// Change  : Add DV-only engine age preload for structural toggle closure.
+// Change  : Pipeline super-engine request and score selection for timing closure.
 
 module mu3e_lvds_controller #(
     parameter int          N_LANE              = 12,
@@ -185,6 +185,10 @@ module mu3e_lvds_controller #(
     logic [MAX_ENGINE_CONST - 1:0][CHANNEL_W_CONST - 1:0]  engine_attach_lane;
     logic [MAX_ENGINE_CONST - 1:0][SCORE_PHASE_COUNT_CONST - 1:0][SCORE_W_CONST - 1:0] engine_score;
     logic [MAX_ENGINE_CONST - 1:0][3:0]                    engine_best_phase;
+    logic [MAX_ENGINE_CONST - 1:0][SCORE_W_CONST - 1:0]    engine_best_score;
+    logic [MAX_ENGINE_CONST - 1:0][3:0]                    engine_score_scan_phase;
+    logic [MAX_ENGINE_CONST - 1:0][9:0]                    engine_score_symbol_d1;
+    logic [MAX_ENGINE_CONST - 1:0]                         engine_score_symbol_valid_d1;
     logic [MAX_ENGINE_CONST - 1:0][15:0]                   engine_age;
     logic [MAX_ENGINE_CONST - 1:0]                         engine_attach_event;
     logic [5:0]                                            steer_queue_count;
@@ -192,6 +196,9 @@ module mu3e_lvds_controller #(
 
     logic [MAX_LANE_CONST - 1:0][7:0] lane_good_count;
     logic [MAX_LANE_CONST - 1:0]      lane_engine_seen;
+    logic [MAX_LANE_CONST - 1:0]      lane_engine_request_d1;
+    logic [MAX_LANE_CONST - 1:0]      lane_engine_error_d1;
+    logic [MAX_LANE_CONST - 1:0]      score_change_event_d1;
     logic [MAX_LANE_CONST - 1:0]      loss_sync_d1;
     logic [MAX_LANE_CONST - 1:0]      dpalock_d1;
     logic [MAX_LANE_CONST - 1:0]      rollover_d1;
@@ -389,10 +396,7 @@ module mu3e_lvds_controller #(
     };
 
     always_comb begin: csr_read_decode
-        int csr_v_counter_idx;
-
-        csr_v_counter_idx = 0;
-        csr_read_mux      = 32'd0;
+        csr_read_mux = 32'd0;
 
         unique case (avs_csr_address)
             CSR_UID_ADDR_CONST:          csr_read_mux = IP_UID;
@@ -414,13 +418,17 @@ module mu3e_lvds_controller #(
                     default: csr_read_mux = INSTANCE_ID[31:0];
                 endcase
             end
-            default: begin
-                if ((avs_csr_address >= CSR_COUNTER_BASE_ADDR_CONST) &&
-                    (avs_csr_address <= CSR_COUNTER_LAST_ADDR_CONST)) begin
-                    csr_v_counter_idx = avs_csr_address - CSR_COUNTER_BASE_ADDR_CONST;
-                    csr_read_mux      = lane_counter[csr.lane_select][csr_v_counter_idx];
-                end
-            end
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd0: csr_read_mux = lane_counter[csr.lane_select][0];
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd1: csr_read_mux = lane_counter[csr.lane_select][1];
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd2: csr_read_mux = lane_counter[csr.lane_select][2];
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd3: csr_read_mux = lane_counter[csr.lane_select][3];
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd4: csr_read_mux = lane_counter[csr.lane_select][4];
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd5: csr_read_mux = lane_counter[csr.lane_select][5];
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd6: csr_read_mux = lane_counter[csr.lane_select][6];
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd7: csr_read_mux = lane_counter[csr.lane_select][7];
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd8: csr_read_mux = lane_counter[csr.lane_select][8];
+            CSR_COUNTER_BASE_ADDR_CONST + 10'd9: csr_read_mux = lane_counter[csr.lane_select][9];
+            default:                            csr_read_mux = 32'd0;
         endcase
     end
 
@@ -516,9 +524,9 @@ module mu3e_lvds_controller #(
         logic [1:0]     data_v_mode;
         logic [9:0]     data_v_symbol;
         logic [9:0]     data_v_phase_symbol;
-        logic [15:0]    data_v_best_score;
-        logic [3:0]     data_v_best_phase;
+        logic [3:0]     data_v_scan_phase;
         logic [MAX_ENGINE_CONST - 1:0] data_v_engine_taken;
+        logic [MAX_LANE_CONST - 1:0]   data_v_score_change_event;
         int             data_v_engine;
         int             data_v_attached_lane;
 
@@ -567,25 +575,32 @@ module mu3e_lvds_controller #(
             engine_error_d2      <= '0;
             engine_channel_d2    <= '0;
 
-            steer_state             <= STEER_IDLING;
-            steer_queue_count       <= 6'd0;
-            steer_overflow_count    <= 32'd0;
-            engine_attached         <= '0;
-            engine_busy             <= '0;
-            engine_attach_lane      <= '0;
-            engine_score            <= '0;
-            engine_best_phase       <= '0;
-            engine_age              <= '0;
-            engine_attach_event     <= '0;
+            steer_state                     <= STEER_IDLING;
+            steer_queue_count               <= 6'd0;
+            steer_overflow_count            <= 32'd0;
+            engine_attached                 <= '0;
+            engine_busy                     <= '0;
+            engine_attach_lane              <= '0;
+            engine_score                    <= '0;
+            engine_best_phase               <= '0;
+            engine_best_score               <= '0;
+            engine_score_scan_phase         <= '0;
+            engine_score_symbol_d1          <= '0;
+            engine_score_symbol_valid_d1    <= '0;
+            engine_age                      <= '0;
+            engine_attach_event             <= '0;
 
-            lane_good_count     <= '0;
-            lane_engine_seen    <= '0;
-            loss_sync_d1        <= '0;
-            dpalock_d1          <= '0;
-            rollover_d1         <= '0;
-            plllock_d1          <= 1'b0;
-            pll_reset_count     <= PLL_RESET_CYCLES_CONST[3:0];
-            lane_counter        <= '0;
+            lane_good_count           <= '0;
+            lane_engine_seen          <= '0;
+            lane_engine_request_d1    <= '0;
+            lane_engine_error_d1      <= '0;
+            score_change_event_d1     <= '0;
+            loss_sync_d1              <= '0;
+            dpalock_d1                <= '0;
+            rollover_d1               <= '0;
+            plllock_d1                <= 1'b0;
+            pll_reset_count           <= PLL_RESET_CYCLES_CONST[3:0];
+            lane_counter              <= '0;
 
             for (int lane_idx = 0; lane_idx < MAX_LANE_CONST; lane_idx++) begin
                 train_state[lane_idx] <= TRAIN_IDLING;
@@ -625,6 +640,7 @@ module mu3e_lvds_controller #(
             engine_channel_d1      <= '0;
 
             data_v_engine_taken = engine_busy;
+            data_v_score_change_event = '0;
             dpalock_d1     <= coe_ctrl_dpalock;
             rollover_d1    <= coe_ctrl_rollover;
             plllock_d1     <= coe_ctrl_plllock;
@@ -652,10 +668,12 @@ module mu3e_lvds_controller #(
                     data_v_engine_request = 1'b1;
                 end
 
-                mini_valid_d1[lane_idx]      <= data_v_lane_live && coe_ctrl_dpalock[lane_idx];
-                mini_data_d1[lane_idx]       <= data_v_decode.data;
-                mini_error_d1[lane_idx]      <= data_v_decode.error;
-                mini_channel_d1[lane_idx]    <= lane_idx[5:0];
+                mini_valid_d1[lane_idx]             <= data_v_lane_live && coe_ctrl_dpalock[lane_idx];
+                mini_data_d1[lane_idx]              <= data_v_decode.data;
+                mini_error_d1[lane_idx]             <= data_v_decode.error;
+                mini_channel_d1[lane_idx]           <= lane_idx[5:0];
+                lane_engine_request_d1[lane_idx]    <= data_v_engine_request;
+                lane_engine_error_d1[lane_idx]      <= data_v_error_event;
 
                 mini_valid_d2[lane_idx]      <= mini_valid_d1[lane_idx];
                 mini_data_d2[lane_idx]       <= mini_data_d1[lane_idx];
@@ -766,18 +784,29 @@ module mu3e_lvds_controller #(
                     lane_counter[lane_idx][COUNTER_REALIGNS_CONST] <=
                         saturating_inc(lane_counter[lane_idx][COUNTER_REALIGNS_CONST]);
                 end
+                if (score_change_event_d1[lane_idx] && !soft_reset_rise[lane_idx]) begin
+                    lane_counter[lane_idx][COUNTER_SCORE_CHANGES_CONST] <=
+                        saturating_inc(lane_counter[lane_idx][COUNTER_SCORE_CHANGES_CONST]);
+                end
 
-                if (data_v_engine_request) begin
+                if (lane_engine_request_d1[lane_idx] &&
+                    lane_is_live(lane_idx, lane_go_data_d2) &&
+                    coe_ctrl_plllock &&
+                    coe_redriver_losn[lane_idx] &&
+                    coe_ctrl_dpalock[lane_idx]) begin
                     data_v_engine = engine_for_lane(lane_idx);
                     if (!data_v_engine_taken[data_v_engine] ||
-                        data_v_error_event ||
+                        lane_engine_error_d1[lane_idx] ||
                         (engine_attach_lane[data_v_engine] == lane_idx[5:0])) begin
                         if (!engine_busy[data_v_engine] ||
-                            data_v_error_event) begin
+                            lane_engine_error_d1[lane_idx]) begin
                             data_v_engine_taken[data_v_engine]                       = 1'b1;
                             engine_busy[data_v_engine]                            <= 1'b1;
                             engine_attached[data_v_engine]                        <= 1'b1;
                             engine_attach_lane[data_v_engine]                     <= lane_idx[5:0];
+                            engine_best_score[data_v_engine]                      <= '0;
+                            engine_score_scan_phase[data_v_engine]                <= 4'd0;
+                            engine_score_symbol_valid_d1[data_v_engine]           <= 1'b0;
                             engine_age[data_v_engine]                             <= 16'd0;
                             engine_attach_event[data_v_engine]                    <= 1'b1;
                             lane_engine_seen[lane_idx]                            <= 1'b1;
@@ -800,40 +829,50 @@ module mu3e_lvds_controller #(
 
             for (int engine_idx = 0; engine_idx < MAX_ENGINE_CONST; engine_idx++) begin
                 if (engine_idx >= N_ENGINE_CLAMP_CONST) begin
-                    engine_busy[engine_idx]           <= 1'b0;
-                    engine_attached[engine_idx]       <= 1'b0;
-                    engine_attach_lane[engine_idx]    <= '0;
-                    engine_age[engine_idx]            <= '0;
-                    engine_score[engine_idx]          <= '0;
-                    engine_best_phase[engine_idx]     <= 4'd0;
+                    engine_busy[engine_idx]                     <= 1'b0;
+                    engine_attached[engine_idx]                 <= 1'b0;
+                    engine_attach_lane[engine_idx]              <= '0;
+                    engine_age[engine_idx]                      <= '0;
+                    engine_score[engine_idx]                    <= '0;
+                    engine_best_phase[engine_idx]               <= 4'd0;
+                    engine_best_score[engine_idx]               <= '0;
+                    engine_score_scan_phase[engine_idx]         <= 4'd0;
+                    engine_score_symbol_d1[engine_idx]          <= '0;
+                    engine_score_symbol_valid_d1[engine_idx]    <= 1'b0;
                 end else if (engine_busy[engine_idx]) begin
                     data_v_attached_lane = engine_attach_lane[engine_idx];
                     data_v_symbol        = coe_parallel_data[data_v_attached_lane * 10 +: 10];
                     data_v_decode        = decode_symbol(data_v_symbol, sync_pattern_data_d2);
-                    data_v_best_score    = 16'd0;
-                    data_v_best_phase    = 4'd0;
+                    data_v_scan_phase    = engine_score_scan_phase[engine_idx];
 
-                    for (int phase_idx = 0; phase_idx < SCORE_PHASE_COUNT_CONST; phase_idx++) begin
-                        data_v_phase_symbol = rotate_symbol(data_v_symbol, phase_idx);
-                        data_v_phase_decode = decode_symbol(data_v_phase_symbol, sync_pattern_data_d2);
-                        if (!data_v_phase_decode.error[0] && !data_v_phase_decode.error[2]) begin
-                            engine_score[engine_idx][phase_idx] <=
-                                saturating_score_inc(engine_score[engine_idx][phase_idx]);
+                    engine_score_symbol_d1[engine_idx]          <= data_v_symbol;
+                    engine_score_symbol_valid_d1[engine_idx]    <= 1'b1;
+
+                    if (engine_score_symbol_valid_d1[engine_idx]) begin
+                        for (int phase_idx = 0; phase_idx < SCORE_PHASE_COUNT_CONST; phase_idx++) begin
+                            data_v_phase_symbol = rotate_symbol(engine_score_symbol_d1[engine_idx], phase_idx);
+                            data_v_phase_decode = decode_symbol(data_v_phase_symbol, sync_pattern_data_d2);
+                            if (!data_v_phase_decode.error[0] && !data_v_phase_decode.error[2]) begin
+                                engine_score[engine_idx][phase_idx] <=
+                                    saturating_score_inc(engine_score[engine_idx][phase_idx]);
+                            end else begin
+                                engine_score[engine_idx][phase_idx] <=
+                                    score_decay(engine_score[engine_idx][phase_idx]);
+                            end
+                        end
+
+                        if (engine_score[engine_idx][data_v_scan_phase] > engine_best_score[engine_idx]) begin
+                            engine_best_score[engine_idx] <= engine_score[engine_idx][data_v_scan_phase];
+                            if (engine_best_phase[engine_idx] != data_v_scan_phase) begin
+                                engine_best_phase[engine_idx]                 <= data_v_scan_phase;
+                                data_v_score_change_event[data_v_attached_lane] = 1'b1;
+                            end
+                        end
+                        if (data_v_scan_phase >= (SCORE_PHASE_COUNT_CONST - 1)) begin
+                            engine_score_scan_phase[engine_idx] <= 4'd0;
                         end else begin
-                            engine_score[engine_idx][phase_idx] <=
-                                score_decay(engine_score[engine_idx][phase_idx]);
+                            engine_score_scan_phase[engine_idx] <= data_v_scan_phase + 4'd1;
                         end
-
-                        if (engine_score[engine_idx][phase_idx] > data_v_best_score) begin
-                            data_v_best_score = engine_score[engine_idx][phase_idx];
-                            data_v_best_phase = phase_idx[3:0];
-                        end
-                    end
-
-                    if (engine_best_phase[engine_idx] != data_v_best_phase) begin
-                        engine_best_phase[engine_idx]                                      <= data_v_best_phase;
-                        lane_counter[data_v_attached_lane][COUNTER_SCORE_CHANGES_CONST]    <=
-                            saturating_inc(lane_counter[data_v_attached_lane][COUNTER_SCORE_CHANGES_CONST]);
                     end
 
                     engine_valid_d1[data_v_attached_lane]      <= mini_valid_d1[data_v_attached_lane];
@@ -845,10 +884,13 @@ module mu3e_lvds_controller #(
                     if (soft_reset_req_data_d2[data_v_attached_lane] ||
                         !lane_go_data_d2[data_v_attached_lane] ||
                         (engine_age[engine_idx] >= {1'b0, score_accept_data_d2[14:0]}) ||
-                        (data_v_best_score >= score_accept_data_d2)) begin
-                        engine_busy[engine_idx]        <= 1'b0;
-                        engine_attached[engine_idx]    <= 1'b0;
-                        engine_age[engine_idx]         <= 16'd0;
+                        (engine_best_score[engine_idx] >= score_accept_data_d2)) begin
+                        engine_busy[engine_idx]                     <= 1'b0;
+                        engine_attached[engine_idx]                 <= 1'b0;
+                        engine_age[engine_idx]                      <= 16'd0;
+                        engine_best_score[engine_idx]               <= '0;
+                        engine_score_scan_phase[engine_idx]         <= 4'd0;
+                        engine_score_symbol_valid_d1[engine_idx]    <= 1'b0;
                         if (steer_queue_count != 6'd0) begin
                             steer_queue_count <= steer_queue_count - 6'd1;
                         end
@@ -856,6 +898,7 @@ module mu3e_lvds_controller #(
                     end
                 end
             end
+            score_change_event_d1 <= data_v_score_change_event;
 
             if ((engine_busy & ACTIVE_ENGINE_MASK_CONST) == '0) begin
                 if (steer_queue_count == 6'd0) begin
@@ -893,10 +936,13 @@ module mu3e_lvds_controller #(
             if (dv_debug_engine_attach_we &&
                 (int'(dv_debug_engine_idx) < MAX_ENGINE_CONST) &&
                 (int'(dv_debug_engine_lane) < MAX_LANE_CONST)) begin
-                engine_busy[dv_debug_engine_idx]           <= 1'b1;
-                engine_attached[dv_debug_engine_idx]       <= 1'b1;
-                engine_attach_lane[dv_debug_engine_idx]    <= dv_debug_engine_lane;
-                engine_age[dv_debug_engine_idx]            <= 16'd0;
+                engine_busy[dv_debug_engine_idx]                     <= 1'b1;
+                engine_attached[dv_debug_engine_idx]                 <= 1'b1;
+                engine_attach_lane[dv_debug_engine_idx]              <= dv_debug_engine_lane;
+                engine_best_score[dv_debug_engine_idx]               <= '0;
+                engine_score_scan_phase[dv_debug_engine_idx]         <= 4'd0;
+                engine_score_symbol_valid_d1[dv_debug_engine_idx]    <= 1'b0;
+                engine_age[dv_debug_engine_idx]                      <= 16'd0;
             end
             if (dv_debug_engine_score_we &&
                 (int'(dv_debug_engine_score_idx) < MAX_ENGINE_CONST) &&

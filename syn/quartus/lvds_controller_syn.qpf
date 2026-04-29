@@ -1,0 +1,4 @@
+QUARTUS_VERSION = "18.1"
+DATE = "13:30:00  April 29, 2026"
+
+PROJECT_REVISION = "lvds_controller_syn"
