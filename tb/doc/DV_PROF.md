@@ -8,7 +8,7 @@
 
 **Parent:** [DV_PLAN.md](DV_PLAN.md)
 **ID Range:** P001-P040
-**Total:** 40 cases (0 implemented / 0 waived)
+**Total:** 40 cases (39 implemented / 1 waived)
 
 **Methodology key:**
 - **D** = Directed (hand-crafted stimulus, deterministic)
@@ -33,11 +33,11 @@ already do that. The point is to prove the IP keeps working when:
 
 | Section | Cases | ID Range | What it Proves | Current Case |
 |---------|-------|----------|----------------|--------------|
-| 2. Random Glitch Soak | 10 | P001-P010 | nominal-load behavior over millions of symbols | 0/10 |
-| 3. Throughput and Backpressure | 10 | P011-P020 | line-rate sustainment under various AVST ready patterns | 0/10 |
-| 4. Counter Saturation | 4 | P021-P024 | every counter saturates at 0xFFFFFFFF, never wraps | 0/4 |
-| 5. Long-run Stability | 6 | P025-P030 | no phantom events, no slow leaks under sustained idle | 0/6 |
-| 6. Random Steering Sweep | 10 | P031-P040 | parameter-randomised closure across the build matrix | 0/10 |
+| 2. Random Glitch Soak | 10 | P001-P010 | nominal-load behavior over millions of symbols | 10/10 |
+| 3. Throughput and Backpressure | 10 | P011-P020 | line-rate sustainment under various AVST ready patterns | 10/10 |
+| 4. Counter Saturation | 4 | P021-P024 | every counter saturates at 0xFFFFFFFF, never wraps | 4/4 |
+| 5. Long-run Stability | 6 | P025-P030 | no phantom events, no slow leaks under sustained idle | partial(5/6; P025 checkpoint-growth soak deferred) |
+| 6. Random Steering Sweep | 10 | P031-P040 | parameter-randomised closure across the build matrix | 10/10 |
 
 ---
 

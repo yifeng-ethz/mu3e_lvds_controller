@@ -70,6 +70,7 @@ Historical formal note:
 |---|---|---|---|---|---|---|---|
 | [BUG-001-H](#bug-001-h-uvm-csr-read-sampled-registered-read-data-before-nba-update) | H | non-datapath-refactor | `common (first CSR readback smoke)` | fixed (B001 clean on QuestaOne) | B001 on `2026-04-29` at 355 ns | `41bc171` | CSR agent sampled registered read data before the DUT NBA update, so the UID read saw stale zero. |
 | [BUG-002-R](#bug-002-r-reset-default-mode-attached-a-super-engine-before-software-selected-legacy-bit-slip-mode) | R | hard stuck error | `common (routine control mode programming)` | fixed (B001-B020 clean on QuestaOne) | B016 on `2026-04-29` at 1405001 ps | `faf9ff0` | Reset defaulted MODE_MASK to auto mode, so a super engine was attached before software selected legacy bit-slip mode. |
+| [BUG-003-H](#bug-003-h-continuous-frame-harness-held-reset-and-carried-control-state-across-cases) | H | non-datapath-refactor | `common (mandatory bucket_frame / all_buckets_frame runs)` | fixed (bucket frames and all_buckets_frame clean on QuestaOne; commit pending) | all_buckets_frame on `2026-04-29` at B001 / X046 | `pending` | Continuous-frame harness held reset into B001, leaked lane control state across cases, and did not fail Make on simulator assertion errors. |
 
 ## 2026-04-29
 
@@ -109,6 +110,66 @@ Historical formal note:
     - permanent for the current registered-read CSR contract; if the
       CSR agent is later replaced by UVM RAL, the same post-edge
       sampling rule must be preserved
+  - Claude Opus 4.7 xhigh review decision:
+    - pending / not run
+
+### BUG-003-H: Continuous-frame harness held reset and carried control state across cases
+- First seen in:
+  - `make -C tb/uvm TEST=lvds_all_buckets_frame_test SYMBOL_CAP=256
+    RUN_LOG=log/primary/all_buckets_frame.log run` under
+    `QuestaOne 2026.1_1` on `2026-04-29`.
+  - B001 reported UID readback `0x00000000` because the continuous-frame
+    driver never released reset before the first case.
+  - After that reset-release fix, B014-B018 exposed stale `lane_go=0` /
+    `dpa_hold` state carried forward from earlier control cases.
+  - X046 also produced a simulator assertion error because the reset-race
+    stimulus asserted reset in the same sampling edge as the AVST assertion.
+- Symptom:
+  - mandatory no-restart frame modes failed even though the same cases passed
+    as isolated reset-per-case runs.
+  - the Makefile only rejected nonzero `UVM_ERROR` / `UVM_FATAL` counts, so a
+    simulator assertion error could escape as a shell success when the UVM
+    summary stayed clean.
+- Root cause:
+  - `continuous_frame` skipped `drive_reset()` for every case, including the
+    first case in the frame.
+  - control-case stimulus assumed reset-per-case defaults instead of
+    explicitly programming prerequisites before each no-restart case.
+  - X046 used nonblocking reset assignment immediately after a data-clock
+    posedge, so the SVA sampled the pre-reset value and the case tested a
+    scheduler artifact.
+  - the Makefile post-run check ignored simulator `** Error` / `Errors: N`
+    lines.
+- Fix status:
+  - state:
+    - fixed and verified with all bucket-frame baselines plus the
+      all-buckets-frame baseline under QuestaOne
+  - mechanism:
+    - release reset once at the start of a continuous frame while still
+      preserving no-reset operation between later cases
+    - make B012-B018 explicitly program `lane_go` / `dpa_hold` prerequisites
+      before checking their local behavior
+    - align X046 reset assertion to the data-clock negative edge so the next
+      sampled edge sees reset asserted
+    - make the UVM Makefile fail on simulator assertion errors unless a future
+      expected-fail SVA probe flow deliberately opts out
+    - generate `DV_REPORT.md` from the Questa logs instead of hand-editing the
+      dashboard
+  - before_fix_outcome:
+    - `all_buckets_frame` produced UVM failures in B001/B014-B018 and one
+      simulator assertion error in X046
+  - after_fix_outcome:
+    - `make -C tb/uvm bucket_frame SYMBOL_CAP=256` completes with BASIC
+      `78/78`, EDGE `48/48` runtime-frame cases, PROF `39/39`
+      runtime-frame cases, and ERROR `43/43` runtime-frame cases passing
+    - `make -C tb/uvm TEST=lvds_all_buckets_frame_test SYMBOL_CAP=256
+      RUN_LOG=log/primary/all_buckets_frame.log run` completes with
+      `UVM_ERROR : 0`, `UVM_FATAL : 0`, simulator `Errors: 0`, and `208`
+      runtime-frame transactions
+  - potential_hazard:
+    - permanent for the current no-restart frame machinery. The debug-hook SVA
+      live-fire cases remain outside the runtime frame until the planned debug
+      hooks exist.
   - Claude Opus 4.7 xhigh review decision:
     - pending / not run
 

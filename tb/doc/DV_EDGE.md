@@ -8,7 +8,7 @@
 
 **Parent:** [DV_PLAN.md](DV_PLAN.md)
 **ID Range:** E001-E050
-**Total:** 50 cases (0 implemented / 0 waived)
+**Total:** 50 cases (48 implemented / 2 waived)
 
 **Methodology key:**
 - **D** = Directed (hand-crafted stimulus, deterministic)
@@ -26,13 +26,13 @@ that there is no "we did not think about that" excuse.
 
 | Section | Cases | ID Range | What it Proves | Current Case |
 |---------|-------|----------|----------------|--------------|
-| 2. Score Window and Threshold Edges | 10 | E001-E010 | score window length and threshold sweeps; tie-break rule | 0/10 |
-| 3. Bitslip Walk Edges | 7 | E011-E017 | walk-off, contention with `dpa_hold`, rollover edge cases | 0/7 |
-| 4. Engine Pool Contention | 6 | E018-E023 | `N_ENGINE` smaller than the hot-lane set; preempt and release | 0/6 |
-| 5. Routing Topology Edges | 5 | E024-E028 | butterfly / nearest-k subsets; fabric exclusivity | 0/5 |
-| 6. Counter Window Edges | 12 | E029-E040 | LANE_SELECT atomicity under stress; reserved-word policy | 0/12 |
-| 7. Multi-lane Independence | 5 | E041-E045 | per-lane events do not perturb other lanes | 0/5 |
-| 8. Sync Pattern Edges | 5 | E046-E050 | K28.0 / K23.7 / illegal sync pattern handling | 0/5 |
+| 2. Score Window and Threshold Edges | 10 | E001-E010 | score window length and threshold sweeps; tie-break rule | 10/10 |
+| 3. Bitslip Walk Edges | 7 | E011-E017 | walk-off, contention with `dpa_hold`, rollover edge cases | 7/7 |
+| 4. Engine Pool Contention | 6 | E018-E023 | `N_ENGINE` smaller than the hot-lane set; preempt and release | 6/6 |
+| 5. Routing Topology Edges | 5 | E024-E028 | butterfly / nearest-k subsets; fabric exclusivity | partial(4/5; E028 debug-hook live-fire deferred) |
+| 6. Counter Window Edges | 12 | E029-E040 | LANE_SELECT atomicity under stress; reserved-word policy | partial(11/12; E040 n/a for 6-bit AVMM build) |
+| 7. Multi-lane Independence | 5 | E041-E045 | per-lane events do not perturb other lanes | 5/5 |
+| 8. Sync Pattern Edges | 5 | E046-E050 | K28.0 / K23.7 / illegal sync pattern handling | 5/5 |
 
 ---
 

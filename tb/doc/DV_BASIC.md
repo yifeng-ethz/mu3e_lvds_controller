@@ -8,7 +8,7 @@
 
 **Parent:** [DV_PLAN.md](DV_PLAN.md)
 **ID Range:** B001-B080
-**Total:** 78 cases (0 implemented / 0 waived)
+**Total:** 78 cases (78 implemented / 0 waived)
 
 **Methodology key:**
 - **D** = Directed (hand-crafted stimulus, deterministic)
@@ -28,14 +28,14 @@ invalidates every downstream bucket.
 
 | Section | Cases | ID Range | What it Proves | Current Case |
 |---------|-------|----------|----------------|--------------|
-| 2. CSR Identity and Header | 10 | B001-B010 | identity contract per ip-packaging skill | 0/10 |
-| 3. Per-lane Control Words | 10 | B011-B020 | runtime control bits at the lane granularity | 0/10 |
-| 4. PHY Power-up and DPA Sequence | 8 | B021-B028 | reset / DPA / FIFO sequencing per Intel doc 683062 | 0/8 |
-| 5. Mini-Decoder Bitslip Walk | 12 | B029-B040 | byte-boundary lock through bitslip rotation | 0/12 |
-| 6. Training to Steady Transition | 10 | B041-B050 | engine attach / release per mode_mask | 0/10 |
-| 7. Counter Aperture | 4 | B051-B054 | LANE_SELECT atomicity and out-of-range behavior | 0/4 |
-| 8. Per-lane Counter Set | 14 | B055-B068 | every counter increments per defined event | 0/14 |
-| 9. Engine Pool Steering | 10 | B071-B080 | shared engine pool attach / release; legacy parity | 0/10 |
+| 2. CSR Identity and Header | 10 | B001-B010 | identity contract per ip-packaging skill | 10/10 |
+| 3. Per-lane Control Words | 10 | B011-B020 | runtime control bits at the lane granularity | 10/10 |
+| 4. PHY Power-up and DPA Sequence | 8 | B021-B028 | reset / DPA / FIFO sequencing per Intel doc 683062 | 8/8 |
+| 5. Mini-Decoder Bitslip Walk | 12 | B029-B040 | byte-boundary lock through bitslip rotation | 12/12 |
+| 6. Training to Steady Transition | 10 | B041-B050 | engine attach / release per mode_mask | 10/10 |
+| 7. Counter Aperture | 4 | B051-B054 | LANE_SELECT atomicity and out-of-range behavior | 4/4 |
+| 8. Per-lane Counter Set | 14 | B055-B068 | every counter increments per defined event | 14/14 |
+| 9. Engine Pool Steering | 10 | B071-B080 | shared engine pool attach / release; legacy parity | 10/10 |
 
 ---
 

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: CERN-OHL-S-2.0
 // Version : 26.0.0
 // Date    : 20260429
-// Change  : Add checked control-mode and counter-aperture cases.
+// Change  : Close checked control-mode and continuous-frame cases.
 
 package lvds_uvm_pkg;
     timeunit 1ns;
@@ -216,6 +216,7 @@ package lvds_uvm_pkg;
         virtual lvds_dut_if vif;
         uvm_analysis_port #(lvds_case_item) case_ap;
         logic [31:0] void_data;
+        bit continuous_frame_started;
 
         function new(string name, uvm_component parent);
             super.new(name, parent);
@@ -233,6 +234,7 @@ package lvds_uvm_pkg;
         task run_phase(uvm_phase phase);
             lvds_case_item req;
             drive_initial_defaults();
+            continuous_frame_started = 1'b0;
             forever begin
                 seq_item_port.get_next_item(req);
                 `uvm_info("LVDS/CASE", {"running ", req.convert2string()}, UVM_MEDIUM)
@@ -379,8 +381,12 @@ package lvds_uvm_pkg;
         endtask
 
         task automatic drive_case(input lvds_case_item item);
-            if (!item.continuous_frame) begin
+            if (item.continuous_frame && !continuous_frame_started) begin
                 drive_reset();
+                continuous_frame_started = 1'b1;
+            end else if (!item.continuous_frame) begin
+                drive_reset();
+                continuous_frame_started = 1'b0;
             end
             unique case (item.desc.group)
                 LVDS_CASE_IDENTITY:          drive_identity_case(item.desc);
@@ -450,12 +456,14 @@ package lvds_uvm_pkg;
             unique case (desc.case_num)
                 11: expect_csr(LVDS_CSR_LANE_GO_WORD_CONST, lane_mask(), desc.id);
                 12: begin
+                    csr_write(LVDS_CSR_DPA_HOLD_WORD_CONST, 32'd0);
                     csr_write(LVDS_CSR_LANE_GO_WORD_CONST, lane_mask() & ~32'h1);
                     drive_symbols(10'b0011111010, 64);
                     expect_lane_valid(0, 1'b0, desc.id);
                     if (cfg.n_lane > 1) expect_lane_valid(1, 1'b1, desc.id);
                 end
                 13: begin
+                    csr_write(LVDS_CSR_DPA_HOLD_WORD_CONST, 32'd0);
                     csr_write(LVDS_CSR_LANE_GO_WORD_CONST, 32'd0);
                     drive_symbols(10'b0011111010, 64);
                     for (int lane = 0; lane < cfg.n_lane; lane++) begin
@@ -463,6 +471,7 @@ package lvds_uvm_pkg;
                     end
                 end
                 14: begin
+                    csr_write(LVDS_CSR_LANE_GO_WORD_CONST, lane_mask());
                     csr_write(LVDS_CSR_DPA_HOLD_WORD_CONST, 32'h1);
                     drive_symbols(10'b0011111010, 64);
                     expect_ctrl_bit("coe_ctrl_dpahold[0]", vif.coe_ctrl_dpahold[0], 1'b1, desc.id);
@@ -471,22 +480,30 @@ package lvds_uvm_pkg;
                     end
                 end
                 15: begin
+                    csr_write(LVDS_CSR_LANE_GO_WORD_CONST, lane_mask());
+                    csr_write(LVDS_CSR_DPA_HOLD_WORD_CONST, 32'd0);
                     csr_write(LVDS_CSR_SOFT_RESET_WORD_CONST, 32'h1);
                     wait_data_cycles(64);
                     expect_csr(LVDS_CSR_SOFT_RESET_WORD_CONST, 32'd0, desc.id);
                     expect_lane_counter_min(0, 8, 32'd1, desc.id);
                 end
                 16: begin
+                    csr_write(LVDS_CSR_LANE_GO_WORD_CONST, lane_mask());
+                    csr_write(LVDS_CSR_DPA_HOLD_WORD_CONST, 32'd0);
                     csr_write(LVDS_CSR_MODE_MASK_WORD_CONST, 32'h0);
                     drive_symbols(10'b0011111010, 128);
                     expect_lane_counter_eq(0, 7, 32'd0, desc.id);
                 end
                 17: begin
+                    csr_write(LVDS_CSR_LANE_GO_WORD_CONST, lane_mask());
+                    csr_write(LVDS_CSR_DPA_HOLD_WORD_CONST, 32'd0);
                     csr_write(LVDS_CSR_MODE_MASK_WORD_CONST, 32'h1);
                     drive_symbols(10'b0011111010, 128);
                     expect_lane_counter_min(0, 7, 32'd1, desc.id);
                 end
                 18: begin
+                    csr_write(LVDS_CSR_LANE_GO_WORD_CONST, lane_mask());
+                    csr_write(LVDS_CSR_DPA_HOLD_WORD_CONST, 32'd0);
                     csr_write(LVDS_CSR_MODE_MASK_WORD_CONST, 32'h2);
                     drive_symbols(10'b0011111010, 64);
                     inject_lane_symbol(0, 10'h000);
@@ -774,7 +791,16 @@ package lvds_uvm_pkg;
                 43: begin vif.rsi_control_reset <= 1'b0; wait_control_cycles(100); vif.rsi_data_reset <= 1'b0; end
                 44: begin vif.rsi_data_reset <= 1'b0; wait_data_cycles(100); vif.rsi_control_reset <= 1'b0; end
                 45: begin csr_write(LVDS_CSR_MODE_MASK_WORD_CONST, 32'h1); vif.rsi_control_reset <= 1'b1; wait_control_cycles(4); vif.rsi_control_reset <= 1'b0; end
-                46: begin vif.aso_decoded_ready[0] <= 1'b0; wait_data_cycles(4); vif.rsi_data_reset <= 1'b1; wait_data_cycles(1); vif.rsi_data_reset <= 1'b0; vif.aso_decoded_ready[0] <= 1'b1; end
+                46: begin
+                    vif.aso_decoded_ready[0] <= 1'b0;
+                    wait_data_cycles(3);
+                    @(negedge vif.csi_data_clk);
+                    vif.rsi_data_reset = 1'b1;
+                    wait_data_cycles(1);
+                    @(negedge vif.csi_data_clk);
+                    vif.rsi_data_reset = 1'b0;
+                    vif.aso_decoded_ready[0] <= 1'b1;
+                end
                 default: begin vif.rsi_data_reset <= 1'b1; wait_data_cycles(1); vif.rsi_data_reset <= 1'b0; end
             endcase
         endtask

@@ -6,6 +6,7 @@ TEST ?= lvds_base_test
 STUB ?= 0
 SYMBOL_CAP ?= 1024
 RUN_LOG ?= $(LOG_DIR)/$(TEST).log
+ALLOW_SIM_ERRORS ?= 0
 
 SHELL := /bin/bash
 .SHELLFLAGS := -o pipefail -c
@@ -99,6 +100,9 @@ run: compile
 		+UVM_TESTNAME=$(TEST) +N_LANE=$(N_LANE) +N_ENGINE=$(N_ENGINE) +SYMBOL_CAP=$(SYMBOL_CAP) $(EXTRA_ARGS) \
 		-do "run -all; quit -f" | tee $(RUN_LOG)
 	! grep -Eq "UVM_(ERROR|FATAL)[[:space:]]+:[[:space:]]*[1-9]" $(RUN_LOG)
+	@if [ "$(ALLOW_SIM_ERRORS)" = "0" ]; then \
+		! grep -Eq '(^# \\*\\* Error:|^\\*\\* Error:|Errors:[[:space:]]*[1-9])' $(RUN_LOG); \
+	fi
 
 smoke_stub:
 	$(MAKE) STUB=1 TEST=lvds_b001_read_uid_after_cold_reset_test SYMBOL_CAP=64 run

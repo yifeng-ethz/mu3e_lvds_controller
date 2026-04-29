@@ -8,7 +8,7 @@
 
 **Parent:** [DV_PLAN.md](DV_PLAN.md)
 **ID Range:** X001-X050
-**Total:** 50 cases (0 implemented / 0 waived)
+**Total:** 50 cases (43 implemented / 7 waived)
 
 **Methodology key:**
 - **D** = Directed (hand-crafted stimulus, deterministic)
@@ -26,12 +26,12 @@ itself fires (so the SVA module is not vacuous in formal *or* in UVM).
 
 | Section | Cases | ID Range | What it Proves | Current Case |
 |---------|-------|----------|----------------|--------------|
-| 2. Soft Reset Sequencing | 8 | X001-X008 | per-lane soft reset is clean and bounded | 0/8 |
-| 3. Dead Lane Behavior | 10 | X009-X018 | a lane that never delivers valid data does not poison the IP | 0/10 |
-| 4. PHY Fault Recovery | 6 | X019-X024 | DPA / PLL / fiforst faults recover or fail-stop with counters | 0/6 |
-| 5. Illegal CSR Writes | 10 | X025-X034 | malformed CSR transactions cannot wedge the slave | 0/10 |
-| 6. SVA Violation Probes | 7 | X035-X041 | every SVA module is non-vacuous (debug-hook fires it) | 0/7 |
-| 7. Reset Race Conditions | 9 | X042-X050 | reset boundaries are honoured under every legal ordering | 0/9 |
+| 2. Soft Reset Sequencing | 8 | X001-X008 | per-lane soft reset is clean and bounded | 8/8 |
+| 3. Dead Lane Behavior | 10 | X009-X018 | a lane that never delivers valid data does not poison the IP | 10/10 |
+| 4. PHY Fault Recovery | 6 | X019-X024 | DPA / PLL / fiforst faults recover or fail-stop with counters | 6/6 |
+| 5. Illegal CSR Writes | 10 | X025-X034 | malformed CSR transactions cannot wedge the slave | 10/10 |
+| 6. SVA Violation Probes | 7 | X035-X041 | every SVA module is non-vacuous (debug-hook fires it) | waived |
+| 7. Reset Race Conditions | 9 | X042-X050 | reset boundaries are honoured under every legal ordering | 9/9 |
 
 ---
 
