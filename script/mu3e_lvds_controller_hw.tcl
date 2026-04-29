@@ -1,17 +1,15 @@
 # SPDX-License-Identifier: CERN-OHL-S-2.0
 
-if {[catch {package require -exact qsys 18.1}]} {
-    package require qsys 16.1
-}
+package require -exact qsys 16.1
 
 set VERSION_MAJOR_DEFAULT_CONST 26
 set VERSION_MINOR_DEFAULT_CONST 0
-set VERSION_PATCH_DEFAULT_CONST 0
+set VERSION_PATCH_DEFAULT_CONST 1
 set BUILD_DEFAULT_CONST         0x429
 set VERSION_DATE_DEFAULT_CONST  0x20260429
 set VERSION_GIT_DEFAULT_CONST   0x00000000
 set INSTANCE_ID_DEFAULT_CONST   0
-set VERSION_STRING              {26.0.0.0429}
+set VERSION_STRING              {26.0.1.0429}
 
 set_module_property NAME                         {mu3e_lvds_controller}
 set_module_property DISPLAY_NAME                 {Mu3e LVDS Controller with Arria V PHY}
@@ -137,7 +135,7 @@ add_html_text {Identity} {identity_help} {
 <html>
 Runtime software reads word 0 as UID and word 1 as META. META page 0 returns
 VERSION, page 1 VERSION_DATE, page 2 VERSION_GIT, and page 3 INSTANCE_ID.
-The package version is 26.0.0.0429.
+The package version is 26.0.1.0429.
 </html>
 }
 
@@ -146,8 +144,8 @@ add_html_text {Interfaces} {interfaces_help} {
 External interfaces: <b>serial</b> LVDS RX pins, <b>inclock</b> LVDS reference
 clock, <b>outclock</b> PHY-generated data clock, <b>control_clock/reset</b> for
 CSR, <b>data_reset</b> for the controller data domain, <b>csr</b>, <b>redriver</b>,
-and <b>decoded_bundle</b>. The PHY <b>parallel</b> and <b>ctrl</b> conduits are
-wired internally to the controller.
+and legacy per-lane <b>decoded0..decodedN</b> Avalon-ST outputs. The PHY
+<b>parallel</b> and <b>ctrl</b> conduits are wired internally to the controller.
 </html>
 }
 
@@ -197,15 +195,16 @@ proc compose {} {
     add_instance phy altera_lvds_rx_28nm
     set_instance_parameter_value phy {N_LANE} $n_lane
 
+    add_instance outclock_bridge altera_clock_bridge 18.1
+
     add_instance core mu3e_lvds_controller_phy_adapter
     foreach p {N_LANE N_ENGINE ROUTING_TOPOLOGY SCORE_WINDOW_W SCORE_ACCEPT SCORE_REJECT STEER_QUEUE_DEPTH SYNC_PATTERN DEBUG_LEVEL IP_UID INSTANCE_ID VERSION_MAJOR VERSION_MINOR VERSION_PATCH BUILD VERSION_DATE VERSION_GIT} {
         set_instance_parameter_value core $p [get_parameter_value $p]
     }
-    set_instance_parameter_value core {AVMM_ADDR_W} 10
-
     add_connection phy.parallel core.parallel
     add_connection core.ctrl phy.ctrl
     add_connection phy.outclock core.data_clock
+    add_connection phy.outclock outclock_bridge.in_clk
 
     add_interface serial conduit end
     set_interface_property serial EXPORT_OF phy.serial
@@ -214,7 +213,7 @@ proc compose {} {
     set_interface_property inclock EXPORT_OF phy.inclock
 
     add_interface outclock clock source
-    set_interface_property outclock EXPORT_OF phy.outclock
+    set_interface_property outclock EXPORT_OF outclock_bridge.out_clk
 
     add_interface data_reset reset sink
     set_interface_property data_reset EXPORT_OF core.data_reset
@@ -231,6 +230,8 @@ proc compose {} {
     add_interface redriver conduit end
     set_interface_property redriver EXPORT_OF core.redriver
 
-    add_interface decoded_bundle conduit start
-    set_interface_property decoded_bundle EXPORT_OF core.decoded_bundle
+    for {set lane 0} {$lane < $n_lane} {incr lane} {
+        add_interface decoded${lane} avalon_streaming start
+        set_interface_property decoded${lane} EXPORT_OF core.decoded${lane}
+    }
 }

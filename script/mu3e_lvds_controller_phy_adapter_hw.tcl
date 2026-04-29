@@ -1,17 +1,15 @@
 # SPDX-License-Identifier: CERN-OHL-S-2.0
 
-if {[catch {package require -exact qsys 18.1}]} {
-    package require qsys 16.1
-}
+package require -exact qsys 16.1
 
 set VERSION_MAJOR_DEFAULT_CONST 26
 set VERSION_MINOR_DEFAULT_CONST 0
-set VERSION_PATCH_DEFAULT_CONST 0
+set VERSION_PATCH_DEFAULT_CONST 1
 set BUILD_DEFAULT_CONST         0x429
 set VERSION_DATE_DEFAULT_CONST  0x20260429
 set VERSION_GIT_DEFAULT_CONST   0x00000000
 set INSTANCE_ID_DEFAULT_CONST   0
-set VERSION_STRING              {26.0.0.0429}
+set VERSION_STRING              {26.0.1.0429}
 
 set_module_property NAME                         {mu3e_lvds_controller_phy_adapter}
 set_module_property DISPLAY_NAME                 {Mu3e LVDS Controller PHY Adapter}
@@ -51,6 +49,12 @@ set_parameter_property N_LANE HDL_PARAMETER true
 set_parameter_property N_LANE ALLOWED_RANGES {1:24}
 set_parameter_property N_LANE AFFECTS_ELABORATION true
 add_display_item {Configuration} N_LANE parameter
+
+add_parameter DECODED_CHANNEL_WIDTH natural 4
+set_parameter_property DECODED_CHANNEL_WIDTH DISPLAY_NAME {Legacy decoded channel width}
+set_parameter_property DECODED_CHANNEL_WIDTH HDL_PARAMETER true
+set_parameter_property DECODED_CHANNEL_WIDTH DERIVED true
+set_parameter_property DECODED_CHANNEL_WIDTH VISIBLE false
 
 add_parameter N_ENGINE natural 1
 set_parameter_property N_ENGINE DISPLAY_NAME {Super decoder-aligner engines}
@@ -146,7 +150,8 @@ add_html_text {Configuration} {configuration_help} {
 <html>
 Internal adapter used by the composed LVDS controller. It converts the lane-width
 output of the Arria V LVDS RX PHY wrapper into the fixed 32-lane debug/control
-surface used by the verified SystemVerilog controller.
+surface used by the verified SystemVerilog controller and exposes legacy
+decoded0..decodedN Avalon-ST outputs for current Quartus systems.
 </html>
 }
 
@@ -154,7 +159,9 @@ add_html_text {Interfaces} {interfaces_help} {
 <html>
 The <b>parallel</b> and <b>ctrl</b> conduits are intended to connect only to the
 Mu3e <b>altera_lvds_rx_28nm</b> wrapper. The data clock is the PHY
-<b>rx_outclock</b>. The CSR slave uses the common UID/META header.
+<b>rx_outclock</b>. Legacy decoded interfaces carry data/error/channel only and
+tie the rebuilt core ready path high, matching the old no-backpressure contract.
+The CSR slave uses the common UID/META header.
 </html>
 }
 
@@ -190,8 +197,16 @@ proc validate {} {
     }
 }
 
+proc decoded_channel_width {n_lane} {
+    if {$n_lane <= 1} {
+        return 1
+    }
+    return [expr {int(ceil(log($n_lane) / log(2)))}]
+}
+
 proc elaborate {} {
     set n_lane [get_parameter_value N_LANE]
+    set_parameter_value DECODED_CHANNEL_WIDTH [decoded_channel_width $n_lane]
 
     add_interface data_clock clock sink
     set_interface_property data_clock clockRate 0
@@ -240,12 +255,15 @@ proc elaborate {} {
     add_interface_port csr avs_csr_readdata readdata Output 32
     add_interface_port csr avs_csr_waitrequest waitrequest Output 1
 
-    add_interface decoded_bundle conduit start
-    set_interface_property decoded_bundle associatedClock data_clock
-    set_interface_property decoded_bundle associatedReset data_reset
-    add_interface_port decoded_bundle aso_decoded_valid valid Output 32
-    add_interface_port decoded_bundle aso_decoded_ready ready Input 32
-    add_interface_port decoded_bundle aso_decoded_data data Output 288
-    add_interface_port decoded_bundle aso_decoded_error error Output 96
-    add_interface_port decoded_bundle aso_decoded_channel channel Output 192
+    for {set lane 0} {$lane < $n_lane} {incr lane} {
+        add_interface decoded${lane} avalon_streaming start
+        set_interface_property decoded${lane} associatedClock data_clock
+        set_interface_property decoded${lane} associatedReset data_reset
+        set_interface_property decoded${lane} dataBitsPerSymbol 9
+        set_interface_property decoded${lane} maxChannel $n_lane
+        set_interface_property decoded${lane} errorDescriptor {loss_sync_pattern parity_error decode_error}
+        add_interface_port decoded${lane} aso_decoded${lane}_data data Output 9
+        add_interface_port decoded${lane} aso_decoded${lane}_channel channel Output DECODED_CHANNEL_WIDTH
+        add_interface_port decoded${lane} aso_decoded${lane}_error error Output 3
+    }
 }
