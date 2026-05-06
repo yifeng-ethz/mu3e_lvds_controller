@@ -74,6 +74,55 @@ Historical formal note:
 | [BUG-004-H](#bug-004-h-prof-saturation-cases-inherited-threshold-state-in-continuous-frames) | H | non-datapath-refactor | `common (mandatory PROF/all-buckets no-restart frames)` | fixed (218-case all_buckets_frame clean on QuestaOne) | all_buckets_frame on `2026-04-29` at P023/P024 | `fe639d8` | PROF saturation cases preloaded counters but did not fully establish the score/training prerequisites needed for the next event in a no-restart frame. |
 | [BUG-005-H](#bug-005-h-structural-toggle-closure-had-no-legal-stimulus-for-engine-age-storage) | H | non-datapath-refactor | `directed-only (coverage closure debug hook)` | fixed (primary+max32 UCDB toggle above 80%) | signoff coverage merge on `2026-04-29` | `fe639d8` | Normal runtime thresholds left `engine_age` high bits structurally untoggled, so the suite missed the toggle target until a DV-only preload swept the storage. |
 | [BUG-006-R](#bug-006-r-standalone-timing-exposed-unpipelined-shared-engine-and-csr-cones) | R | non-datapath-refactor | `corner-only (standalone 1.1x Quartus timing signoff)` | fixed (Quartus 1.1x timing and QuestaOne frame regressions clean) | standalone compile on `2026-04-29` | `e108638` | Shared-engine score/release logic, dynamic CSR counter reads, and dynamic score-change counter writes were too deep for 1.1x standalone timing. |
+| [BUG-008-R](#bug-008-r-integrated-qsys-build-exposed-lvds-cdc-constraints-and-shared-engine-route-timing) | R | non-datapath-refactor | `corner-only (integrated full8lane Quartus timing)` | fixed in standalone; integrated no-STP/STP compile evidence pending | full8lane TimeQuest on `2026-05-06` | pending | Integrated Qsys STA exposed unconstrained LVDS snapshot CDC paths and a small shared-engine route miss. |
+
+## 2026-05-06
+
+### BUG-008-R: Integrated Qsys build exposed LVDS CDC constraints and shared-engine route timing
+
+- First seen in:
+  - full8lane no-STP and STP TimeQuest reports on `2026-05-06`
+  - worst integrated setup path around `mu3e_lvds_controller` reported
+    `lvds_firefly_clk` WNS `-2.880 ns`
+  - a smaller same-clock engine route path reported WNS `-0.312 ns`
+- Symptom:
+  - generated integrated builds showed failing timing paths from PHY/data
+    snapshot logic into the CSR/control readback cone
+  - the shared-engine selected-symbol route from `engine_attach_lane` to
+    `engine_data_d1` also appeared as a small data-clock setup miss
+- Root cause:
+  - the PHY-adapter CDC constraint file was not packaged into the Qsys
+    synthesis fileset, so the generated system had no targeted cuts for the
+    adapter's bundled snapshot/toggle handshakes
+  - the shared-engine path still selected and decoded the attached-lane
+    symbol in the same cycle
+- Fix status:
+  - state:
+    - fixed in standalone and ready for integrated no-STP/STP rerun
+  - mechanism:
+    - package `syn/mu3e_lvds_controller_phy_adapter.sdc` through the PHY
+      adapter `_hw.tcl`
+    - add targeted false paths for the explicit adapter CDC handshakes and
+      first-stage status synchronizers, without globally cutting the LVDS
+      data/control clocks
+    - register the shared-engine selected symbol before decode, breaking the
+      `engine_attach_lane` to `engine_data_d1` route
+  - before_fix_outcome:
+    - integrated full8lane STA showed WNS `-2.880 ns` on snapshot CDC/CSR
+      paths and WNS `-0.312 ns` on the shared-engine route
+  - after_fix_outcome:
+    - standalone Quartus `lvds_controller_syn` passes with slow setup slack
+      `+0.360 ns` on `control_clk` and `+0.630 ns` on `data_clk`
+    - QuestaOne LVDS UVM B041, B061, and B078 pass after the pipeline change
+    - integrated no-STP and STP compile evidence is pending Qsys
+      regeneration
+  - potential_hazard:
+    - low for standalone timing because the new SDC is targeted to named CDC
+      handshakes and the RTL pipeline is architecturally local. Integrated
+      timing must still be checked after Qsys regeneration because placement
+      and generated wrapper names can expose additional system-level paths.
+  - Claude Opus 4.7 xhigh review decision:
+    - pending / not run
 
 ## 2026-04-29
 

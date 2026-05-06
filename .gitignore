@@ -1,6 +1,7 @@
 *.*~
 *.bak
 qrun.log
+work/
 greybox_tmp/
 .qsys_edit/
 doc/vendor/

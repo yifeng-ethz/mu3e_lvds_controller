@@ -4,12 +4,12 @@ package require -exact qsys 16.1
 
 set VERSION_MAJOR_DEFAULT_CONST 26
 set VERSION_MINOR_DEFAULT_CONST 2
-set VERSION_PATCH_DEFAULT_CONST 0
-set BUILD_DEFAULT_CONST         0x505
-set VERSION_DATE_DEFAULT_CONST  0x20260505
+set VERSION_PATCH_DEFAULT_CONST 1
+set BUILD_DEFAULT_CONST         0x506
+set VERSION_DATE_DEFAULT_CONST  0x20260506
 set VERSION_GIT_DEFAULT_CONST   0x00000000
 set INSTANCE_ID_DEFAULT_CONST   0
-set VERSION_STRING              {26.2.0.0505}
+set VERSION_STRING              {26.2.1.0506}
 
 set_module_property NAME                         {mu3e_lvds_controller_phy_adapter}
 set_module_property DISPLAY_NAME                 {Mu3e LVDS Controller PHY Adapter}
@@ -31,6 +31,7 @@ add_fileset synth QUARTUS_SYNTH
 set_fileset_property synth TOP_LEVEL {mu3e_lvds_controller_phy_adapter}
 add_fileset_file ../rtl/mu3e_lvds_controller.sv SYSTEM_VERILOG PATH ../rtl/mu3e_lvds_controller.sv
 add_fileset_file ../rtl/mu3e_lvds_controller_phy_adapter.sv SYSTEM_VERILOG PATH ../rtl/mu3e_lvds_controller_phy_adapter.sv TOP_LEVEL_FILE
+add_fileset_file mu3e_lvds_controller_phy_adapter.sdc SDC PATH ../syn/mu3e_lvds_controller_phy_adapter.sdc
 
 proc add_html_text {group_name item_name html_text} {
     add_display_item $group_name $item_name TEXT ""

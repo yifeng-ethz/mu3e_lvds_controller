@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: CERN-OHL-S-2.0
-// Version : 26.0.2
-// Date    : 20260429
-// Change  : Add explicit control/data CDC handshakes for CSR configuration and status.
+// Version : 26.2.1
+// Date    : 20260506
+// Change  : Register shared-engine symbol routing before output decode for integrated timing.
 
 module mu3e_lvds_controller #(
     parameter int          N_LANE              = 12,
@@ -15,10 +15,10 @@ module mu3e_lvds_controller #(
     parameter int          INSTANCE_ID         = 0,
     parameter logic [31:0] IP_UID              = 32'h4C564453,
     parameter int          VERSION_MAJOR       = 26,
-    parameter int          VERSION_MINOR       = 0,
-    parameter int          VERSION_PATCH       = 2,
-    parameter int          BUILD               = 12'h429,
-    parameter logic [31:0] VERSION_DATE        = 32'h20260429,
+    parameter int          VERSION_MINOR       = 2,
+    parameter int          VERSION_PATCH       = 1,
+    parameter int          BUILD               = 12'h506,
+    parameter logic [31:0] VERSION_DATE        = 32'h20260506,
     parameter logic [31:0] VERSION_GIT         = 32'h00000000,
     parameter logic [9:0]  SYNC_PATTERN        = 10'b0011111010,
     parameter int          DEBUG_LEVEL         = 0
@@ -1114,13 +1114,13 @@ module mu3e_lvds_controller #(
                 end else if (engine_busy[engine_idx]) begin
                     data_v_attached_lane = engine_attach_lane[engine_idx];
                     data_v_symbol        = coe_parallel_data[data_v_attached_lane * 10 +: 10];
-                    data_v_decode        = decode_symbol(data_v_symbol, sync_pattern_data_d2);
                     data_v_scan_phase    = engine_score_scan_phase[engine_idx];
 
                     engine_score_symbol_d1[engine_idx]          <= data_v_symbol;
                     engine_score_symbol_valid_d1[engine_idx]    <= 1'b1;
 
                     if (engine_score_symbol_valid_d1[engine_idx]) begin
+                        data_v_decode = decode_symbol(engine_score_symbol_d1[engine_idx], sync_pattern_data_d2);
                         for (int phase_idx = 0; phase_idx < SCORE_PHASE_COUNT_CONST; phase_idx++) begin
                             data_v_phase_symbol = rotate_symbol(engine_score_symbol_d1[engine_idx], phase_idx);
                             data_v_phase_decode = decode_symbol(data_v_phase_symbol, sync_pattern_data_d2);
@@ -1145,12 +1145,13 @@ module mu3e_lvds_controller #(
                         end else begin
                             engine_score_scan_phase[engine_idx] <= data_v_scan_phase + 4'd1;
                         end
+
+                        engine_valid_d1[data_v_attached_lane]      <= mini_valid_d1[data_v_attached_lane];
+                        engine_data_d1[data_v_attached_lane]       <= data_v_decode.data;
+                        engine_error_d1[data_v_attached_lane]      <= data_v_decode.error;
+                        engine_channel_d1[data_v_attached_lane]    <= data_v_attached_lane[5:0];
                     end
 
-                    engine_valid_d1[data_v_attached_lane]      <= mini_valid_d1[data_v_attached_lane];
-                    engine_data_d1[data_v_attached_lane]       <= data_v_decode.data;
-                    engine_error_d1[data_v_attached_lane]      <= data_v_decode.error;
-                    engine_channel_d1[data_v_attached_lane]    <= data_v_attached_lane[5:0];
                     engine_age[engine_idx]                     <= engine_age[engine_idx] + 16'd1;
 
                     if (soft_reset_req_data_d2[data_v_attached_lane] ||

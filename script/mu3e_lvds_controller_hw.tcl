@@ -4,12 +4,12 @@ package require -exact qsys 16.1
 
 set VERSION_MAJOR_DEFAULT_CONST 26
 set VERSION_MINOR_DEFAULT_CONST 2
-set VERSION_PATCH_DEFAULT_CONST 0
-set BUILD_DEFAULT_CONST         0x505
-set VERSION_DATE_DEFAULT_CONST  0x20260505
+set VERSION_PATCH_DEFAULT_CONST 1
+set BUILD_DEFAULT_CONST         0x506
+set VERSION_DATE_DEFAULT_CONST  0x20260506
 set VERSION_GIT_DEFAULT_CONST   0x00000000
 set INSTANCE_ID_DEFAULT_CONST   0
-set VERSION_STRING              {26.2.0.0505}
+set VERSION_STRING              {26.2.1.0506}
 
 set_module_property NAME                         {mu3e_lvds_controller}
 set_module_property DISPLAY_NAME                 {Mu3e LVDS Controller with Arria V PHY}
@@ -135,7 +135,7 @@ add_html_text {Identity} {identity_help} {
 <html>
 Runtime software reads word 0 as UID and word 1 as META. META page 0 returns
 VERSION, page 1 VERSION_DATE, page 2 VERSION_GIT, and page 3 INSTANCE_ID.
-The package version is 26.2.0.0505.
+The package version is 26.2.1.0506.
 </html>
 }
 
