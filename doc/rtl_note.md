@@ -51,22 +51,21 @@ Final standalone compile:
 
 | Corner | Clock | Setup slack | Setup TNS | Hold slack | Hold TNS |
 |---|---|---:|---:|---:|---:|
-| Slow 1100 mV 85 C | `control_clk` | 0.202 ns | 0.000 | 0.260 ns | 0.000 |
-| Slow 1100 mV 85 C | `data_clk` | 0.427 ns | 0.000 | 0.283 ns | 0.000 |
-| Slow 1100 mV 0 C | `control_clk` | 0.403 ns | 0.000 | 0.243 ns | 0.000 |
-| Slow 1100 mV 0 C | `data_clk` | 0.523 ns | 0.000 | 0.263 ns | 0.000 |
-| Fast 1100 mV 85 C | `control_clk` | 2.386 ns | 0.000 | 0.162 ns | 0.000 |
-| Fast 1100 mV 85 C | `data_clk` | 3.211 ns | 0.000 | 0.172 ns | 0.000 |
-| Fast 1100 mV 0 C | `control_clk` | 2.722 ns | 0.000 | 0.153 ns | 0.000 |
-| Fast 1100 mV 0 C | `data_clk` | 3.542 ns | 0.000 | 0.159 ns | 0.000 |
+| Slow 1100 mV 85 C | `control_clk` | 0.360 ns | 0.000 | 0.291 ns | 0.000 |
+| Slow 1100 mV 85 C | `data_clk` | 0.630 ns | 0.000 | 0.266 ns | 0.000 |
+| Slow 1100 mV 0 C | `control_clk` | 0.559 ns | 0.000 | 0.275 ns | 0.000 |
+| Slow 1100 mV 0 C | `data_clk` | 0.911 ns | 0.000 | 0.246 ns | 0.000 |
+| Fast 1100 mV 85 C | `control_clk` | 2.669 ns | 0.000 | 0.179 ns | 0.000 |
+| Fast 1100 mV 85 C | `data_clk` | 3.123 ns | 0.000 | 0.165 ns | 0.000 |
+| Fast 1100 mV 0 C | `control_clk` | 2.972 ns | 0.000 | 0.168 ns | 0.000 |
+| Fast 1100 mV 0 C | `data_clk` | 3.542 ns | 0.000 | 0.151 ns | 0.000 |
 
 The final generated reports are:
 
 - `syn/quartus/output_files/lvds_controller_syn.sta.summary`
-- `syn/quartus/output_files/lvds_controller_syn.data_setup.paths.rpt`
-- `syn/quartus/output_files/lvds_controller_syn.control_setup.paths.rpt`
-- `syn/quartus/output_files/lvds_controller_syn.data_hold.paths.rpt`
-- `syn/quartus/output_files/lvds_controller_syn.control_hold.paths.rpt`
+- `syn/quartus/output_files/lvds_controller_syn.sta.rpt`
+- `syn/quartus/output_files/lvds_controller_syn.flow.rpt`
+- `syn/quartus/output_files/lvds_controller_syn.fit.summary`
 
 The path-fix sequence was:
 
@@ -75,7 +74,7 @@ The path-fix sequence was:
 | Initial standalone fit | data setup WNS -22.059 ns, control setup WNS -0.766 ns | Identified same-cycle super-engine score reduction and release path. |
 | Best-score scan pipeline | data setup WNS -1.978 ns, control setup WNS -0.050 ns | Registered 10-phase best-score scan. |
 | Engine symbol/request pipelines | data setup WNS -0.485 ns, control setup WNS +0.291 ns | Registered selected score symbol, per-lane engine requests, and direct CSR counter aperture decode. |
-| Score-change one-hot event | data setup WNS +0.427 ns, control setup WNS +0.202 ns | Moved score-change counter writes to one-hot per-lane event pipeline. |
+| Score-change one-hot event | data setup WNS +0.630 ns, control setup WNS +0.360 ns | Moved score-change counter writes to one-hot per-lane event pipeline. |
 
 ## 5. Resource Evidence
 
@@ -83,8 +82,8 @@ Final fitter summary:
 
 | Resource | Estimate | Actual | Limit check |
 |---|---:|---:|---|
-| ALMs | 3000 | 6157 / 91680, 7% | PASS: within 0.5x to 3.0x estimate |
-| Registers | 6500 | 5563 | PASS: within 0.5x to 3.0x estimate |
+| ALMs | 3000 | 6133 / 91680, 7% | PASS: within 0.5x to 3.0x estimate |
+| Registers | 6500 | 6186 | PASS: within 0.5x to 3.0x estimate |
 | M10K | 0 | 0 / 1366 | PASS |
 | DSP | 0 | 0 / 800 | PASS |
 | Pins | n/a | 133 / 426, 31% | Informational standalone harness pins |
@@ -132,6 +131,7 @@ the standalone generated netlist smoke.
 | `tb/doc/DV_PLAN.md` RTL regression | Covered | QuestaOne bucket and all-buckets frame runs |
 | `doc/RTL_PLAN.md` pre-fit model | Covered | This note and `doc/RTL_PLAN.md` |
 | 1.1x standalone timing | Covered | Final Quartus STA has positive setup/hold slack at all analyzed corners |
+| Static lint/CDC/RDC | Covered | `questa_static_screen.py`: Lint `Error (0)`, CDC `Violations (0)`, RDC `Violation (0)` |
 | Standard Fit, no seed scan | Covered | `syn/quartus/lvds_controller_syn.qsf`; one compile, no seed sweep |
 | Resource estimate comparison | Covered | Final fitter resources within `doc/RTL_PLAN.md` bounds |
 | Gate-level simulation | Covered with limitation | Quartus functional netlist generated; QuestaOne netlist smoke run passes |

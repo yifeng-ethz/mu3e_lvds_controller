@@ -39,7 +39,7 @@ Encounterability legend:
   stimulus (X-bucket / SVA probes)
 - detailed `min / p50 / max` first-hit sim-time studies may still
   appear inside individual bug sections; current measured mixed-soak
-  encounter data is not yet collected on this IP — the encounterability
+  encounter data is not yet collected on this IP - the encounterability
   band is the index column, not raw first-hit sim-time
 
 Fix status detail contract for active entries and future updates:
@@ -456,9 +456,9 @@ Historical formal note:
     - intermediate compile after partial pipelines: data setup WNS
       `-0.485 ns`, control setup WNS `+0.291 ns`
   - after_fix_outcome:
-    - final standalone compile: slow 85 C setup slack `+0.202 ns`
-      on `control_clk`, `+0.427 ns` on `data_clk`; hold slack `+0.260 ns`
-      on `control_clk`, `+0.283 ns` on `data_clk`
+    - latest standalone compile refresh on `2026-05-11`: slow 85 C setup
+      slack `+0.360 ns` on `control_clk`, `+0.630 ns` on `data_clk`; hold
+      slack `+0.291 ns` on `control_clk`, `+0.266 ns` on `data_clk`
     - `make -C tb/uvm bucket_frame SYMBOL_CAP=256` passes BASIC `78`,
       EDGE `50`, PROF `40`, and ERROR `50` frame cases with zero UVM
       errors/fatals

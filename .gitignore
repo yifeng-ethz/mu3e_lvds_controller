@@ -1,6 +1,7 @@
 *.*~
 *.bak
 qrun.log
+modelsim.ini
 work/
 greybox_tmp/
 .qsys_edit/
