@@ -179,6 +179,8 @@ architecture rtl of ${output_name} is
     signal locking_monitor_ok               : std_logic_vector(N_LANE-1 downto 0) := (others => '0'); -- translate locking_monitor.OK -> binary; 1=ok, 0=bad
     signal dlocking_monitor_ok              : std_logic_vector(N_LANE-1 downto 0) := (others => '0');
     constant CDC_C2D_WIDTH          : natural := csr.sync_pattern'length + csr.mode_mask'length + csr.soft_reset_req'length + locking_monitor_ok'length + 1; -- pipe=1
+    constant CDC_D2C_ALIGNER_LO      : natural := 2*N_LANE + 1;
+    constant CDC_D2C_ALIGNER_HI      : natural := CDC_D2C_ALIGNER_LO + 9;
     signal cdc_fifo_cdata           : std_logic_vector(39 downto 0) := (others => '0');
     signal cdc_fifo_ddata           : std_logic_vector(39 downto 0) := (others => '0');
     signal cdc_fifo_cq              : std_logic_vector(39 downto 0) := (others => '0');
@@ -283,6 +285,7 @@ architecture rtl of ${output_name} is
     signal adaptive_aligner_priority    : adaptive_aligner_priority_t := (others => (0 => '1', others => '0'));
     
     signal adaptive_aligner_chosen       : adaptive_aligner_priority_t := (others => (others => '0'));
+    signal cadaptive_aligner_chosen      : std_logic_vector(9 downto 0) := (others => '0');
     signal word_aligner_next_grant_comb : adaptive_aligner_priority_t := (others => (others => '0'));
     signal adative_aligner_good_lanes_map   : adaptive_aligner_priority_t := (others => (others => '0'));
     
@@ -381,6 +384,7 @@ begin
     assert N_LANE <= 32 report "N_LANE must be smaller than or equal to 32" severity error;
     assert SYNC_PATTERN = "0011111010" report "SYNC PATTERN is not set to default, not k28.5" severity warning;
     assert CDC_C2D_WIDTH <= cdc_fifo_cdata'length report "CDC FIFO is not wide enough" severity error;
+    assert CDC_D2C_ALIGNER_HI <= cdc_fifo_ddata'high report "CDC FIFO is not wide enough for selected aligner debug state" severity error;
 
     -- //////////////////////////////////////////////////
     -- csr_interface
@@ -440,11 +444,7 @@ begin
                                 end if;
                             end loop;
                         when N_LANE+7 => -- lane word aligner chosen (if in adaptive selection mode)
-                             for i in 0 to N_LANE-1 loop
-                                if (csr.lane_selection = std_logic_vector(to_unsigned(i,csr.lane_selection'length))) then 
-                                    avs_csr_readdata(adaptive_aligner_chosen(i)'high downto 0)  <=  std_logic_vector(adaptive_aligner_chosen(i));
-                                end if;
-                             end loop;
+                            avs_csr_readdata(cadaptive_aligner_chosen'high downto 0)  <=  cadaptive_aligner_chosen;
                         
               
                         when others =>
@@ -499,8 +499,10 @@ begin
                             end if;
                         end if;
                         
-                        -- update error registers 
-                        csr.symbol_errors(i)        <= std_logic_vector(assembler_symbol_errors(i)); -- TODOL handle CDC here
+                        -- update error registers from the synchronized lane-error pulses
+                        if (clane_error(i) = '1' and csr.symbol_errors(i) /= x"FFFFFFFF") then
+                            csr.symbol_errors(i)    <= std_logic_vector(unsigned(csr.symbol_errors(i)) + 1);
+                        end if;
                     end loop;
                 end if;
             end if;
@@ -513,6 +515,7 @@ begin
     begin
         -- default
         cdc_fifo_cdata       <= (others => '0'); -- 40 bit
+        cdc_fifo_ddata       <= (others => '0'); -- 40 bit
         for i in 0 to N_LANE-1 loop 
             if (locking_monitor(i) = OK) then 
                 locking_monitor_ok(i)       <= '1';
@@ -552,6 +555,13 @@ begin
         @@ }
         cdc_fifo_ddata(2*N_LANE downto N_LANE+1)        <= coe_ctrl_dpalock;
         ccoe_ctrl_dpalock                               <= cdc_fifo_cq(2*N_LANE downto N_LANE+1);
+        cdc_fifo_ddata(CDC_D2C_ALIGNER_HI downto CDC_D2C_ALIGNER_LO) <= (others => '0');
+        for i in 0 to N_LANE-1 loop
+            if (dcsr.lane_selection = std_logic_vector(to_unsigned(i,dcsr.lane_selection'length))) then
+                cdc_fifo_ddata(CDC_D2C_ALIGNER_HI downto CDC_D2C_ALIGNER_LO) <= std_logic_vector(adaptive_aligner_chosen(i));
+            end if;
+        end loop;
+        cadaptive_aligner_chosen                        <= cdc_fifo_cq(CDC_D2C_ALIGNER_HI downto CDC_D2C_ALIGNER_LO);
         
         
         clane_error                                     <= cdc_fifo_cq(N_LANE downto 1);
