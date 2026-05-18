@@ -216,6 +216,26 @@ proc my_generate { output_name } {
 
 
 proc my_elaborate {} {
+	# ====================================================================
+	# DEPRECATED IP — HARD BLOCK
+	# ====================================================================
+	# This IP (lvds_rx_controller_pro) is superseded by `mu3e_lvds_controller`
+	# (kind `mu3e_lvds_controller`, v26.2.1.0506 or newer, hw.tcl at
+	# `mu3e_lvds_controller/script/mu3e_lvds_controller_hw.tcl`). The new IP
+	# folds in the Arria V PHY HIP (mu3e_lvds_controller_phy_adapter), adds a
+	# Mu3e UID/META CSR header at offset 0/4 (UID = 0x4C564453 "LVDS"), and
+	# ships UVM evidence per lvds_b001..b009 sequences. Any v4-era qsys that
+	# still instantiates this old IP must be migrated.
+	#
+	# To regenerate against this old kind anyway (legacy build only), set the
+	# environment variable MU3E_ALLOW_DEPRECATED_LVDS_RX_CONTROLLER_PRO=1
+	# before invoking qsys-generate / qsys-edit.
+	# ====================================================================
+	if {![info exists ::env(MU3E_ALLOW_DEPRECATED_LVDS_RX_CONTROLLER_PRO)] ||
+	    $::env(MU3E_ALLOW_DEPRECATED_LVDS_RX_CONTROLLER_PRO) != "1"} {
+		send_message error "DEPRECATED: lvds_rx_controller_pro is deprecated. Migrate to `mu3e_lvds_controller` (hw.tcl: mu3e_lvds_controller/script/mu3e_lvds_controller_hw.tcl) which has the PHY HIP folded in plus a Mu3e UID/META CSR header. To override for legacy builds set MU3E_ALLOW_DEPRECATED_LVDS_RX_CONTROLLER_PRO=1 in the qsys-generate environment."
+		return
+	}
 	# set hdl-parameters
 	set_parameter_value "DECODED_CHANNEL_WIDTH" [expr ceil(log([get_parameter_value "N_LANE"])/(log(2)))]
 	# add interface ports
